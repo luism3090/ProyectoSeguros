@@ -1,0 +1,35 @@
+.table .edit
+{
+	text-align:center;
+	line-height: 36px;
+	cursor:pointer;
+	
+}
+
+
+
+.table .edit:hover
+{
+	color:blue;
+	font-size: 18px;
+	
+}
+
+#pagiTblUsuariosAlta li.hide
+{
+	display: none !important;
+	/*display: none !important;*/
+} 
+
+#pagiTblUsuariosAlta li.visible
+{
+	display: inline !important;
+	/*display: inline !important;*/
+} 
+
+
+#tblUsuariosAlta input
+{
+	width: 100%;
+}
+
