@@ -13,7 +13,7 @@ class HookValidarDatosUsuario
 	{
 	
 		$controlador = $this->ci->router->class;
-		$funcion = $this->ci->router->method;
+		$method = $this->ci->router->method;
 
 		//echo $controlador;
 		//echo $this->ci->session->userdata('logueado');
@@ -113,8 +113,18 @@ class HookValidarDatosUsuario
 
 			$datos = $this->ci->VerificarControladoresRol->VerifyControlesRol($this->ci->session->userdata('id_rol'));
 
-			// echo var_dump($datos);
-			// exit();
+
+			 // echo $method;
+			 // exit();
+
+			if($controlador=="Polizas")
+			{
+				$controlador = $controlador."/".$method;
+			}
+			 
+			 
+
+			
 
 			if($datos["msjCantidadRegistros"] > 0)
 			{

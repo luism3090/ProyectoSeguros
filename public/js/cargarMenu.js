@@ -3,11 +3,13 @@ $(document).ready(function()
    // $('button').click(function(){
    //     //$('.sidebar').toggleClass('fliph');
    // });
+
+   var base_url = $("body").attr("data-base-url");
     
     $.ajax(
       {
             type: "POST",
-            url: "Home/cargarMenu",
+            url: base_url+"Home/cargarMenu ",
             dataType:"json",
             data: "",
              async: true,

@@ -6,11 +6,12 @@ class RegistrarUsuarios extends CI_Controller
 
 	public function __construct()
 	{
-		parent::__construct();
-
-		
+		parent::__construct();		
 		
 	}
+
+
+
 	public function index()
 	{
 		$this->load->view('RegistrarUsuarios/registrarUsuarios');
@@ -20,10 +21,10 @@ class RegistrarUsuarios extends CI_Controller
 	public function checkEmail()
 	{
 		
-		$email = $_POST["email"];
+		$correo = $_POST["correo"];
 
 		$this->load->model('RegistrarUsuarios/registrarUsers');
-		$datosUsuario = $this->registrarUsers->verificarEmail($email);
+		$datosUsuario = $this->registrarUsers->verificarEmail($correo);
 
 		//$datosUsuario["aa"] = $datosUsuario;
 
@@ -31,23 +32,73 @@ class RegistrarUsuarios extends CI_Controller
 		//var_dump($datosUsuario); 
 	}
 
+	public function getDataSelectRFC()
+	{
+		$this->load->model('RegistrarUsuarios/GetDataSelects');
+		$datosSelect = $this->GetDataSelects->getDataSelectRFC();
+
+		 echo json_encode($datosSelect);
+	}
+
+	public function cargarSelectEstado()
+	{
+
+		$this->load->model('RegistrarUsuarios/GetDataSelects');
+		$datosSelect = $this->GetDataSelects->getDataSelectEstado();
+
+		 echo json_encode($datosSelect);
+
+
+	}
+
+	public function cargarSelectMunicipios()
+	{
+		$id_estado = $_REQUEST["id_estado"];
+
+		$this->load->model('RegistrarUsuarios/GetDataSelects');
+		$datosSelect = $this->GetDataSelects->getDataSelectMunicipios($id_estado);
+
+		 echo json_encode($datosSelect);
+
+
+	}
+
+
+	public function cargarSelectLocalidades()
+	{
+		$id_municipio = $_REQUEST["id_municipio"];
+
+		$this->load->model('RegistrarUsuarios/GetDataSelects');
+		$datosSelect = $this->GetDataSelects->getDataSelectLocalidades($id_municipio);
+
+		 echo json_encode($datosSelect);
+
+
+	}
+
 	public function insertarUsuario()
 	{
 
 		$nombre= $_REQUEST["nombre"];
-		$apellidos = $_REQUEST["apellidos"];
-		$email = $_REQUEST["email"];
+		$apellido_paterno = $_REQUEST["apellido_pa"];
+		$apellido_materno = $_REQUEST["apellido_ma"];
+		$id_rfc = $_REQUEST["rfc"];
+		$telefono = $_REQUEST["telefono"];
+		$celular = $_REQUEST["celular"];
+		$id_estado = $_REQUEST["id_estado"];
+		$id_municipio = $_REQUEST["id_municipio"];
+		$id_localidad = $_REQUEST["id_localidad"];
+		$domicilio = $_REQUEST["domicilio"];
+		$colonia = $_REQUEST["colonia"];
+		$numero = $_REQUEST["numero"];
+		$correo = $_REQUEST["correo"];
+		$correo_corporativo = $_REQUEST["correoCorp"];
 		$password = $_REQUEST["password"];
 		$id_rol = $_REQUEST["id_rol"];
-
-		
-		// $email = $_POST["email"];
-		// $password = $_POST["password"];
-		// $id_rol = $_POST["id_rol"];
-
 		
 
-		$datosUsuario = $this->registrarUsers->insertUsers($nombre,$apellidos,$email,$password,$id_rol,$_FILES);
+		$this->load->model('RegistrarUsuarios/registrarUsers');
+		$datosUsuario = $this->registrarUsers->insertUsers($nombre,$apellido_paterno,$apellido_materno,$id_rfc,$telefono,$celular,$id_estado,$id_municipio,$id_localidad,$domicilio,$colonia,$numero,$correo,$correo_corporativo,$password,$id_rol);
 
 		//$datosUsuario["aa"] = $datosUsuario;
 

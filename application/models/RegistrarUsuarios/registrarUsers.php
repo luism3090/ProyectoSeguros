@@ -9,15 +9,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 
 
-		public function verificarEmail($email)
+		public function verificarEmail($correo)
 		{
 
 			
 			$sql = "select * from usuarios
-					where email = ? ";
+					where correo = ? ";
 
 
-			$query = $this->db->query($sql,array($email));
+			$query = $this->db->query($sql,array($correo));
 
 
 
@@ -40,50 +40,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 
 
-		public function insertUsers($nombre,$apellidos,$email,$password,$id_rol,$files)
+		public function insertUsers($nombre,$apellido_paterno,$apellido_materno,$id_rfc,$telefono,$celular,$id_estado,$id_municipio,$id_localidad,$domicilio,$colonia,$numero,$correo,$correo_corporativo,$password,$id_rol)
 		{
-
-			$nombreAleatorio = substr(str_shuffle(str_repeat('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789',80)),0,80);
-
-			$ruta = $_SERVER['DOCUMENT_ROOT']."/PhpCodeigniterPractica/public/uploads/";
-
-			$nombreOriginal = "";
-
-			foreach ( $files as $key) 
-			{
-
-			 //    return $files;
-				// exit();
-
-				if($key['error'] == UPLOAD_ERR_OK)
-				{
-					//$nombreOriginal = $key["name"];
-					$tipoImage = explode("/", $key['type']);
-					$nombreOriginal = $nombreAleatorio.".".$tipoImage[1];
-					$temporal = $key["tmp_name"];
-					//$temporal = $nombreAleatorio;
-					$destino = $ruta.$nombreOriginal;
-
-					//return $destino;
-
-
-
-					$subir = move_uploaded_file($temporal, $destino);
-
-					
-
-				}
-
-
-			}
-
-			$foto = "default_avatar.png";
-
-			if($nombreOriginal != "")
-			{
-				$foto = $nombreOriginal;
-			}
-			
 		
 			$this->db->trans_begin();
 
@@ -91,8 +49,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$sql_insert_usuario = "insert into usuarios ( 
 											id_usuario,
 											nombre,
-											apellidos,
-											email,
+											apellido_paterno,
+											apellido_materno,
+											id_rfc,
+											telefono,
+											celular,
+											id_estado,
+											id_municipio,
+											id_localidad,
+											domicilio,
+											colonia,
+											numero,
+											correo,
+											correo_corporativo,
 											password,
 											fecha_registro,
 											fecha_actualizacion,
@@ -106,16 +75,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 											?,
 											?,
 											?,
+											?,
+											?,
+											?,
+											?,
+											?,
+											?,
+											?,
+											?,
+											?,
+											?,
+											?,
 											now(),
 											null,
 											1,
-											'".$foto."'
+											'default.png'
 										)
 				   ";
 
-			$query_insert_usuario = $this->db->query($sql_insert_usuario,array($nombre,$apellidos,$email,$password));
-
-
+			$query_insert_usuario = $this->db->query($sql_insert_usuario,array($nombre,$apellido_paterno,$apellido_materno,$id_rfc,$telefono,$celular,$id_estado,$id_municipio,$id_localidad,$domicilio,$colonia,$numero,$correo,$correo_corporativo,$password));
 
 
 			$sql_get_Id_ultimo_usuario = "select id_usuario from 
@@ -127,14 +105,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 			$id_usuario = "";
 
-				foreach ($query_Id_ultimo_usuario->result_array() as $row)
-				{
-				        $id_usuario = $row['id_usuario'];
-				       
-				}
+			foreach ($query_Id_ultimo_usuario->result_array() as $row)
+			{
+			    $id_usuario = $row['id_usuario'];
+			}
 
 
-			$sql_insert_usuarios_roles = "insert into usuarios_roles( 
+			$sql_insert_usuarios_roles = "insert into rel_usuarios_roles( 
 																		id_usuario,
 																		id_rol
 																	) 
@@ -149,7 +126,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 
-			$datos = array("msjConsulta" => '' , "base_url" => base_url()."index.php/Usuarios");
+			$datos = array("msjConsulta" => '' , "base_url" => base_url()."Usuarios");
 
 
 			if ($this->db->trans_status() === FALSE)
@@ -169,10 +146,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 		}
-
-
-
-
 
 
 	}

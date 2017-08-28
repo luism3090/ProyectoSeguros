@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/estiloLogin.css">
   </head>
-  <body>
+  <body data-base-url="<?php echo base_url();?>">
     
     <div class="container">
       <div class="card card-container">

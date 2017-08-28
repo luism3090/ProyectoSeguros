@@ -1,18 +1,19 @@
 $(document).ready(function()
 {
 
+var base_url = $("body").attr("data-base-url");
+
   validaFormRegistrarUsuario();
-
-
-
-
 
   $("body").on("submit","#formRegistrarUsuario",function(event)
   {
+   //alert();
   		event.preventDefault();
-  		validaFormRegistrarUsuario();
+
+    $("#formRegistrarUsuario").bootstrapValidator();
 
   });
+
 
   $('#modalUsuarioRegistrado').on('hide.bs.modal', function (e) 
     {
@@ -20,23 +21,208 @@ $(document).ready(function()
     });
 
 
-  $("body").on("click","#btnIrAUsuarios",function(event)
-  {
-  		
-  		$("#modalUsuarioRegistrado").modal("hide");
-  		location.href = $("#modalUsuarioRegistrado #base_url").val();
+  // $("body").on("click","#btnIrAUsuarios",function(event)
+  // {
+    
+  // 		$("#modalUsuarioRegistrado").modal("hide");
+  // 		location.href = $("#modalUsuarioRegistrado #base_url").val();
 
+  // });
+
+
+  $("body").on("change","#slEstado",function(event)
+  {
+      
+     cargarSelectMunicipios();
+
+  });
+
+  $("body").on("change","#slMunicipio",function(event)
+  {
+      
+     cargarSelectLocalidades();
 
   });
 
 
 
+function cargarSelectRFC()
+{
+    $.ajax(
+    {
+      
+      type: "POST",
+      url: base_url+"RegistrarUsuarios/getDataSelectRFC",
+      dataType:"json",
+      data: '',
+      async: true,
+        success: function(result)
+            {
+
+                if(result.length > 0)
+                {
+                  let options ="";
+                   result.forEach(function(elemento,index) 
+                   {
+  
+                       options += '<option value="'+elemento.rfc+'">'+elemento.nombre+'</option>';
+                      
+
+                  });
+
+
+                   $("#slRFC").append(options);
+
+                }
+              
+            },
+       error:function(result)
+          {
+            alert("Error");
+           console.log(result.responseText);
+            
+          }
+    });
+
+}
+cargarSelectRFC();
+
+function cargarSelectEstado()
+{
+    $.ajax(
+    {
+      
+      type: "POST",
+      url: base_url+"RegistrarUsuarios/cargarSelectEstado",
+      dataType:"json",
+      data: '',
+      async: true,
+        success: function(result)
+            {
+
+                if(result.length > 0)
+                {
+                  let options ="";
+                   result.forEach(function(elemento,index) 
+                   {
+  
+                       options += '<option value="'+elemento.id_estado+'">'+elemento.nombre+'</option>';
+                      
+
+                  });
+
+
+                   $("#slEstado").append(options);
+
+                }
+              
+            },
+       error:function(result)
+          {
+            alert("Error");
+           console.log(result.responseText);
+            
+          }
+    });
+
+}
+cargarSelectEstado();
+
+function cargarSelectMunicipios()
+{
+   var datosEstado = { id_estado: $("#slEstado").val() }
+
+    $.ajax(
+    {
+      
+      type: "POST",
+      url: base_url+"RegistrarUsuarios/cargarSelectMunicipios",
+      dataType:"json",
+      data: datosEstado,
+      async: true,
+        success: function(result)
+            {
+
+                if(result.length > 0)
+                {
+                  let options ="<option selected disabled >Elija una opción</option>";
+                   result.forEach(function(elemento,index) 
+                   {
+  
+                       options += '<option value="'+elemento.id_municipio+'">'+elemento.nombre+'</option>';
+                      
+
+                  });
+
+                   $("#formRegistrarUsuario").data("bootstrapValidator").resetField("slMunicipio",true);
+                   $("#formRegistrarUsuario").data("bootstrapValidator").resetField("slLocalidad",true);
+                   $("#slLocalidad").empty().append("<option selected disabled >Elija una opción</option>");
+                   $("#slMunicipio").empty().append(options);
+
+                }
+              
+            },
+       error:function(result)
+          {
+            alert("Error");
+           console.log(result.responseText);
+            
+          }
+    });
+
+}
+
+function cargarSelectLocalidades()
+{
+   var datosMunicipio = { id_municipio: $("#slMunicipio").val() }
+
+    $.ajax(
+    {
+      
+      type: "POST",
+      url: base_url+"RegistrarUsuarios/cargarSelectLocalidades",
+      dataType:"json",
+      data: datosMunicipio,
+      async: true,
+        success: function(result)
+            {
+
+                if(result.length > 0)
+                {
+                  let options ="<option selected disabled >Elija una opción</option>";
+                   result.forEach(function(elemento,index) 
+                   {
+  
+                       options += '<option value="'+elemento.id_localidad+'">'+elemento.nombre+'</option>';
+                      
+
+                  });
+
+                   // $("#formRegistrarUsuario").data("bootstrapValidator").resetField("slMunicipio",true);
+                   $("#formRegistrarUsuario").data("bootstrapValidator").resetField("slLocalidad",true);
+                   // $("#slLocalidad").empty().append("<option selected disabled >Elija una opción</option>");
+                   $("#slLocalidad").empty().append(options);
+
+                }
+              
+            },
+       error:function(result)
+          {
+            alert("Error");
+           console.log(result.responseText);
+            
+          }
+    });
+
+}
+
+
+
+
 
  function validaFormRegistrarUsuario()
-  {             
+  {        
                           
-
-
               $('#formRegistrarUsuario').bootstrapValidator(
               {
 
@@ -59,18 +245,118 @@ $(document).ready(function()
 
                             }
                         },
-                        txtApellidos: {
+                        txtApellidoPa: {
                             group: '.form-group',
                             validators: {
                                 notEmpty: {
                                     message: 'Este campo es requerido'
                                 },
                                 
-
-
                             }
                         },
-                        txtEmail: {
+                         txtApellidoMa: {
+                            group: '.form-group',
+                            validators: {
+                                notEmpty: {
+                                    message: 'Este campo es requerido'
+                                },
+                                
+                            }
+                        },
+                        slRFC: {
+                            group: '.form-group',
+                            validators: {
+                                notEmpty: {
+                                    message: 'Selecciona el tipo de RFC'
+                                },
+                                
+                            }
+                        },
+                        txtTelefono: {
+                            group: '.form-group',
+                            validators: {
+                                notEmpty: {
+                                    message: 'Este campo es requerido'
+                                },
+                                regexp: {
+                                      regexp: /^\+?\d{1,3}?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d\d$/,
+
+                                      message: 'Solo números y debe contener entre 10 y 13 dígitos',
+
+                                  },
+                                
+                            }
+                        },
+                        txtCelular: {
+                            group: '.form-group',
+                            validators: {
+                                notEmpty: {
+                                    message: 'Este campo es requerido'
+                                },
+                                regexp: {
+                                      regexp: /^(\d{10})$/,
+
+                                      message: 'Solo números y debe contener 10 digitos',
+
+                                  },
+                                
+                            }
+                        },
+                        slEstado: {
+                            group: '.form-group',
+                            validators: {
+                                notEmpty: {
+                                    message: 'Selecciona el estado'
+                                },
+                                
+                            }
+                        },
+                        slMunicipio: {
+                            group: '.form-group',
+                            validators: {
+                                notEmpty: {
+                                    message: 'Seleciona el municipio'
+                                },
+                                
+                            }
+                        },
+                         slLocalidad: {
+                            group: '.form-group',
+                            validators: {
+                                notEmpty: {
+                                    message: 'selecciona la localidad'
+                                },
+                                
+                            }
+                        },
+                        txtDomicilio: {
+                            group: '.form-group',
+                            validators: {
+                                notEmpty: {
+                                    message: 'Este campo es requerido'
+                                },
+                                
+                            }
+                        },
+                         txtColonia: {
+                            group: '.form-group',
+                            validators: {
+                                notEmpty: {
+                                    message: 'Este campo es requerido'
+                                },
+                                
+                            }
+                        },
+                        txtNumero: {
+                            group: '.form-group',
+                            validators: {
+                                notEmpty: {
+                                    message: 'Este campo es requerido'
+                                },
+                                
+                            }
+                        },
+                        txtCorreo: {
                           group: '.form-group',
                           validators: 
                           {
@@ -91,22 +377,20 @@ $(document).ready(function()
                                       var valida = true;
 
                                       var datosUsuario = {
-                                                            email:$("#txtEmail").val()
+                                                            correo:$("#txtCorreo").val()
                                                           }
 
 
                                                   $.ajax(
                                                   {
                                                       type: "POST",
-                                                      url: "RegistrarUsuarios/checkEmail",
+                                                      url: base_url+"RegistrarUsuarios/checkEmail",
                                                     dataType:"json",
                                                       data: datosUsuario,
                                                        async: false,
                                                       success: function(result)
                                                           {
 
-                                                            if(typeof(result.baja) == "undefined") 
-                                                            {
                                                               if(result.msjCantidadRegistros > 0)
                                                               {
                                                                  valida = false;
@@ -115,12 +399,7 @@ $(document).ready(function()
                                                               {
                                                                 valida = true;
                                                               }
-                                                            }
-                                                            else
-                                                            {
-                                                              window.location = result.url;
-                                                            }
-                                                        
+                                                           
                                                           },
                                                      error:function(result)
                                                         {
@@ -133,8 +412,6 @@ $(document).ready(function()
 
                                                   return valida;
 
-                                      // var options = validator.getFieldElements('colors').val();
-                                      // return (options != null && options.length >= 2 && options.length <= 4);
                                   }
                               },
 
@@ -165,59 +442,52 @@ $(document).ready(function()
                       }
 
 
-                }
+              }
               }).on('success.form.bv', function (e) {
 
                                // debugger;
 
-                       var datosUsuarioUrl = "?nombre="+$("#txtNombre").val()+
-                            "&apellidos="+$("#txtApellidos").val()+
-                            "&email="+$("#txtEmail").val()+
-                            "&password="+$("#txtPassword").val()+
-                            "&id_rol="+$("#slTipoUsuario").val();
-
-
-                      var archivos = document.getElementById("fileFoto");  
-
-                        var archivo = archivos.files;
-                        var archivos = new FormData();
-                        for(i=0; i<archivo.length;i++)
-                        {
-                          archivos.append('archivo',archivo[i])
-                        }
-
+                      var datosUsuario = {
+                                            nombre:$("#txtNombre").val(),
+                                            apellido_pa:$("#txtApellidoPa").val(),
+                                            apellido_ma:$("#txtApellidoMa").val(),
+                                            rfc:$("#slRFC").val(),
+                                            telefono:$("#txtTelefono").val(),
+                                            celular:$("#txtCelular").val(),
+                                            id_estado:$("#slEstado").val(),
+                                            id_municipio:$("#slMunicipio").val(),
+                                            id_localidad:$("#slLocalidad").val(),
+                                            domicilio:$("#txtDomicilio").val(),
+                                            colonia:$("#txtColonia").val(),
+                                            numero:$("#txtNumero").val(),
+                                            correo:$("#txtCorreo").val(),
+                                            correoCorp:$("#txtCorreoCorp").val(),
+                                            password:$("#txtPassword").val(),
+                                            id_rol:$("#slTipoUsuario").val(),
+                                         }
 
                       $.ajax(
-                            {
-                                type: "POST",
-                                url: "RegistrarUsuarios/insertarUsuario"+datosUsuarioUrl,
-                                dataType:"json",
-                                contentType:false,
-                                processData:false,
-                                data: archivos,
-                                async: true,
-                                success: function(result)
-                                    {
-                                      
-                                      if(typeof(result.baja) == "undefined") 
-                                      {
-                                        $("#modalUsuarioRegistrado #base_url").val(result.base_url);
-                                         $("#modalUsuarioRegistrado").modal("show");
-                                      }
-                                      else
-                                      {
-                                        window.location = result.url;
-                                      }
+                                {
+                                    type: "POST",
+                                    url: base_url+"RegistrarUsuarios/insertarUsuario",
+                                    dataType:"json",
+                                    data: datosUsuario,
+                                    async: true,
+                                    success: function(result)
+                                        {
+                                          
+                                          // $("#modalUsuarioRegistrado #base_url").val(result.base_url);
+                                          $("#modalUsuarioRegistrado").modal("show");
 
-                                    },
-                               error:function(result)
-                                  {
-                                    alert("Error");
-                                   console.log(result.responseText);
-                                    
-                                  }
-                                  
-                 });          
+                                        },
+                                   error:function(result)
+                                      {
+                                        alert("Error");
+                                       console.log(result.responseText);
+                                        
+                                      }
+                                      
+                               });          
                             
 
 

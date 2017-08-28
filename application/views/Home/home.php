@@ -10,7 +10,8 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/estiloTablasBootstrap.css">
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
 </head>
-<body >
+
+<body data-base-url="<?php echo base_url();?>">
 	
 	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
 

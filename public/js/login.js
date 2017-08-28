@@ -1,6 +1,8 @@
 $(document).on("ready",function()
 {
 
+var base_url = $("body").attr("data-base-url");
+
 	validaLogin();
 
 	$("#FormLogin").on("submit",function(event)
@@ -69,7 +71,7 @@ $(document).on("ready",function()
 				{
 		          type: "POST",
 		          dataType:"json",
-		          url: "Login/loginUsuario",
+		          url: base_url+"Login/loginUsuario",
 		          data: {
 		          		email: $("#email").val(),
 						password: $("#password").val(),
@@ -77,7 +79,7 @@ $(document).on("ready",function()
 		          async: true,
 		          success: function(result)
 			          {
-			          	console.log(result);
+			          	//console.log(result);
 
 			          	if(result.msjCantidadRegistros > 0)
 			          	{
