@@ -76,6 +76,14 @@ class RegistrarUsuarios extends CI_Controller
 
 	}
 
+	public function getDataSelectUsuarios()
+	{
+		$this->load->model('RegistrarUsuarios/GetDataSelects');
+		$datosSelect = $this->GetDataSelects->getDataSelectUsuarios();
+
+		 echo json_encode($datosSelect);
+	}
+
 	public function insertarUsuario()
 	{
 

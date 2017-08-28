@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 			
 
-			$sql =	"select CONCAT('Home,',ifnull(group_concat(me.controlador),'')) as controladores
+			$sql =	"select  CONCAT('Home,',ifnull(group_concat(me.controlador),'')) as controladores
 					from menus me
 					join rel_menu_usuarios rmu on me.id_elemento_menu = rmu.id_elemento_menu
 					join cat_roles rol on rmu.id_rol = rol.id_rol 

@@ -16,7 +16,41 @@ class Polizas extends CI_Controller
 
 	}
 
-	
+	public function cargarSelectStatus()
+	{
+		
+		$this->load->model('Polizas/cargarSelectsPolizas'); 
+		$datosSelect = $this->cargarSelectsPolizas->cargarSelectStatus();
+
+
+
+		echo json_encode($datosSelect);
+
+	}
+
+	public function cargarSelectTipo()
+	{
+		
+		$this->load->model('Polizas/cargarSelectsPolizas'); 
+		$datosSelect = $this->cargarSelectsPolizas->cargarSelectTipo();
+
+
+
+		echo json_encode($datosSelect);
+
+	}
+
+	public function cargarSelectAseguradora()
+	{
+		
+		$this->load->model('Polizas/cargarSelectsPolizas'); 
+		$datosSelect = $this->cargarSelectsPolizas->cargarSelectAseguradora();
+
+
+
+		echo json_encode($datosSelect);
+
+	}
 	
 
 

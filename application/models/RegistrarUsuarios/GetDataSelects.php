@@ -55,6 +55,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 		}
 
+		public function getDataSelectUsuarios()
+		{
+
+			$sql = "select id_rol,descripcion as nombre FROM cat_roles order by id_rol desc";
+
+			$query = $this->db->query($sql);		
+			
+			return $query->result();
+
+		}
+
 
 
 	}

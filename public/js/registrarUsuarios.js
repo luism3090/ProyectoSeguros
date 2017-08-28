@@ -61,7 +61,7 @@ function cargarSelectRFC()
 
                 if(result.length > 0)
                 {
-                  let options ="";
+                  let options ="<option selected disabled >Elija una opción</option>";
                    result.forEach(function(elemento,index) 
                    {
   
@@ -71,7 +71,7 @@ function cargarSelectRFC()
                   });
 
 
-                   $("#slRFC").append(options);
+                   $("#slRFC").html(options);
 
                 }
               
@@ -102,7 +102,7 @@ function cargarSelectEstado()
 
                 if(result.length > 0)
                 {
-                  let options ="";
+                  let options ="<option selected disabled >Elija una opción</option>";
                    result.forEach(function(elemento,index) 
                    {
   
@@ -112,7 +112,7 @@ function cargarSelectEstado()
                   });
 
 
-                   $("#slEstado").append(options);
+                   $("#slEstado").html(options);
 
                 }
               
@@ -198,10 +198,8 @@ function cargarSelectLocalidades()
 
                   });
 
-                   // $("#formRegistrarUsuario").data("bootstrapValidator").resetField("slMunicipio",true);
                    $("#formRegistrarUsuario").data("bootstrapValidator").resetField("slLocalidad",true);
-                   // $("#slLocalidad").empty().append("<option selected disabled >Elija una opción</option>");
-                   $("#slLocalidad").empty().append(options);
+                   $("#slLocalidad").html(options);
 
                 }
               
@@ -217,6 +215,46 @@ function cargarSelectLocalidades()
 }
 
 
+function cargarSelectUsuarios()
+{
+    $.ajax(
+    {
+      
+      type: "POST",
+      url: base_url+"RegistrarUsuarios/getDataSelectUsuarios",
+      dataType:"json",
+      data: '',
+      async: true,
+        success: function(result)
+            {
+
+                if(result.length > 0)
+                {
+                  let options ="<option selected disabled >Elija una opción</option>";
+                   result.forEach(function(elemento,index) 
+                   {
+  
+                       options += '<option value="'+elemento.id_rol+'">'+elemento.nombre+'</option>';
+                      
+
+                  });
+
+
+                   $("#slTipoUsuario").html(options);
+
+                }
+              
+            },
+       error:function(result)
+          {
+            alert("Error");
+           console.log(result.responseText);
+            
+          }
+    });
+
+}
+cargarSelectUsuarios();
 
 
 

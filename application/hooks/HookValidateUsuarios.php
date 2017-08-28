@@ -17,6 +17,8 @@ class HookValidarDatosUsuario
 
 		//echo $controlador;
 		//echo $this->ci->session->userdata('logueado');
+
+
 		
 		// primero verificamos si el usuario esta logueado 
 
@@ -59,45 +61,6 @@ class HookValidarDatosUsuario
 			}
 	
 		}
-
-
-		// Verificar si el usuario esta dado de alta 
-
-		// if($controlador != 'Login' && $this->ci->session->userdata('logueado') === true)
-		// {
-		// 	$this->ci->load->model('Home/VerificarUsuarioActivo');
-
-		// 	$datosMenu = $this->ci->VerificarUsuarioActivo->verificarUserActivo($this->ci->session->userdata('id_usuario'));
-
-		// 	if($datosMenu == 0)
-		// 	{
-		// 		if( $this->ci->input->is_ajax_request())
-		// 		{
-		// 			$this->ci->session->sess_destroy();
-
-		// 			$datos["baja"]=true;
-		// 			$datos["url"]= base_url()."Login";
-		// 			echo json_encode($datos);
-					
-		// 			exit();
-		// 		}
-		// 		else
-		// 		{
-					
-		// 			$this->ci->session->sess_destroy();
-		// 			redirect('/Login');
-		// 			exit();
-		// 		}
-
-
-				
-		// 	}
-			
-
-
-
-		// }
-
 		
 
 		// verificar si el usuario tiene permisos de acuerdo a su rol para visualizar tales elementos del menú
@@ -117,18 +80,41 @@ class HookValidarDatosUsuario
 			 // echo $method;
 			 // exit();
 
-			if($controlador=="Polizas")
-			{
-				$controlador = $controlador."/".$method;
-			}
+			// if($controlador=="Polizas")
+			// {
+			// 	$controlador = $controlador."/".$method;
+			// }
 			 
 			 
-
-			
 
 			if($datos["msjCantidadRegistros"] > 0)
 			{
+
+				//var_dump($datos["controllers"][0]->controladores);
+
+
+
+				
 				$controladores_rol = explode(",", $datos["controllers"][0]->controladores);
+
+				foreach ($controladores_rol as $key => $controlBD)
+				 {
+					
+					if(stripos($controlBD,"/"))
+					{
+						$indexDiagonal = stripos($controlBD,"/");
+						$controladores_rol[$key] = substr($controlBD,0,$indexDiagonal);
+
+					}
+					else
+					{
+						$controladores_rol[$key] == $controlBD;
+					}
+
+				}
+
+				// var_dump($controladores_rol);
+				// exit();
 				$controladorPermitido = in_array($controlador,$controladores_rol);
 			}
 			else
@@ -136,17 +122,27 @@ class HookValidarDatosUsuario
 				$controladores_rol = array();
 				$controladorPermitido = in_array($controlador,$controladores_rol);
 			}
+
 			//var_dump($datos["controllers"][0]->controladores);
 			
 			 //exit();
 
-		
 			if($controlador != "AccesoDenegado")
 			{
-				if($controladorPermitido==false)
+
+				// var_dump($controladorPermitido);
+				// var_dump($controlador);
+
+				// exit();
+
+				if($controladorPermitido===false)
 				{
+					// echo "b";
+					// exit();
 					redirect('/AccesoDenegado',$datosControles);
 				}
+				
+				
 			}
 			
 		
