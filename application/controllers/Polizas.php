@@ -51,6 +51,16 @@ class Polizas extends CI_Controller
 		echo json_encode($datosSelect);
 
 	}
+
+
+	public function cargarClientes()
+	{
+		$this->load->model('Polizas/LoadClientes');
+		$datosClientes = $this->LoadClientes->cargarClientes($_REQUEST);
+
+		echo json_encode($datosClientes);
+
+	}
 	
 
 

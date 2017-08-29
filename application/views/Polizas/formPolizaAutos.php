@@ -7,7 +7,9 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/estiloHomeMenu.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/estiloBarraSuperior.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/estiloTablasBootstrap.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/estiloTablasBootstrap.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
+	 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.2.2/css/select.dataTables.min.css">
 	
 </head>
 <body data-base-url="<?php echo base_url();?>">
@@ -176,7 +178,23 @@
 							<legend>Seleccionar cliente:</legend>
 							<div class="row">
 								<div class="col-xs-12 ">
-									<h3>tabla clientes</h3>
+									<div class="table-responsive">
+										<table class="table table-bordered table-hover" id="tblClientes" cellspacing="0"  width="100%" style="text-align: center;">
+												<caption style="text-align: center"><h4><strong>Clientes</strong></h4></caption>
+												<thead>
+									                    <tr>
+										                      <th>id_usuario</th>
+										                      <th>Nombre</th>
+										                      <th>Correo</th>
+										                      <th>Teléfono</th>
+										                      <th>Rfc</th>
+										                      <th>Estado</th>
+										                      <th>Municipio</th>
+										                      <th>Localidad</th>
+									                    </tr>
+								                </thead>
+								        </table>
+									</div>
 								</div>
 							</div>
 						</fieldset>
@@ -329,11 +347,13 @@
 
 	<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+	<script src="https://cdn.datatables.net/select/1.2.2/js/dataTables.select.min.js" ></script>
 
 
 	<script src="<?php echo base_url(); ?>public/libreriasJS/bootstrapValidator.js"></script>
 
 	<script src="<?php echo base_url(); ?>public/js/cargarSelectPolizas.js"></script>
+	<script src="<?php echo base_url(); ?>public/js/cargarTablaClientes.js"></script>
 	<script src="<?php echo base_url(); ?>public/js/cargarMenu.js"></script>
 	<script src="<?php echo base_url(); ?>public/js/cerrarSesion.js"></script>
 
