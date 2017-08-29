@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Póliza de Autos</title>
+	<title>Póliza de Vida de Grupo</title>
 
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/estiloHomeMenu.css">
@@ -86,13 +86,13 @@
 					<div class="row">
 						<div class="col-xs-12 text-center">
 							
-							<h3>Registro de Póliza de Autos</h3>	
+							<h3>Registro de Póliza de Vida de Grupo</h3>	
 						
 						</div>
 					</div>
 					<br><br><br>
 					
-					<form action="" id="formRegistrarPolizaAutos">
+					<form action="" id="formRegistrarPolizaResponsabilidadCivil">
 						
 						<fieldset>
 							<legend>Datos de póliza:</legend>
@@ -141,10 +141,11 @@
 									</div>
 								</div>
 
+
 								<div class="col-xs-6">
 									<div class="form-group">
-											<label for="dateFinaliza">Fecha finaliza:</label>
-											<input type="date" id="dateFinaliza" name="dateFinaliza"  class="form-control"  >
+										<label for="txtCantidadBeneficiarios">Cantidad de Beneficiarios:</label>
+										<input type="text" id="txtCantidadBeneficiarios" name="txtCantidadBeneficiarios"  class="form-control" placeholder="Cantidad de Beneficiarios">
 									</div>
 								</div>
 
@@ -155,15 +156,6 @@
 									</div>
 								</div>
 
-
-    
-
-									<div class="col-xs-6">
-									<div class="form-group">
-										<label for="txtValorComercial">Valor comercial:</label>
-										<input type="text" id="txtValorComercial" name="txtValorComercial"  class="form-control" placeholder="Domicilio">
-									</div>
-								</div>
 								<div class="col-xs-6">
 										<div class="form-group">
 											<label for="txtDescripcion">Descripción:</label>
@@ -194,44 +186,6 @@
 									                    </tr>
 								                </thead>
 								        </table>
-									</div>
-								</div>
-							</div>
-						</fieldset>
-						<br><br><br>
-						<fieldset>
-							<legend>Datos del auto:</legend>
-							
-							<div class="row">
-
-								<div class="col-xs-6">
-									<div class="form-group">
-										<label for="txtMarca">Marca:</label> 
-										<input type="text" id="txtMarca" class="form-control" name="txtMarca" placeholder="Marca" >									
-									</div>
-								</div>
-								<div class="col-xs-6">
-									<div class="form-group">
-										<label for="txtModelo">Modelo:</label> 
-										<input type="text" id="txtModelo" class="form-control" name="txtModelo" placeholder="Modelo"  />									
-									</div>
-								</div>
-								<div class="col-xs-6">
-									<div class="form-group">
-										<label for="txtAnio">Año:</label> 
-										<input type="text" id="txtAnio" class="form-control" name="txtAnio" placeholder="Año"  />									
-									</div>
-								</div>
-								<div class="col-xs-6">
-									<div class="form-group">
-										<label for="txtNoSerie">No de serie:</label> 
-										<input type="text" id="txtNoSerie" class="form-control" name="txtNoSerie" placeholder="No de serie" />									
-									</div>
-								</div>
-								<div class="col-xs-6">
-									<div class="form-group">
-										<label for="txtPlacas">Placas:</label> 
-										<input type="text" id="txtPlacas" class="form-control" name="txtPlacas" placeholder="Placas"  />									
 									</div>
 								</div>
 							</div>

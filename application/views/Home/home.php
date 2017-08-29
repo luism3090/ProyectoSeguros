@@ -114,7 +114,7 @@
 					                    		<td>Datos</td>
 					                    		<td>Datos</td>
 					                    		<td>Datos</td>
-					                    		<td>Datos</td>
+					                    		<td><button  type="button" class="btn btn-success sendEmailUser"> <span class="glyphicon glyphicon-envelope"></span> Enviar Email</button></td>
 					                    	</tr>
 					                    	<tr>
 					                    		<td>Datos</td>
@@ -123,7 +123,7 @@
 					                    		<td>Datos</td>
 					                    		<td>Datos</td>
 					                    		<td>Datos</td>
-					                    		<td>Datos</td>
+					                    		<td><button  type="button" class="btn btn-success sendEmailUser"> <span class="glyphicon glyphicon-envelope"></span> Enviar Email</button></td>
 					                    	</tr>
 					                    	<tr>
 					                    		<td>Datos</td>
@@ -132,7 +132,7 @@
 					                    		<td>Datos</td>
 					                    		<td>Datos</td>
 					                    		<td>Datos</td>
-					                    		<td>Datos</td>
+					                    		<td><button  type="button" class="btn btn-success sendEmailUser"> <span class="glyphicon glyphicon-envelope"></span> Enviar Email</button></td>
 					                    	</tr>
 					                    	<tr>
 					                    		<td>Datos</td>
@@ -141,7 +141,7 @@
 					                    		<td>Datos</td>
 					                    		<td>Datos</td>
 					                    		<td>Datos</td>
-					                    		<td>Datos</td>
+					                    		<td><button  type="button" class="btn btn-success sendEmailUser"> <span class="glyphicon glyphicon-envelope"></span> Enviar Email</button></td>
 					                    	</tr>
 					                    	<tr>
 					                    		<td>Datos</td>
@@ -150,7 +150,7 @@
 					                    		<td>Datos</td>
 					                    		<td>Datos</td>
 					                    		<td>Datos</td>
-					                    		<td>Datos</td>
+					                    		<td><button  type="button" class="btn btn-success sendEmailUser"> <span class="glyphicon glyphicon-envelope"></span> Enviar Email</button></td>
 					                    	</tr>
 					                    </tbody>
 						                

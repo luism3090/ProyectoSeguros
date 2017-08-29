@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Póliza de Autos</title>
+	<title>Póliza de Gastos Médicos Mayores</title>
 
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/estiloHomeMenu.css">
@@ -86,13 +86,13 @@
 					<div class="row">
 						<div class="col-xs-12 text-center">
 							
-							<h3>Registro de Póliza de Autos</h3>	
+							<h3>Registro de Póliza de Gastos Médicos Mayores</h3>	
 						
 						</div>
 					</div>
 					<br><br><br>
 					
-					<form action="" id="formRegistrarPolizaAutos">
+					<form action="" id="formRegistrarPolizaGastosMedicosMayores">
 						
 						<fieldset>
 							<legend>Datos de póliza:</legend>
@@ -150,20 +150,32 @@
 
 								<div class="col-xs-6">
 									<div class="form-group">
+										<label for="txtCantidadCoaseguros">Cantidad de coaseguros:</label>
+										<input type="text" id="txtCantidadCoaseguros" name="txtCantidadCoaseguros"  class="form-control" placeholder="Cantidad de coaseguros">
+									</div>
+								</div>
+
+								<div class="col-xs-6">
+									<div class="form-group">
+										<label for="txtDeducible">Deducible $:</label>
+										<input type="text" id="txtDeducible" name="txtDeducible"  class="form-control" placeholder="Deducible $">
+									</div>
+								</div>
+
+								<div class="col-xs-6">
+									<div class="form-group">
+										<label for="txtCoaseguro">Coaseguro %:</label>
+										<input type="text" id="txtCoaseguro" name="txtCoaseguro"  class="form-control" placeholder="Coaseguro %">
+									</div>
+								</div>
+
+								<div class="col-xs-6">
+									<div class="form-group">
 											<label for="chkSumaAsegurada">Suma asegurada:</label>
 											<input type="checkbox" id="chkSumaAsegurada" name="chkSumaAsegurada"  class="form-control" style="width: 20px;margin: auto;" >
 									</div>
 								</div>
 
-
-    
-
-									<div class="col-xs-6">
-									<div class="form-group">
-										<label for="txtValorComercial">Valor comercial:</label>
-										<input type="text" id="txtValorComercial" name="txtValorComercial"  class="form-control" placeholder="Domicilio">
-									</div>
-								</div>
 								<div class="col-xs-6">
 										<div class="form-group">
 											<label for="txtDescripcion">Descripción:</label>
@@ -194,44 +206,6 @@
 									                    </tr>
 								                </thead>
 								        </table>
-									</div>
-								</div>
-							</div>
-						</fieldset>
-						<br><br><br>
-						<fieldset>
-							<legend>Datos del auto:</legend>
-							
-							<div class="row">
-
-								<div class="col-xs-6">
-									<div class="form-group">
-										<label for="txtMarca">Marca:</label> 
-										<input type="text" id="txtMarca" class="form-control" name="txtMarca" placeholder="Marca" >									
-									</div>
-								</div>
-								<div class="col-xs-6">
-									<div class="form-group">
-										<label for="txtModelo">Modelo:</label> 
-										<input type="text" id="txtModelo" class="form-control" name="txtModelo" placeholder="Modelo"  />									
-									</div>
-								</div>
-								<div class="col-xs-6">
-									<div class="form-group">
-										<label for="txtAnio">Año:</label> 
-										<input type="text" id="txtAnio" class="form-control" name="txtAnio" placeholder="Año"  />									
-									</div>
-								</div>
-								<div class="col-xs-6">
-									<div class="form-group">
-										<label for="txtNoSerie">No de serie:</label> 
-										<input type="text" id="txtNoSerie" class="form-control" name="txtNoSerie" placeholder="No de serie" />									
-									</div>
-								</div>
-								<div class="col-xs-6">
-									<div class="form-group">
-										<label for="txtPlacas">Placas:</label> 
-										<input type="text" id="txtPlacas" class="form-control" name="txtPlacas" placeholder="Placas"  />									
 									</div>
 								</div>
 							</div>

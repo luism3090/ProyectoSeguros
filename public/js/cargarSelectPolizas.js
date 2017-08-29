@@ -3,6 +3,17 @@ $(document).ready(function()
 
 	var base_url = $("body").attr("data-base-url");
 
+	// var direccion = window.location.href;
+
+	// if(indexOf())
+
+
+	  $("body").on("change","#slEstado",function(event)
+	  {
+	      
+	     cargarSelectMunicipios();
+
+	  });
 
 	function cargarSelectStatus()
 	{
@@ -130,47 +141,261 @@ $(document).ready(function()
 	cargarSelectAseguradora();
 
 
-	 var tableUsersAlta = $('#tblUsuariosAlta').DataTable( 
-      {
-        "processing": true,
-        "serverSide": true,
-        "ordering": true,
-         "select": 'single',
-         "language": {
-                        "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-                      },
-                  "scrollY":        "500px",
-                  "scrollCollapse": true,
-        "ajax":{
-          url :"Usuarios/cargarUsuariosAlta", 
-          type: "post",  
-          error: function(d){ 
-            $(".employee-grid-error").html("");
-            $("#employee-grid").append('<tbody class="employee-grid-error"><tr><th colspan="3">No se encontraron datos</th></tr></tbody>');
-            $("#employee-grid_processing").css("display","none");
-            
-          }
-          // ,
-          // success:function(d)
-          // {
-          //  console.log(d);
-          // }
-        },
-        "columnDefs": [
-                      {
-                          "targets": [ 0 ],
-                          "visible": false,
-                          "searchable": false
-                      },
-                      {
-                          "targets": [ 1 ],
-                          "visible": false,
-                          "searchable": false
-                      }
-                  ],
-        
+	function cargarSelectFormaPago()
+	{
 
-      } );
+		$.ajax(
+	    {
+	      
+	      type: "POST",
+	      url: base_url+"Polizas/cargarSelectFormaPago",
+	      dataType:"json",
+	      data: '',
+	      async: true,
+	        success: function(result)
+	            {
+
+	                if(result.length > 0)
+	                {
+	                   let options ="<option selected disabled >Elija una opción</option>";
+	                   result.forEach(function(elemento,index) 
+	                   {
+	  
+	                       options += '<option value="'+elemento.id_forma_pago+'">'+elemento.nombre+'</option>';
+	                      
+	                  });
+
+	                   $("#slFormaPago").html(options);
+
+	                }
+	              
+	            },
+	       error:function(result)
+	          {
+	            alert("Error");
+	           console.log(result.responseText);
+	            
+	          }
+	   });
+
+
+	}
+	cargarSelectFormaPago();
+
+
+	function cargarSelectMoneda()
+	{
+
+		$.ajax(
+	    {
+	      
+	      type: "POST",
+	      url: base_url+"Polizas/cargarSelectMoneda",
+	      dataType:"json",
+	      data: '',
+	      async: true,
+	        success: function(result)
+	            {
+
+	                if(result.length > 0)
+	                {
+	                   let options ="<option selected disabled >Elija una opción</option>";
+	                   result.forEach(function(elemento,index) 
+	                   {
+	  
+	                       options += '<option value="'+elemento.id_moneda+'">'+elemento.nombre+'</option>';
+	                      
+	                  });
+
+	                   $("#slMoneda").html(options);
+
+	                }
+	              
+	            },
+	       error:function(result)
+	          {
+	            alert("Error");
+	           console.log(result.responseText);
+	            
+	          }
+	   });
+
+
+	}
+	cargarSelectMoneda();
+
+
+	function cargarSelectMedioPago()
+	{
+
+		$.ajax(
+	    {
+	      
+	      type: "POST",
+	      url: base_url+"Polizas/cargarSelectMedioPago",
+	      dataType:"json",
+	      data: '',
+	      async: true,
+	        success: function(result)
+	            {
+
+	                if(result.length > 0)
+	                {
+	                   let options ="<option selected disabled >Elija una opción</option>";
+	                   result.forEach(function(elemento,index) 
+	                   {
+	  
+	                       options += '<option value="'+elemento.id_medio_pago+'">'+elemento.nombre+'</option>';
+	                      
+	                  });
+
+	                   $("#slMedioPago").html(options);
+
+	                }
+	              
+	            },
+	       error:function(result)
+	          {
+	            alert("Error");
+	           console.log(result.responseText);
+	            
+	          }
+	   });
+
+
+	}
+	cargarSelectMedioPago();
+
+
+
+	function cargarSelectPais()
+	{
+	    $.ajax(
+	    {
+	      
+	      type: "POST",
+	      url: base_url+"Polizas/cargarSelectPais",
+	      dataType:"json",
+	      data: '',
+	      async: true,
+	        success: function(result)
+	            {
+
+	                if(result.length > 0)
+	                {
+	                  let options ="<option selected disabled >Elija una opción</option>";
+	                   result.forEach(function(elemento,index) 
+	                   {
+	  
+	                       options += '<option value="'+elemento.id_pais+'">'+elemento.nombre+'</option>';
+	                      
+
+	                  });
+
+
+	                   $("#slPais").html(options);
+
+	                   $('#slPais option[value="146"]').attr("selected", "selected");
+
+	                }
+	              
+	            },
+	       error:function(result)
+	          {
+	            alert("Error");
+	           console.log(result.responseText);
+	            
+	          }
+	    });
+
+	}
+	cargarSelectPais();
+
+
+	function cargarSelectEstado()
+	{
+	    $.ajax(
+	    {
+	      
+	      type: "POST",
+	      url: base_url+"RegistrarUsuarios/cargarSelectEstado",
+	      dataType:"json",
+	      data: '',
+	      async: true,
+	        success: function(result)
+	            {
+
+	                if(result.length > 0)
+	                {
+	                  let options ="<option selected disabled >Elija una opción</option>";
+	                   result.forEach(function(elemento,index) 
+	                   {
+	  
+	                       options += '<option value="'+elemento.id_estado+'">'+elemento.nombre+'</option>';
+	                      
+
+	                  });
+
+
+	                   $("#slEstado").html(options);
+
+	                }
+	              
+	            },
+	       error:function(result)
+	          {
+	            alert("Error");
+	           console.log(result.responseText);
+	            
+	          }
+	    });
+
+	}
+	cargarSelectEstado();
+
+
+
+	function cargarSelectMunicipios()
+	{
+	   var datosEstado = { id_estado: $("#slEstado").val() }
+
+	    $.ajax(
+	    {
+	      
+	      type: "POST",
+	      url: base_url+"RegistrarUsuarios/cargarSelectMunicipios",
+	      dataType:"json",
+	      data: datosEstado,
+	      async: true,
+	        success: function(result)
+	            {
+
+	                if(result.length > 0)
+	                {
+	                  let options ="<option selected disabled >Elija una opción</option>";
+	                   result.forEach(function(elemento,index) 
+	                   {
+	  
+	                       options += '<option value="'+elemento.id_municipio+'">'+elemento.nombre+'</option>';
+	                      
+
+	                  });
+
+	                  // $("#formRegistrarPolizaEmpresarial").data("bootstrapValidator").resetField("slMunicipio",true);
+	                   $("#slMunicipio").html(options);
+
+	                }
+	              
+	            },
+	       error:function(result)
+	          {
+	            alert("Error");
+	           console.log(result.responseText);
+	            
+	          }
+	    });
+
+	}
 
 
 });

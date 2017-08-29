@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Póliza de Autos</title>
+	<title>Póliza de Empresarial</title>
 
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/estiloHomeMenu.css">
@@ -86,13 +86,13 @@
 					<div class="row">
 						<div class="col-xs-12 text-center">
 							
-							<h3>Registro de Póliza de Autos</h3>	
+							<h3>Registro de Póliza empresarial</h3>	
 						
 						</div>
 					</div>
 					<br><br><br>
 					
-					<form action="" id="formRegistrarPolizaAutos">
+					<form action="" id="formRegistrarPolizaEmpresarial">
 						
 						<fieldset>
 							<legend>Datos de póliza:</legend>
@@ -150,26 +150,23 @@
 
 								<div class="col-xs-6">
 									<div class="form-group">
+											<label for="txtRiesgosAmparados">No de riesgos amparados:</label>
+											<input type="text" id="txtRiesgosAmparados" name="txtRiesgosAmparados"  class="form-control" placeholder="Número de riesgos amparados" >
+									</div>
+								</div>
+
+								<div class="col-xs-6">
+									<div class="form-group">
 											<label for="chkSumaAsegurada">Suma asegurada:</label>
 											<input type="checkbox" id="chkSumaAsegurada" name="chkSumaAsegurada"  class="form-control" style="width: 20px;margin: auto;" >
 									</div>
 								</div>
 
-
-    
-
-									<div class="col-xs-6">
-									<div class="form-group">
-										<label for="txtValorComercial">Valor comercial:</label>
-										<input type="text" id="txtValorComercial" name="txtValorComercial"  class="form-control" placeholder="Domicilio">
-									</div>
-								</div>
 								<div class="col-xs-6">
-										<div class="form-group">
-											<label for="txtDescripcion">Descripción:</label>
-											<textarea id="txtDescripcion" cols="10" rows="5" name="txtDescripcion"  class="form-control" placeholder="Descripción"></textarea>            
-										</div>
-										
+									<div class="form-group">
+										<label for="txtDescripcion">Descripción:</label>
+										<textarea id="txtDescripcion" cols="10" rows="5" name="txtDescripcion"  class="form-control" placeholder="Descripción"></textarea>            
+									</div>
 								</div>
 							</div>
 						</fieldset>
@@ -200,40 +197,74 @@
 						</fieldset>
 						<br><br><br>
 						<fieldset>
-							<legend>Datos del auto:</legend>
+							<legend>Ubicación:</legend>
 							
 							<div class="row">
 
 								<div class="col-xs-6">
 									<div class="form-group">
-										<label for="txtMarca">Marca:</label> 
-										<input type="text" id="txtMarca" class="form-control" name="txtMarca" placeholder="Marca" >									
+										<label for="slPais">País:</label> 
+										<select id="slPais" class="form-control" name="slPais">											
+										</select> 
+									</div>
+								</div>
+
+								<div class="col-xs-6">
+									<div class="form-group">
+										<label for="slEstado">Estado:</label> 
+										<select id="slEstado" class="form-control" name="slEstado">
+										  
+										</select> 
+									</div>
+								</div>
+
+								<div class="col-xs-6">
+									<div class="form-group">
+										<label for="slMunicipio">Municipio:</label> 
+										<select id="slMunicipio" class="form-control" name="slMunicipio">
+										
+										</select> 
+									</div>
+								</div>
+
+								<div class="col-xs-6">
+									<div class="form-group">
+										<label for="txtCalle">Calle:</label> 
+										<input type="text" id="txtCalle" class="form-control" name="txtCalle" placeholder="Calle" >									
 									</div>
 								</div>
 								<div class="col-xs-6">
 									<div class="form-group">
-										<label for="txtModelo">Modelo:</label> 
-										<input type="text" id="txtModelo" class="form-control" name="txtModelo" placeholder="Modelo"  />									
+										<label for="txtNoExterior">Número Exterior:</label> 
+										<input type="text" id="txtNoExterior" class="form-control" name="txtNoExterior" placeholder="Número Exterior"  />									
 									</div>
 								</div>
 								<div class="col-xs-6">
 									<div class="form-group">
-										<label for="txtAnio">Año:</label> 
-										<input type="text" id="txtAnio" class="form-control" name="txtAnio" placeholder="Año"  />									
+										<label for="txtNoInterior">Número Interior:</label> 
+										<input type="text" id="txtNoInterior" class="form-control" name="txtNoInterior" placeholder="Número Interior"  />									
 									</div>
 								</div>
 								<div class="col-xs-6">
 									<div class="form-group">
-										<label for="txtNoSerie">No de serie:</label> 
-										<input type="text" id="txtNoSerie" class="form-control" name="txtNoSerie" placeholder="No de serie" />									
+										<label for="txtColonia">Colonia:</label> 
+										<input type="text" id="txtColonia" class="form-control" name="txtColonia" placeholder="Colonia" />									
 									</div>
 								</div>
 								<div class="col-xs-6">
 									<div class="form-group">
-										<label for="txtPlacas">Placas:</label> 
-										<input type="text" id="txtPlacas" class="form-control" name="txtPlacas" placeholder="Placas"  />									
+										<label for="txtCodigoPostal">Código postal:</label> 
+										<input type="text" id="txtCodigoPostal" class="form-control" name="txtCodigoPostal" placeholder="Código postal"  />									
 									</div>
 								</div>
+
+								<div class="col-xs-6">
+									<div class="form-group">
+										<label for="txtReferencias">Referencias:</label>
+										<textarea id="txtReferencias" cols="10" rows="5" name="txtReferencias"  class="form-control" placeholder="Referencias"></textarea>            
+									</div>
+								</div>
+
 							</div>
 						</fieldset>
 						<br><br><br>
@@ -318,13 +349,14 @@
 										<input type="text" id="txtPrima" class="form-control" name="txtPrima" placeholder="Prima"  />									
 									</div>
 								</div>
-								
+
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtObservaciones">Observaciones:</label>
 										<textarea id="txtObservaciones" cols="10" rows="5" name="txtObservaciones"  class="form-control" placeholder="Observaciones"></textarea>            
 									</div>
 								</div>
+	
 
 							</div>
 						</fieldset>
@@ -346,11 +378,8 @@
 	<br><br><br><br><br>
 
 
-
-
 	<script src="<?php echo base_url(); ?>public/libreriasJS/jquery.min.js"></script>
 	<script src="<?php echo base_url(); ?>public/libreriasJS/bootstrap.min.js"></script>
-
 	<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
 	<script src="https://cdn.datatables.net/select/1.2.2/js/dataTables.select.min.js" ></script>

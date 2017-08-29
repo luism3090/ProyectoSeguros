@@ -16,6 +16,30 @@ class Polizas extends CI_Controller
 
 	}
 
+	public function empresarial()
+	{
+		$this->load->view('Polizas/formPolizaEmpresarial');
+
+	}
+
+	public function gastos_medicos_mayores()
+	{
+		$this->load->view('Polizas/formPolizaGastosMedicosMayores');
+
+	}
+
+	public function responsabilidad_civil()
+	{
+		$this->load->view('Polizas/formPolizaResponsabilidadCivil');
+
+	}
+
+	public function vida_grupo()
+	{
+		$this->load->view('Polizas/formPolizaVidaGrupo');
+
+	}
+
 	public function cargarSelectStatus()
 	{
 		
@@ -51,6 +75,52 @@ class Polizas extends CI_Controller
 		echo json_encode($datosSelect);
 
 	}
+
+
+	public function cargarSelectFormaPago()
+	{
+		
+		$this->load->model('Polizas/cargarSelectsPolizas'); 
+		$datosSelect = $this->cargarSelectsPolizas->cargarSelectFormaPago();
+
+		echo json_encode($datosSelect);
+
+	}
+
+
+	public function cargarSelectMoneda()
+	{
+		
+		$this->load->model('Polizas/cargarSelectsPolizas'); 
+		$datosSelect = $this->cargarSelectsPolizas->cargarSelectMoneda();
+
+		echo json_encode($datosSelect);
+
+	}
+
+
+	public function cargarSelectMedioPago()
+	{
+		
+		$this->load->model('Polizas/cargarSelectsPolizas'); 
+		$datosSelect = $this->cargarSelectsPolizas->cargarSelectMedioPago();
+
+		echo json_encode($datosSelect);
+
+	}
+
+
+	public function cargarSelectPais()
+	{
+		
+		$this->load->model('Polizas/cargarSelectsPolizas'); 
+		$datosSelect = $this->cargarSelectsPolizas->cargarSelectPais();
+
+		echo json_encode($datosSelect);
+
+	}
+
+
 
 
 	public function cargarClientes()
