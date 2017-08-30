@@ -65,7 +65,7 @@ function cargarSelectRFC()
                    result.forEach(function(elemento,index) 
                    {
   
-                       options += '<option value="'+elemento.rfc+'">'+elemento.nombre+'</option>';
+                       options += '<option value="'+elemento.id_rfc+'">'+elemento.nombre+'</option>';
                       
 
                   });

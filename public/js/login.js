@@ -83,6 +83,7 @@ var base_url = $("body").attr("data-base-url");
 
 			          	if(result.msjCantidadRegistros > 0)
 			          	{
+			          		//location.href = result.base_url;
 			          		location.href = result.base_url;
 			          	}
 			          	else

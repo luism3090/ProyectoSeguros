@@ -5,11 +5,24 @@ $(document).ready(function()
    // });
 
    var base_url = $("body").attr("data-base-url");
+
+   var url = "";
+
+  if($("body").attr("data-id-rol")!= undefined)
+  {
+      url = base_url+"PolizaDigitalCliente/cargarMenu";
+  }
+  else
+  {
+    url= base_url+"Home/cargarMenu";
+  }
+
+
     
     $.ajax(
       {
             type: "POST",
-            url: base_url+"Home/cargarMenu ",
+            url: url,
             dataType:"json",
             data: "",
              async: true,

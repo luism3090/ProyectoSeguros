@@ -15,7 +15,8 @@ class HookValidarDatosUsuario
 		$controlador = $this->ci->router->class;
 		$method = $this->ci->router->method;
 
-		//echo $controlador;
+		// var_dump($this->ci->session->userdata('logueado'));
+		// exit();
 		//echo $this->ci->session->userdata('logueado');
 
 
@@ -26,10 +27,20 @@ class HookValidarDatosUsuario
 		{
 			if($this->ci->session->userdata('logueado') === true)
 			{
-				echo "entro a home";
-				//exit();
-				redirect('Home');
-				exit();
+
+				if($this->ci->session->userdata('id_rol') !="3")
+				{
+					//echo "entro a home";
+					//exit();
+					redirect('Home');
+					exit();
+				}
+				else
+				{
+					redirect('PolizaDigitalCliente');
+					exit();
+				}
+				
 			
 			}
 		}
@@ -90,12 +101,11 @@ class HookValidarDatosUsuario
 			if($datos["msjCantidadRegistros"] > 0)
 			{
 
-				//var_dump($datos["controllers"][0]->controladores);
-
-
-
 				
 				$controladores_rol = explode(",", $datos["controllers"][0]->controladores);
+
+				// var_dump($datos["controllers"][0]->controladores);
+
 
 				foreach ($controladores_rol as $key => $controlBD)
 				 {
@@ -114,8 +124,12 @@ class HookValidarDatosUsuario
 				}
 
 				// var_dump($controladores_rol);
-				// exit();
+				// echo "<br>";
+				// var_dump($controlador);
+				
 				$controladorPermitido = in_array($controlador,$controladores_rol);
+				// var_dump($controladorPermitido);
+				// exit();
 			}
 			else
 			{

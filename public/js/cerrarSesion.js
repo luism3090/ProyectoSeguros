@@ -4,6 +4,17 @@ $(document).ready(function()
 
   var base_url = $("body").attr("data-base-url");
 
+  var url = "";
+
+  if($("body").attr("data-id-rol") != undefined)
+  {
+      url = base_url+"PolizaDigitalCliente/cerrarSesion";
+  }
+  else
+  {
+    url= base_url+"Home/cerrarSesion";
+  }
+
     $("#btnCerrarSesion").on("click",function()
     {
 
@@ -11,7 +22,7 @@ $(document).ready(function()
         {
               type: "POST",
               dataType: "json",
-              url: base_url+"Home/cerrarSesion",
+              url: url,
               data: "",
                async: true,
               success: function(result)

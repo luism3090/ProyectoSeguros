@@ -3,11 +3,10 @@ $(document).ready(function()
 
 var base_url = $("body").attr("data-base-url");
 
-	 $('#tblDetallePolizasClientes').DataTable(
+	 $('#tblDetallePolizas').DataTable(
 
 	 	{
         "ordering": true,
-         
          "language": {
                         "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
                       },
@@ -17,10 +16,6 @@ var base_url = $("body").attr("data-base-url");
 
 	 	);
 
-
-$('body').on( 'click', '#tblDetallePolizas tbody tr', function () {
-        $(this).toggleClass('selected');
-    } );
 
 
 

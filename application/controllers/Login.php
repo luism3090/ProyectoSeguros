@@ -47,7 +47,16 @@ class Login extends CI_Controller
 								  
 		}
 
-		$datosLogin["base_url"] = base_url()."/Home";
+		if($this->session->userdata('id_rol') != "3" )
+		{
+			$datosLogin["base_url"] = base_url()."Home";
+		}
+		else
+		{
+			$datosLogin["base_url"] = base_url()."PolizaDigitalCliente";
+		}
+
+		
 
 		echo json_encode($datosLogin);
 		
