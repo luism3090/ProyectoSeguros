@@ -115,7 +115,7 @@
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtNoPoliza">No de póliza:</label>
-										<input type="text" id="txtNoPoliza" name="txtNoPoliza"  class="form-control" placeholder="Número de póliza">
+										<input type="text" id="txtNoPoliza" name="txtNoPoliza"  class="form-control" placeholder="Número de póliza" value="324">
 									</div>
 								</div>
 
@@ -130,21 +130,21 @@
 								<div class="col-xs-6">
 									<div class="form-group">
 											<label for="txtEmision">Emisión:</label>
-											<input type="text" id="txtEmision" name="txtEmision"  class="form-control" placeholder="Emision" >
+											<input type="text" id="txtEmision" name="txtEmision"  class="form-control" placeholder="Emision" value="aaa" >
 									</div>
 								</div>
 								
 								<div class="col-xs-6">
 									<div class="form-group">
 											<label for="dateInicia">Fecha inicia:</label>
-											<input type="date" id="dateInicia" name="dateInicia"  class="form-control"  >
+											<input type="date" id="dateInicia" name="dateInicia"  class="form-control"  value="2017-08-08">
 									</div>
 								</div>
 
 								<div class="col-xs-6">
 									<div class="form-group">
 											<label for="dateFinaliza">Fecha finaliza:</label>
-											<input type="date" id="dateFinaliza" name="dateFinaliza"  class="form-control"  >
+											<input type="date" id="dateFinaliza" name="dateFinaliza"  class="form-control"  value="2017-08-08">
 									</div>
 								</div>
 
@@ -161,13 +161,13 @@
 									<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtValorComercial">Valor comercial:</label>
-										<input type="text" id="txtValorComercial" name="txtValorComercial"  class="form-control" placeholder="Domicilio">
+										<input type="text" id="txtValorComercial" name="txtValorComercial"  class="form-control" placeholder="Valor comercial" value="20" >
 									</div>
 								</div>
 								<div class="col-xs-6">
 										<div class="form-group">
 											<label for="txtDescripcion">Descripción:</label>
-											<textarea id="txtDescripcion" cols="10" rows="5" name="txtDescripcion"  class="form-control" placeholder="Descripción"></textarea>            
+											<textarea id="txtDescripcion" cols="10" rows="5" name="txtDescripcion"  class="form-control" placeholder="Descripción">aaa</textarea>            
 										</div>
 										
 								</div>
@@ -207,31 +207,31 @@
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtMarca">Marca:</label> 
-										<input type="text" id="txtMarca" class="form-control" name="txtMarca" placeholder="Marca" >									
+										<input type="text" id="txtMarca" class="form-control" name="txtMarca" placeholder="Marca" value="Nissan">									
 									</div>
 								</div>
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtModelo">Modelo:</label> 
-										<input type="text" id="txtModelo" class="form-control" name="txtModelo" placeholder="Modelo"  />									
+										<input type="text" id="txtModelo" class="form-control" name="txtModelo" placeholder="Modelo" value="Sentra" />									
 									</div>
 								</div>
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtAnio">Año:</label> 
-										<input type="text" id="txtAnio" class="form-control" name="txtAnio" placeholder="Año"  />									
+										<input type="text" id="txtAnio" class="form-control" name="txtAnio" placeholder="Año"  value="2010" />									
 									</div>
 								</div>
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtNoSerie">No de serie:</label> 
-										<input type="text" id="txtNoSerie" class="form-control" name="txtNoSerie" placeholder="No de serie" />									
+										<input type="text" id="txtNoSerie" class="form-control" name="txtNoSerie" placeholder="No de serie" value="aaa111bbb"/>									
 									</div>
 								</div>
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtPlacas">Placas:</label> 
-										<input type="text" id="txtPlacas" class="form-control" name="txtPlacas" placeholder="Placas"  />									
+										<input type="text" id="txtPlacas" class="form-control" name="txtPlacas" placeholder="Placas"  value="aaa"/>									
 									</div>
 								</div>
 							</div>
@@ -270,21 +270,21 @@
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtPrimaAnual">Prima neta anual:</label> 
-										<input type="text" id="txtPrimaAnual" class="form-control" name="txtPrimaAnual" placeholder="Prima neta anual"  />									
+										<input type="text" id="txtPrimaAnual" class="form-control" name="txtPrimaAnual" placeholder="Prima neta anual" value="11" />									
 									</div>
 								</div>
 
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtDescuento">Descuento:</label> 
-										<input type="text" id="txtDescuento" class="form-control" name="txtDescuento" placeholder="Descuento"  />									
+										<input type="text" id="txtDescuento" class="form-control" name="txtDescuento" placeholder="Descuento" value="20" />									
 									</div>
 								</div>
 
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtRecargos">Recargos:</label> 
-										<input type="text" id="txtRecargos" class="form-control" name="txtRecargos" placeholder="Recargos"  />									
+										<input type="text" id="txtRecargos" class="form-control" name="txtRecargos" placeholder="Recargos"  value="20"/>									
 									</div>
 								</div>
 
@@ -300,29 +300,29 @@
 
 								<div class="col-xs-6">
 									<div class="form-group">
-									<label for="slIva">Iva:</label> 
-										<input type="text" id="txtIva" class="form-control" name="txtIva" placeholder="$0.00"  />									
+									<label for="txtIva">Iva:</label> 
+										<input type="text" id="txtIva" class="form-control" name="txtIva" placeholder="$0.00"  value="20"/>									
 									</div>
 								</div>
 
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtDerechoPoliza">Derecho de póliza:</label> 
-										<input type="text" id="txtDerechoPoliza" class="form-control" name="txtDerechoPoliza" placeholder="Derecho de póliza"  />									
+										<input type="text" id="txtDerechoPoliza" class="form-control" name="txtDerechoPoliza" placeholder="Derecho de póliza"  value="1"/>									
 									</div>
 								</div>
 
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtPrima">Prima:</label> 
-										<input type="text" id="txtPrima" class="form-control" name="txtPrima" placeholder="Prima"  />									
+										<input type="text" id="txtPrima" class="form-control" name="txtPrima" placeholder="Prima"  value="20"/>									
 									</div>
 								</div>
 								
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtObservaciones">Observaciones:</label>
-										<textarea id="txtObservaciones" cols="10" rows="5" name="txtObservaciones"  class="form-control" placeholder="Observaciones"></textarea>            
+										<textarea id="txtObservaciones" cols="10" rows="5" name="txtObservaciones" value="aaa" class="form-control" placeholder="Observaciones">aaa</textarea>            
 									</div>
 								</div>
 
@@ -332,7 +332,7 @@
 							<div class="row">
 								<div class="col-xs-12 ">
 										<br><br>
-										<button type="submit" class="btn btn-primary center-block text-center"  >Guardar</button>
+										<button type="submit" class="btn btn-primary center-block text-center" id="btnGuardar" >Guardar</button>
 								</div>
 							</div>
 							
@@ -342,6 +342,29 @@
 	    </div>
 
 	</div>
+
+
+
+<!-- Modal -->
+<div id="modalAlert" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Alerta</h4>
+      </div>
+      <div class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal" id="btnMdlAlertaUpdateUsuario">Aceptar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 	<br><br><br><br><br>
 
@@ -354,12 +377,11 @@
 	<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
 	<script src="https://cdn.datatables.net/select/1.2.2/js/dataTables.select.min.js" ></script>
-
-
 	<script src="<?php echo base_url(); ?>public/libreriasJS/bootstrapValidator.js"></script>
 
 	<script src="<?php echo base_url(); ?>public/js/cargarSelectPolizas.js"></script>
-	<script src="<?php echo base_url(); ?>public/js/cargarTablaClientes.js"></script>
+	<script src="<?php echo base_url(); ?>public/js/formPolizaAutos.js"></script>
+
 	<script src="<?php echo base_url(); ?>public/js/cargarMenu.js"></script>
 	<script src="<?php echo base_url(); ?>public/js/cerrarSesion.js"></script>
 

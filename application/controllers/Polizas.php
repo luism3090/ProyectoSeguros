@@ -131,6 +131,26 @@ class Polizas extends CI_Controller
 		echo json_encode($datosClientes);
 
 	}
+
+
+
+	public function registrarPolizaAutos()
+	{
+		
+
+		$datosPoliza = $_REQUEST["datosPoliza"];
+		$datosPolizaAuto = $_REQUEST["datosPolizaAuto"];
+		$datosPolizaPrima = $_REQUEST["datosPolizaPrima"];
+
+
+		$this->load->model('Polizas/insertarPolizaAutos'); 
+		$datosQuery = $this->insertarPolizaAutos->insertPolizaAutos($datosPoliza,$datosPolizaAuto,$datosPolizaPrima);
+
+
+		echo json_encode($datosQuery);
+
+
+	}
 	
 
 
