@@ -4,12 +4,12 @@
 	<meta charset="UTF-8">
 	<title>Póliza de Responsabilidad Civil</title>
 
+	
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/estiloHomeMenu.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/estiloBarraSuperior.css">
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/estiloTablasBootstrap.css">
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
-	 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.2.2/css/select.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/dataTables.bootstrap.min.css"> 
+	 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/select.dataTables.min.css">
 	
 </head>
 <body data-base-url="<?php echo base_url();?>">
@@ -318,13 +318,11 @@
 
 	<script src="<?php echo base_url(); ?>public/libreriasJS/jquery.min.js"></script>
 	<script src="<?php echo base_url(); ?>public/libreriasJS/bootstrap.min.js"></script>
-
-	<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-	<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
-	<script src="https://cdn.datatables.net/select/1.2.2/js/dataTables.select.min.js" ></script>
-
-
 	<script src="<?php echo base_url(); ?>public/libreriasJS/bootstrapValidator.js"></script>
+
+	<script src="<?php echo base_url(); ?>public/libreriasJS/jquery.dataTables.min.js"></script>
+	<script src="<?php echo base_url(); ?>public/libreriasJS/dataTables.bootstrap.min.js"></script>
+	<script src="<?php echo base_url(); ?>public/libreriasJS/dataTables.select.min.js"></script>
 
 	<script src="<?php echo base_url(); ?>public/js/cargarSelectPolizas.js"></script>
 	<script src="<?php echo base_url(); ?>public/js/cargarTablaClientes.js"></script>
