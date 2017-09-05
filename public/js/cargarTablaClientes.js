@@ -9,7 +9,7 @@ var base_url = $("body").attr("data-base-url");
         "processing": true,
         "serverSide": true,
         "ordering": true,
-         "select": 'single',
+         // "select": 'single',
          "language": {
                         "url": base_url+"public/libreriasJS/Spanish.json"
                       },

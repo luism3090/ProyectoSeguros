@@ -6,6 +6,7 @@
 
 
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/fileInput/fileinput.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/estiloHomeMenu.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/estiloBarraSuperior.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/dataTables.bootstrap.min.css"> 
@@ -111,6 +112,7 @@
 										                      <th>Estado</th>
 										                      <th>Municipio</th>
 										                      <th>Localidad</th>
+										                      <th>Subir Polizas</th>
 									                    </tr>
 								                </thead>
 								        </table>
@@ -156,9 +158,49 @@
 	<br><br><br><br><br>
 
 
+	<!-- Modal -->
+<div id="modalCargarFilesPolizasUsuario" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Alerta</h4>
+      </div>
+      <div class="modal-body">
+        	
+        <div class="row">
+			<div class="col-xs-12 ">
+	        	 <div class="form-group">
+				 	<label for="elegir" class="center-block text-center" >Subir Poliza:</label> 
+					<div class="kv-avatar center-block text-center" style="width:200px">
+		                <input id="filePoliza" name="avatar-2" type="file" class="file-loading" >
+		            </div>
+
+		          </div>
+
+	         </div>
+
+	     </div>
+
+      </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal" id="btnGuardarFilesPolizasUsuarios" >Guardar</button>
+      <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnCancelarFilesPolizasUsuarios">Cancelar</button>
+      <input type="hidden" id="base_url" >
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
 
 	<script src="<?php echo base_url();?>public/libreriasJS/jquery.min.js"></script>
 	<script src="<?php echo base_url(); ?>public/libreriasJS/bootstrap.min.js"></script>
+	<script src="<?php echo base_url(); ?>public/libreriasJS/fileInput/fileinput.min.js"></script>
+	<script src="<?php echo base_url(); ?>public/libreriasJS/fileInput/es.js"></script>
 	<script src="<?php echo base_url(); ?>public/libreriasJS/bootstrapValidator.js"></script>
 
 	<script src="<?php echo base_url(); ?>public/libreriasJS/jquery.dataTables.min.js"></script>
@@ -171,6 +213,29 @@
 	<script src="<?php echo base_url(); ?>public/js/msjClientesPolizaDigital.js"></script>
 	<script src="<?php echo base_url(); ?>public/js/cargarMenu.js"></script>
 	<script src="<?php echo base_url(); ?>public/js/cerrarSesion.js"></script>
+
+
+
+		<script>
+		
+		  $("#filePoliza").fileinput({
+        overwriteInitial: true,
+        maxFileSize: 5000,
+        showClose: false,
+        showCaption: false,
+        maxFileCount:1,
+        showBrowse: false,
+        browseOnZoneClick: true,
+        language: "es",
+        removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
+        removeTitle: 'Cancelar',
+        defaultPreviewContent: '<img src="<?php echo base_url(); ?>public/uploads/default.png" alt="Your Avatar" style="width:200px"><h6 class="text-muted">Clic para subir tu foto</h6>',
+        layoutTemplates: {main2: '{preview} {remove} {browse}'},
+        allowedFileExtensions: ["jpg", "png", "gif","pdf"]
+    });
+		
+</script>
+	
 
 
 

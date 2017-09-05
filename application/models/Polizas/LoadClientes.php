@@ -26,7 +26,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										  rfc.nombre rfc,
 										  est.nombre as estado,
 										  muni.nombre as municipio,
-										  loca.nombre as localidad
+										  loca.nombre as localidad,
+										  '<button  type=''button'' class=''btn btn-primary btnSubirPolizas''> <span class=''glyphicon glyphicon-upload''></span> </button>' as SubirPolizas
 										  from usuarios usu
 												  join rel_usuarios_roles usu_ro on (usu.id_usuario = usu_ro.id_usuario)
 												  join cat_roles rol on (usu_ro.id_rol = rol.id_rol) 
@@ -60,7 +61,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										rfc ,
 										estado,
 										municipio,
-										localidad
+										localidad,
+										SubirPolizas
 										FROM (
 										select 
 										usu.id_usuario,
@@ -70,7 +72,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										rfc.nombre rfc,
 										est.nombre as estado,
 										muni.nombre as municipio,
-										loca.nombre as localidad
+										loca.nombre as localidad,
+										'<button  type=''button'' class=''btn btn-primary btnSubirPolizas''> <span class=''glyphicon glyphicon-pencil''></span> </button>' as SubirPolizas
 										from usuarios usu
 										join rel_usuarios_roles usu_ro on (usu.id_usuario = usu_ro.id_usuario)
 										join cat_roles rol on (usu_ro.id_rol = rol.id_rol) 
@@ -122,6 +125,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								$nestedData[] = $row["estado"];
 								$nestedData[] = $row["municipio"];
 								$nestedData[] = $row["localidad"];
+								$nestedData[] = $row["SubirPolizas"];
 
 								$data[] = $nestedData;
 							}
