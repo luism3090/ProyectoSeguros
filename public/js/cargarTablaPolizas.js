@@ -9,7 +9,7 @@ var base_url = $("body").attr("data-base-url");
         "ordering": true,
          "select": 'single',
          "language": {
-                        "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                        "url": base_url+"public/libreriasJS/Spanish.json"
                       },
           "scrollY":        "500px",
           "scrollCollapse": true,

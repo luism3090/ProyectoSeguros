@@ -176,16 +176,7 @@
 	<br><br><br><br><br>
 
 
-
-
-<!-- 	<script src="<?php echo base_url(); ?>public/libreriasJS/jquery.min.js"></script>
-	<script src="<?php echo base_url(); ?>public/libreriasJS/bootstrap.min.js"></script>
-	<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-	<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
-	<script src="https://cdn.datatables.net/select/1.2.2/js/dataTables.select.min.js" ></script>
-	<script src="<?php echo base_url(); ?>public/libreriasJS/bootstrapValidator.js"></script> -->
-
-		<script src="<?php echo base_url(); ?>public/libreriasJS/jquery.min.js"></script>
+	<script src="<?php echo base_url(); ?>public/libreriasJS/jquery.min.js"></script>
 	<script src="<?php echo base_url(); ?>public/libreriasJS/bootstrap.min.js"></script>
 	<script src="<?php echo base_url(); ?>public/libreriasJS/bootstrapValidator.js"></script>
 

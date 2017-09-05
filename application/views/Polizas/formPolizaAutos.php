@@ -368,8 +368,6 @@
 	<br><br><br><br><br>
 
 
-
-
 	<script src="<?php echo base_url(); ?>public/libreriasJS/jquery.min.js"></script>
 	<script src="<?php echo base_url(); ?>public/libreriasJS/bootstrap.min.js"></script>
 	<script src="<?php echo base_url(); ?>public/libreriasJS/bootstrapValidator.js"></script>

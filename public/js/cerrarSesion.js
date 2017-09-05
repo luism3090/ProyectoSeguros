@@ -12,7 +12,7 @@ $(document).ready(function()
   }
   else
   {
-    url= base_url+"Home/cerrarSesion";
+      url = base_url+"Home/cerrarSesion";
   }
 
     $("#btnCerrarSesion").on("click",function()
