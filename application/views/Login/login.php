@@ -10,18 +10,25 @@
   <body data-base-url="<?php echo base_url();?>">
     
     <div class="container">
+
+      <div class="container-logo">
+        <img src="<?php echo base_url();?>public/images/actise.png" alt="actise"  class="img-responsive" >
+      </div>
+      <div class="titleLogin text-center" >Ingresa tu cuenta</div>
       <div class="card card-container">
-        <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
-        <p id="profile-name" class="profile-name-card"></p>
+
+
+        <!-- <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+        <p id="profile-name" class="profile-name-card"></p> -->
         <form name="form" id="FormLogin" class="form-horizontal" >
           <div class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-            <input type="text" id="email" name="email" class="form-control" placeholder="Email" maxlength="50">
+            <input type="text" id="email" name="email" class="form-control" placeholder="Correo" maxlength="50">
           </div>
           <br>
           <div class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-            <input type="text"  id="password" name="password" class="form-control" placeholder="Password" minlength="5" maxlength="20" >
+            <input type="text"  id="password" name="password" class="form-control" placeholder="Contraseña" minlength="5" maxlength="20" >
           </div>
           <br>
           <br>
