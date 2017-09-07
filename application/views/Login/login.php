@@ -12,7 +12,7 @@
     <div class="container">
 
       <div class="container-logo">
-        <img src="<?php echo base_url();?>public/images/actise.png" alt="actise"  class="img-responsive" >
+        <img src="<?php echo base_url();?>public/images/actise2.png" alt="actise"  class="img-responsive" >
       </div>
       <div class="titleLogin text-center" >Ingresa tu cuenta</div>
       <div class="card card-container">

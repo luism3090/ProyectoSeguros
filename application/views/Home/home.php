@@ -7,6 +7,8 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/estiloHomeMenu.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/estiloBarraSuperior.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/dataTables.bootstrap.min.css"> 
+
+	
 </head>
 
 <body data-base-url="<?php echo base_url();?>">
@@ -79,7 +81,7 @@
 	
 	<br>
 
-	<div class="container" style="margin-left:20%;width:79%;" >
+	<div class="container" style="margin-left:21.5%;width:78%;" >
 						
 			<div class="row">
 				<div class="col-xs-12">
@@ -245,7 +247,7 @@
   </div>
 </div>
 
-	
+	<br><br><br><br><br><br>
 
 	<script src="<?php echo base_url(); ?>public/libreriasJS/jquery.min.js"></script>
 	<script src="<?php echo base_url(); ?>public/libreriasJS/bootstrap.min.js"></script>

@@ -176,9 +176,7 @@
 			<div class="col-xs-12 ">
 	        	 <div class="form-group">
 				 	<label for="elegir" class="center-block text-center" >Subir Poliza:</label> 
-					<div class="kv-avatar center-block text-center" style="width:200px">
-		                <input id="filePoliza" name="avatar-2" type="file" class="file-loading" >
-		            </div>
+					<input id="filePoliza" name="input2[]" type="file" class="file file-loading" data-show-upload="false" data-show-caption="true">
 
 		          </div>
 
@@ -209,35 +207,36 @@
 	<script src="<?php echo base_url(); ?>public/libreriasJS/dataTables.bootstrap.min.js"></script>
 	<script src="<?php echo base_url(); ?>public/libreriasJS/dataTables.select.min.js"></script>
 
-
-
 	<script src="<?php echo base_url(); ?>public/js/cargarTablaClientes.js"></script>
 	<script src="<?php echo base_url(); ?>public/js/msjClientesPolizaDigital.js"></script>
 	<script src="<?php echo base_url(); ?>public/js/cargarMenu.js"></script>
 	<script src="<?php echo base_url(); ?>public/js/cerrarSesion.js"></script>
+	<script src="<?php echo base_url(); ?>public/js/filePolizas.js"></script>
 
 
+<script>
 
-		<script>
-		
-		  $("#filePoliza").fileinput({
-        overwriteInitial: true,
+
+	$("#filePoliza").fileinput({
+         overwriteInitial: true,
         maxFileSize: 5000,
         showClose: false,
         showCaption: false,
         maxFileCount:1,
-        showBrowse: false,
-        browseOnZoneClick: true,
+        showBrowse: true,
+        // browseOnZoneClick: true,
         language: "es",
-        removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
-        removeTitle: 'Cancelar',
-        defaultPreviewContent: '<img src="<?php echo base_url(); ?>public/uploads/default.png" alt="Your Avatar" style="width:200px"><h6 class="text-muted">Clic para subir tu foto</h6>',
-        layoutTemplates: {main2: '{preview} {remove} {browse}'},
-        allowedFileExtensions: ["jpg", "png", "gif","pdf"]
+        // removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
+        // removeTitle: 'Cancelar',
+        // defaultPreviewContent: '<img src="<?php echo base_url(); ?>public/uploads/default_avatar.png" alt="Your Avatar" style="width:200px"><h6 class="text-muted">Clic para subir tu foto</h6>',
+        // layoutTemplates: {main2: '{preview} {remove} {browse}'},
+        allowedFileExtensions: ["pdf"]
     });
-		
-</script>
+
 	
+</script>
+
+
 
 
 

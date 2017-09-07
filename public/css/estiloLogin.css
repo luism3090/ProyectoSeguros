@@ -156,7 +156,9 @@ body, html {
 
 .container-logo img
 {
-    max-width: 350px;
+    width: 350px;
+    height: 128px;
+
 }
 
 .titleLogin

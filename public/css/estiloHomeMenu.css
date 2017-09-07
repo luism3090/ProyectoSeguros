@@ -1,36 +1,36 @@
 @import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
 html {
 
-	-webkit-text-size-adjust: 100%;
-	-ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
 }
 body {
-	margin: 0;
+    margin: 0;
 }
 
 html, body {
-	width: 100%;
-	height: 100%;
+    width: 100%;
+    height: 100%;
 
 }
 article, aside, details, figcaption, figure, footer, header, main, menu, nav, section, summary {
-	display: block;
+    display: block;
 }
 audio, canvas, progress, video {
-	display: inline-block;
-	vertical-align: baseline;
+    display: inline-block;
+    vertical-align: baseline;
 }
 audio:not([controls]) {
-	display: none;
-	height: 0;
+    display: none;
+    height: 0;
 }
 
 a {
-	background-color: transparent;
-	text-decoration: none;
+    background-color: transparent;
+    text-decoration: none;
 }
 a:active, a:hover {
-	outline: 0;
+    outline: 0;
 
 }
 
@@ -84,15 +84,15 @@ h1,h2,h3,h4,h5,h6,p,ul,ol{ margin:0px; padding:0px;}
 }
 
 .sub-menu{ border-left:5px solid #dedede;}
-	.sidebar li a .nav-label,.sidebar li a .nav-label+span{ }
-	
+    .sidebar li a .nav-label,.sidebar li a .nav-label+span{ }
+    
 
-	.sidebar.fliph li a .nav-label,.sidebar.fliph li a .nav-label+span{ display:none;}
-	.sidebar.fliph {
+    .sidebar.fliph li a .nav-label,.sidebar.fliph li a .nav-label+span{ display:none;}
+    .sidebar.fliph {
     width: 42px;;
    
 }
-	
+    
 .sidebar.fliph li{ position:relative}
 .sidebar.fliph .sub-menu {
     position: absolute;
@@ -102,7 +102,7 @@ h1,h2,h3,h4,h5,h6,p,ul,ol{ margin:0px; padding:0px;}
     width: 150px;
     z-index: 100;
 }
-	
+    
 .active.collapsed:hover
 {
     color: #7BF7D3 !important;
