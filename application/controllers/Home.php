@@ -39,8 +39,8 @@ class Home extends CI_Controller
 											 </a>
 
 											 <ul class="sub-menu collapse" id="Usuarios" aria-expanded="false" style="">
-										    	 <li><a href="http://localhost:8080/Seguros/RegistrarUsuarios"><i class=""></i>Registrar</a></li>
-										    	 <li><a href="http://localhost:8080/Seguros/ModificarUsuarios"><i class=""></i>Modificar</a></li>
+										    	 <li><a href="'.base_url().'RegistrarUsuarios"><i class=""></i>Registrar</a></li>
+										    	 <li><a href="'.base_url().'ModificarUsuarios"><i class=""></i>Modificar</a></li>
 											 </ul>
 										</li>
 
@@ -65,19 +65,19 @@ class Home extends CI_Controller
 
 												 	<ul class="sub-menu collapse" id="Ramo" aria-expanded="false" style="">
 														 <li>
-														 	<a href="http://localhost:8080/Seguros/Polizas/autos"><i class=""></i>Autos</a>
+														 	<a href="'.base_url().'Polizas/autos"><i class=""></i>Autos</a>
 														 </li>
 														 <li>
-														 	<a href="http://localhost:8080/Seguros/Polizas/empresarial"><i class=""></i>Empresarial</a>
+														 	<a href="'.base_url().'Polizas/empresarial"><i class=""></i>Empresarial</a>
 														 </li>
 														 <li>
-														 	<a href="http://localhost:8080/Seguros/Polizas/gastos_medicos_mayores"><i class=""></i>GMM</a>
+														 	<a href="'.base_url().'Polizas/gastos_medicos_mayores"><i class=""></i>GMM</a>
 														 </li>
 														 <li>
-														 	<a href="http://localhost:8080/Seguros/Polizas/responsabilidad_civil"><i class=""></i>Responsabilidad civil</a>
+														 	<a href="'.base_url().'Polizas/responsabilidad_civil"><i class=""></i>Responsabilidad civil</a>
 														 </li>
 														 <li>
-														 	<a href="http://localhost:8080/Seguros/Polizas/vida_grupo"><i class=""></i>Vida de grupo</a>
+														 	<a href="'.base_url().'Polizas/vida_grupo"><i class=""></i>Vida de grupo</a>
 														 </li>
 													</ul>
 
@@ -93,10 +93,10 @@ class Home extends CI_Controller
 												    	 </a>
 												    	 <ul class="sub-menu collapse" id="Pagos">
 												    	 	<li>
-												    	 		<a href="http://localhost:8080/Seguros/PagosVencer"><i class=""></i>Próximos a vencer</a>
+												    	 		<a href="'.base_url().'PagosVencer"><i class=""></i>Próximos a vencer</a>
 												    	 	</li>
 												    	 	<li>
-												    	 		<a href="http://localhost:8080/Seguros/TodoPolizas"><i class=""></i>Todas las Pólizas</a>
+												    	 		<a href="'.base_url().'TodoPolizas"><i class=""></i>Todas las Pólizas</a>
 												    	 	</li>
 												    	 </ul>
 													 </li>
@@ -105,7 +105,7 @@ class Home extends CI_Controller
 										</li>
 
 										<li>
-											<a href="http://localhost:8080/Seguros/PolizasCotizacion"><i class="fa fa-money"></i>Cotización</a>
+											<a href="'.base_url().'PolizasCotizacion"><i class="fa fa-money"></i>Cotización</a>
 
 										</li>
 
@@ -119,15 +119,15 @@ class Home extends CI_Controller
 
 			$dataMenu = '<ul class="list-sidebar bg-defoult">
 						<li>
-							<a href="http://localhost:8080/Seguros/PolizaDigitalCliente" class="selecionado">
+							<a href="'.base_url().'PolizaDigitalCliente" class="selecionado">
 								<i class="fa fa-list-alt"></i>Póliza digital
 							</a>
 						</li>
 						<li>
-							<a href="http://localhost:8080/Seguros/Descargas"><i class="fa fa-download"></i>Descargas</a>
+							<a href="'.base_url().'Descargas"><i class="fa fa-download"></i>Descargas</a>
 						</li>
 						<li>
-							<a href="http://localhost:8080/Seguros/Descargas"><i class="fa fa-download"></i>Hola mundo</a>
+							<a href="'.base_url().'Descargas"><i class="fa fa-download"></i>Hola mundo</a>
 						</li>
 					</ul> ';
 
