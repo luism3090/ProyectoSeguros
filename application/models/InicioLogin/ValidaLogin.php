@@ -6,7 +6,7 @@
 			parent::__construct();
 		}
 
-		public function verificarLogin($datos)
+		public function verificarLogin($usuario)
 		{
 			
 			$sql =	"select us.id_usuario,
@@ -23,27 +23,27 @@
 				 				on(us.id_usuario = usr.id_usuario) 
 					join cat_roles ro 
 								on(usr.id_rol = ro.id_rol)
-		         	where correo= ? and 
-		         		  password = ? and 
+		         	where us.correo = ? and 
+		         		  us.password = ? and 
 		         		  us.estado = '1' ";
 
-			$query = $this->db->query($sql,array($datos["email"],$datos["password"]));
+			$query = $this->db->query($sql,array($usuario["email"],$usuario["password"]));
 
 
-			$datos = array("msjCantidadRegistros" => 0, "msjNoHayRegistros" => '',"loginUsuario" => array());
+			$datosLogin = array("msjCantidadRegistros" => 0, "msjNoHayRegistros" => '',"loginUsuario" => array());
 
-			$datos["msjCantidadRegistros"] = $query->num_rows(); 
+			$datosLogin["msjCantidadRegistros"] = $query->num_rows(); 
 
-			if($datos["msjCantidadRegistros"] > 0)
+			if($datosLogin["msjCantidadRegistros"] > 0)
 			{
-				$datos["loginUsuario"] = $query->result(); 
+				$datosLogin["loginUsuario"] = $query->result(); 
 			}
 			else{
-				$datos["msjNoHayRegistros"] = "El nombre de usuario o contraseña son incorrectos";
+				$datosLogin["msjNoHayRegistros"] = "El nombre de usuario o contraseña son incorrectos";
 			}
 			
 
-			return $datos;
+			return $datosLogin;
 
 
 

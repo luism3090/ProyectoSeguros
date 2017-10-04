@@ -102,7 +102,7 @@ function cargarSelectEstado()
 
                 if(result.length > 0)
                 {
-                  let options ="<option selected disabled >Elija una opción</option>";
+                  var options ="<option selected disabled >Elija una opción</option>";
                    result.forEach(function(elemento,index) 
                    {
   

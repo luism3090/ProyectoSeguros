@@ -93,6 +93,7 @@
 				<div class="col-xs-12">
 						
 						<div class="table-responsive">
+							
 								<table class="table table-bordered table-hover" id="tblDetallePolizas" cellspacing="0"  width="100%" style="text-align: center;">
 										<caption style="text-align: center"><h4><strong>Usuarios dados de alta</strong></h4></caption>
 										<thead>

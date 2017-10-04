@@ -21,12 +21,135 @@ class Home extends CI_Controller
 
 	public function cargarMenu()
 	{
+
+		// ----------- ESTA ES LA FORMA DE TRAER DATOS DEL MENU COLOCANDO DIRECTAMENTE EL CODIGO HTML  -----------
 		
-		$this->load->model('Home/Menu');
 
-		$datosMenu = $this->Menu->getElmentosMenu($this->session->userdata('id_rol'));
+		 // menu para administradores
 
-		$dataMenu = $this->buildMenu($datosMenu,false,false);
+		if($this->session->userdata('id_rol') == '1' || $this->session->userdata('id_rol') == '2' ) 
+		{
+
+			$dataMenu = '<li class="active">
+
+											 <a href="#" data-toggle="collapse" data-target="#Usuarios" class="collapse active" aria-expanded="false">
+										    	 <i class="fa fa-user"></i>
+										    	 <span class="nav-label">Usuarios</span>
+										    	 <i class="fa fa-chevron-left pull-right"></i>
+											 </a>
+
+											 <ul class="sub-menu collapse" id="Usuarios" aria-expanded="false" style="">
+										    	 <li><a href="http://localhost:8080/Seguros/RegistrarUsuarios"><i class=""></i>Registrar</a></li>
+										    	 <li><a href="http://localhost:8080/Seguros/ModificarUsuarios"><i class=""></i>Modificar</a></li>
+											 </ul>
+										</li>
+
+
+										<li class="active">
+
+											 <a href="#" data-toggle="collapse" data-target="#Pólizas" class="collapse active" aria-expanded="true">
+										    	 <i class="fa fa-expeditedssl"></i>
+										    	 <span class="nav-label">Pólizas</span>
+										    	 <i class="fa fa-chevron-left pull-right"></i>
+											 </a>
+
+											 <ul class="sub-menu collapse" id="Pólizas" aria-expanded="false" style="">
+
+											 	<li class="active">
+
+													 <a href="#" data-toggle="collapse" data-target="#Ramo" class="collapse active" aria-expanded="true">
+														 <i class="fa fa-list"></i>
+														 <span class="nav-label">Ramo</span>
+														 <i class="fa fa-chevron-left pull-right"></i>
+													 </a>
+
+												 	<ul class="sub-menu collapse" id="Ramo" aria-expanded="false" style="">
+														 <li>
+														 	<a href="http://localhost:8080/Seguros/Polizas/autos"><i class=""></i>Autos</a>
+														 </li>
+														 <li>
+														 	<a href="http://localhost:8080/Seguros/Polizas/empresarial"><i class=""></i>Empresarial</a>
+														 </li>
+														 <li>
+														 	<a href="http://localhost:8080/Seguros/Polizas/gastos_medicos_mayores"><i class=""></i>GMM</a>
+														 </li>
+														 <li>
+														 	<a href="http://localhost:8080/Seguros/Polizas/responsabilidad_civil"><i class=""></i>Responsabilidad civil</a>
+														 </li>
+														 <li>
+														 	<a href="http://localhost:8080/Seguros/Polizas/vida_grupo"><i class=""></i>Vida de grupo</a>
+														 </li>
+													</ul>
+
+												</li>
+
+												<li><a href="http://localhost:8080/Seguros/PolizaDigital"><i class=""></i>Póliza digital</a></li>
+
+													<li class="active">
+												    	 <a href="#" data-toggle="collapse" data-target="#Pagos" class="collapse active">
+												        	 <i class="fa fa-money"></i>
+												        	 <span class="nav-label">Pagos</span>
+												        	 <i class="fa fa-chevron-left pull-right"></i>
+												    	 </a>
+												    	 <ul class="sub-menu collapse" id="Pagos">
+												    	 	<li>
+												    	 		<a href="http://localhost:8080/Seguros/PagosVencer"><i class=""></i>Próximos a vencer</a>
+												    	 	</li>
+												    	 	<li>
+												    	 		<a href="http://localhost:8080/Seguros/TodoPolizas"><i class=""></i>Todas las Pólizas</a>
+												    	 	</li>
+												    	 </ul>
+													 </li>
+											</ul>
+											   
+										</li>
+
+										<li>
+											<a href="http://localhost:8080/Seguros/PolizasCotizacion"><i class="fa fa-money"></i>Cotización</a>
+
+										</li>
+
+										';
+
+		}
+
+		 // menu para clientes
+
+		else{ 
+
+			$dataMenu = '<ul class="list-sidebar bg-defoult">
+						<li>
+							<a href="http://localhost:8080/Seguros/PolizaDigitalCliente" class="selecionado">
+								<i class="fa fa-list-alt"></i>Póliza digital
+							</a>
+						</li>
+						<li>
+							<a href="http://localhost:8080/Seguros/Descargas"><i class="fa fa-download"></i>Descargas</a>
+						</li>
+						<li>
+							<a href="http://localhost:8080/Seguros/Descargas"><i class="fa fa-download"></i>Hola mundo</a>
+						</li>
+					</ul> ';
+
+		}
+
+
+
+
+		//  ----------- ESTA ES LA FORMA DE TRAER DATOS DEL MENU CON FUNCIONALIDAD DESDE LA BASE DE DATOS  -----------
+
+
+
+		// $this->load->model('Home/Menu');
+
+		// $datosMenu = $this->Menu->getElmentosMenu($this->session->userdata('id_rol'));
+
+		// $dataMenu = $this->buildMenu($datosMenu,false,false);
+
+	
+
+
+		
 
 		$datos["rowsMenu"] = $dataMenu;
 
@@ -111,25 +234,34 @@ class Home extends CI_Controller
 
 	public function cerrarSesion()
 	{
+
+		   $this->session->sess_destroy();
+			
+			$datos["sesion"] = false;
+			$datos["base_url"] = base_url()."Login";
+
+			echo json_encode($datos);
+
+
 	
-		if($this->session->userdata('logueado')!=null)
-		{
+		// if($this->session->userdata('logueado')!=null)
+		// {
 			
-			$this->session->sess_destroy();
+		// 	$this->session->sess_destroy();
 			
-			$datos["sesion"] = false;
-			$datos["base_url"] = base_url()."Login";
+		// 	$datos["sesion"] = false;
+		// 	$datos["base_url"] = base_url()."Login";
 
-			echo json_encode($datos);
+		// 	echo json_encode($datos);
 
-		} 
-		else{
+		// } 
+		// else{
 
-			$datos["sesion"] = false;
-			$datos["base_url"] = base_url()."Login";
+		// 	$datos["sesion"] = false;
+		// 	$datos["base_url"] = base_url()."Login";
 
-			echo json_encode($datos);
-		}
+		// 	echo json_encode($datos);
+		// }
 	}	
 
 

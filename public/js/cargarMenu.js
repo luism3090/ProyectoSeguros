@@ -46,15 +46,15 @@ $(document).ready(function()
     
 
   	
-  	$("body").on("click",".sidebar ul li a",function()
-  	{
+  	// $("body").on("click",".sidebar ul li a",function()
+  	// {
   	
-  		if($(this).parent().find("ul").length == 0 )
-  		{
-  			$(".sidebar ul li a").removeClass("selecionado");
-  			$(this).addClass("selecionado");
-  		}
+  	// 	if($(this).parent().find("ul").length == 0 )
+  	// 	{
+  	// 		$(".sidebar ul li a").removeClass("selecionado");
+  	// 		$(this).addClass("selecionado");
+  	// 	}
 
-  	});
+  	// });
    
 });
