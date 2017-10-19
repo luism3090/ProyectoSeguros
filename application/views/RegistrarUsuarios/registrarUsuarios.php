@@ -10,7 +10,7 @@
 </head>
 <body data-base-url="<?php echo base_url();?>">
 
-	<div id="contenedor-principal" >
+	<!-- <div id="contenedor-principal" > -->
 					
 		<div class="navbar navbar-default navbar-fixed-top" role="navigation">
 
@@ -23,12 +23,16 @@
 						        <div class="collapse navbar-collapse">
 						            
 						            <ul class="nav navbar-nav navbar-right">
-						                <li class="dropdown">
-						                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
+						                <li class="dropdown" >
+						                	<img src="<?php echo base_url();?>public/images/actise2.png" alt="actise"  class="img-responsive" width='130px' height='130px' style='display: inline-block;' >
+						                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" style='display: inline-block;'>
+						                    	
 						                        <span class="glyphicon glyphicon-user"></span> 
 						                        <strong><?php echo $this->session->userdata('nombre'); ?></strong>
 						                        <span class="glyphicon glyphicon-chevron-down"></span>
 						                    </a>
+
 						                    <ul class="dropdown-menu">
 						                        <li>
 						                            <div class="navbar-login">
@@ -217,7 +221,7 @@
 
 	    </div>
 
-	</div>
+	<!-- </div> -->
 
 	<br><br><br><br><br>
 

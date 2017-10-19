@@ -21,5 +21,19 @@
 {
 	position: relative;
 	z-index: 10;
-	background-color: #e7e7e7;
+	/*background-color: #e7e7e7;*/
+    background-color: #F0F0F0;
+    /*margin-top: -20px;*/
+
+
 }
+
+body
+{
+    /*background-color: #82BBAC;*/
+    /*height: 100%;*/
+    /*background-repeat: no-repeat;*/
+    background-image: url("../images/fondo.png");
+}
+
+
