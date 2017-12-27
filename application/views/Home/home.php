@@ -25,12 +25,16 @@
 	            
 	            <ul class="nav navbar-nav navbar-right">
 	                <li class="dropdown">
+	                	
 	                	<img src="<?php echo base_url();?>public/images/actise2.png" alt="actise"  class="img-responsive" width='130px' height='130px' style='display: inline-block;' >
+	                    
 	                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" style='display: inline-block;'>
+
 	                        <span class="glyphicon glyphicon-user"></span> 
 	                        <strong><?php echo $this->session->userdata('nombre'); ?></strong>
 	                        <span class="glyphicon glyphicon-chevron-down"></span>
 	                    </a>
+	                    
 	                    <ul class="dropdown-menu">
 	                        <li>
 	                            <div class="navbar-login">
@@ -81,7 +85,7 @@
    </div>
 	
 
-	<div class="container" style="margin-left:21.5%;width:78%;" >
+	<div class="container" style="margin-left:17.5%;width:78%;" >
 						
 			<div class="row">
 				<div class="col-xs-12">

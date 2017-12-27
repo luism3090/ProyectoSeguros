@@ -79,6 +79,7 @@ var base_url = $("body").attr("data-base-url");
 	          async: true,
 	          success: function(result)
 		          {
+		          	
 		          	//console.log(result);
 
 		          	if(result.msjCantidadRegistros > 0)

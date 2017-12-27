@@ -96,6 +96,8 @@
 						<fieldset>
 							<legend>Datos de póliza:</legend>
 							<div class="row">
+							
+							<!--  segun ya no se va hacer 
 
 								<div class="col-xs-6">
 										<div class="form-group">
@@ -103,14 +105,17 @@
 											<select id="slStatus" class="form-control" name="slStatus">									
 											</select> 
 										</div>
-								</div>
-								<div class="col-xs-6">
+								</div> -->
+								<!-- <div class="col-xs-6">
 										<div class="form-group">
 											<label for="slTipo">Tipo:</label> 
 											<select id="slTipo" class="form-control" name="slTipo">											
 											</select> 
 										</div>
-								</div>
+								</div> 
+								
+								Fin segun ya no se va hacer
+							-->
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtNoPoliza">No de póliza:</label>
@@ -345,7 +350,7 @@
 
 
 <!-- Modal -->
-<div id="modalAlert" class="modal fade" role="dialog">
+<div id="modalAlertValidaCliente" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -358,12 +363,69 @@
         
       </div>
       <div class="modal-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal" id="btnMdlAlertaUpdateUsuario">Aceptar</button>
+      <button type="button" class="btn btn-default" data-dismiss="modal" id="btnMdlAlertValidaCliente">Aceptar</button>
       </div>
     </div>
 
   </div>
 </div>
+
+
+<div id="modalSuccessRegistroPoliza" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Alerta</h4>
+      </div>
+      <div class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal" id="btnMdlSuccessRegistroPoliza">Aceptar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div id="modalFormaDePago" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Alerta</h4>
+      </div>
+      <div class="modal-body">
+      	<h4>Forma de pago <label></label></h4> 
+      	<br>
+      	<h4 style='width: 200px; margin:0px auto'>Exhibición de mis pagos </h4>
+      	<br><br>
+      	<label for="txtPagoTotalPoliza">Pago total:</label> 
+		<input type="text" id="txtPagoTotalPoliza" class="form-control" name="txtPagoTotalPoliza" placeholder="pago Total"  />									
+		<br>
+        <table id='tblFormaDePago'>
+        	<tbody>
+        	</tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal" id="btnMdlAlertValidaCliente">Aceptar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
 
 	<br><br><br><br><br>
 

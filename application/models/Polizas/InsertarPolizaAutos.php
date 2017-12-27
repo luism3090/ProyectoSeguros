@@ -19,8 +19,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 			$sql1 = "insert into polizas (
 											id_poliza,
-											id_status,
-											id_tipo,
 											id_aseguradora,
 											id_usuario,
 											id_tipo_poliza,
@@ -46,15 +44,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 											?,
 											?,
 											?,
-											?,
-											?,
 											now()
 										)
 										
 					";
 
-			$query = $this->db->query($sql1,array($datosPoliza["id_status"],
-												 $datosPoliza["id_tipo"],
+			$query = $this->db->query($sql1,array(
 												 $datosPoliza["id_aseguradora"],
 												 $datosPoliza["id_usuario"],
 												 $datosPoliza["id_tipo_poliza"],

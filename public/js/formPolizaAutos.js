@@ -57,10 +57,53 @@ $(document).ready(function()
   });
 
 
-  $('#modalAlert').on('hide.bs.modal', function (e) 
+  $('#modalSuccessRegistroPoliza').on('hide.bs.modal', function (e) 
     {
-         location.reload();
+          location.reload();
     });
+
+  $("body").on("change","#slFormaPago",function()
+  {
+
+     let IdFormaDePago = $(this).val();
+     let formaDePago =  $("#slFormaPago option:selected").text();
+
+     let pagos = 0;
+     let tempPagos = "";
+
+     switch(IdFormaDePago)
+     {
+          case '1':
+
+          $("#modalFormaDePago #tblFormaDePago tbody").html("");
+
+                    for(let x=1 ; x<=4; x++)
+                    {
+                         tempPagos =    `
+                                              <tr>
+                                                  <td><input type='text' class="form-control" name="pagoPoliza" class='pagoPoliza' /></td>
+                                                  <td><input type='text' class="form-control" name="pagoPoliza" class='pagoPoliza' /></td>
+                                                  <td><input type='text' class="form-control" name="pagoPoliza" class='pagoPoliza' /></td>
+                                              </tr>
+     
+                                        `;
+
+                        $("#modalFormaDePago #tblFormaDePago tbody").append(tempPagos);
+                    }
+
+                      $("#modalFormaDePago .modal-body label").text(formaDePago);
+                      $("#modalFormaDePago #tblFormaDePago tbody").append(tempPagos);
+                      $("#modalFormaDePago").modal("show");
+
+          break;
+
+
+     } 
+     
+
+     
+
+  });
 
 
   	function validaFormRegistrarPolizaAutos()
@@ -79,28 +122,28 @@ $(document).ready(function()
                         validating: 'glyphicon glyphicon-refresh'
                     },
                     fields: {
-                        slStatus: {
-                           group: '.form-group',
-                            validators: 
-                            {
-                                notEmpty: {
-                                    message: 'Este campo es requerido'
-                                },
+                        // slStatus: {
+                        //    group: '.form-group',
+                        //     validators: 
+                        //     {
+                        //         notEmpty: {
+                        //             message: 'Este campo es requerido'
+                        //         },
                                 
 
-                            }
-                        },
-                        slTipo: {
-                            group: '.form-group',
-                            validators: {
-                                notEmpty: {
-                                    message: 'Este campo es requerido'
-                                },
+                        //     }
+                        // },
+                        // slTipo: {
+                        //     group: '.form-group',
+                        //     validators: {
+                        //         notEmpty: {
+                        //             message: 'Este campo es requerido'
+                        //         },
                                 
 
 
-                            }
-                        },
+                        //     }
+                        // },
                         
                       txtNoPoliza: {
                           group: '.form-group',
@@ -314,8 +357,8 @@ $(document).ready(function()
               		
 
               		datosPoliza = {
-				              			id_status:$("#slStatus").val(),
-				              			id_tipo :$("#slTipo").val(),
+				              			// id_status:$("#slStatus").val(),
+				              			// id_tipo :$("#slTipo").val(),
 				              			id_aseguradora:$("#slAseguradora").val(),
 				              			id_usuario: tablaClientes.rows($("#tblClientes tbody tr.selected").index()).data().pluck(0)[0],
 				              			id_tipo_poliza:'1',
@@ -376,12 +419,12 @@ $(document).ready(function()
                                       
                                       if(result.msjConsulta=="OK")
                                       {
-										$("#modalAlert .modal-body").html("<h4>La poliza de autos fue registra correctamente.<h4>");
+									$("#modalSuccessRegistroPoliza .modal-body").html("<h4>La poliza de autos fue registra correctamente.<h4>");
               							$("#modalAlert").modal("show");
                                       }
                                       else
                                       {
-                                      	$("#modalAlert .modal-body").html("<h4>Ocurrio un error al registrar la poliza de autos.<h4>");
+                                             $("#modalSuccessRegistroPoliza .modal-body").html("<h4>Ocurrio un error al registrar la poliza de autos.<h4>");
               							$("#modalAlert").modal("show");
                                       }
 
@@ -399,8 +442,8 @@ $(document).ready(function()
               	else
               	{
               		$("#btnGuardar").attr("disabled",false);
-              		$("#modalAlert .modal-body").html("<h4>Debe seleccionar un cliente de la tabla <h4>");
-              		$("#modalAlert").modal("show");
+              		$("#modalAlertValidaCliente .modal-body").html("<h4>Debe seleccionar un cliente de la tabla <h4>");
+              		$("#modalAlertValidaCliente").modal("show");
               		$(".form-control.input-sm").focus();
               		
 

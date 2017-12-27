@@ -15,88 +15,93 @@ $(document).ready(function()
 
 	  });
 
-	function cargarSelectStatus()
-	{
 
-		$.ajax(
-	    {
+	// segun ya no se va hacer 
+
+	// function cargarSelectStatus()
+	// {
+
+	// 	$.ajax(
+	//     {
 	      
-	      type: "POST",
-	      url: base_url+"Polizas/cargarSelectStatus",
-	      dataType:"json",
-	      data: '',
-	      async: true,
-	        success: function(result)
-	            {
+	//       type: "POST",
+	//       url: base_url+"Polizas/cargarSelectStatus",
+	//       dataType:"json",
+	//       data: '',
+	//       async: true,
+	//         success: function(result)
+	//             {
 
-	                if(result.length > 0)
-	                {
-	                   let options ="<option selected disabled >Elija una opción</option>";
-	                   result.forEach(function(elemento,index) 
-	                   {
+	//                 if(result.length > 0)
+	//                 {
+	//                    let options ="<option selected disabled >Elija una opción</option>";
+	//                    result.forEach(function(elemento,index) 
+	//                    {
 	  
-	                       options += '<option value="'+elemento.id_status+'">'+elemento.nombre+'</option>';
+	//                        options += '<option value="'+elemento.id_status+'">'+elemento.nombre+'</option>';
 	                      
-	                  });
+	//                   });
 
-	                   $("#slStatus").html(options);
+	//                    $("#slStatus").html(options);
 
-	                }
+	//                 }
 	              
-	            },
-	       error:function(result)
-	          {
-	            alert("Error");
-	           console.log(result.responseText);
+	//             },
+	//        error:function(result)
+	//           {
+	//             alert("Error");
+	//            console.log(result.responseText);
 	            
-	          }
-	   });
+	//           }
+	//    });
 
 
-	}
-	cargarSelectStatus();
+	// }
+	// cargarSelectStatus();
 
 
-	function cargarSelectTipo()
-	{
+	// function cargarSelectTipo()
+	// {
 
-		$.ajax(
-	    {
+	// 	$.ajax(
+	//     {
 	      
-	      type: "POST",
-	      url: base_url+"Polizas/cargarSelectTipo",
-	      dataType:"json",
-	      data: '',
-	      async: true,
-	        success: function(result)
-	            {
+	//       type: "POST",
+	//       url: base_url+"Polizas/cargarSelectTipo",
+	//       dataType:"json",
+	//       data: '',
+	//       async: true,
+	//         success: function(result)
+	//             {
 
-	                if(result.length > 0)
-	                {
-	                   let options ="<option selected disabled >Elija una opción</option>";
-	                   result.forEach(function(elemento,index) 
-	                   {
+	//                 if(result.length > 0)
+	//                 {
+	//                    let options ="<option selected disabled >Elija una opción</option>";
+	//                    result.forEach(function(elemento,index) 
+	//                    {
 	  
-	                       options += '<option value="'+elemento.id_tipo+'">'+elemento.nombre+'</option>';
+	//                        options += '<option value="'+elemento.id_tipo+'">'+elemento.nombre+'</option>';
 	                      
-	                  });
+	//                   });
 
-	                   $("#slTipo").html(options);
+	//                    $("#slTipo").html(options);
 
-	                }
+	//                 }
 	              
-	            },
-	       error:function(result)
-	          {
-	            alert("Error");
-	           console.log(result.responseText);
+	//             },
+	//        error:function(result)
+	//           {
+	//             alert("Error");
+	//            console.log(result.responseText);
 	            
-	          }
-	   });
+	//           }
+	//    });
 
 
-	}
-	cargarSelectTipo();
+	// }
+	// cargarSelectTipo();
+
+	// Fin segun ya no se va hacer 
 
 
 	function cargarSelectAseguradora()

@@ -27,6 +27,7 @@
 		         		  us.password = ? and 
 		         		  us.estado = '1' ";
 
+
 			$query = $this->db->query($sql,array($usuario["email"],$usuario["password"]));
 
 

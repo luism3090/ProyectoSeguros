@@ -98,7 +98,7 @@
 							<legend>Datos de póliza:</legend>
 							<div class="row">
 
-								<div class="col-xs-6">
+								<!-- <div class="col-xs-6">
 										<div class="form-group">
 											<label for="slStatus">Status:</label> 
 											<select id="slStatus" class="form-control" name="slStatus">									
@@ -111,7 +111,7 @@
 											<select id="slTipo" class="form-control" name="slTipo">											
 											</select> 
 										</div>
-								</div>
+								</div> -->
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtNoPoliza">No de póliza:</label>
