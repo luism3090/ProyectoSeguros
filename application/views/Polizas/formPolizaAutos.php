@@ -131,24 +131,24 @@
 									</div>
 								</div>
 								
-								<div class="col-xs-6">
+								<!-- <div class="col-xs-6">
 									<div class="form-group">
 											<label for="txtEmision">Emisión:</label>
 											<input type="text" id="txtEmision" name="txtEmision"  class="form-control" placeholder="Emision" value="aaa" >
 									</div>
-								</div>
+								</div> -->
 								
 								<div class="col-xs-6">
 									<div class="form-group">
 											<label for="dateInicia">Fecha inicia:</label>
-											<input type="date" id="dateInicia" name="dateInicia"  class="form-control"  value="2017-08-08">
+											<input type="date" id="dateInicia" name="dateInicia"  class="form-control"  >
 									</div>
 								</div>
 
 								<div class="col-xs-6">
 									<div class="form-group">
 											<label for="dateFinaliza">Fecha finaliza:</label>
-											<input type="date" id="dateFinaliza" name="dateFinaliza"  class="form-control"  value="2017-08-08">
+											<input type="date" id="dateFinaliza" name="dateFinaliza"  class="form-control"  readonly="readonly">
 									</div>
 								</div>
 
@@ -159,15 +159,13 @@
 									</div>
 								</div>
 
-
-    
-
-									<div class="col-xs-6">
+								<div class="col-xs-6" id='contValorComercial'>
 									<div class="form-group">
-										<label for="txtValorComercial">Valor comercial:</label>
-										<input type="text" id="txtValorComercial" name="txtValorComercial"  class="form-control" placeholder="Valor comercial" value="20" >
+										<!-- <label for="txtValorComercial">Valor comercial:</label>
+										<input type="text" id="txtValorComercial" name="txtValorComercial"  class="form-control" placeholder="Valor comercial" value="20" > -->
 									</div>
 								</div>
+
 								<div class="col-xs-6">
 										<div class="form-group">
 											<label for="txtDescripcion">Descripción:</label>
@@ -407,12 +405,27 @@
       <div class="modal-body">
       	<h4>Forma de pago <label></label></h4> 
       	<br>
+
+      	<div>
+			<strong>Fecha inicial:</strong>
+			<strong id='strFechaInicial' style='font-weight: bold;' ></strong>	
+				
+			<strong style='margin-left: 40px'>Fecha Final:</strong>
+			<strong id='strFechaFinaliza' style='font-weight: bold;'></strong>	
+		</div>
+		
+		<br><br>
+
       	<h4 style='width: 200px; margin:0px auto'>Exhibición de mis pagos </h4>
-      	<br><br>
+		
+		<br><br>
+
       	<label for="txtPagoTotalPoliza">Pago total:</label> 
-		<input type="text" id="txtPagoTotalPoliza" class="form-control" name="txtPagoTotalPoliza" placeholder="pago Total"  />									
+		<input type="text" id="txtPagoTotalPoliza"  class="form-control" name="txtPagoTotalPoliza" minlength="1" maxlength="10" placeholder="Pago total"  />	
+		
+									
 		<br>
-        <table id='tblFormaDePago'>
+        <table id='tblFormaDePago' cellspacing="10" cellpadding="10" >
         	<tbody>
         	</tbody>
         </table>

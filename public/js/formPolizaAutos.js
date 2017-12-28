@@ -4,6 +4,31 @@ $(document).ready(function()
 	var base_url = $("body").attr("data-base-url");	
 
 
+     var hoy = new Date();
+     var dd = hoy.getDate();
+     var mm = hoy.getMonth()+1; 
+     var yyyy = hoy.getFullYear();
+
+     if(dd<10) {
+         dd='0'+dd
+     } 
+
+     if(mm<10) {
+         mm='0'+mm
+     } 
+
+     hoy = yyyy +'-' +mm+'-'+dd;
+
+
+     $("#dateInicia").val(hoy);
+
+     let masUnAnio = parseInt(yyyy) + 1; 
+
+     hoyMaunAnio = masUnAnio +'-' +mm+'-'+dd;
+
+     $("#dateFinaliza").val(hoyMaunAnio);
+
+
    validaFormRegistrarPolizaAutos();
 
 
@@ -64,44 +89,221 @@ $(document).ready(function()
 
   $("body").on("change","#slFormaPago",function()
   {
+         
+          let fechaInicial = "";
+          let fechaFinaliza = "";
+          let vector = [];
 
-     let IdFormaDePago = $(this).val();
-     let formaDePago =  $("#slFormaPago option:selected").text();
+          vector = $("#dateInicia").val().split("-");
+          fechaInicial = vector[2] + "/" +vector[1] + "/" +vector[0];
 
-     let pagos = 0;
-     let tempPagos = "";
+          $("#strFechaInicial").text(fechaInicial);
 
-     switch(IdFormaDePago)
-     {
-          case '1':
+          vector = $("#dateFinaliza").val().split("-");
+          fechaFinaliza = vector[2] + "/" +vector[1] + "/" +vector[0];
 
-          $("#modalFormaDePago #tblFormaDePago tbody").html("");
+          $("#strFechaFinaliza").text(fechaFinaliza);
 
-                    for(let x=1 ; x<=4; x++)
-                    {
-                         tempPagos =    `
-                                              <tr>
-                                                  <td><input type='text' class="form-control" name="pagoPoliza" class='pagoPoliza' /></td>
-                                                  <td><input type='text' class="form-control" name="pagoPoliza" class='pagoPoliza' /></td>
-                                                  <td><input type='text' class="form-control" name="pagoPoliza" class='pagoPoliza' /></td>
-                                              </tr>
+
+          let IdFormaDePago = $(this).val();
+          let formaDePago =  $("#slFormaPago option:selected").text();
+
+          let pagos = 0;
+          let tempPagos = "";
+
+          switch(IdFormaDePago)
+          {
+               case '1':
+
+               $("#modalFormaDePago #tblFormaDePago tbody").html("");
+
+                         for(let x=1 ; x<=4; x++)
+                         {
+                              tempPagos =    `
+                                                   <tr >
+                                                       <td>
+                                                            <strong class='pagos'></strong>
+                                                            <input type='text' class="form-control" name="pagoPoliza" class='pagoPoliza' readonly="readonly"/>
+                                                       </td>
+                                                       <td>
+                                                            <strong class='pagos'></strong>
+                                                            <input type='text' class="form-control" name="pagoPoliza" class='pagoPoliza' readonly="readonly"/>
+                                                       </td>
+                                                       <td>
+                                                            <strong class='pagos'></strong>
+                                                            <input type='text' class="form-control" name="pagoPoliza" class='pagoPoliza' readonly="readonly"/>
+                                                       </td>
+                                                   </tr>
+          
+                                             `;
+
+                             $("#modalFormaDePago #tblFormaDePago tbody").append(tempPagos);
+                         }
+
+                           $("#modalFormaDePago .modal-body label").text(formaDePago);
+                         
+
+                           colocarFechasPagos(IdFormaDePago);
+
+                           $("#modalFormaDePago").modal("show");
+
+               break;
+
+
+          } 
      
-                                        `;
 
-                        $("#modalFormaDePago #tblFormaDePago tbody").append(tempPagos);
+     
+
+  });
+
+  function colocarFechasPagos(IdFormaDePago)
+  {
+
+      var vector = $("#dateInicia").val().split("-");
+      var fecha_inicial = vector[0] + "-" +vector[1] + "-" +vector[2]
+
+      
+
+          $.ajax(
+                  {
+                      type: "POST",
+                      url: base_url+"Polizas/colocarFechasPagos",
+                      dataType:"json",
+                      data: {fecha_inicial: fecha_inicial, IdFormaDePago : IdFormaDePago},
+                      async: true,
+                      success: function(result)
+                          {
+                            
+                            debugger;
+
+                            if(result.status=="OK")
+                            {
+
+                                   if(IdFormaDePago == '1')
+                                   {
+                                        
+                                        var fechaPago0 = result.fechaPagos[0].fechaPago0;
+
+
+                                        $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(0).text(result.fechaPagos[0].fechaPago0);
+                                        $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(1).text(result.fechaPagos[0].fechaPago1);
+                                        $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(2).text(result.fechaPagos[0].fechaPago2);
+                                        $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(3).text(result.fechaPagos[0].fechaPago3);
+                                        $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(4).text(result.fechaPagos[0].fechaPago4);
+                                        $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(5).text(result.fechaPagos[0].fechaPago5);
+                                        $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(6).text(result.fechaPagos[0].fechaPago6);
+                                        $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(7).text(result.fechaPagos[0].fechaPago7);
+                                        $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(8).text(result.fechaPagos[0].fechaPago8);
+                                        $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(9).text(result.fechaPagos[0].fechaPago9);
+                                        $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(10).text(result.fechaPagos[0].fechaPago10);
+                                        $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(11).text(result.fechaPagos[0].fechaPago11);
+                                        
+                                   }
+
+
+                                   $("#modalSuccessRegistroPoliza .modal-body").html("<h4>La poliza de autos fue registra correctamente.<h4>");
+                                   $("#modalAlert").modal("show");
+                            }
+                            
+
+                          },
+                     error:function(result)
+                        {
+                          alert("Error");
+                         console.log(result.responseText);
+                          
+                        }
+                        
+       });      
+  }
+
+  $("body").on("keyup","#txtPagoTotalPoliza",function()
+  { 
+         let formaPago = $("#tblFormaDePago tbody tr input").length;
+
+         let pagoTotal = $("#txtPagoTotalPoliza").val().trim();
+
+         if( !isNaN(pagoTotal) && pagoTotal != "" )
+         {
+          
+
+               pagoTotal = parseInt($("#txtPagoTotalPoliza").val());
+
+              let pagos = 0;
+
+               switch(formaPago)
+               {
+                    case 12:
+
+                         pagos = pagoTotal / 12;
+
+                         $("#tblFormaDePago tbody tr input").val(pagos);
+
+                    break;
+
+
+               } 
+
+
+
+         }
+         else
+         {
+               $("#tblFormaDePago tbody tr input").val("");
+         }
+
+         
+
+
+  });
+
+
+     $("body").on("change","#dateInicia",function()
+     {
+
+          let  vector = [];
+          let fecha_inicia = $("#dateInicia").val();
+
+          vector = fecha_inicia.split("-");
+          
+          let anio =  parseInt(vector[0]) + 1;
+
+          let fecha_fin = anio + "-" +vector[1] + "-" + vector[2];
+
+          $("#dateFinaliza").val(fecha_fin);
+
+     });
+
+  $("body").on("click",'#chkSumaAsegurada',function()
+  {
+           let temp = '';
+
+           if($(this).is(":checked"))
+           {
+               temp = `<label for="txtValorComercial">Valor comercial:</label>
+                       <input type="text" id="txtValorComercial" name="txtValorComercial"  class="form-control" placeholder="Valor comercial" value="20" >`;                      
+
+               $("#contValorComercial .form-group").html(temp);
+           }
+           else
+           {
+               $("#contValorComercial .form-group").html("");
+           }
+           
+
+
+           $('#formRegistrarPolizaAutos').bootstrapValidator('addField','txtValorComercial',{
+                    group: '.form-group',
+                    validators: {
+                    notEmpty: {
+                        message: 'Este campo es requerido'
                     }
 
-                      $("#modalFormaDePago .modal-body label").text(formaDePago);
-                      $("#modalFormaDePago #tblFormaDePago tbody").append(tempPagos);
-                      $("#modalFormaDePago").modal("show");
-
-          break;
+                }
+          });
 
 
-     } 
-     
-
-     
 
   });
 
@@ -162,15 +364,15 @@ $(document).ready(function()
                               }
                           }
                       }
-                      ,
-                       txtEmision: {
-                        group: '.form-group',
-                          validators: {
-                              notEmpty: {
-                                  message: 'Este campo es requerido.'
-                              }
-                          }
-                      }
+                      // ,
+                      //  txtEmision: {
+                      //   group: '.form-group',
+                      //     validators: {
+                      //         notEmpty: {
+                      //             message: 'Este campo es requerido.'
+                      //         }
+                      //     }
+                      // }
                        ,
                        dateInicia: {
                         group: '.form-group',
@@ -189,16 +391,17 @@ $(document).ready(function()
                               }
                           }
                       }
-                       ,
-                       txtValorComercial: {
-                        group: '.form-group',
-                          validators: {
-                              notEmpty: {
-                                  message: 'Este campo es requerido.'
-                              }
-                          }
-                      }
-                       ,
+                      //  ,
+                      //  txtValorComercial: {
+                      //   group: '.form-group',
+                      //     validators: {
+                      //         notEmpty: {
+                      //             message: 'Este campo es requerido.'
+                      //         }
+                      //     }
+                      // }
+                      // 
+                      ,
                        txtDescripcion: {
                         group: '.form-group',
                           validators: {

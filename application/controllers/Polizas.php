@@ -16,6 +16,21 @@ class Polizas extends CI_Controller
 
 	}
 
+	public function colocarFechasPagos()
+	{
+
+		$fecha_inicial = $_REQUEST["fecha_inicial"];
+		$IdFormaDePago = $_REQUEST["IdFormaDePago"];
+
+		$this->load->model('Polizas/Model_FechasPagosPolizas'); 
+		$datos = $this->Model_FechasPagosPolizas->colocarFechasPagos($fecha_inicial,$IdFormaDePago);
+
+
+		echo json_encode($datos);
+
+	}
+
+
 	public function empresarial()
 	{
 		$this->load->view('Polizas/formPolizaEmpresarial');

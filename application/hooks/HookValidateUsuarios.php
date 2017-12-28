@@ -79,13 +79,13 @@ class HookValidarDatosUsuario
 		if($this->ci->session->userdata('id_rol') != null)
 		{
 
-			$id_rol = $this->ci->session->userdata('id_rol');
-			$controladores_rol ="";
-			$controladorPermitido = false;
+			// $id_rol = $this->ci->session->userdata('id_rol');
+			// $controladores_rol ="";
+			// $controladorPermitido = false;
 
-			$this->ci->load->model('Home/VerificarControladoresRol');
+			// $this->ci->load->model('Home/VerificarControladoresRol');
 
-			$datos = $this->ci->VerificarControladoresRol->VerifyControlesRol($this->ci->session->userdata('id_rol'));
+			// $datos = $this->ci->VerificarControladoresRol->VerifyControlesRol($this->ci->session->userdata('id_rol'));
 
 
 			 // echo $method;
@@ -98,44 +98,44 @@ class HookValidarDatosUsuario
 			 
 			 
 
-			if($datos["msjCantidadRegistros"] > 0)
-			{
+			// if($datos["msjCantidadRegistros"] > 0)
+			// {
 
 				
-				$controladores_rol = explode(",", $datos["controllers"][0]->controladores);
+			// 	$controladores_rol = explode(",", $datos["controllers"][0]->controladores);
 
-				// var_dump($datos["controllers"][0]->controladores);
+			// 	// var_dump($datos["controllers"][0]->controladores);
 
 
-				foreach ($controladores_rol as $key => $controlBD)
-				 {
+			// 	foreach ($controladores_rol as $key => $controlBD)
+			// 	 {
 					
-					if(stripos($controlBD,"/"))
-					{
-						$indexDiagonal = stripos($controlBD,"/");
-						$controladores_rol[$key] = substr($controlBD,0,$indexDiagonal);
+			// 		if(stripos($controlBD,"/"))
+			// 		{
+			// 			$indexDiagonal = stripos($controlBD,"/");
+			// 			$controladores_rol[$key] = substr($controlBD,0,$indexDiagonal);
 
-					}
-					else
-					{
-						$controladores_rol[$key] == $controlBD;
-					}
+			// 		}
+			// 		else
+			// 		{
+			// 			$controladores_rol[$key] == $controlBD;
+			// 		}
 
-				}
+			// 	}
 
-				// var_dump($controladores_rol);
-				// echo "<br>";
-				// var_dump($controlador);
+			// 	// var_dump($controladores_rol);
+			// 	// echo "<br>";
+			// 	// var_dump($controlador);
 				
-				$controladorPermitido = in_array($controlador,$controladores_rol);
-				// var_dump($controladorPermitido);
-				// exit();
-			}
-			else
-			{
-				$controladores_rol = array();
-				$controladorPermitido = in_array($controlador,$controladores_rol);
-			}
+			// 	$controladorPermitido = in_array($controlador,$controladores_rol);
+			// 	// var_dump($controladorPermitido);
+			// 	// exit();
+			// }
+			// else
+			// {
+			// 	$controladores_rol = array();
+			// 	$controladorPermitido = in_array($controlador,$controladores_rol);
+			// }
 
 			//var_dump($datos["controllers"][0]->controladores);
 			
@@ -149,12 +149,12 @@ class HookValidarDatosUsuario
 
 				// exit();
 
-				if($controladorPermitido===false)
-				{
-					// echo "b";
-					// exit();
-					redirect('/AccesoDenegado',$datosControles);
-				}
+				// if($controladorPermitido===false)
+				// {
+				// 	// echo "b";
+				// 	// exit();
+				// 	redirect('/AccesoDenegado',$datosControles);
+				// }
 				
 				
 			}
