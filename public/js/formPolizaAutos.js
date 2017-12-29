@@ -749,8 +749,6 @@ $(document).ready(function()
           $("body").on("change","#slFormaPago",function()
           {
               
-              
-
                     let fechaInicial = "";
                     let fechaFinaliza = "";
                     let vector = [];
@@ -802,7 +800,7 @@ $(document).ready(function()
                                        $("#modalFormaDePago #tblFormaDePago tbody").append(tempPagos);
                                    }
 
-                                     $("#modalFormaDePago .modal-body label").text(formaDePago);
+                                     $("#modalFormaDePago .modal-title label").text(formaDePago);
                                    
 
                                      colocarFechasPagos(IdFormaDePago);
@@ -824,11 +822,11 @@ $(document).ready(function()
                                         tempPagos =    `
                                                              <tr >
                                                                  <td>
-                                                                      <strong class='pagos' style='margin-left:65px;' ></strong>
+                                                                      <strong class='pagos' style='margin-left:110px;' ></strong>
                                                                       <input type='text' class="form-control" name="pagoPoliza" class='pagoPoliza' readonly="readonly"/>
                                                                  </td>
                                                                  <td>
-                                                                      <strong class='pagos' style='margin-left:65px;'></strong>
+                                                                      <strong class='pagos' style='margin-left:110px;'></strong>
                                                                       <input type='text' class="form-control" name="pagoPoliza" class='pagoPoliza' readonly="readonly"/>
                                                                  </td>
                                                              </tr>
@@ -836,9 +834,10 @@ $(document).ready(function()
                                                        `;
 
                                        $("#modalFormaDePago #tblFormaDePago tbody").append(tempPagos);
+                                       $("#modalFormaDePago #tblFormaDePago").css("height","110px");
                                    }
 
-                                     $("#modalFormaDePago .modal-body label").text(formaDePago);
+                                     $("#modalFormaDePago .modal-title label").text(formaDePago);
                                    
 
                                      colocarFechasPagos(IdFormaDePago);
@@ -857,11 +856,11 @@ $(document).ready(function()
                                         tempPagos =    `
                                                              <tr >
                                                                  <td>
-                                                                      <strong class='pagos' style='margin-left:65px;' ></strong>
+                                                                      <strong class='pagos' style='margin-left:110px;' ></strong>
                                                                       <input type='text' class="form-control" name="pagoPoliza" class='pagoPoliza' readonly="readonly"/>
                                                                  </td>
                                                                  <td>
-                                                                      <strong class='pagos' style='margin-left:65px;'></strong>
+                                                                      <strong class='pagos' style='margin-left:110px;'></strong>
                                                                       <input type='text' class="form-control" name="pagoPoliza" class='pagoPoliza' readonly="readonly"/>
                                                                  </td>
                                                              </tr>
@@ -869,9 +868,11 @@ $(document).ready(function()
                                                        `;
 
                                        $("#modalFormaDePago #tblFormaDePago tbody").append(tempPagos);
+                                       $("#modalFormaDePago #tblFormaDePago").css("height","60px");
                               
 
-                                     $("#modalFormaDePago .modal-body label").text(formaDePago);
+                                     $("#modalFormaDePago .modal-title label").text(formaDePago);
+
                                    
 
                                      colocarFechasPagos(IdFormaDePago);

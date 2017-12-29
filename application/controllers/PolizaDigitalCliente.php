@@ -43,20 +43,20 @@ class PolizaDigitalCliente extends CI_Controller
 	}	
 
 
-public function cargarMenu()
-	{
-		
-		$this->load->model('Home/Menu');
+	public function cargarMenu()
+		{
+			
+			$this->load->model('Home/Menu');
 
-		$datosMenu = $this->Menu->getElmentosMenu($this->session->userdata('id_rol'));
+			$datosMenu = $this->Menu->getElmentosMenu($this->session->userdata('id_rol'));
 
-		$dataMenu = $this->buildMenu($datosMenu,false,false);
+			$dataMenu = $this->buildMenu($datosMenu,false,false);
 
-		$datos["rowsMenu"] = $dataMenu;
+			$datos["rowsMenu"] = $dataMenu;
 
-		echo json_encode($datos);
+			echo json_encode($datos);
 
-	}
+		}
 
 	function buildMenu($datosMenu1,$is_sub,$descripcion)
 	{

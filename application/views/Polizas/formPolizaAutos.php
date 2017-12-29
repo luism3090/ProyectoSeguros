@@ -402,13 +402,11 @@
     <div class="modal-content" style='width: 700px'>
       <div class="modal-header">
        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
-        <h4 class="modal-title">Alerta<label></label></h4>
+        <h4 class="modal-title">Forma de pago <label></label> </h4>
       </div>
       <form id="formValidaPagoTotal">
 
 		      <div class="modal-body">
-		      	<h4>Forma de pago <label></label></h4> 
-		      	<br>
 
 		      	<div>
 					<strong>Fecha inicial:</strong>
@@ -428,7 +426,7 @@
 					<input type="text" id="txtPagoTotalPoliza"  class="form-control" name="txtPagoTotalPoliza" minlength="1" maxlength="10" placeholder="Pago total"  />	
 				</div>
 				<br>
-		        <table id='tblFormaDePago' style='width: 668px;height: 270px' >
+		        <table id='tblFormaDePago' style='width: 668px;height: 230px' >
 		        	<tbody>
 		        	</tbody>
 		        </table>
