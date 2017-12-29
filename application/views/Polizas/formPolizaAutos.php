@@ -119,7 +119,7 @@
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtNoPoliza">No de póliza:</label>
-										<input type="text" id="txtNoPoliza" name="txtNoPoliza"  class="form-control" placeholder="Número de póliza" value="324">
+										<input type="text" id="txtNoPoliza" name="txtNoPoliza"  class="form-control" placeholder="Número de póliza" value="324" minlength="1" maxlength="45">
 									</div>
 								</div>
 
@@ -169,7 +169,7 @@
 								<div class="col-xs-6">
 										<div class="form-group">
 											<label for="txtDescripcion">Descripción:</label>
-											<textarea id="txtDescripcion" cols="10" rows="5" name="txtDescripcion"  class="form-control" placeholder="Descripción">aaa</textarea>            
+											<textarea id="txtDescripcion" cols="10" rows="5" name="txtDescripcion"  class="form-control" placeholder="Descripción" minlength="1" maxlength="300" >aaa</textarea>            
 										</div>
 										
 								</div>
@@ -209,31 +209,31 @@
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtMarca">Marca:</label> 
-										<input type="text" id="txtMarca" class="form-control" name="txtMarca" placeholder="Marca" value="Nissan">									
+										<input type="text" id="txtMarca" class="form-control" name="txtMarca" placeholder="Marca" value="Nissan" minlength="1" maxlength="50" >									
 									</div>
 								</div>
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtModelo">Modelo:</label> 
-										<input type="text" id="txtModelo" class="form-control" name="txtModelo" placeholder="Modelo" value="Sentra" />									
+										<input type="text" id="txtModelo" class="form-control" name="txtModelo" placeholder="Modelo" value="Sentra" minlength="1" maxlength="50" />									
 									</div>
 								</div>
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtAnio">Año:</label> 
-										<input type="text" id="txtAnio" class="form-control" name="txtAnio" placeholder="Año"  value="2010" />									
+										<input type="text" id="txtAnio" class="form-control" name="txtAnio" placeholder="Año"  value="2010"  minlength="1" maxlength="50" />									
 									</div>
 								</div>
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtNoSerie">No de serie:</label> 
-										<input type="text" id="txtNoSerie" class="form-control" name="txtNoSerie" placeholder="No de serie" value="aaa111bbb"/>									
+										<input type="text" id="txtNoSerie" class="form-control" name="txtNoSerie" placeholder="No de serie" value="aaa111bbb" minlength="1" maxlength="50" />									
 									</div>
 								</div>
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtPlacas">Placas:</label> 
-										<input type="text" id="txtPlacas" class="form-control" name="txtPlacas" placeholder="Placas"  value="aaa"/>									
+										<input type="text" id="txtPlacas" class="form-control" name="txtPlacas" placeholder="Placas"  value="aaa" minlength="1" maxlength="50" />									
 									</div>
 								</div>
 							</div>
@@ -273,43 +273,43 @@
 
 								<div class="col-xs-6">
 									<div class="form-group">
-										<label for="txtPrimaAnual">Prima neta anual:</label> 
-										<input type="text" id="txtPrimaAnual" class="form-control" name="txtPrimaAnual" placeholder="Prima neta anual" value="11" />									
+										<label for="txtPrimaAnual">Prima neta anual $:</label> 
+										<input type="text" id="txtPrimaAnual" class="form-control" name="txtPrimaAnual" placeholder="Prima neta anual" value="11" minlength="1" maxlength="10" />									
 									</div>
 								</div>
 
 								<div class="col-xs-6">
 									<div class="form-group">
-										<label for="txtDescuento">Descuento:</label> 
-										<input type="text" id="txtDescuento" class="form-control" name="txtDescuento" placeholder="Descuento" value="20" />									
+										<label for="txtDescuento">Descuento %:</label> 
+										<input type="text" id="txtDescuento" class="form-control" name="txtDescuento" placeholder="Descuento" value="20" minlength="1" maxlength="10" />									
 									</div>
 								</div>
 
-								<div class="col-xs-6">
+								<!-- <div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtRecargos">Recargos:</label> 
 										<input type="text" id="txtRecargos" class="form-control" name="txtRecargos" placeholder="Recargos"  value="20"/>									
 									</div>
-								</div>
+								</div> -->
 
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="slIva">Iva:</label> 
 										<select id="slIva" class="form-control" name="slIva">
-										<option value="1">10%</option>
-										<option value="2">16%</option>											
+										<option value="10">10%</option>
+										<option value="16" selected >16%</option>											
 										</select> 
 									</div>
 								</div>
 
 								<div class="col-xs-6">
 									<div class="form-group">
-									<label for="txtIva">Iva:</label> 
-										<input type="text" id="txtIva" class="form-control" name="txtIva" placeholder="$0.00"  value="20"/>									
+									<label for="txtIva">Pago $:</label> 
+										<input type="text" id="txtPago" class="form-control" name="txtPago" placeholder="$0.00" readonly="readonly" />									
 									</div>
 								</div>
 
-								<div class="col-xs-6">
+								<!-- <div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtDerechoPoliza">Derecho de póliza:</label> 
 										<input type="text" id="txtDerechoPoliza" class="form-control" name="txtDerechoPoliza" placeholder="Derecho de póliza"  value="1"/>									
@@ -328,7 +328,7 @@
 										<label for="txtObservaciones">Observaciones:</label>
 										<textarea id="txtObservaciones" cols="10" rows="5" name="txtObservaciones" value="aaa" class="form-control" placeholder="Observaciones">aaa</textarea>            
 									</div>
-								</div>
+								</div> -->
 
 							</div>
 						</fieldset>

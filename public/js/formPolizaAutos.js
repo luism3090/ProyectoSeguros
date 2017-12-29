@@ -161,7 +161,8 @@ $(document).ready(function()
                                              
                                         }
 
-                                       $("#formValidaPagoTotal").bootstrapValidator('resetForm', true);
+
+                                       
                                  }
                                  
 
@@ -286,8 +287,6 @@ $(document).ready(function()
 
        	function validaFormRegistrarPolizaAutos()
        	{
-
-
 
        			 $('#formRegistrarPolizaAutos').bootstrapValidator(
                    {
@@ -466,7 +465,13 @@ $(document).ready(function()
                                validators: {
                                    notEmpty: {
                                        message: 'Este campo es requerido.'
-                                   }
+                                   },
+                                   regexp: {
+                                       regexp: /^[0-9]+$/,
+
+                                       message: 'Solo debe ingresar números',
+
+                                   },
                                }
                            }
                            ,
@@ -475,18 +480,24 @@ $(document).ready(function()
                                validators: {
                                    notEmpty: {
                                        message: 'Este campo es requerido.'
-                                   }
+                                   },
+                                   regexp: {
+                                       regexp: /^[0-9]+$/,
+
+                                       message: 'Solo debe ingresar números',
+
+                                   },
                                }
                            }
-                           ,
-                            txtRecargos: {
-                             group: '.form-group',
-                               validators: {
-                                   notEmpty: {
-                                       message: 'Este campo es requerido.'
-                                   }
-                               }
-                           }
+                           // ,
+                           //  txtRecargos: {
+                           //   group: '.form-group',
+                           //     validators: {
+                           //         notEmpty: {
+                           //             message: 'Este campo es requerido.'
+                           //         }
+                           //     }
+                           // }
                            ,
                             slIva: {
                              group: '.form-group',
@@ -497,32 +508,32 @@ $(document).ready(function()
                                }
                            }
                            ,
-                            txtDerechoPoliza: {
-                             group: '.form-group',
-                               validators: {
-                                   notEmpty: {
-                                       message: 'Este campo es requerido.'
-                                   }
-                               }
-                           },
+                           //  txtDerechoPoliza: {
+                           //   group: '.form-group',
+                           //     validators: {
+                           //         notEmpty: {
+                           //             message: 'Este campo es requerido.'
+                           //         }
+                           //     }
+                           // },
 
-                           txtPrima: {
-                             group: '.form-group',
-                               validators: {
-                                   notEmpty: {
-                                       message: 'Este campo es requerido.'
-                                   }
-                               }
-                           }
-                           ,
-                           txtObservaciones: {
-                             group: '.form-group',
-                               validators: {
-                                   notEmpty: {
-                                       message: 'Este campo es requerido.'
-                                   }
-                               }
-                           }
+                           // txtPrima: {
+                           //   group: '.form-group',
+                           //     validators: {
+                           //         notEmpty: {
+                           //             message: 'Este campo es requerido.'
+                           //         }
+                           //     }
+                           // }
+                           // ,
+                           // txtObservaciones: {
+                           //   group: '.form-group',
+                           //     validators: {
+                           //         notEmpty: {
+                           //             message: 'Este campo es requerido.'
+                           //         }
+                           //     }
+                           // }
 
 
                      }
@@ -530,103 +541,110 @@ $(document).ready(function()
 
                    	e.preventDefault();
 
-                   	if($("#tblClientes tbody tr").hasClass("selected"))
-                   	{
+                    if($("#txtPagoTotalPoliza").val().trim() !="")
+                    {
+                              if($("#tblClientes tbody tr").hasClass("selected"))
+                              {
 
-                   		
+                                        
 
-                   		datosPoliza = {
-     				              			// id_status:$("#slStatus").val(),
-     				              			// id_tipo :$("#slTipo").val(),
-     				              			id_aseguradora:$("#slAseguradora").val(),
-     				              			id_usuario: tablaClientes.rows($("#tblClientes tbody tr.selected").index()).data().pluck(0)[0],
-     				              			id_tipo_poliza:'1',
-     				              			no_poliza : $("#txtNoPoliza").val(),
-     				              			descripcion: $("#txtDescripcion").val(),
-     				              			emision: $("#txtEmision").val(), 
-     				              			fecha_inicia: $("#dateInicia").val(),
-     				              			fecha_finaliza:$("#dateFinaliza").val(),
-     				              			suma_asegurada:$("#chkSumaAsegurada").prop("checked"),
-     				              			valor_comercial:$("#txtValorComercial").val()
+                                            datosPoliza = {
+                                                      id_aseguradora:$("#slAseguradora").val(),
+                                                      id_usuario: tablaClientes.rows($("#tblClientes tbody tr.selected").index()).data().pluck(0)[0],
+                                                      id_tipo_poliza:'1',
+                                                      no_poliza : $("#txtNoPoliza").val().trim(),
+                                                      descripcion: $("#txtDescripcion").val().trim(),
+                                                      fecha_inicia: $("#dateInicia").val(),
+                                                      fecha_finaliza:$("#dateFinaliza").val(),
+                                                      suma_asegurada: $("#chkSumaAsegurada").is(":checked") ? '1' : '0' ,
+                                                      valor_comercial: $("#txtValorComercial").val() == undefined ? '' : $("#txtValorComercial").val().trim() 
 
-     				              		}
+                                                    }
 
-     			          // datosCompletosPoliza.push(poliza);
+                                          // datosCompletosPoliza.push(poliza);
 
-     			          datosPolizaAuto = 
-     								          {
-     								          	marca: $("#txtMarca").val(),
-     								          	modelo: $("#txtModelo").val(),
-     								          	anio: $("#txtAnio").val(),
-     								          	no_serie: $("#txtNoSerie").val(),
-     								          	placas: $("#txtPlacas").val(),
-     								          }
-
-
-     			         // datosCompletosPoliza.push(polizaAuto);
+                                          datosPolizaAuto = 
+                                                    {
+                                                      marca: $("#txtMarca").val().trim(),
+                                                      modelo: $("#txtModelo").val().trim(),
+                                                      anio: $("#txtAnio").val().trim(),
+                                                      no_serie: $("#txtNoSerie").val().trim(),
+                                                      placas: $("#txtPlacas").val().trim(),
+                                                    }
 
 
-     			          datosPolizaPrima = 
-     								          {
-     								          	id_forma_pago: $("#slFormaPago").val(),
-     								          	id_moneda: $("#slMoneda").val(),
-     								          	id_medio_pago: $("#slMedioPago").val(),
-     								          	prima_neta_anual: $("#txtPrimaAnual").val(),
-     								          	descuento: $("#txtDescuento").val(),
-     								          	recargos: $("#txtRecargos").val(),
-     								          	iva: $("#txtIva").val(),
-     								          	derecho_poliza:  $("#txtDerechoPoliza").val(),
-     								          	prima: $("#txtPrima").val(),
-     								          	observaciones: $("#txtObservaciones").val()
-
-     								          }
-
-                   		// datosCompletosPoliza.push(polizaPrima);
-
-                   		 //console.log(datosCompletosPoliza);
+                                         // datosCompletosPoliza.push(polizaAuto);
 
 
-                   		$.ajax(
-                                 {
-                                     type: "POST",
-                                     url: base_url+"Polizas/registrarPolizaAutos",
-                                     dataType:"json",
-                                     data: {datosPoliza: datosPoliza , datosPolizaAuto :datosPolizaAuto , datosPolizaPrima : datosPolizaPrima},
-                                     async: true,
-                                     success: function(result)
-                                         {
-                                           
-                                           if(result.msjConsulta=="OK")
-                                           {
-     									$("#modalSuccessRegistroPoliza .modal-body").html("<h4>La poliza de autos fue registra correctamente.<h4>");
-                   							$("#modalAlert").modal("show");
-                                           }
-                                           else
-                                           {
-                                                  $("#modalSuccessRegistroPoliza .modal-body").html("<h4>Ocurrio un error al registrar la poliza de autos.<h4>");
-                   							$("#modalAlert").modal("show");
-                                           }
+                                          datosPolizaPrima = 
+                                                    {
+                                                      id_forma_pago: $("#slFormaPago").val(),
+                                                      id_moneda: $("#slMoneda").val(),
+                                                      id_medio_pago: $("#slMedioPago").val(),
+                                                      prima_neta_anual: $("#txtPrimaAnual").val().trim(),
+                                                      descuento: $("#txtDescuento").val().trim(),
+                                                      iva: $("#txtIva").val().trim(),
+                                                      pago:  $("#txtPago").val().trim()
+                                                      
 
-                                         },
-                                    error:function(result)
-                                       {
-                                         alert("Error");
-                                        console.log(result.responseText);
-                                         
-                                       }
-                                       
-                      });          
+                                                    }
 
-                   	}
-                   	else
-                   	{
-                   		$("#btnGuardar").attr("disabled",false);
-                   		$("#modalAlertValidaCliente .modal-body").html("<h4>Debe seleccionar un cliente de la tabla <h4>");
-                   		$("#modalAlertValidaCliente").modal("show");
-                   		$(".form-control.input-sm").focus();
-                   		
+                                            // datosCompletosPoliza.push(polizaPrima);
 
-                   	}
+                                             //console.log(datosCompletosPoliza);
+
+
+                                            $.ajax(
+                                                      {
+                                                          type: "POST",
+                                                          url: base_url+"Polizas/registrarPolizaAutos",
+                                                          dataType:"json",
+                                                          data: {datosPoliza: datosPoliza , datosPolizaAuto :datosPolizaAuto , datosPolizaPrima : datosPolizaPrima},
+                                                          async: true,
+                                                          success: function(result)
+                                                              {
+                                                                
+                                                                if(result.msjConsulta=="OK")
+                                                                {
+                                                                      $("#modalSuccessRegistroPoliza .modal-body").html("<h4>La poliza de autos fue registra correctamente.<h4>");
+                                                                      $("#modalAlert").modal("show");
+                                                                }
+                                                                else
+                                                                {
+                                                                       $("#modalSuccessRegistroPoliza .modal-body").html("<h4>Ocurrio un error al registrar la poliza de autos.<h4>");
+                                                                        $("#modalAlert").modal("show");
+                                                                }
+
+                                                              },
+                                                         error:function(result)
+                                                            {
+                                                              alert("Error");
+                                                             console.log(result.responseText);
+                                                              
+                                                            }
+                                                            
+                                           });          
+
+                              }
+                              else
+                              {
+                                $("#btnGuardar").attr("disabled",false);
+                                $("#modalAlertValidaCliente .modal-body").html("<h4>Debe seleccionar un cliente de la tabla <h4>");
+                                $("#modalAlertValidaCliente").modal("show");
+                                $(".form-control.input-sm").focus();
+                                
+
+                              }
+                    }
+                    else
+                    {
+                        $("#btnGuardar").attr("disabled",false);
+                        $("#modalAlertValidaCliente .modal-body").html("<h4>Debe seleccionar la forma de pago y llenar el pago total<h4>");
+                        $("#modalAlertValidaCliente").modal("show");
+                        $("#slFormaPago").focus();
+                    }
+
+                   	
                                     // debugger;
 
                            //  var datosUsuarioUrl = "?nombre="+$("#txtNombre").val()+
@@ -712,7 +730,12 @@ $(document).ready(function()
                                      notEmpty: {
                                          message: 'Este campo es requerido'
                                      },
-                                     
+                                     regexp: {
+                                       regexp: /^[0-9]+$/,
+
+                                       message: 'Solo debe ingresar números',
+
+                                   },
 
                                  }
                              },
@@ -721,18 +744,25 @@ $(document).ready(function()
 
                          e.preventDefault();
 
-                         $("#modalFormaDePago").prop("formaPago",$("#slFormaPago option:selected").text());
-                         $("#modalFormaDePago").modal("hide");
+                         
+                            $("#modalFormaDePago").prop("formaPago",$("#slFormaPago option:selected").text());
+                            $("#modalFormaDePago").modal("hide");
 
 
-                         $("#datosSavePago").html("<button class='btn btn-primary btn-xs' id='btnInfoDatosPagos' >Guardado</button>");
+                            $("#datosSavePago").html("<button class='btn btn-primary btn-xs' id='btnInfoDatosPagos' >Guardado</button>");
 
-                         $("#datosSavePago").closest(".col-xs-6").css("height","65px");
+                            $("#datosSavePago").closest(".col-xs-6").css("height","65px");
 
-                         $("#datosSavePago").closest(".form-group").css("margin-top:","-5px");
+                            $("#datosSavePago").closest(".form-group").css("margin-top:","-5px");
+
+                            
+                            // $('#btnAceptarPagos').attr('disabled',false);
+                             let pagoTotal = $("#txtPagoTotalPoliza").val();
+                            $("#formValidaPagoTotal").bootstrapValidator('resetForm', true);
+                            $("#txtPagoTotalPoliza").val(pagoTotal);
+                         
 
                          
-                         $('#btnAceptarPagos').attr('disabled',false);
 
 
                 });
@@ -901,9 +931,47 @@ $(document).ready(function()
           });
 
 
+      $("body").on("keyup","#txtPrimaAnual, #txtDescuento",function()
+      {
 
+          if($("#txtPrimaAnual").val().trim() != '' && !isNaN($("#txtPrimaAnual").val().trim()) )
+           {
+              if($("#txtDescuento").val().trim()!= '' && !isNaN($("#txtDescuento").val().trim()) )
+             {
+                  let primaNetaAnual = $("#txtPrimaAnual").val().trim();
 
+                  let descuento = $("#txtDescuento").val().trim();
 
+                  descuento =  descuento / 100;
+
+                  let primerDescuento =  primaNetaAnual * descuento;
+
+                  let iva = $("#slIva").val();
+
+                  iva =  iva / 100;
+
+                  let segundoDescuento = primerDescuento * iva;
+
+                  let pago = primerDescuento + segundoDescuento;
+
+                  $("#txtPago").val(pago);
+
+                  
+             }
+             else
+             {
+                $("#txtPago").val("");
+             }
+
+           }
+           else
+           {
+             $("#txtPago").val("");
+           }
+
+           
+
+      });
 
 
 
