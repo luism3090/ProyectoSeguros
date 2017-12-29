@@ -247,7 +247,9 @@
 
 								<div class="col-xs-6">
 									<div class="form-group">
-										<label for="slFormaPago">Forma de pago:</label> 
+										<label for="slFormaPago">
+											<strong>Forma de pago: <label id='datosSavePago'></label> </strong>
+										</label> 
 										<select id="slFormaPago" class="form-control" name="slFormaPago">											
 										</select> 
 									</div>
@@ -361,7 +363,7 @@
         
       </div>
       <div class="modal-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal" id="btnMdlAlertValidaCliente">Aceptar</button>
+      <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnMdlAlertValidaCliente">Aceptar</button>
       </div>
     </div>
 
@@ -382,7 +384,7 @@
         
       </div>
       <div class="modal-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal" id="btnMdlSuccessRegistroPoliza">Aceptar</button>
+      <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnMdlSuccessRegistroPoliza">Aceptar</button>
       </div>
     </div>
 
@@ -393,46 +395,50 @@
 
 
 <!-- Modal -->
-<div id="modalFormaDePago" class="modal fade" role="dialog">
+<div id="modalFormaDePago" class="modal fade" role="dialog" class="modal fade" role="dialog"  data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog">
 
     <!-- Modal content-->
-    <div class="modal-content">
+    <div class="modal-content" style='width: 700px'>
       <div class="modal-header">
-       <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Alerta</h4>
+       <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+        <h4 class="modal-title">Alerta<label></label></h4>
       </div>
-      <div class="modal-body">
-      	<h4>Forma de pago <label></label></h4> 
-      	<br>
+      <form id="formValidaPagoTotal">
 
-      	<div>
-			<strong>Fecha inicial:</strong>
-			<strong id='strFechaInicial' style='font-weight: bold;' ></strong>	
+		      <div class="modal-body">
+		      	<h4>Forma de pago <label></label></h4> 
+		      	<br>
+
+		      	<div>
+					<strong>Fecha inicial:</strong>
+					<strong id='strFechaInicial' style='font-weight: bold;' ></strong>	
+						
+					<strong style='margin-left: 40px'>Fecha Final:</strong>
+					<strong id='strFechaFinaliza' style='font-weight: bold;'></strong>	
+				</div>
 				
-			<strong style='margin-left: 40px'>Fecha Final:</strong>
-			<strong id='strFechaFinaliza' style='font-weight: bold;'></strong>	
-		</div>
-		
-		<br><br>
+				<br><br>
 
-      	<h4 style='width: 200px; margin:0px auto'>Exhibición de mis pagos </h4>
-		
-		<br><br>
+		      	<h4 style='width: 200px; margin:0px auto'>Exhibición de mis pagos </h4>
+				
+				<br>
+			    <div class="form-group">
+			      	<label for="txtPagoTotalPoliza">Pago total:</label> 
+					<input type="text" id="txtPagoTotalPoliza"  class="form-control" name="txtPagoTotalPoliza" minlength="1" maxlength="10" placeholder="Pago total"  />	
+				</div>
+				<br>
+		        <table id='tblFormaDePago' style='width: 668px;height: 270px' >
+		        	<tbody>
+		        	</tbody>
+		        </table>
+		      </div>
+		      <div class="modal-footer">
+		      <button type="submit" class="btn btn-primary"  id="btnAceptarPagos">Aceptar</button>
+		      <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCancelarPagos">Cancelar</button>
+		      </div>
+	</form>
 
-      	<label for="txtPagoTotalPoliza">Pago total:</label> 
-		<input type="text" id="txtPagoTotalPoliza"  class="form-control" name="txtPagoTotalPoliza" minlength="1" maxlength="10" placeholder="Pago total"  />	
-		
-									
-		<br>
-        <table id='tblFormaDePago' cellspacing="10" cellpadding="10" >
-        	<tbody>
-        	</tbody>
-        </table>
-      </div>
-      <div class="modal-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal" id="btnMdlAlertValidaCliente">Aceptar</button>
-      </div>
     </div>
 
   </div>

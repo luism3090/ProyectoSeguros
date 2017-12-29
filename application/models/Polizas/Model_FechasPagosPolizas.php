@@ -33,16 +33,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			else if($IdFormaDePago == '2')  // semestral
 			{
 
-				$sql = "select 	DATE_ADD('".$fecha_inicial."', INTERVAL +6 MONTH) AS fechaPago,
-								DATE_ADD('".$fecha_inicial."', INTERVAL +12 MONTH) AS fechaPago ";
+				$sql = "select 	DATE_FORMAT( DATE_ADD('".$fecha_inicial."', INTERVAL +6 MONTH) , '%d/%m/%Y') AS fechaPago0,
+								DATE_FORMAT( DATE_ADD('".$fecha_inicial."', INTERVAL +12 MONTH) , '%d/%m/%Y') AS fechaPago1 ";
 
 			}
 			else  // trimestral
 			{
-				$sql = "select 	DATE_ADD('".$fecha_inicial."', INTERVAL +3 MONTH) AS fechaPago,
-								DATE_ADD('".$fecha_inicial."', INTERVAL +6 MONTH) AS fechaPago, 
-								DATE_ADD('".$fecha_inicial."', INTERVAL +9 MONTH) AS fechaPago, 
-								DATE_ADD('".$fecha_inicial."', INTERVAL +12 MONTH) AS fechaPago ";
+				$sql = "select 	DATE_FORMAT( DATE_ADD('".$fecha_inicial."', INTERVAL +3 MONTH) , '%d/%m/%Y') AS fechaPago0,
+								DATE_FORMAT( DATE_ADD('".$fecha_inicial."', INTERVAL +6 MONTH) , '%d/%m/%Y') AS fechaPago1, 
+								DATE_FORMAT( DATE_ADD('".$fecha_inicial."', INTERVAL +9 MONTH) , '%d/%m/%Y') AS fechaPago2, 
+								DATE_FORMAT( DATE_ADD('".$fecha_inicial."', INTERVAL +12 MONTH) , '%d/%m/%Y') AS fechaPago3 ";
 			}
 
 			
