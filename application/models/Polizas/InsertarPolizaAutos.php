@@ -24,7 +24,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 											id_tipo_poliza,
 											no_poliza,
 											descripcion,
-											emision,
 											fecha_inicia,
 											fecha_finaliza,
 											suma_asegurada,
@@ -34,7 +33,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										values
 										(
 											null,
-											?,
 											?,
 											?,
 											?,
@@ -55,7 +53,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 												 $datosPoliza["id_tipo_poliza"],
 												 $datosPoliza["no_poliza"],
 												 $datosPoliza["descripcion"],
-												 $datosPoliza["emision"],
 												 $datosPoliza["fecha_inicia"],
 												 $datosPoliza["fecha_finaliza"],
 												 $datosPoliza["suma_asegurada"],
@@ -112,21 +109,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 														id_poliza_datos_prima,
 														id_poliza,
 														id_forma_pago,
+														pago_total,
 														id_moneda,
 														id_medio_pago,
 														prima_neta_anual,
 														descuento,
-														recargos,
 														iva,
-														derecho_poliza,
-														prima,
-														observaciones
+														pago_prima_descuento
 													) 
 													values 
 													(
 													 	null,
-													 	?,
-													 	?,
 													 	?,
 													 	?,
 													 	?,
@@ -142,15 +135,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 			$query = $this->db->query($sql3,array($id_poliza,
 												 $datosPolizaPrima["id_forma_pago"],
+												 $datosPolizaPrima["pago_total"],
 												 $datosPolizaPrima["id_moneda"],
 												 $datosPolizaPrima["id_medio_pago"],
 												 $datosPolizaPrima["prima_neta_anual"],
 												 $datosPolizaPrima["descuento"],
-												 $datosPolizaPrima["recargos"],
 												 $datosPolizaPrima["iva"],
-												 $datosPolizaPrima["derecho_poliza"],
-												 $datosPolizaPrima["prima"],
-												 $datosPolizaPrima["observaciones"]
+												 $datosPolizaPrima["pago_prima_descuento"]
 												 )
 									  );
 

@@ -579,12 +579,13 @@ $(document).ready(function()
                                           datosPolizaPrima = 
                                                     {
                                                       id_forma_pago: $("#slFormaPago").val(),
+                                                      pago_total: $("#txtPagoTotalPoliza").val().trim(),
                                                       id_moneda: $("#slMoneda").val(),
                                                       id_medio_pago: $("#slMedioPago").val(),
                                                       prima_neta_anual: $("#txtPrimaAnual").val().trim(),
                                                       descuento: $("#txtDescuento").val().trim(),
-                                                      iva: $("#txtIva").val().trim(),
-                                                      pago:  $("#txtPago").val().trim()
+                                                      iva: $("#slIva").val(),
+                                                      pago_prima_descuento:  $("#txtPago").val().trim()
                                                       
 
                                                     }
