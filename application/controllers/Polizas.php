@@ -156,10 +156,11 @@ class Polizas extends CI_Controller
 		$datosPoliza = $_REQUEST["datosPoliza"];
 		$datosPolizaAuto = $_REQUEST["datosPolizaAuto"];
 		$datosPolizaPrima = $_REQUEST["datosPolizaPrima"];
+		$datosPagos = $_REQUEST["datosPagos"];
 
 
 		$this->load->model('Polizas/insertarPolizaAutos'); 
-		$datosQuery = $this->insertarPolizaAutos->insertPolizaAutos($datosPoliza,$datosPolizaAuto,$datosPolizaPrima);
+		$datosQuery = $this->insertarPolizaAutos->insertPolizaAutos($datosPoliza,$datosPolizaAuto,$datosPolizaPrima,$datosPagos);
 
 
 		echo json_encode($datosQuery);

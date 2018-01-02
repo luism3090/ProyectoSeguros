@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 
 
-		public function insertPolizaAutos($datosPoliza,$datosPolizaAuto,$datosPolizaPrima)
+		public function insertPolizaAutos($datosPoliza,$datosPolizaAuto,$datosPolizaPrima,$datosPagos)
 		{
 
 			$this->db->trans_begin();
@@ -144,6 +144,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 												 $datosPolizaPrima["pago_prima_descuento"]
 												 )
 									  );
+
+
+			for($x = 0; $x < count($datosPagos); $x++)
+			{
+				
+
+				$sql3 = "insert into poliza_datos_forma_pago (
+															
+															id_poliza,
+															pago
+															
+														) 
+														values 
+														(
+														 	?,
+														 	?
+														)
+
+						"; 
+
+				$query = $this->db->query($sql3,array($id_poliza,
+													 $datosPagos[$x]["pago"]
+													 )
+										  );
+				
+			}
+
 
 				
 			if ($this->db->trans_status() === FALSE)

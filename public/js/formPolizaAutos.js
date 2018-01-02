@@ -608,12 +608,12 @@ $(document).ready(function()
                                                                 if(result.msjConsulta=="OK")
                                                                 {
                                                                       $("#modalSuccessRegistroPoliza .modal-body").html("<h4>La poliza de autos fue registra correctamente.<h4>");
-                                                                      $("#modalAlert").modal("show");
+                                                                      $("#modalSuccessRegistroPoliza").modal("show");
                                                                 }
                                                                 else
                                                                 {
                                                                        $("#modalSuccessRegistroPoliza .modal-body").html("<h4>Ocurrio un error al registrar la poliza de autos.<h4>");
-                                                                        $("#modalAlert").modal("show");
+                                                                        $("#modalSuccessRegistroPoliza").modal("show");
                                                                 }
 
                                                               },
@@ -644,60 +644,6 @@ $(document).ready(function()
                         $("#modalAlertValidaCliente").modal("show");
                         $("#slFormaPago").focus();
                     }
-
-                   	
-                                    // debugger;
-
-                           //  var datosUsuarioUrl = "?nombre="+$("#txtNombre").val()+
-                           //       "&apellidos="+$("#txtApellidos").val()+
-                           //       "&email="+$("#txtEmail").val()+
-                           //       "&password="+$("#txtPassword").val()+
-                           //       "&id_rol="+$("#slTipoUsuario").val();
-
-
-                           // var archivos = document.getElementById("fileFoto");  
-
-                           //   var archivo = archivos.files;
-                           //   var archivos = new FormData();
-                           //   for(i=0; i<archivo.length;i++)
-                           //   {
-                           //     archivos.append('archivo',archivo[i])
-                           //   }
-
-
-                      //      $.ajax(
-                      //            {
-                      //                type: "POST",
-                      //                url: "RegistrarUsuarios/insertarUsuario"+datosUsuarioUrl,
-                      //                dataType:"json",
-                      //                contentType:false,
-                      //                processData:false,
-                      //                data: archivos,
-                      //                async: true,
-                      //                success: function(result)
-                      //                    {
-                                           
-                      //                      if(typeof(result.baja) == "undefined") 
-                      //                      {
-                      //                        $("#modalUsuarioRegistrado #base_url").val(result.base_url);
-                      //                         $("#modalUsuarioRegistrado").modal("show");
-                      //                      }
-                      //                      else
-                      //                      {
-                      //                        window.location = result.url;
-                      //                      }
-
-                      //                    },
-                      //               error:function(result)
-                      //                  {
-                      //                    alert("Error");
-                      //                   console.log(result.responseText);
-                                         
-                      //                  }
-                                       
-                      // });          
-                                 
-
 
 
                 });
