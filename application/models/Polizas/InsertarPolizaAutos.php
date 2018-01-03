@@ -64,7 +64,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 			// obtener el ultimo id insertado de poliza 
 
-			$sql2 = "select id_poliza FROM seguros.polizas order by fecha_registro desc limit 0,1" ;
+			$sql2 = "select id_poliza FROM polizas order by fecha_registro desc limit 0,1" ;
 			$query = $this->db->query($sql2);
 
 			$id_poliza = $query->result()[0]->id_poliza;
@@ -150,22 +150,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			{
 				
 
-				$sql3 = "insert into poliza_datos_forma_pago (
+				$sql3 = "insert into poliza_datos_forma_pagos (
 															
 															id_poliza,
-															pago
+															cantidad_pago,
+															pagado
 															
 														) 
 														values 
 														(
 														 	?,
-														 	?
+														 	?,
+														 	null
 														)
 
 						"; 
 
 				$query = $this->db->query($sql3,array($id_poliza,
-													 $datosPagos[$x]["pago"]
+													 	$datosPagos[$x]["cantidad_pago"]
 													 )
 										  );
 				

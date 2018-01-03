@@ -259,7 +259,7 @@ $(document).ready(function()
                 if($(this).is(":checked"))
                 {
                     temp = `<label for="txtValorComercial">Valor comercial:</label>
-                            <input type="text" id="txtValorComercial" name="txtValorComercial"  class="form-control" placeholder="Valor comercial" value="20" >`;                      
+                            <input type="text" id="txtValorComercial" name="txtValorComercial"  class="form-control" placeholder="Valor comercial" >`;                      
 
                     $("#contValorComercial .form-group").html(temp);
                 }
@@ -548,7 +548,7 @@ $(document).ready(function()
 
                                         
 
-                                            datosPoliza = {
+                                          let  datosPoliza = {
                                                       id_aseguradora:$("#slAseguradora").val(),
                                                       id_usuario: tablaClientes.rows($("#tblClientes tbody tr.selected").index()).data().pluck(0)[0],
                                                       id_tipo_poliza:'1',
@@ -563,7 +563,7 @@ $(document).ready(function()
 
                                           // datosCompletosPoliza.push(poliza);
 
-                                          datosPolizaAuto = 
+                                         let datosPolizaAuto = 
                                                     {
                                                       marca: $("#txtMarca").val().trim(),
                                                       modelo: $("#txtModelo").val().trim(),
@@ -576,7 +576,7 @@ $(document).ready(function()
                                          // datosCompletosPoliza.push(polizaAuto);
 
 
-                                          datosPolizaPrima = 
+                                        let datosPolizaPrima = 
                                                     {
                                                       id_forma_pago: $("#slFormaPago").val(),
                                                       pago_total: $("#txtPagoTotalPoliza").val().trim(),
@@ -590,6 +590,27 @@ $(document).ready(function()
 
                                                     }
 
+
+                                          let datosPagos = [];
+
+
+                                          $("#tblFormaDePago tbody input").each(function(value,index)
+                                          {
+
+                                                 let pagos = {
+                                                            cantidad_pago : $(this).val().trim(),
+                                                            pagado : ''
+                                                 }
+
+
+                                                 datosPagos.push(pagos);
+
+                                          });
+
+                                         
+
+
+
                                             // datosCompletosPoliza.push(polizaPrima);
 
                                              //console.log(datosCompletosPoliza);
@@ -600,7 +621,7 @@ $(document).ready(function()
                                                           type: "POST",
                                                           url: base_url+"Polizas/registrarPolizaAutos",
                                                           dataType:"json",
-                                                          data: {datosPoliza: datosPoliza , datosPolizaAuto :datosPolizaAuto , datosPolizaPrima : datosPolizaPrima},
+                                                          data: {datosPoliza: datosPoliza , datosPolizaAuto :datosPolizaAuto , datosPolizaPrima : datosPolizaPrima, datosPagos : datosPagos},
                                                           async: true,
                                                           success: function(result)
                                                               {
@@ -696,7 +717,7 @@ $(document).ready(function()
                             $("#modalFormaDePago").modal("hide");
 
 
-                            $("#datosSavePago").html("<button class='btn btn-primary btn-xs' id='btnInfoDatosPagos' >Guardado</button>");
+                            $("#datosSavePago").html("<input type='button' class='btn btn-primary btn-xs' id='btnInfoDatosPagos' value='Guardado' />");
 
                             $("#datosSavePago").closest(".col-xs-6").css("height","65px");
 
