@@ -29,7 +29,7 @@ $(document).ready(function()
      $("#dateFinaliza").val(hoyMaunAnio);
 
 
-   validaFormRegistrarPolizaAutos();
+   validaFormRegistrarPolizaEmpresarial();
 
 
    	    tablaClientes = $('#tblClientes').DataTable( 
@@ -72,15 +72,45 @@ $(document).ready(function()
 
 
 
-       $("body").on("submit","#formRegistrarPolizaAutos",function(event)
+       $("body").on("submit","#formRegistrarPolizaEmpresarial",function(event)
        {
         //alert();
        		event.preventDefault();
 
-         $("#formRegistrarPolizaAutos").bootstrapValidator();
+         $("#formRegistrarPolizaEmpresarial").bootstrapValidator();
 
        });
 
+
+        $("body").on("click","#tblClientes tbody tr",function()
+          {
+
+              let temp = '';
+
+                
+                    temp = `<label for="txtLugarNacimiento">Lugar nacimiento:</label>
+                            <input type="text" id="txtLugarNacimiento" name="txtLugarNacimiento"  class="form-control" placeholder="Lugar de nacimiento" >`;                      
+
+                    $("#contLugarNacimiento .form-group").html(temp);
+
+
+                
+                $('#formRegistrarPolizaEmpresarial').bootstrapValidator('addField','txtLugarNacimiento',{
+                         group: '.form-group',
+                         validators: {
+                         notEmpty: {
+                             message: 'Este campo es requerido'
+                         }
+
+                     }
+               });
+
+                $("#formRegistrarPolizaEmpresarial").data("bootstrapValidator").resetField("txtLugarNacimiento",true);
+
+
+
+
+          });
 
        $('#modalSuccessRegistroPoliza').on('hide.bs.modal', function (e) 
          {
@@ -270,19 +300,18 @@ $(document).ready(function()
                 
 
 
-
-                $('#formRegistrarPolizaAutos').bootstrapValidator('addField','txtValorComercial',{
+                $('#formRegistrarPolizaEmpresarial').bootstrapValidator('addField','txtValorComercial',{
                          group: '.form-group',
                          validators: {
                          notEmpty: {
                              message: 'Este campo es requerido'
                          },
-                         regexp: {
-                            regexp: /^[0-9]+$/,
+                                 regexp: {
+                                      regexp: /^[0-9]+$/,
 
-                            message: 'Solo debe ingresar números',
+                                      message: 'Solo debe ingresar números',
 
-                        },
+                                  },
 
                      }
                });
@@ -292,10 +321,10 @@ $(document).ready(function()
        });
 
 
-       	function validaFormRegistrarPolizaAutos()
+       	function validaFormRegistrarPolizaEmpresarial()
        	{
 
-       			 $('#formRegistrarPolizaAutos').bootstrapValidator(
+       			 $('#formRegistrarPolizaEmpresarial').bootstrapValidator(
                    {
 
                          message: 'This value is not valid',
@@ -306,28 +335,6 @@ $(document).ready(function()
                              validating: 'glyphicon glyphicon-refresh'
                          },
                          fields: {
-                             // slStatus: {
-                             //    group: '.form-group',
-                             //     validators: 
-                             //     {
-                             //         notEmpty: {
-                             //             message: 'Este campo es requerido'
-                             //         },
-                                     
-
-                             //     }
-                             // },
-                             // slTipo: {
-                             //     group: '.form-group',
-                             //     validators: {
-                             //         notEmpty: {
-                             //             message: 'Este campo es requerido'
-                             //         },
-                                     
-
-
-                             //     }
-                             // },
                              
                            txtNoPoliza: {
                                group: '.form-group',
@@ -346,15 +353,7 @@ $(document).ready(function()
                                    }
                                }
                            }
-                           // ,
-                           //  txtEmision: {
-                           //   group: '.form-group',
-                           //     validators: {
-                           //         notEmpty: {
-                           //             message: 'Este campo es requerido.'
-                           //         }
-                           //     }
-                           // }
+                           
                             ,
                             dateInicia: {
                              group: '.form-group',
@@ -365,6 +364,22 @@ $(document).ready(function()
                                }
                            }
                             ,
+
+                            txtRiesgosAmparados: {
+                             group: '.form-group',
+                               validators: {
+                                   notEmpty: {
+                                       message: 'Este campo es requerido.'
+                                   }
+                               },
+                                 regexp: {
+                                      regexp: /^[0-9]+$/,
+
+                                      message: 'Solo debe ingresar números',
+
+                                  },
+                           }
+                           ,
                             dateFinaliza: {
                              group: '.form-group',
                                validators: {
@@ -373,16 +388,7 @@ $(document).ready(function()
                                    }
                                }
                            }
-                           //  ,
-                           //  txtValorComercial: {
-                           //   group: '.form-group',
-                           //     validators: {
-                           //         notEmpty: {
-                           //             message: 'Este campo es requerido.'
-                           //         }
-                           //     }
-                           // }
-                           // 
+                           
                            ,
                             txtDescripcion: {
                              group: '.form-group',
@@ -394,7 +400,7 @@ $(document).ready(function()
                            }
 
                            ,
-                            txtMarca: {
+                            slPais: {
                              group: '.form-group',
                                validators: {
                                    notEmpty: {
@@ -403,7 +409,7 @@ $(document).ready(function()
                                }
                            }
                            ,
-                            txtModelo: {
+                            slEstado: {
                              group: '.form-group',
                                validators: {
                                    notEmpty: {
@@ -412,7 +418,7 @@ $(document).ready(function()
                                }
                            }
                            ,
-                            txtAnio: {
+                            slMunicipio: {
                              group: '.form-group',
                                validators: {
                                    notEmpty: {
@@ -421,7 +427,7 @@ $(document).ready(function()
                                }
                            }
                            ,
-                            txtNoSerie: {
+                            txtCalle: {
                              group: '.form-group',
                                validators: {
                                    notEmpty: {
@@ -430,7 +436,7 @@ $(document).ready(function()
                                }
                            }
                            ,
-                            txtPlacas: {
+                            txtNoExterior: {
                              group: '.form-group',
                                validators: {
                                    notEmpty: {
@@ -439,6 +445,32 @@ $(document).ready(function()
                                }
                            },
 
+                            txtColonia: {
+                             group: '.form-group',
+                               validators: {
+                                   notEmpty: {
+                                       message: 'Este campo es requerido.'
+                                   }
+                               }
+                           },
+
+                           txtCodigoPostal: {
+                             group: '.form-group',
+                               validators: {
+                                   notEmpty: {
+                                       message: 'Este campo es requerido.'
+                                   }
+                               }
+                           },
+
+                           txtReferencias: {
+                             group: '.form-group',
+                               validators: {
+                                   notEmpty: {
+                                       message: 'Este campo es requerido.'
+                                   }
+                               }
+                           },
 
                             slFormaPago: {
                              group: '.form-group',
@@ -515,32 +547,7 @@ $(document).ready(function()
                                }
                            }
                            ,
-                           //  txtDerechoPoliza: {
-                           //   group: '.form-group',
-                           //     validators: {
-                           //         notEmpty: {
-                           //             message: 'Este campo es requerido.'
-                           //         }
-                           //     }
-                           // },
-
-                           // txtPrima: {
-                           //   group: '.form-group',
-                           //     validators: {
-                           //         notEmpty: {
-                           //             message: 'Este campo es requerido.'
-                           //         }
-                           //     }
-                           // }
-                           // ,
-                           // txtObservaciones: {
-                           //   group: '.form-group',
-                           //     validators: {
-                           //         notEmpty: {
-                           //             message: 'Este campo es requerido.'
-                           //         }
-                           //     }
-                           // }
+                           
 
 
                      }
@@ -682,7 +689,7 @@ $(document).ready(function()
 
 
 
-          formValidaPagoTotal();
+         // formValidaPagoTotal();
 
           function formValidaPagoTotal()
           {
@@ -750,8 +757,6 @@ $(document).ready(function()
                $("#modalFormaDePago").modal("show");
           });
           
-
-         
 
           $("body").on("change","#slFormaPago",function()
           {

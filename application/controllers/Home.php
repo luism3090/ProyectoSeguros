@@ -73,12 +73,7 @@ class Home extends CI_Controller
 														 <li>
 														 	<a href="'.base_url().'Polizas/gastos_medicos_mayores"><i class=""></i>GMM</a>
 														 </li>
-														 <li>
-														 	<a href="'.base_url().'Polizas/responsabilidad_civil"><i class=""></i>Responsabilidad civil</a>
-														 </li>
-														 <li>
-														 	<a href="'.base_url().'Polizas/vida_grupo"><i class=""></i>Vida de grupo</a>
-														 </li>
+														
 													</ul>
 
 												</li>
@@ -231,7 +226,6 @@ class Home extends CI_Controller
 	}
 
 
-
 	public function cerrarSesion()
 	{
 
@@ -242,48 +236,7 @@ class Home extends CI_Controller
 
 			echo json_encode($datos);
 
-
-	
-		// if($this->session->userdata('logueado')!=null)
-		// {
-			
-		// 	$this->session->sess_destroy();
-			
-		// 	$datos["sesion"] = false;
-		// 	$datos["base_url"] = base_url()."Login";
-
-		// 	echo json_encode($datos);
-
-		// } 
-		// else{
-
-		// 	$datos["sesion"] = false;
-		// 	$datos["base_url"] = base_url()."Login";
-
-		// 	echo json_encode($datos);
-		// }
 	}	
-
-
-	public function actualizarDatosUsuario()
-	{
-
-		$this->load->model('Usuarios/users');
-		$datosUsuario = $this->users->obtenerDatosUsuario($this->session->userdata('id'));
-
-
-		if(is_array($datosUsuario))
-		{
-			echo json_encode($datosUsuario);
-		}
-		else
-		{
-			$datos["algo"] = "Hola";
-			echo json_encode($datos);
-		}
-			
-		
-	}
 
 
 

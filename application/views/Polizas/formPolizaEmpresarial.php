@@ -96,21 +96,6 @@
 						<fieldset>
 							<legend>Datos de póliza:</legend>
 							<div class="row">
-
-								<!-- <div class="col-xs-6">
-										<div class="form-group">
-											<label for="slStatus">Status:</label> 
-											<select id="slStatus" class="form-control" name="slStatus">									
-											</select> 
-										</div>
-								</div>
-								<div class="col-xs-6">
-										<div class="form-group">
-											<label for="slTipo">Tipo:</label> 
-											<select id="slTipo" class="form-control" name="slTipo">											
-											</select> 
-										</div>
-								</div> -->
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtNoPoliza">No de póliza:</label>
@@ -123,13 +108,6 @@
 										<label for="slAseguradora">Aseguradora:</label> 
 										<select id="slAseguradora" class="form-control" name="slAseguradora">											
 										</select> 
-									</div>
-								</div>
-								
-								<div class="col-xs-6">
-									<div class="form-group">
-											<label for="txtEmision">Emisión:</label>
-											<input type="text" id="txtEmision" name="txtEmision"  class="form-control" placeholder="Emision" >
 									</div>
 								</div>
 								
@@ -158,6 +136,13 @@
 									<div class="form-group">
 											<label for="chkSumaAsegurada">Suma asegurada:</label>
 											<input type="checkbox" id="chkSumaAsegurada" name="chkSumaAsegurada"  class="form-control" style="width: 20px;margin: auto;" >
+									</div>
+								</div>
+
+								<div class="col-xs-6" id='contValorComercial'>
+									<div class="form-group">
+										<!-- <label for="txtValorComercial">Valor comercial:</label>
+										<input type="text" id="txtValorComercial" name="txtValorComercial"  class="form-control" placeholder="Valor comercial" value="20" > -->
 									</div>
 								</div>
 
@@ -194,6 +179,18 @@
 								</div>
 							</div>
 						</fieldset>
+						
+						<div class="row">
+						<div class="col-xs-6" id='contLugarNacimiento'>
+							<div class="form-group">
+
+							</div>
+						</div>
+						</div>
+
+
+						
+
 						<br><br><br>
 						<fieldset>
 							<legend>Ubicación:</legend>
@@ -275,7 +272,9 @@
 
 								<div class="col-xs-6">
 									<div class="form-group">
-										<label for="slFormaPago">Forma de pago:</label> 
+										<label for="slFormaPago">
+											<strong>Forma de pago: <label id='datosSavePago'></label> </strong>
+										</label> 
 										<select id="slFormaPago" class="form-control" name="slFormaPago">											
 										</select> 
 									</div>
@@ -313,13 +312,6 @@
 
 								<div class="col-xs-6">
 									<div class="form-group">
-										<label for="txtRecargos">Recargos:</label> 
-										<input type="text" id="txtRecargos" class="form-control" name="txtRecargos" placeholder="Recargos"  />									
-									</div>
-								</div>
-
-								<div class="col-xs-6">
-									<div class="form-group">
 										<label for="slIva">Iva:</label> 
 										<select id="slIva" class="form-control" name="slIva">
 										<option value="1">10%</option>
@@ -335,27 +327,6 @@
 									</div>
 								</div>
 
-								<div class="col-xs-6">
-									<div class="form-group">
-										<label for="txtDerechoPoliza">Derecho de póliza:</label> 
-										<input type="text" id="txtDerechoPoliza" class="form-control" name="txtDerechoPoliza" placeholder="Derecho de póliza"  />									
-									</div>
-								</div>
-
-								<div class="col-xs-6">
-									<div class="form-group">
-										<label for="txtPrima">Prima:</label> 
-										<input type="text" id="txtPrima" class="form-control" name="txtPrima" placeholder="Prima"  />									
-									</div>
-								</div>
-
-								<div class="col-xs-6">
-									<div class="form-group">
-										<label for="txtObservaciones">Observaciones:</label>
-										<textarea id="txtObservaciones" cols="10" rows="5" name="txtObservaciones"  class="form-control" placeholder="Observaciones"></textarea>            
-									</div>
-								</div>
-	
 
 							</div>
 						</fieldset>
@@ -374,6 +345,55 @@
 
 	</div>
 
+
+	<!-- Modal -->
+<div id="modalFormaDePago" class="modal fade" role="dialog" class="modal fade" role="dialog"  data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content" style='width: 700px'>
+      <div class="modal-header">
+       <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+        <h4 class="modal-title">Forma de pago <label></label> </h4>
+      </div>
+      <form id="formValidaPagoTotal">
+
+		      <div class="modal-body">
+
+		      	<div>
+					<strong>Fecha inicial:</strong>
+					<strong id='strFechaInicial' style='font-weight: bold;' ></strong>	
+						
+					<strong style='margin-left: 40px'>Fecha Final:</strong>
+					<strong id='strFechaFinaliza' style='font-weight: bold;'></strong>	
+				</div>
+				
+				<br><br>
+
+		      	<h4 style='width: 200px; margin:0px auto'>Exhibición de mis pagos </h4>
+				
+				<br>
+			    <div class="form-group">
+			      	<label for="txtPagoTotalPoliza">Pago total:</label> 
+					<input type="text" id="txtPagoTotalPoliza"  class="form-control" name="txtPagoTotalPoliza" minlength="1" maxlength="10" placeholder="Pago total"  />	
+				</div>
+				<br>
+		        <table id='tblFormaDePago' style='width: 668px;height: 230px' >
+		        	<tbody>
+		        	</tbody>
+		        </table>
+		      </div>
+		      <div class="modal-footer">
+		      <button type="submit" class="btn btn-primary"  id="btnAceptarPagos">Aceptar</button>
+		      <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCancelarPagos">Cancelar</button>
+		      </div>
+	</form>
+
+    </div>
+
+  </div>
+</div>
+
 	<br><br><br><br><br>
 
 	<script src="<?php echo base_url(); ?>public/libreriasJS/jquery.min.js"></script>
@@ -385,7 +405,8 @@
 	<script src="<?php echo base_url(); ?>public/libreriasJS/dataTables.select.min.js"></script>
 
 	<script src="<?php echo base_url(); ?>public/js/cargarSelectPolizas.js"></script>
-	<script src="<?php echo base_url(); ?>public/js/cargarTablaClientes.js"></script>
+	<!-- <script src="<?php echo base_url(); ?>public/js/cargarTablaClientes.js"></script> -->
+	<script src="<?php echo base_url(); ?>public/js/formPolizaEmpresarial.js"></script>
 	<script src="<?php echo base_url(); ?>public/js/cargarMenu.js"></script>
 	<script src="<?php echo base_url(); ?>public/js/cerrarSesion.js"></script>
 
