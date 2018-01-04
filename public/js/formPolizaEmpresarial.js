@@ -622,9 +622,6 @@ $(document).ready(function()
                                           });
 
                                          
-
-
-
                                             // datosCompletosPoliza.push(polizaPrima);
 
                                              //console.log(datosCompletosPoliza);
@@ -689,7 +686,7 @@ $(document).ready(function()
 
 
 
-         // formValidaPagoTotal();
+         formValidaPagoTotal();
 
           function formValidaPagoTotal()
           {
@@ -913,47 +910,47 @@ $(document).ready(function()
           });
 
 
-      $("body").on("keyup","#txtPrimaAnual, #txtDescuento",function()
-      {
+        $("body").on("keyup","#txtPrimaAnual, #txtDescuento",function()
+        {
 
-          if($("#txtPrimaAnual").val().trim() != '' && !isNaN($("#txtPrimaAnual").val().trim()) )
-           {
-              if($("#txtDescuento").val().trim()!= '' && !isNaN($("#txtDescuento").val().trim()) )
+            if($("#txtPrimaAnual").val().trim() != '' && !isNaN($("#txtPrimaAnual").val().trim()) )
              {
-                  let primaNetaAnual = $("#txtPrimaAnual").val().trim();
+                if($("#txtDescuento").val().trim()!= '' && !isNaN($("#txtDescuento").val().trim()) )
+               {
+                    let primaNetaAnual = $("#txtPrimaAnual").val().trim();
 
-                  let descuento = $("#txtDescuento").val().trim();
+                    let descuento = $("#txtDescuento").val().trim();
 
-                  descuento =  descuento / 100;
+                    descuento =  descuento / 100;
 
-                  let primerDescuento =  primaNetaAnual * descuento;
+                    let primerDescuento =  primaNetaAnual * descuento;
 
-                  let iva = $("#slIva").val();
+                    let iva = $("#slIva").val();
 
-                  iva =  iva / 100;
+                    iva =  iva / 100;
 
-                  let segundoDescuento = primerDescuento * iva;
+                    let segundoDescuento = primerDescuento * iva;
 
-                  let pago = primerDescuento + segundoDescuento;
+                    let pago = primerDescuento + segundoDescuento;
 
-                  $("#txtPago").val(pago);
+                    $("#txtPago").val(pago);
 
-                  
+                    
+               }
+               else
+               {
+                  $("#txtPago").val("");
+               }
+
              }
              else
              {
-                $("#txtPago").val("");
+               $("#txtPago").val("");
              }
 
-           }
-           else
-           {
-             $("#txtPago").val("");
-           }
+             
 
-           
-
-      });
+        });
 
 
 
