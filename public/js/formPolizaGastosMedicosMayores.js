@@ -74,7 +74,7 @@ $(document).ready(function()
 
        $("body").on("submit","#formRegistrarPolizaGastosMedicos",function(event)
        {
-        //alert();
+        
        		event.preventDefault();
 
          $("#formRegistrarPolizaGastosMedicos").bootstrapValidator();
@@ -282,43 +282,43 @@ $(document).ready(function()
        });
 
 
-       $("body").on("click",'#chkSumaAsegurada',function()
-       {
-                let temp = '';
+       // $("body").on("click",'#chkSumaAsegurada',function()
+       // {
+       //          let temp = '';
 
-                if($(this).is(":checked"))
-                {
-                    temp = `<label for="txtValorComercial">Valor comercial:</label>
-                            <input type="text" id="txtValorComercial" name="txtValorComercial"  class="form-control" placeholder="Valor comercial" >`;                      
+       //          if($(this).is(":checked"))
+       //          {
+       //              temp = `<label for="txtValorComercial">Valor comercial:</label>
+       //                      <input type="text" id="txtValorComercial" name="txtValorComercial"  class="form-control" placeholder="Valor comercial" >`;                      
 
-                    $("#contValorComercial .form-group").html(temp);
-                }
-                else
-                {
-                    $("#contValorComercial .form-group").html("");
-                }
+       //              $("#contValorComercial .form-group").html(temp);
+       //          }
+       //          else
+       //          {
+       //              $("#contValorComercial .form-group").html("");
+       //          }
                 
 
 
-                $('#formRegistrarPolizaGastosMedicos').bootstrapValidator('addField','txtValorComercial',{
-                         group: '.form-group',
-                         validators: {
-                         notEmpty: {
-                             message: 'Este campo es requerido'
-                         },
-                                 regexp: {
-                                      regexp: /^[0-9]+$/,
+       //          $('#formRegistrarPolizaGastosMedicos').bootstrapValidator('addField','txtValorComercial',{
+       //                   group: '.form-group',
+       //                   validators: {
+       //                   notEmpty: {
+       //                       message: 'Este campo es requerido'
+       //                   },
+       //                           regexp: {
+       //                                regexp: /^[0-9]+$/,
 
-                                      message: 'Solo debe ingresar números',
+       //                                message: 'Solo debe ingresar números',
 
-                                  },
+       //                            },
 
-                     }
-               });
+       //               }
+       //         });
 
 
 
-       });
+       // });
 
 
        	function validaFormRegistrarPolizaGastosMedicos()
@@ -334,7 +334,8 @@ $(document).ready(function()
                              invalid: 'glyphicon glyphicon-remove',
                              validating: 'glyphicon glyphicon-refresh'
                          },
-                         fields: {
+                         fields: 
+                    {
                              
                            txtNoPoliza: {
                                group: '.form-group',
@@ -365,22 +366,7 @@ $(document).ready(function()
                            }
                             ,
 
-                            txtRiesgosAmparados: {
-                             group: '.form-group',
-                               validators: {
-                                   notEmpty: {
-                                       message: 'Este campo es requerido.'
-                                   }
-                               },
-                                 regexp: {
-                                      regexp: /^[0-9]+$/,
-
-                                      message: 'Solo debe ingresar números',
-
-                                  },
-                           }
-                           ,
-                            dateFinaliza: {
+                             dateFinaliza: {
                              group: '.form-group',
                                validators: {
                                    notEmpty: {
@@ -390,6 +376,57 @@ $(document).ready(function()
                            }
                            
                            ,
+
+                            txtCantidadCoaseguros: {
+                             group: '.form-group',
+                               validators: {
+                                   notEmpty: {
+                                       message: 'Este campo es requerido.'
+                                   }
+                                   ,
+                                 regexp: {
+                                      regexp: /^[0-9]+$/,
+
+                                      message: 'Solo debe ingresar números',
+
+                                  },
+                               }
+                           }
+                           ,
+                            txtDeducible: {
+                             group: '.form-group',
+                               validators: {
+                                   notEmpty: {
+                                       message: 'Este campo es requerido.'
+                                   }
+                                   ,
+                                 regexp: {
+                                      regexp: /^[0-9]+$/,
+
+                                      message: 'Solo debe ingresar números',
+
+                                  },
+                               }
+                           }
+                           ,
+
+                            txtCoaseguro: {
+                             group: '.form-group',
+                               validators: {
+                                   notEmpty: {
+                                       message: 'Este campo es requerido.'
+                                   }
+                                   ,
+                                 regexp: {
+                                      regexp: /^[0-9]+$/,
+
+                                      message: 'Solo debe ingresar números',
+
+                                  },
+                               }
+                           }
+                           ,
+
                             txtDescripcion: {
                              group: '.form-group',
                                validators: {
@@ -400,78 +437,6 @@ $(document).ready(function()
                            }
 
                            ,
-                            slPais: {
-                             group: '.form-group',
-                               validators: {
-                                   notEmpty: {
-                                       message: 'Este campo es requerido.'
-                                   }
-                               }
-                           }
-                           ,
-                            slEstado: {
-                             group: '.form-group',
-                               validators: {
-                                   notEmpty: {
-                                       message: 'Este campo es requerido.'
-                                   }
-                               }
-                           }
-                           ,
-                            slMunicipio: {
-                             group: '.form-group',
-                               validators: {
-                                   notEmpty: {
-                                       message: 'Este campo es requerido.'
-                                   }
-                               }
-                           }
-                           ,
-                            txtCalle: {
-                             group: '.form-group',
-                               validators: {
-                                   notEmpty: {
-                                       message: 'Este campo es requerido.'
-                                   }
-                               }
-                           }
-                           ,
-                            txtNoExterior: {
-                             group: '.form-group',
-                               validators: {
-                                   notEmpty: {
-                                       message: 'Este campo es requerido.'
-                                   }
-                               }
-                           },
-
-                            txtColonia: {
-                             group: '.form-group',
-                               validators: {
-                                   notEmpty: {
-                                       message: 'Este campo es requerido.'
-                                   }
-                               }
-                           },
-
-                           txtCodigoPostal: {
-                             group: '.form-group',
-                               validators: {
-                                   notEmpty: {
-                                       message: 'Este campo es requerido.'
-                                   }
-                               }
-                           },
-
-                           txtReferencias: {
-                             group: '.form-group',
-                               validators: {
-                                   notEmpty: {
-                                       message: 'Este campo es requerido.'
-                                   }
-                               }
-                           },
-
                             slFormaPago: {
                              group: '.form-group',
                                validators: {
@@ -528,15 +493,8 @@ $(document).ready(function()
                                    },
                                }
                            }
-                           // ,
-                           //  txtRecargos: {
-                           //   group: '.form-group',
-                           //     validators: {
-                           //         notEmpty: {
-                           //             message: 'Este campo es requerido.'
-                           //         }
-                           //     }
-                           // }
+                         
+                           
                            ,
                             slIva: {
                              group: '.form-group',

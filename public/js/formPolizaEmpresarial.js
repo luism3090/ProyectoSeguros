@@ -371,13 +371,14 @@ $(document).ready(function()
                                    notEmpty: {
                                        message: 'Este campo es requerido.'
                                    }
-                               },
+                                   ,
                                  regexp: {
                                       regexp: /^[0-9]+$/,
 
                                       message: 'Solo debe ingresar números',
 
                                   },
+                               }
                            }
                            ,
                             dateFinaliza: {

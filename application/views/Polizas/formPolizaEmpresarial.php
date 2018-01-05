@@ -99,7 +99,7 @@
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtNoPoliza">No de póliza:</label>
-										<input type="text" id="txtNoPoliza" name="txtNoPoliza"  class="form-control" placeholder="Número de póliza">
+										<input type="text" id="txtNoPoliza" name="txtNoPoliza"  class="form-control" placeholder="Número de póliza" minlength="1" maxlength="45">
 									</div>
 								</div>
 
@@ -128,7 +128,7 @@
 								<div class="col-xs-6">
 									<div class="form-group">
 											<label for="txtRiesgosAmparados">No de riesgos amparados:</label>
-											<input type="text" id="txtRiesgosAmparados" name="txtRiesgosAmparados"  class="form-control" placeholder="Número de riesgos amparados" >
+											<input type="text" id="txtRiesgosAmparados" name="txtRiesgosAmparados"  class="form-control" placeholder="Número de riesgos amparados" minlength="1" maxlength="10" >
 									</div>
 								</div>
 
@@ -149,7 +149,7 @@
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtDescripcion">Descripción:</label>
-										<textarea id="txtDescripcion" cols="10" rows="5" name="txtDescripcion"  class="form-control" placeholder="Descripción"></textarea>            
+										<textarea id="txtDescripcion" cols="10" rows="5" name="txtDescripcion"  class="form-control" placeholder="Descripción" minlength="1" maxlength="300"></textarea>            
 									</div>
 								</div>
 							</div>
@@ -226,38 +226,38 @@
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtCalle">Calle:</label> 
-										<input type="text" id="txtCalle" class="form-control" name="txtCalle" placeholder="Calle" >									
+										<input type="text" id="txtCalle" class="form-control" name="txtCalle" placeholder="Calle" minlength="1" maxlength="60">									
 									</div>
 								</div>
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtNoExterior">Número Exterior:</label> 
-										<input type="text" id="txtNoExterior" class="form-control" name="txtNoExterior" placeholder="Número Exterior"  />									
+										<input type="text" id="txtNoExterior" class="form-control" name="txtNoExterior" placeholder="Número Exterior"  minlength="1" maxlength="45" />									
 									</div>
 								</div>
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtNoInterior">Número Interior:</label> 
-										<input type="text" id="txtNoInterior" class="form-control" name="txtNoInterior" placeholder="Número Interior"  />									
+										<input type="text" id="txtNoInterior" class="form-control" name="txtNoInterior" placeholder="Número Interior"  minlength="1" maxlength="45" />									
 									</div>
 								</div>
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtColonia">Colonia:</label> 
-										<input type="text" id="txtColonia" class="form-control" name="txtColonia" placeholder="Colonia" />									
+										<input type="text" id="txtColonia" class="form-control" name="txtColonia" placeholder="Colonia" minlength="1" maxlength="45" />									
 									</div>
 								</div>
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtCodigoPostal">Código postal:</label> 
-										<input type="text" id="txtCodigoPostal" class="form-control" name="txtCodigoPostal" placeholder="Código postal"  />									
+										<input type="text" id="txtCodigoPostal" class="form-control" name="txtCodigoPostal" placeholder="Código postal" minlength="1" maxlength="45" />									
 									</div>
 								</div>
 
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtReferencias">Referencias:</label>
-										<textarea id="txtReferencias" cols="10" rows="5" name="txtReferencias"  class="form-control" placeholder="Referencias"></textarea>            
+										<textarea id="txtReferencias" cols="10" rows="5" name="txtReferencias"  class="form-control" placeholder="Referencias" minlength="1" maxlength="250"></textarea>            
 									</div>
 								</div>
 
@@ -299,14 +299,14 @@
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtPrimaAnual">Prima neta anual:</label> 
-										<input type="text" id="txtPrimaAnual" class="form-control" name="txtPrimaAnual" placeholder="Prima neta anual"  />									
+										<input type="text" id="txtPrimaAnual" class="form-control" name="txtPrimaAnual" placeholder="Prima neta anual" minlength="1" maxlength="10"/>									
 									</div>
 								</div>
 
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtDescuento">Descuento %:</label> 
-										<input type="text" id="txtDescuento" class="form-control" name="txtDescuento" placeholder="Descuento"  />									
+										<input type="text" id="txtDescuento" class="form-control" name="txtDescuento" placeholder="Descuento"  minlength="1" maxlength="10"/>									
 									</div>
 								</div>
 
@@ -314,7 +314,7 @@
 									<div class="form-group">
 										<label for="slIva">Iva:</label> 
 										<select id="slIva" class="form-control" name="slIva">
-										<option value="10">10%</option>
+										<!-- <option value="10">10%</option> -->
 										<option value="16" selected >16%</option>											
 										</select> 
 									</div>

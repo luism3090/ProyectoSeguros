@@ -91,7 +91,7 @@
 					</div>
 					<br><br><br>
 					
-					<form action="" id="formRegistrarPolizaGastosMedicosMayores">
+					<form action="" id="formRegistrarPolizaGastosMedicos">
 						
 						<fieldset>
 							<legend>Datos de póliza:</legend>
@@ -100,7 +100,7 @@
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtNoPoliza">No de póliza:</label>
-										<input type="text" id="txtNoPoliza" name="txtNoPoliza"  class="form-control" placeholder="Número de póliza">
+										<input type="text" id="txtNoPoliza" name="txtNoPoliza"  class="form-control" placeholder="Número de póliza" minlength="1" maxlength="45">
 									</div>
 								</div>
 
@@ -129,21 +129,21 @@
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtCantidadCoaseguros">Cantidad de coaseguros:</label>
-										<input type="text" id="txtCantidadCoaseguros" name="txtCantidadCoaseguros"  class="form-control" placeholder="Cantidad de coaseguros">
+										<input type="text" id="txtCantidadCoaseguros" name="txtCantidadCoaseguros"  class="form-control" placeholder="Cantidad de coaseguros" minlength="1" maxlength="10">
 									</div>
 								</div>
 
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtDeducible">Deducible $:</label>
-										<input type="text" id="txtDeducible" name="txtDeducible"  class="form-control" placeholder="Deducible $">
+										<input type="text" id="txtDeducible" name="txtDeducible"  class="form-control" placeholder="Deducible $" minlength="1" maxlength="10">
 									</div>
 								</div>
 
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtCoaseguro">Coaseguro %:</label>
-										<input type="text" id="txtCoaseguro" name="txtCoaseguro"  class="form-control" placeholder="Coaseguro %">
+										<input type="text" id="txtCoaseguro" name="txtCoaseguro"  class="form-control" placeholder="Coaseguro %" minlength="1" maxlength="10">
 									</div>
 								</div>
 
@@ -157,7 +157,7 @@
 								<div class="col-xs-6">
 										<div class="form-group">
 											<label for="txtDescripcion">Descripción:</label>
-											<textarea id="txtDescripcion" cols="10" rows="5" name="txtDescripcion"  class="form-control" placeholder="Descripción"></textarea>            
+											<textarea id="txtDescripcion" cols="10" rows="5" name="txtDescripcion"  class="form-control" placeholder="Descripción" minlength="1" maxlength="300"></textarea>            
 										</div>
 										
 								</div>
@@ -188,6 +188,17 @@
 								</div>
 							</div>
 						</fieldset>
+
+						<div class="row">
+						<div class="col-xs-6" id='contLugarNacimiento'>
+							<div class="form-group">
+
+							</div>
+						</div>
+						</div>
+
+
+
 						<br><br><br>
 						<fieldset>
 
@@ -197,7 +208,9 @@
 
 								<div class="col-xs-6">
 									<div class="form-group">
-										<label for="slFormaPago">Forma de pago:</label> 
+										<label for="slFormaPago">
+												<strong>Forma de pago: <label id='datosSavePago'></label> </strong>
+										</label> 
 										<select id="slFormaPago" class="form-control" name="slFormaPago">											
 										</select> 
 									</div>
@@ -222,61 +235,36 @@
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtPrimaAnual">Prima neta anual:</label> 
-										<input type="text" id="txtPrimaAnual" class="form-control" name="txtPrimaAnual" placeholder="Prima neta anual"  />									
+										<input type="text" id="txtPrimaAnual" class="form-control" name="txtPrimaAnual" placeholder="Prima neta anual" minlength="1" maxlength="10" />									
 									</div>
 								</div>
 
 								<div class="col-xs-6">
 									<div class="form-group">
-										<label for="txtDescuento">Descuento:</label> 
-										<input type="text" id="txtDescuento" class="form-control" name="txtDescuento" placeholder="Descuento"  />									
+										<label for="txtDescuento">Descuento %:</label> 
+										<input type="text" id="txtDescuento" class="form-control" name="txtDescuento" placeholder="Descuento"  minlength="1" maxlength="10" />									
 									</div>
 								</div>
 
-								<div class="col-xs-6">
-									<div class="form-group">
-										<label for="txtRecargos">Recargos:</label> 
-										<input type="text" id="txtRecargos" class="form-control" name="txtRecargos" placeholder="Recargos"  />									
-									</div>
-								</div>
 
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="slIva">Iva:</label> 
 										<select id="slIva" class="form-control" name="slIva">
-										<option value="1">10%</option>
-										<option value="2">16%</option>											
+										<!-- <option value="10">10%</option> -->
+										<option value="16" selected >16%</option>											
 										</select> 
 									</div>
 								</div>
 
 								<div class="col-xs-6">
 									<div class="form-group">
-									<label for="slIva">Iva:</label> 
-										<input type="text" id="txtIva" class="form-control" name="txtIva" placeholder="$0.00"  />									
+									<label for="txtPago">Pago $:</label> 
+										<input type="text" id="txtPago" class="form-control" name="txtPago" placeholder="$0.00"  />									
 									</div>
 								</div>
 
-								<div class="col-xs-6">
-									<div class="form-group">
-										<label for="txtDerechoPoliza">Derecho de póliza:</label> 
-										<input type="text" id="txtDerechoPoliza" class="form-control" name="txtDerechoPoliza" placeholder="Derecho de póliza"  />									
-									</div>
-								</div>
-
-								<div class="col-xs-6">
-									<div class="form-group">
-										<label for="txtPrima">Prima:</label> 
-										<input type="text" id="txtPrima" class="form-control" name="txtPrima" placeholder="Prima"  />									
-									</div>
-								</div>
 								
-								<div class="col-xs-6">
-									<div class="form-group">
-										<label for="txtObservaciones">Observaciones:</label>
-										<textarea id="txtObservaciones" cols="10" rows="5" name="txtObservaciones"  class="form-control" placeholder="Observaciones"></textarea>            
-									</div>
-								</div>
 
 							</div>
 						</fieldset>
@@ -297,7 +285,98 @@
 
 	<br><br><br><br><br>
 
+<!-- Modal -->
+<div id="modalAlertValidaCliente" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Alerta</h4>
+      </div>
+      <div class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnMdlAlertValidaCliente">Aceptar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div id="modalSuccessRegistroPoliza" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Alerta</h4>
+      </div>
+      <div class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnMdlSuccessRegistroPoliza">Aceptar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div id="modalFormaDePago" class="modal fade" role="dialog" class="modal fade" role="dialog"  data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content" style='width: 700px'>
+      <div class="modal-header">
+       <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+        <h4 class="modal-title">Forma de pago <label></label> </h4>
+      </div>
+      <form id="formValidaPagoTotal">
+
+		      <div class="modal-body">
+
+		      	<div>
+					<strong>Fecha inicial:</strong>
+					<strong id='strFechaInicial' style='font-weight: bold;' ></strong>	
+						
+					<strong style='margin-left: 40px'>Fecha Final:</strong>
+					<strong id='strFechaFinaliza' style='font-weight: bold;'></strong>	
+				</div>
+				
+				<br><br>
+
+		      	<h4 style='width: 200px; margin:0px auto'>Exhibición de mis pagos </h4>
+				
+				<br>
+			    <div class="form-group">
+			      	<label for="txtPagoTotalPoliza">Pago total:</label> 
+					<input type="text" id="txtPagoTotalPoliza"  class="form-control" name="txtPagoTotalPoliza" minlength="1" maxlength="10" placeholder="Pago total"  />	
+				</div>
+				<br>
+		        <table id='tblFormaDePago' style='width: 668px;height: 230px' >
+		        	<tbody>
+		        	</tbody>
+		        </table>
+		      </div>
+		      <div class="modal-footer">
+		      <button type="submit" class="btn btn-primary"  id="btnAceptarPagos">Aceptar</button>
+		      <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCancelarPagos">Cancelar</button>
+		      </div>
+	</form>
+
+    </div>
+
+  </div>
+</div>
 
 
 	<script src="<?php echo base_url(); ?>public/libreriasJS/jquery.min.js"></script>

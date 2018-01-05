@@ -296,7 +296,7 @@
 									<div class="form-group">
 										<label for="slIva">Iva:</label> 
 										<select id="slIva" class="form-control" name="slIva">
-										<option value="10">10%</option>
+										<!-- <option value="10">10%</option> -->
 										<option value="16" selected >16%</option>											
 										</select> 
 									</div>
