@@ -97,20 +97,6 @@
 							<legend>Datos de póliza:</legend>
 							<div class="row">
 
-								<!-- <div class="col-xs-6">
-										<div class="form-group">
-											<label for="slStatus">Status:</label> 
-											<select id="slStatus" class="form-control" name="slStatus">									
-											</select> 
-										</div>
-								</div>
-								<div class="col-xs-6">
-										<div class="form-group">
-											<label for="slTipo">Tipo:</label> 
-											<select id="slTipo" class="form-control" name="slTipo">											
-											</select> 
-										</div>
-								</div> -->
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtNoPoliza">No de póliza:</label>
@@ -123,13 +109,6 @@
 										<label for="slAseguradora">Aseguradora:</label> 
 										<select id="slAseguradora" class="form-control" name="slAseguradora">											
 										</select> 
-									</div>
-								</div>
-								
-								<div class="col-xs-6">
-									<div class="form-group">
-											<label for="txtEmision">Emisión:</label>
-											<input type="text" id="txtEmision" name="txtEmision"  class="form-control" placeholder="Emision" >
 									</div>
 								</div>
 								
@@ -330,7 +309,7 @@
 	<script src="<?php echo base_url(); ?>public/libreriasJS/dataTables.select.min.js"></script>
 
 	<script src="<?php echo base_url(); ?>public/js/cargarSelectPolizas.js"></script>
-	<script src="<?php echo base_url(); ?>public/js/cargarTablaClientes.js"></script>
+	<script src="<?php echo base_url(); ?>public/js/formPolizaGastosMedicosMayores.js"></script>
 	<script src="<?php echo base_url(); ?>public/js/cargarMenu.js"></script>
 	<script src="<?php echo base_url(); ?>public/js/cerrarSesion.js"></script>
 

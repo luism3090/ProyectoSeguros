@@ -29,7 +29,7 @@ $(document).ready(function()
      $("#dateFinaliza").val(hoyMaunAnio);
 
 
-   validaFormRegistrarPolizaEmpresarial();
+     validaFormRegistrarPolizaEmpresarial();
 
 
    	    tablaClientes = $('#tblClientes').DataTable( 
@@ -265,21 +265,21 @@ $(document).ready(function()
        });
 
 
-     $("body").on("change","#dateInicia",function()
-     {
+       $("body").on("change","#dateInicia",function()
+       {
 
-          let  vector = [];
-          let fecha_inicia = $("#dateInicia").val();
+            let  vector = [];
+            let fecha_inicia = $("#dateInicia").val();
 
-          vector = fecha_inicia.split("-");
-          
-          let anio =  parseInt(vector[0]) + 1;
+            vector = fecha_inicia.split("-");
+            
+            let anio =  parseInt(vector[0]) + 1;
 
-          let fecha_fin = anio + "-" +vector[1] + "-" + vector[2];
+            let fecha_fin = anio + "-" +vector[1] + "-" + vector[2];
 
-          $("#dateFinaliza").val(fecha_fin);
+            $("#dateFinaliza").val(fecha_fin);
 
-     });
+       });
 
 
        $("body").on("click",'#chkSumaAsegurada',function()
@@ -565,25 +565,29 @@ $(document).ready(function()
                                           let  datosPoliza = {
                                                       id_aseguradora:$("#slAseguradora").val(),
                                                       id_usuario: tablaClientes.rows($("#tblClientes tbody tr.selected").index()).data().pluck(0)[0],
-                                                      id_tipo_poliza:'1',
+                                                      id_tipo_poliza:'2',
                                                       no_poliza : $("#txtNoPoliza").val().trim(),
                                                       descripcion: $("#txtDescripcion").val().trim(),
                                                       fecha_inicia: $("#dateInicia").val(),
                                                       fecha_finaliza:$("#dateFinaliza").val(),
                                                       suma_asegurada: $("#chkSumaAsegurada").is(":checked") ? '1' : '0' ,
-                                                      valor_comercial: $("#txtValorComercial").val() == undefined ? '' : $("#txtValorComercial").val().trim() 
-
+                                                      valor_comercial: $("#txtValorComercial").val() == undefined ? '' : $("#txtValorComercial").val().trim(),
+                                                      no_riesgos_amparados: $("#txtRiesgosAmparados").val().trim() 
                                                     }
 
                                           // datosCompletosPoliza.push(poliza);
 
-                                         let datosPolizaAuto = 
+                                         let datosPolizaEmpresarial = 
                                                     {
-                                                      marca: $("#txtMarca").val().trim(),
-                                                      modelo: $("#txtModelo").val().trim(),
-                                                      anio: $("#txtAnio").val().trim(),
-                                                      no_serie: $("#txtNoSerie").val().trim(),
-                                                      placas: $("#txtPlacas").val().trim(),
+                                                      id_pais: $("#slPais").val(),
+                                                      id_estado: $("#slEstado").val(),
+                                                      id_municipio: $("#slMunicipio").val(),
+                                                      calle: $("#txtCalle").val().trim(),
+                                                      no_exterior: $("#txtNoExterior").val().trim(),
+                                                      no_interior: $("#txtNoInterior").val().trim(),
+                                                      colonia: $("#txtColonia").val().trim(),
+                                                      codigo_postal: $("#txtCodigoPostal").val().trim(),
+                                                      referencias: $("#txtReferencias").val().trim(),
                                                     }
 
 
@@ -621,30 +625,36 @@ $(document).ready(function()
 
                                           });
 
+                                          let cliente_nacimiento = $("#txtLugarNacimiento").val().trim();
+
                                          
                                             // datosCompletosPoliza.push(polizaPrima);
 
-                                             //console.log(datosCompletosPoliza);
+                                        // console.log(datosPoliza);
+                                        // console.log(datosPolizaEmpresarial);
+                                        // console.log(datosPolizaPrima);
+                                        // console.log(datosPagos);
+                                        // console.log(cliente_nacimiento);
 
 
                                             $.ajax(
                                                       {
                                                           type: "POST",
-                                                          url: base_url+"Polizas/registrarPolizaAutos",
+                                                          url: base_url+"Polizas/registrarPolizaEmpresarial",
                                                           dataType:"json",
-                                                          data: {datosPoliza: datosPoliza , datosPolizaAuto :datosPolizaAuto , datosPolizaPrima : datosPolizaPrima, datosPagos : datosPagos},
+                                                          data: {datosPoliza: datosPoliza , cliente_nacimiento : cliente_nacimiento ,datosPolizaEmpresarial :datosPolizaEmpresarial , datosPolizaPrima : datosPolizaPrima, datosPagos : datosPagos},
                                                           async: true,
                                                           success: function(result)
                                                               {
                                                                 
                                                                 if(result.msjConsulta=="OK")
                                                                 {
-                                                                      $("#modalSuccessRegistroPoliza .modal-body").html("<h4>La poliza de autos fue registra correctamente.<h4>");
+                                                                      $("#modalSuccessRegistroPoliza .modal-body").html("<h4>La poliza empresarial fue registra correctamente.<h4>");
                                                                       $("#modalSuccessRegistroPoliza").modal("show");
                                                                 }
                                                                 else
                                                                 {
-                                                                       $("#modalSuccessRegistroPoliza .modal-body").html("<h4>Ocurrio un error al registrar la poliza de autos.<h4>");
+                                                                       $("#modalSuccessRegistroPoliza .modal-body").html("<h4>Ocurrio un error al registrar la poliza empresarial.<h4>");
                                                                         $("#modalSuccessRegistroPoliza").modal("show");
                                                                 }
 

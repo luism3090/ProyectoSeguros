@@ -451,7 +451,6 @@
 	<script src="<?php echo base_url(); ?>public/libreriasJS/dataTables.select.min.js"></script>
 
 	<script src="<?php echo base_url(); ?>public/js/cargarSelectPolizas.js"></script>
-	<!-- <script src="<?php echo base_url(); ?>public/js/cargarTablaClientes.js"></script> -->
 	<script src="<?php echo base_url(); ?>public/js/formPolizaEmpresarial.js"></script>
 	<script src="<?php echo base_url(); ?>public/js/cargarMenu.js"></script>
 	<script src="<?php echo base_url(); ?>public/js/cerrarSesion.js"></script>

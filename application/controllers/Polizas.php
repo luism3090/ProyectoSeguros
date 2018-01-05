@@ -167,6 +167,27 @@ class Polizas extends CI_Controller
 
 
 	}
+
+
+
+	public function registrarPolizaEmpresarial()
+	{
+		
+		$datosPoliza = $_REQUEST["datosPoliza"];
+		$cliente_nacimiento = $_REQUEST["cliente_nacimiento"];
+		$datosPolizaEmpresarial = $_REQUEST["datosPolizaEmpresarial"];
+		$datosPolizaPrima = $_REQUEST["datosPolizaPrima"];
+		$datosPagos = $_REQUEST["datosPagos"];
+
+
+		$this->load->model('Polizas/insertarPolizaEmpresarial'); 
+		$datosQuery = $this->insertarPolizaEmpresarial->insertPolizaEmpresarial($datosPoliza,$datosPolizaEmpresarial,$datosPolizaPrima,$datosPagos,$cliente_nacimiento);
+
+
+		echo json_encode($datosQuery);
+
+
+	}
 	
 
 
