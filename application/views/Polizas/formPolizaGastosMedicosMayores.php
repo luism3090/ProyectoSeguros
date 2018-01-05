@@ -128,32 +128,44 @@
 
 								<div class="col-xs-6">
 									<div class="form-group">
-										<label for="txtCantidadCoaseguros">Cantidad de coaseguros:</label>
-										<input type="text" id="txtCantidadCoaseguros" name="txtCantidadCoaseguros"  class="form-control" placeholder="Cantidad de coaseguros" minlength="1" maxlength="10">
+										<label for="slCoaseguro">Deducible $:</label>
+										<select id="slCoaseguro" class="form-control" name="slCoaseguro">
+										<option value="50" selected >50%</option>
+										<option value="40">60%</option>
+										<option value="30">70%</option>
+										<option value="20">80%</option>
+										<option value="10">90%</option>
+										<option value="0">100%</option>
+										</select> 
 									</div>
 								</div>
+
 
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtDeducible">Deducible $:</label>
-										<input type="text" id="txtDeducible" name="txtDeducible"  class="form-control" placeholder="Deducible $" minlength="1" maxlength="10">
+										<input type="text" id="txtDeducible" name="txtDeducible"  class="form-control" placeholder="Coaseguro %" minlength="1" maxlength="30">
 									</div>
 								</div>
+
 
 								<div class="col-xs-6">
 									<div class="form-group">
-										<label for="txtCoaseguro">Coaseguro %:</label>
-										<input type="text" id="txtCoaseguro" name="txtCoaseguro"  class="form-control" placeholder="Coaseguro %" minlength="1" maxlength="10">
+											<label for="txtCantidadAsegurada">Cantidad asegurada:</label>
+											<input type="input" id="txtCantidadAsegurada" name="txtCantidadAsegurada"  class="form-control" placeholder="Cantidad asegurada" minlength="1" maxlength="30" >
 									</div>
 								</div>
+
 
 								<div class="col-xs-6">
 									<div class="form-group">
-											<label for="chkSumaAsegurada">Suma asegurada:</label>
-											<input type="checkbox" id="chkSumaAsegurada" name="chkSumaAsegurada"  class="form-control" style="width: 20px;margin: auto;" >
+										<label for="txtCantidadCoaseguros">Cantidad de coaseguros:</label>
+										<input type="text" id="txtCantidadCoaseguros" name="txtCantidadCoaseguros"  class="form-control" placeholder="Cantidad de coaseguros" minlength="1" maxlength="30">
 									</div>
 								</div>
+								
 
+								
 								<div class="col-xs-6">
 										<div class="form-group">
 											<label for="txtDescripcion">Descripción:</label>

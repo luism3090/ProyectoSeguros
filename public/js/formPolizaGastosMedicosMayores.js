@@ -377,7 +377,7 @@ $(document).ready(function()
                            
                            ,
 
-                            txtCantidadCoaseguros: {
+                           slCoaseguro: {
                              group: '.form-group',
                                validators: {
                                    notEmpty: {
@@ -407,10 +407,9 @@ $(document).ready(function()
 
                                   },
                                }
-                           }
-                           ,
+                           },
 
-                            txtCoaseguro: {
+                            txtCantidadAsegurada: {
                              group: '.form-group',
                                validators: {
                                    notEmpty: {
@@ -425,8 +424,25 @@ $(document).ready(function()
                                   },
                                }
                            }
-                           ,
 
+
+                            txtCantidadCoaseguros: {
+                             group: '.form-group',
+                               validators: {
+                                   notEmpty: {
+                                       message: 'Este campo es requerido.'
+                                   }
+                                   ,
+                                 regexp: {
+                                      regexp: /^[0-9]+$/,
+
+                                      message: 'Solo debe ingresar números',
+
+                                  },
+                               }
+                           }
+                           
+                           ,
                             txtDescripcion: {
                              group: '.form-group',
                                validators: {
