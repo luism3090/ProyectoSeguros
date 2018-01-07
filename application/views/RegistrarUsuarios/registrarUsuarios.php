@@ -46,7 +46,7 @@
 						                                        <p class="text-left"><strong><?php echo $this->session->userdata('nombre'); ?></strong></p>
 						                                        <p class="text-left small"><?php echo $this->session->userdata('email');?></p>
 						                                        <p class="text-left">
-						                                            <a href="#" class="btn btn-primary btn-block btn-sm" id="btnUpdateMyData">Actualizar Datos</a>
+						                                            <!-- <a href="#" class="btn btn-primary btn-block btn-sm" id="btnUpdateMyData">Actualizar Datos</a> -->
 						                                        </p>
 						                                    </div>
 						                                </div>

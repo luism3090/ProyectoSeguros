@@ -23,14 +23,22 @@ class HookValidarDatosUsuario
 		
 		// primero verificamos si el usuario esta logueado 
 
-		if($controlador == 'Login')
+		//echo $controlador;
+		// echo "<br>";
+		// echo $this->ci->session->userdata('logueado')." / algo";
+		// echo "<br>";
+		// echo $this->ci->session->userdata('id_rol')." / algo";
+
+		if($controlador == 'Login' || $controlador == 'login')
 		{
 			if($this->ci->session->userdata('logueado') === true)
 			{
 
+				//echo "logueado ".$this->ci->session->userdata('id_rol');
+
 				if($this->ci->session->userdata('id_rol') !="3")
 				{
-					//echo "entro a home";
+					
 					//exit();
 					redirect('Home');
 					exit();
@@ -69,6 +77,28 @@ class HookValidarDatosUsuario
 					
 				}
 				
+			}
+			else
+			{
+				// if( $this->ci->input->is_ajax_request())
+				// {
+
+				// 	$datos["baja"]=true;
+				// 	$datos["url"]= base_url()."Home";
+
+				// 	echo json_encode($datos);
+
+				// 	//redirect(, 'location', 302);
+					
+				// 	exit();
+					
+				// }
+				// else
+				// {
+				// 	redirect('Home');
+				// 	exit();
+					
+				// }
 			}
 	
 		}

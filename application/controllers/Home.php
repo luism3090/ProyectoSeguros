@@ -32,7 +32,7 @@ class Home extends CI_Controller
 
 			$dataMenu = '
 								<li>
-									<a href="'.base_url().'home"><i class="fa fa-money"></i>Pólizas</a>
+									<a href="'.base_url().'Home"><i class="fa fa-money"></i>Pólizas</a>
 
 								</li>
 						
@@ -47,7 +47,6 @@ class Home extends CI_Controller
 
 											 <ul class="sub-menu collapse" id="Usuarios" aria-expanded="false" style="">
 										    	 <li><a href="'.base_url().'RegistrarUsuarios"><i class=""></i>Registrar</a></li>
-										    	 <li><a href="'.base_url().'ModificarUsuarios"><i class=""></i>Modificar</a></li>
 											 </ul>
 										</li>
 

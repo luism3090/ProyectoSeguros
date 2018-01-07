@@ -80,11 +80,16 @@ var base_url = $("body").attr("data-base-url");
 	          success: function(result)
 		          {
 		          	
-		          	//console.log(result);
+		          	
+
+		          	console.log(result);
 
 		          	if(result.msjCantidadRegistros > 0)
 		          	{
 		          		//location.href = result.base_url;
+
+		          		debugger;
+		          		
 		          		location.href = result.base_url;
 		          	}
 		          	else
