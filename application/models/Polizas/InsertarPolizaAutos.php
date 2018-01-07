@@ -151,8 +151,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				
 
 				$sql3 = "insert into poliza_datos_forma_pagos (
-															
 															id_poliza,
+															fecha_pago,
 															cantidad_pago,
 															pagado
 															
@@ -161,13 +161,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 														(
 														 	?,
 														 	?,
+														 	?,
 														 	null
 														)
 
 						"; 
 
 				$query = $this->db->query($sql3,array($id_poliza,
-													 	$datosPagos[$x]["cantidad_pago"]
+													 	$datosPagos[$x]["fecha_pago"],
+													 	$datosPagos[$x]["cantidad_pago"],
 													 )
 										  );
 				

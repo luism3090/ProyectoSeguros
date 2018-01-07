@@ -128,7 +128,7 @@
 
 								<div class="col-xs-6">
 									<div class="form-group">
-										<label for="slCoaseguro">Deducible $:</label>
+										<label for="slCoaseguro">Coaseguro %:</label>
 										<select id="slCoaseguro" class="form-control" name="slCoaseguro">
 										<option value="50" selected >50%</option>
 										<option value="40">60%</option>
@@ -140,19 +140,19 @@
 									</div>
 								</div>
 
-
+								
 								<div class="col-xs-6">
 									<div class="form-group">
-										<label for="txtDeducible">Deducible $:</label>
-										<input type="text" id="txtDeducible" name="txtDeducible"  class="form-control" placeholder="Coaseguro %" minlength="1" maxlength="30">
+											<label for="txtCantidadAsegurada">Cantidad asegurada:</label>
+											<input type="input" id="txtCantidadAsegurada" name="txtCantidadAsegurada"  class="form-control" placeholder="Cantidad asegurada" minlength="1" maxlength="30" >
 									</div>
 								</div>
 
 
 								<div class="col-xs-6">
 									<div class="form-group">
-											<label for="txtCantidadAsegurada">Cantidad asegurada:</label>
-											<input type="input" id="txtCantidadAsegurada" name="txtCantidadAsegurada"  class="form-control" placeholder="Cantidad asegurada" minlength="1" maxlength="30" >
+										<label for="txtDeducible">Deducible $:</label>
+										<input type="text" id="txtDeducible" name="txtDeducible"  class="form-control" placeholder="Deducible %" minlength="1" maxlength="30">
 									</div>
 								</div>
 

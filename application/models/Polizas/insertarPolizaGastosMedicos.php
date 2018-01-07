@@ -1,7 +1,7 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-	class insertarPolizaEmpresarial extends CI_Model
+	class insertarPolizaGastosMedicos extends CI_Model
 	{
 		public function __construct()
 		{
@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 
 
-		public function insertPolizaEmpresarial($datosPoliza,$datosPolizaEmpresarial,$datosPolizaPrima,$datosPagos,$cliente_nacimiento)
+		public function insertPolizaGastosMedicos($datosPoliza,$datosPolizaPrima,$datosPagos,$cliente_nacimiento)
 		{
 
 			$this->db->trans_begin();
@@ -27,13 +27,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 											fecha_inicia,
 											fecha_finaliza,
 											suma_asegurada,
-											valor_comercial,
-											no_riesgos_amparados,
+											cantidad_coaseguros,
+											deducible,
+											coaseguro,
 											fecha_registro
 										) 
 										values
 										(
 											null,
+											?,
 											?,
 											?,
 											?,
@@ -58,8 +60,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 												 $datosPoliza["fecha_inicia"],
 												 $datosPoliza["fecha_finaliza"],
 												 $datosPoliza["suma_asegurada"],
-												 $datosPoliza["valor_comercial"],
-												 $datosPoliza["no_riesgos_amparados"]
+												 $datosPoliza["cantidad_coaseguros"],
+												 $datosPoliza["deducible"],
+												 $datosPoliza["coaseguro"]
 												 )
 									  );
 
@@ -85,51 +88,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 			$id_poliza = $query->result()[0]->id_poliza;
 
-
-			// insertando en la tabla de polizas de autos 
-
-			$sql3 = "insert into poliza_datos_empresarial (
-														id_poliza_datos_empresarial,
-														id_poliza,
-														id_pais,
-														id_estado,
-														id_municipio,
-														calle,
-														no_exterior,
-														no_interior,
-														colonia,
-														codigo_postal,
-														referencias
-													) 
-													values 
-													(
-													 	null,
-													 	?,
-													 	?,
-													 	?,
-													 	?,
-													 	?,
-													 	?,
-													 	?,
-													 	?,
-													 	?,
-													 	?
-													)
-
-					"; 
-
-			$query = $this->db->query($sql3,array($id_poliza,
-												 $datosPolizaEmpresarial["id_pais"],
-												 $datosPolizaEmpresarial["id_estado"],
-												 $datosPolizaEmpresarial["id_municipio"],
-												 $datosPolizaEmpresarial["calle"],
-												 $datosPolizaEmpresarial["no_exterior"],
-												 $datosPolizaEmpresarial["no_interior"],
-												 $datosPolizaEmpresarial["colonia"],
-												 $datosPolizaEmpresarial["codigo_postal"],
-												 $datosPolizaEmpresarial["referencias"]
-												 )
-									  );
 
 
 
@@ -179,7 +137,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				
 
 				$sql3 = "insert into poliza_datos_forma_pagos (
-															
 															id_poliza,
 															fecha_pago,
 															cantidad_pago,

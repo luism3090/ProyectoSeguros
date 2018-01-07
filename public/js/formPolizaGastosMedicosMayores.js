@@ -282,43 +282,50 @@ $(document).ready(function()
        });
 
 
-       // $("body").on("click",'#chkSumaAsegurada',function()
-       // {
-       //          let temp = '';
+        $("body").on("blur",'#txtCantidadAsegurada',function()
+       {
 
-       //          if($(this).is(":checked"))
-       //          {
-       //              temp = `<label for="txtValorComercial">Valor comercial:</label>
-       //                      <input type="text" id="txtValorComercial" name="txtValorComercial"  class="form-control" placeholder="Valor comercial" >`;                      
+                let coaseguro = $("#slCoaseguro").val();
 
-       //              $("#contValorComercial .form-group").html(temp);
-       //          }
-       //          else
-       //          {
-       //              $("#contValorComercial .form-group").html("");
-       //          }
-                
+                let cantidad_asegurada = $("#txtCantidadAsegurada").val().trim();
+
+                let deducible = cantidad_asegurada * (coaseguro / 100);
+
+                $("#txtDeducible").val(deducible);
 
 
-       //          $('#formRegistrarPolizaGastosMedicos').bootstrapValidator('addField','txtValorComercial',{
-       //                   group: '.form-group',
-       //                   validators: {
-       //                   notEmpty: {
-       //                       message: 'Este campo es requerido'
-       //                   },
-       //                           regexp: {
-       //                                regexp: /^[0-9]+$/,
+       });
 
-       //                                message: 'Solo debe ingresar números',
+       $("body").on("keyup",'#txtCantidadAsegurada',function()
+       {
 
-       //                            },
+         
 
-       //               }
-       //         });
+                let coaseguro = $("#slCoaseguro").val();
 
+                let cantidad_asegurada = $(this).val().trim();
+
+                let deducible = cantidad_asegurada * (coaseguro / 100);
+
+                $("#txtDeducible").val(deducible);
 
 
-       // });
+       });
+
+
+       $("body").on("change",'#slCoaseguro',function()
+       {
+
+                let coaseguro = $(this).val();
+
+                let cantidad_asegurada = $("#txtCantidadAsegurada").val().trim();
+
+                let deducible = cantidad_asegurada * (coaseguro / 100);
+
+                $("#txtDeducible").val(deducible);
+
+
+       });
 
 
        	function validaFormRegistrarPolizaGastosMedicos()
@@ -391,8 +398,26 @@ $(document).ready(function()
 
                                   },
                                }
-                           }
-                           ,
+                           },
+
+
+                            txtCantidadAsegurada: {
+                             group: '.form-group',
+                               validators: {
+                                   notEmpty: {
+                                       message: 'Este campo es requerido.'
+                                   }
+                                   ,
+                                 regexp: {
+                                      regexp: /^[0-9]+$/,
+
+                                      message: 'Solo debe ingresar números',
+
+                                  },
+                               }
+                           },
+
+                           
                             txtDeducible: {
                              group: '.form-group',
                                validators: {
@@ -409,22 +434,7 @@ $(document).ready(function()
                                }
                            },
 
-                            txtCantidadAsegurada: {
-                             group: '.form-group',
-                               validators: {
-                                   notEmpty: {
-                                       message: 'Este campo es requerido.'
-                                   }
-                                   ,
-                                 regexp: {
-                                      regexp: /^[0-9]+$/,
-
-                                      message: 'Solo debe ingresar números',
-
-                                  },
-                               }
-                           }
-
+                           
 
                             txtCantidadCoaseguros: {
                              group: '.form-group',
@@ -539,33 +549,18 @@ $(document).ready(function()
                                           let  datosPoliza = {
                                                       id_aseguradora:$("#slAseguradora").val(),
                                                       id_usuario: tablaClientes.rows($("#tblClientes tbody tr.selected").index()).data().pluck(0)[0],
-                                                      id_tipo_poliza:'2',
+                                                      id_tipo_poliza:'3',
                                                       no_poliza : $("#txtNoPoliza").val().trim(),
                                                       descripcion: $("#txtDescripcion").val().trim(),
                                                       fecha_inicia: $("#dateInicia").val(),
                                                       fecha_finaliza:$("#dateFinaliza").val(),
-                                                      suma_asegurada: $("#chkSumaAsegurada").is(":checked") ? '1' : '0' ,
-                                                      valor_comercial: $("#txtValorComercial").val() == undefined ? '' : $("#txtValorComercial").val().trim(),
-                                                      no_riesgos_amparados: $("#txtRiesgosAmparados").val().trim() 
+                                                      suma_asegurada: $("#txtCantidadAsegurada").val().trim(),
+                                                      cantidad_coaseguros: $("#txtCantidadCoaseguros").val().trim(),
+                                                      deducible: $("#txtDeducible").val().trim(),
+                                                      coaseguro: $("#txtCantidadAsegurada").val().trim(),
                                                     }
 
                                           // datosCompletosPoliza.push(poliza);
-
-                                         let datosPolizaEmpresarial = 
-                                                    {
-                                                      id_pais: $("#slPais").val(),
-                                                      id_estado: $("#slEstado").val(),
-                                                      id_municipio: $("#slMunicipio").val(),
-                                                      calle: $("#txtCalle").val().trim(),
-                                                      no_exterior: $("#txtNoExterior").val().trim(),
-                                                      no_interior: $("#txtNoInterior").val().trim(),
-                                                      colonia: $("#txtColonia").val().trim(),
-                                                      codigo_postal: $("#txtCodigoPostal").val().trim(),
-                                                      referencias: $("#txtReferencias").val().trim(),
-                                                    }
-
-
-                                         // datosCompletosPoliza.push(polizaAuto);
 
 
                                         let datosPolizaPrima = 
@@ -590,6 +585,7 @@ $(document).ready(function()
                                           {
 
                                                  let pagos = {
+                                                            fecha_pago:$(this).siblings().text().split("/")[2] + "-" + $(this).siblings().text().split("/")[1] + "-" + $(this).siblings().text().split("/")[0],
                                                             cantidad_pago : $(this).val().trim(),
                                                             pagado : ''
                                                  }
@@ -614,16 +610,16 @@ $(document).ready(function()
                                             $.ajax(
                                                       {
                                                           type: "POST",
-                                                          url: base_url+"Polizas/registrarPolizaEmpresarial",
+                                                          url: base_url+"Polizas/registrarPolizaGastosMedicos",
                                                           dataType:"json",
-                                                          data: {datosPoliza: datosPoliza , cliente_nacimiento : cliente_nacimiento ,datosPolizaEmpresarial :datosPolizaEmpresarial , datosPolizaPrima : datosPolizaPrima, datosPagos : datosPagos},
+                                                          data: {datosPoliza: datosPoliza , cliente_nacimiento : cliente_nacimiento , datosPolizaPrima : datosPolizaPrima, datosPagos : datosPagos},
                                                           async: true,
                                                           success: function(result)
                                                               {
                                                                 
                                                                 if(result.msjConsulta=="OK")
                                                                 {
-                                                                      $("#modalSuccessRegistroPoliza .modal-body").html("<h4>La poliza empresarial fue registra correctamente.<h4>");
+                                                                      $("#modalSuccessRegistroPoliza .modal-body").html("<h4>La poliza de gastos médicos mayores fue registra correctamente.<h4>");
                                                                       $("#modalSuccessRegistroPoliza").modal("show");
                                                                 }
                                                                 else

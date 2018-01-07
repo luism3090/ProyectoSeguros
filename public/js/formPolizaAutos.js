@@ -178,6 +178,62 @@ $(document).ready(function()
        }
 
 
+       $("body").on("blur","#txtPagoTotalPoliza",function()
+       { 
+              let formaPago = $("#tblFormaDePago tbody tr input").length;
+
+              let pagoTotal = $("#txtPagoTotalPoliza").val().trim();
+
+              if( !isNaN(pagoTotal) && pagoTotal != "" )
+              {
+               
+
+                    pagoTotal = parseInt($("#txtPagoTotalPoliza").val());
+
+                   let pagos = 0;
+
+                    switch(formaPago)
+                    {
+                         case 12:
+
+                              pagos = pagoTotal / 12;
+
+                              $("#tblFormaDePago tbody tr input").val(pagos);
+
+                         break;
+
+                         case 2:
+
+                              pagos = pagoTotal / 2;
+
+                              $("#tblFormaDePago tbody tr input").val(pagos);
+
+                         break;
+
+                         case 4:
+
+                              pagos = pagoTotal / 4;
+
+                              $("#tblFormaDePago tbody tr input").val(pagos);
+
+                         break;
+
+
+                    } 
+
+
+
+              }
+              else
+              {
+                    $("#tblFormaDePago tbody tr input").val("");
+              }
+
+              
+
+
+       });
+
        $("body").on("keyup","#txtPagoTotalPoliza",function()
        { 
               let formaPago = $("#tblFormaDePago tbody tr input").length;
@@ -533,6 +589,8 @@ $(document).ready(function()
                                           {
 
                                                  let pagos = {
+
+                                                            fecha_pago:$(this).siblings().text().split("/")[2] + "-" + $(this).siblings().text().split("/")[1] + "-" + $(this).siblings().text().split("/")[0],
                                                             cantidad_pago : $(this).val().trim(),
                                                             pagado : ''
                                                  }

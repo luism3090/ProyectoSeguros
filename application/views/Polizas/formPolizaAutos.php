@@ -418,7 +418,7 @@
 				
 				<br><br>
 
-		      	<h4 style='width: 200px; margin:0px auto'>Exhibición de mis pagos </h4>
+		      	<h4 style='width: 200px; margin:0px auto'>Exhibición de pagos </h4>
 				
 				<br>
 			    <div class="form-group">

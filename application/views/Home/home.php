@@ -7,6 +7,10 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/estiloHomeMenu.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/estiloBarraSuperior.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/dataTables.bootstrap.min.css"> 
+	<!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/select.dataTables.min.css"> -->
+
+	
+	
 
 	
 </head>
@@ -102,63 +106,17 @@
 										<caption style="text-align: center"><h4><strong>Usuarios dados de alta</strong></h4></caption>
 										<thead>
 							                    <tr>
-								                      <th>Código</th>
+								                      <th>id_poliza</th>
 								                      <th>#Póliza</th>
 								                      <th>Tipo de Póliza</th>
 								                      <th>Cliente</th>
-								                      <th>Vencimiento</th>
+								                      <th>Forma de Pago</th>
+								                      <th>Fecha inicio</th>
+								                      <th>Fecha vencimiento</th>
 								                      <th>Aseguradora</th>
-								                      <th>Enviar Email</th>
+								                      <th>Pagos</th>
 							                    </tr>
 							            </thead>
-					                    <tbody>
-					                    	<tr>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td><button  type="button" class="btn btn-success sendEmailUser"> <span class="glyphicon glyphicon-envelope"></span> Enviar Email</button></td>
-					                    	</tr>
-					                    	<tr>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td><button  type="button" class="btn btn-success sendEmailUser"> <span class="glyphicon glyphicon-envelope"></span> Enviar Email</button></td>
-					                    	</tr>
-					                    	<tr>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td><button  type="button" class="btn btn-success sendEmailUser"> <span class="glyphicon glyphicon-envelope"></span> Enviar Email</button></td>
-					                    	</tr>
-					                    	<tr>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td><button  type="button" class="btn btn-success sendEmailUser"> <span class="glyphicon glyphicon-envelope"></span> Enviar Email</button></td>
-					                    	</tr>
-					                    	<tr>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td><button  type="button" class="btn btn-success sendEmailUser"> <span class="glyphicon glyphicon-envelope"></span> Enviar Email</button></td>
-					                    	</tr>
-					                    </tbody>
-						                
 						        </table>
 						</div>
 				</div>
@@ -167,72 +125,56 @@
 	</div>
 
 
-       <!-- Modal -->
-<div id="modalUpdateUsuarioCabecera" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static" >
+<!-- Modal -->
+<div id="modalPagosPoliza" class="modal fade" role="dialog" class="modal fade" role="dialog"  data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog">
 
     <!-- Modal content-->
-    <div class="modal-content">
-	      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal">&times;</button>
-		        <h4 class="modal-title">Modificar usuario</h4>
-	      </div>
-	      <form id="FormUpdateUsuarioCabecera">
+    <div class="modal-content" style='width: 800px'>
+      <div class="modal-header">
+       <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+        <h4 class="modal-title">Pago de póliza </h4>
+      </div>
+      
+
 		      <div class="modal-body">
-			      	<div class="row">
-			        	<div class="col-xs-12">
-				        		
-									<div class="form-group">
-										<label for="txtNombreCab">Nombre:</label>
-										<input type="text" id="txtNombreCab" name="txtNombreCab" class="form-control" placeholder="Nombre">
-									</div>
-									<div class="form-group">
-										<label for="txtApellidosCab">Apellidos:</label>
-										<input type="text" id="txtApellidosCab" name="txtApellidosCab" class="form-control" placeholder="Apellidos">
-									</div>
-									<div class="form-group">
-										<label for="txtEmailCab">Email:</label>
-										<input type="text" id="txtEmailCab" name="txtEmailCab"  class="form-control" placeholder="Email">
-									</div>
-									<div class="form-group">
-										<label for="txtPasswordCab">Password:</label>
-										<input type="text" id="txtPasswordCab" name="txtPasswordCab"  class="form-control" placeholder="Password" minlength="5"  maxlength="20" >
-									</div>
-									<div class="form-group">
-										<label for="slTipoUsuarioCab">Tipo de usuario:</label> 
-										<select id="slTipoUsuarioCab" class="form-control" name="slTipoUsuarioCab">
-											<option value="1">Super Usuario</option>
-											<option value="2">Administrador</option> 
-											<option value="3" selected>Cliente</option>
-										</select> 
-									</div>
 
-									<div class="form-group">
-											 <label for="fileFotoCab" class="center-block text-center" >Foto:</label> 
-												<div class="kv-avatar center-block text-center" style="width:200px">
-									                <input id="fileFotoCab" name="avatar-2" type="file" class="file-loading" >
-									            </div>
+		      	<div>
+					<strong>Fecha inicial:</strong>
+					<strong id='strFechaInicial' style='font-weight: bold;' ></strong>	
+						
+					<strong style='margin-left: 40px'>Fecha Final:</strong>
+					<strong id='strFechaFinaliza' style='font-weight: bold;'></strong>	
+				</div>
+				
+				<br>
 
-									  </div>
-											<br><br>
-									<input type="hidden" id="txtIdUsuarioCab" class="form-control">
-									
-								
-			        	</div>
-			        </div>
+		      	<h4 style='width: 200px; margin:0px auto'>Exhibición de pagos </h4>
+				
+				<br>
+			    <div class="form-group">
+					<label for="txtPagoTotalPoliza">Forma de pago:</label> <label id='lblFormaPago'></label> 
+			      	<label for="txtPagoTotalPoliza" style="margin-left: 55px";>Pago total:</label> <strong>$<strong><strong id='txtPagoTotalPoliza'></strong>	
+				</div>
+				<br>
+		        <table id='tblFormaDePago' style='width: 768px;height: 285px' >
+		        	<tbody>
+		        	</tbody>
+		        </table>
 		      </div>
 		      <div class="modal-footer">
-				      <button type="submit" class="btn btn-primary"  id="btnModificarUsuarioCab" >Modificar</button>
-				      <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+		      				<button type="button" class="btn btn-primary"  data-dismiss="modal" id="btnAceptarPagos">Aceptar</button>
 		      </div>
-	      </form>
+	
+
     </div>
 
   </div>
 </div>
 
-   <!-- Modal -->
-<div id="modalAlertaUsuarioCabecera" class="modal fade" role="dialog">
+
+
+<div id="modalSuccessPagoPoliza" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -245,23 +187,37 @@
         
       </div>
       <div class="modal-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal" id="btnMdlAlertaUpdateUsuario">Aceptar</button>
+      <button type="button" class="btn btn-primary" data-dismiss="modal" >Aceptar</button>
       </div>
     </div>
 
   </div>
 </div>
 
+
+
+
 	<br><br><br><br><br><br>
 
+	
 	<script src="<?php echo base_url(); ?>public/libreriasJS/jquery.min.js"></script>
 	<script src="<?php echo base_url(); ?>public/libreriasJS/bootstrap.min.js"></script>
 	<script src="<?php echo base_url(); ?>public/libreriasJS/bootstrapValidator.js"></script>
+
+
 	<script src="<?php echo base_url(); ?>public/libreriasJS/jquery.dataTables.min.js"></script>
 	<script src="<?php echo base_url(); ?>public/libreriasJS/dataTables.bootstrap.min.js"></script>
+
+	<script src="http://momentjs.com/downloads/moment.min.js"></script>
+
 	
-	<script src="<?php echo base_url(); ?>public/js/cargarMenu.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/locale/es-us.js">  </script>	 -->
+
+
+	<!-- <script src="<?php echo base_url(); ?>public/libreriasJS/dataTables.select.min.js"></script> -->
+	
 	<script src="<?php echo base_url(); ?>public/js/cargarTablaPolizas.js"></script>
+	<script src="<?php echo base_url(); ?>public/js/cargarMenu.js"></script>
 	<script src="<?php echo base_url(); ?>public/js/cerrarSesion.js"></script> 
 
 

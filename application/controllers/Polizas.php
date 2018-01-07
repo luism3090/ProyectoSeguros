@@ -188,7 +188,66 @@ class Polizas extends CI_Controller
 
 
 	}
+
+
+	public function registrarPolizaGastosMedicos()
+	{
+		
+		$datosPoliza = $_REQUEST["datosPoliza"];
+		$cliente_nacimiento = $_REQUEST["cliente_nacimiento"];
+		$datosPolizaPrima = $_REQUEST["datosPolizaPrima"];
+		$datosPagos = $_REQUEST["datosPagos"];
+
+
+		$this->load->model('Polizas/insertarPolizaGastosMedicos'); 
+		$datosQuery = $this->insertarPolizaGastosMedicos->insertPolizaGastosMedicos($datosPoliza,$datosPolizaPrima,$datosPagos,$cliente_nacimiento);
+
+
+		echo json_encode($datosQuery);
+
+
+	}
 	
+
+	public function cargarDetallePolizas()
+	{
+
+
+		$this->load->model('Polizas/Model_Polizas');
+		$datos = $this->Model_Polizas->cargarDetallePolizas($_REQUEST);
+
+		echo json_encode($datos);
+
+	}
+
+
+	public function getPagosPoliza()
+	{
+		$id_poliza = $_REQUEST['id_poliza'];
+
+		$this->load->model('Polizas/Model_Polizas');
+		$datos = $this->Model_Polizas->getPagosPoliza($id_poliza);
+
+		echo json_encode($datos);
+
+	}
+
+
+	public function hacerPagosPoliza()
+	{
+		$id_datos_forma_pago = $_REQUEST['id_datos_forma_pago'];
+		$pagado = $_REQUEST['pagado'];
+		$fecha = $_REQUEST['fecha'];
+		
+
+		$this->load->model('Polizas/Model_Polizas');
+		$datos = $this->Model_Polizas->hacerPagosPoliza($id_datos_forma_pago,$pagado,$fecha);
+
+		echo json_encode($datos);
+
+	}
+
+
 
 
 }

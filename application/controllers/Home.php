@@ -30,7 +30,14 @@ class Home extends CI_Controller
 		if($this->session->userdata('id_rol') == '1' || $this->session->userdata('id_rol') == '2' ) 
 		{
 
-			$dataMenu = '<li class="active">
+			$dataMenu = '
+								<li>
+									<a href="'.base_url().'home"><i class="fa fa-money"></i>Pólizas</a>
+
+								</li>
+						
+		
+								<li class="active">
 
 											 <a href="#" data-toggle="collapse" data-target="#Usuarios" class="collapse active" aria-expanded="false">
 										    	 <i class="fa fa-user"></i>
@@ -49,7 +56,7 @@ class Home extends CI_Controller
 
 											 <a href="#" data-toggle="collapse" data-target="#Pólizas" class="collapse active" aria-expanded="true">
 										    	 <i class="fa fa-expeditedssl"></i>
-										    	 <span class="nav-label">Pólizas</span>
+										    	 <span class="nav-label">Registrar Pólizas</span>
 										    	 <i class="fa fa-chevron-left pull-right"></i>
 											 </a>
 
@@ -78,7 +85,7 @@ class Home extends CI_Controller
 
 												</li>
 
-												<li><a href="http://localhost:8080/Seguros/PolizaDigital"><i class=""></i>Póliza digital</a></li>
+												<li><a href="'.base_url().'PolizaDigital"><i class=""></i>Póliza digital</a></li>
 
 													<li class="active">
 												    	 <a href="#" data-toggle="collapse" data-target="#Pagos" class="collapse active">
