@@ -979,6 +979,7 @@ $(document).ready(function()
           });
 
 
+
         $("body").on("keyup","#txtPrimaAnual, #txtDescuento",function()
         {
 
@@ -986,21 +987,38 @@ $(document).ready(function()
              {
                 if($("#txtDescuento").val().trim()!= '' && !isNaN($("#txtDescuento").val().trim()) )
                {
-                    let primaNetaAnual = $("#txtPrimaAnual").val().trim();
+                    let primaNetaAnual = parseInt($("#txtPrimaAnual").val().trim());
 
-                    let descuento = $("#txtDescuento").val().trim();
+                    let descuento = parseInt($("#txtDescuento").val().trim());
 
-                    descuento =  descuento / 100;
+                     let pago = 0;
 
-                    let primerDescuento =  primaNetaAnual * descuento;
+                          if(descuento > 0)
+                          {
+                              descuento =  descuento / 100;
 
-                    let iva = $("#slIva").val();
+                              let primerDescuento =  primaNetaAnual * descuento;
 
-                    iva =  iva / 100;
+                              let iva = parseInt($("#slIva").val());
 
-                    let segundoDescuento = primerDescuento * iva;
+                              iva =  iva / 100;
 
-                    let pago = primerDescuento + segundoDescuento;
+                              let segundoDescuento = primerDescuento * iva;
+
+                               pago = primerDescuento + segundoDescuento;
+                          }
+                          else
+                          {
+
+                              let iva = parseInt($("#slIva").val());
+
+                              iva =  iva / 100;
+
+                              let result = primaNetaAnual * iva;
+
+                              pago = primaNetaAnual + result;
+                          }
+
 
                     $("#txtPago").val(pago);
 
@@ -1008,18 +1026,82 @@ $(document).ready(function()
                }
                else
                {
-                  $("#txtPago").val("");
+                  $("#txtPago").val("0");
                }
 
              }
              else
              {
-               $("#txtPago").val("");
+               $("#txtPago").val("0");
              }
 
              
 
         });
+
+
+        $("body").on("blur","#txtDescuento,#txtPrimaAnual",function()
+        {
+                
+               if($("#txtPrimaAnual").val().trim() != '' && !isNaN($("#txtPrimaAnual").val().trim()) )
+                {
+                      if($("#txtDescuento").val().trim()!= '' && !isNaN($("#txtDescuento").val().trim()) )
+                     {
+                    
+                            let primaNetaAnual = parseInt($("#txtPrimaAnual").val().trim());
+
+                            let descuento = parseInt($("#txtDescuento").val().trim());
+
+                             let pago = 0;
+
+                              if(descuento > 0)
+                              {
+                                  descuento =  descuento / 100;
+
+                                  let primerDescuento =  primaNetaAnual * descuento;
+
+                                  let iva = parseInt($("#slIva").val());
+
+                                  iva =  iva / 100;
+
+                                  let segundoDescuento = primerDescuento * iva;
+
+                                   pago = primerDescuento + segundoDescuento;
+                              }
+                              else
+                              {
+
+                                  let iva = parseInt($("#slIva").val());
+
+                                  iva =  iva / 100;
+
+                                  let result = primaNetaAnual * iva;
+
+                                  pago = primaNetaAnual + result;
+                              }
+
+                          
+
+                          $("#txtPago").val(pago);
+
+                          
+                     }
+                     else
+                     {
+                        $("#txtPago").val("0");
+                     }
+
+               }
+               else
+               {
+                 $("#txtPago").val("0");
+               }
+
+                
+            
+
+        });
+
 
 
 

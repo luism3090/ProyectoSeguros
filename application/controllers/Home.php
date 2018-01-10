@@ -72,11 +72,11 @@ class Home extends CI_Controller
 												 	<ul class="sub-menu collapse" id="Ramo" aria-expanded="false" style="">
 														 <li>
 														 	<a href="'.base_url().'Polizas/autos"><i class=""></i>Autos</a>
-														 </li>
-														 <li>
-														 	<a href="'.base_url().'Polizas/empresarial"><i class=""></i>Empresarial</a>
-														 </li>
-														 <li>
+														 </li>'.
+														 // <li>
+														 // 	<a href="'.base_url().'Polizas/empresarial"><i class=""></i>Empresarial</a>
+														 // </li>
+														 '<li>
 														 	<a href="'.base_url().'Polizas/gastos_medicos_mayores"><i class=""></i>GMM</a>
 														 </li>
 														

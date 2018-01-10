@@ -162,7 +162,7 @@ $(document).ready(function()
 
 	                if(result.length > 0)
 	                {
-	                   let options ="<option selected disabled >Elija una opción</option>";
+	                   let options ="<option value='0' selected disabled >Elija una opción</option>";
 	                   result.forEach(function(elemento,index) 
 	                   {
 	  
@@ -171,6 +171,7 @@ $(document).ready(function()
 	                  });
 
 	                   $("#slFormaPago").html(options);
+	                    
 
 	                }
 	              

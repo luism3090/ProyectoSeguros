@@ -122,7 +122,7 @@
 								<div class="col-xs-6">
 									<div class="form-group">
 											<label for="dateFinaliza">Fecha finaliza:</label>
-											<input type="date" id="dateFinaliza" name="dateFinaliza"  class="form-control"  >
+											<input type="date" id="dateFinaliza" name="dateFinaliza"  class="form-control" disabled readonly="readonly" >
 									</div>
 								</div>
 

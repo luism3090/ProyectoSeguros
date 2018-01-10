@@ -91,7 +91,7 @@
 					</div>
 					<br><br><br>
 					
-					<form action="" id="formRegistrarPolizaAutos">
+					<form id="formRegistrarPolizaAutos">
 						
 						<fieldset>
 							<legend>Datos de póliza:</legend>
@@ -148,7 +148,7 @@
 								<div class="col-xs-6">
 									<div class="form-group">
 											<label for="dateFinaliza">Fecha finaliza:</label>
-											<input type="date" id="dateFinaliza" name="dateFinaliza"  class="form-control"  readonly="readonly">
+											<input type="date" id="dateFinaliza" name="dateFinaliza"  class="form-control"  readonly="readonly" disabled>
 									</div>
 								</div>
 
@@ -274,14 +274,14 @@
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtPrimaAnual">Prima neta anual $:</label> 
-										<input type="text" id="txtPrimaAnual" class="form-control" name="txtPrimaAnual" placeholder="Prima neta anual"  minlength="1" maxlength="10" />									
+										<input type="text" id="txtPrimaAnual"  class="form-control" name="txtPrimaAnual" placeholder="Prima neta anual"  minlength="1" maxlength="20" />									
 									</div>
 								</div>
 
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtDescuento">Descuento %:</label> 
-										<input type="text" id="txtDescuento" class="form-control" name="txtDescuento" placeholder="Descuento"  minlength="1" maxlength="10" />									
+										<input type="text" id="txtDescuento"  class="form-control" name="txtDescuento" placeholder="Descuento"  minlength="1" maxlength="20" />									
 									</div>
 								</div>
 
@@ -304,8 +304,8 @@
 
 								<div class="col-xs-6">
 									<div class="form-group">
-									<label for="txtIva">Pago $:</label> 
-										<input type="text" id="txtPago" class="form-control" name="txtPago" placeholder="$0.00" readonly="readonly" />									
+									<label for="txtIva">Pago Total $:</label> 
+										<input type="text" id="txtPago" class="form-control" name="txtPago" placeholder="$0.00" readonly="readonly" disabled  />									
 									</div>
 								</div>
 
@@ -423,7 +423,7 @@
 				<br>
 			    <div class="form-group">
 			      	<label for="txtPagoTotalPoliza">Pago total:</label> 
-					<input type="text" id="txtPagoTotalPoliza"  class="form-control" name="txtPagoTotalPoliza" minlength="1" maxlength="10" placeholder="Pago total"  />	
+					<input type="text" id="txtPagoTotalPoliza"  class="form-control" name="txtPagoTotalPoliza" minlength="1" maxlength="20" placeholder="Pago total"  readonly="readonly" disabled="disabled" />	
 				</div>
 				<br>
 		        <table id='tblFormaDePago' style='width: 668px;height: 230px' >
@@ -442,6 +442,27 @@
   </div>
 </div>
 
+
+<!-- Modal -->
+<div id="modalAlertValidaDatosPagos" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Alerta</h4>
+      </div>
+      <div class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnMdlAlertValidaCliente">Aceptar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 
 	<br><br><br><br><br>

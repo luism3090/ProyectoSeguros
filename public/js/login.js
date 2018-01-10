@@ -88,7 +88,7 @@ var base_url = $("body").attr("data-base-url");
 		          	{
 		          		//location.href = result.base_url;
 
-		          		debugger;
+		          		
 		          		
 		          		location.href = result.base_url;
 		          	}
