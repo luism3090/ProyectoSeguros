@@ -422,7 +422,7 @@
 				
 				<br>
 			    <div class="form-group">
-			      	<label for="txtPagoTotalPoliza">Pago total:</label> 
+			      	<label for="txtPagoTotalPoliza">Pago total $:</label> 
 					<input type="text" id="txtPagoTotalPoliza"  class="form-control" name="txtPagoTotalPoliza" minlength="1" maxlength="20" placeholder="Pago total"  readonly="readonly" disabled="disabled" />	
 				</div>
 				<br>
