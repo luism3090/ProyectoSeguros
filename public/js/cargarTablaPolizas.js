@@ -108,8 +108,10 @@ var base_url = $("body").attr("data-base-url");
                                                     for(let x = 0; x < result.pagos.length ; x++)
                                                     {
 
+                                                         // var fecha1 = moment('2018-02-10');
                                                          var fecha1 = moment(hoy);
-                                                         var fecha2 = moment(result.pagos[x].fecha_pago); 
+                                                         var fecha2 = result.pagos[x].fecha_pago.split("/")[2] + "/" + result.pagos[x].fecha_pago .split("/")[1] + "/" + result.pagos[x].fecha_pago .split("/")[0];
+                                                          fecha2 = moment(fecha2); 
 
                                                          var diferenciaDias = fecha2.diff(fecha1, 'days');
                                                          var color = '';
@@ -124,11 +126,11 @@ var base_url = $("body").attr("data-base-url");
                                                             {
                                                                 checked = '';   
 
-                                                                if(diferenciaDias <= 5)
+                                                                if(diferenciaDias <= 0)
                                                                 {
                                                                     color = 'red';
                                                                 }
-                                                                else if(diferenciaDias > 5 && diferenciaDias <= 10)
+                                                                else if(diferenciaDias > 0 && diferenciaDias <= 10)
                                                                 {
                                                                     color = 'orange';
                                                                 }
@@ -185,7 +187,8 @@ var base_url = $("body").attr("data-base-url");
                                                 {
 
                                                      var fecha1 = moment(hoy);
-                                                     var fecha2 = moment(result.pagos[x].fecha_pago); 
+                                                     var fecha2 = result.pagos[x].fecha_pago.split("/")[2] + "/" + result.pagos[x].fecha_pago .split("/")[1] + "/" + result.pagos[x].fecha_pago .split("/")[0];
+                                                     fecha2 = moment(fecha2); 
 
                                                      var diferenciaDias = fecha2.diff(fecha1, 'days');
                                                      var color = '';
@@ -200,11 +203,11 @@ var base_url = $("body").attr("data-base-url");
                                                         {
                                                             checked = '';   
 
-                                                            if(diferenciaDias <= 5)
+                                                            if(diferenciaDias <= 0)
                                                             {
                                                                 color = 'red';
                                                             }
-                                                            else if(diferenciaDias > 5 && diferenciaDias <= 10)
+                                                            else if(diferenciaDias > 0 && diferenciaDias <= 10)
                                                             {
                                                                 color = 'orange';
                                                             }
@@ -252,7 +255,8 @@ var base_url = $("body").attr("data-base-url");
                                                 {
 
                                                      var fecha1 = moment(hoy);
-                                                     var fecha2 = moment(result.pagos[x].fecha_pago); 
+                                                     var fecha2 = result.pagos[x].fecha_pago.split("/")[2] + "/" + result.pagos[x].fecha_pago .split("/")[1] + "/" + result.pagos[x].fecha_pago .split("/")[0];
+                                                      fecha2 = moment(fecha2); 
 
                                                      var diferenciaDias = fecha2.diff(fecha1, 'days');
                                                      var color = '';
@@ -267,11 +271,11 @@ var base_url = $("body").attr("data-base-url");
                                                         {
                                                             checked = '';   
 
-                                                            if(diferenciaDias <= 5)
+                                                            if(diferenciaDias <= 0)
                                                             {
                                                                 color = 'red';
                                                             }
-                                                            else if(diferenciaDias > 5 && diferenciaDias <= 10)
+                                                            else if(diferenciaDias > 0 && diferenciaDias <= 10)
                                                             {
                                                                 color = 'orange';
                                                             }
@@ -346,7 +350,6 @@ var base_url = $("body").attr("data-base-url");
 
         let fecha_ = $(this).siblings().text().trim().split("/")[2] + "/" + $(this).siblings().text().split("/")[1] + "/" + $(this).siblings().text().split("/")[0];
         
-
         if(pagado == '1')
         {   
             $(this).siblings().css("color","green");
@@ -361,11 +364,11 @@ var base_url = $("body").attr("data-base-url");
              let diferenciaDias = fecha2.diff(fecha1, 'days');
              let color = '';
 
-             if(diferenciaDias <= 5)
+             if(diferenciaDias <= 0)
              {
                  color = 'red';
              }
-             else if(diferenciaDias > 5 && diferenciaDias <= 10 )
+             else if(diferenciaDias > 0 && diferenciaDias <= 10 )
              {
                  color = '#ff4500';
              }

@@ -74,7 +74,7 @@ $(document).ready(function()
 
        $("body").on("submit","#formRegistrarPolizaAutos",function(event)
        {
-        //alert();
+      
        		event.preventDefault();
 
          $("#formRegistrarPolizaAutos").bootstrapValidator();
@@ -606,7 +606,7 @@ $(document).ready(function()
 
                                                       // datosCompletosPoliza.push(polizaPrima);
 
-                                                       console.log(datosPagos);
+                                                       //console.log(datosPagos);
 
 
                                                       $.ajax(
@@ -935,9 +935,27 @@ $(document).ready(function()
                                                       message: 'Solo debe ingresar números',
 
                                                   },
+                                                  callback: 
+                                                  {
+                                                      message: 'El primer pago no puede ser mayor al Pago Total $'+$("#txtPagoTotalPoliza").val() ,
+                                                      callback: function(value, validator) {
+
+                                                          
+                                                                 let primerPago =  parseInt($(".PrimerpagoPoliza").val());
+
+                                                                 let pagoTotalPoliza = parseInt($("#txtPagoTotalPoliza").val());
+
+                                                                 let valida = (primerPago > pagoTotalPoliza) ? false :  true ;
+                                                                              
+                                                                 return valida;
+
+                                                            }
+                                                       },
+
 
                                                  }
                                              });
+                                        
 
                                          $("[data-bv-icon-for='PrimerpagoPoliza']").css('top','20px');
 
@@ -993,6 +1011,23 @@ $(document).ready(function()
                                                       message: 'Solo debe ingresar números',
 
                                                   },
+                                                  callback: 
+                                                  {
+                                                      message: 'El primer pago no puede ser mayor al Pago Total $'+$("#txtPagoTotalPoliza").val() ,
+                                                      callback: function(value, validator) {
+
+                                                          
+                                                                 let primerPago =  parseInt($(".PrimerpagoPoliza").val());
+
+                                                                 let pagoTotalPoliza = parseInt($("#txtPagoTotalPoliza").val());
+
+                                                                 let valida = (primerPago > pagoTotalPoliza) ? false :  true ;
+                                                                              
+                                                                 return valida;
+
+                                                            }
+                                                       },
+
 
                                                  }
                                              });

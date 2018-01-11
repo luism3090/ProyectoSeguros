@@ -47,7 +47,7 @@
 						                                        <p class="text-left"><strong><?php echo $this->session->userdata('nombre'); ?></strong></p>
 						                                        <p class="text-left small"><?php echo $this->session->userdata('email');?></p>
 						                                        <p class="text-left">
-						                                            <a href="#" class="btn btn-primary btn-block btn-sm" id="btnUpdateMyData">Actualizar Datos</a>
+						                                            <!-- <a href="#" class="btn btn-primary btn-block btn-sm" id="btnUpdateMyData">Actualizar Datos</a> -->
 						                                        </p>
 						                                    </div>
 						                                </div>
@@ -152,7 +152,7 @@
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtDeducible">Deducible $:</label>
-										<input type="text" id="txtDeducible" name="txtDeducible"  class="form-control" placeholder="Deducible %" minlength="1" maxlength="30">
+										<input type="text" id="txtDeducible" name="txtDeducible"  class="form-control" placeholder="Deducible %" minlength="1" maxlength="30" readonly="readonly">
 									</div>
 								</div>
 
@@ -247,7 +247,7 @@
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtPrimaAnual">Prima neta anual:</label> 
-										<input type="text" id="txtPrimaAnual" class="form-control" name="txtPrimaAnual" placeholder="Prima neta anual" minlength="1" maxlength="10" />									
+										<input type="text" id="txtPrimaAnual" class="form-control" name="txtPrimaAnual" placeholder="Prima neta anual" minlength="1" maxlength="30" />									
 									</div>
 								</div>
 
@@ -272,7 +272,7 @@
 								<div class="col-xs-6">
 									<div class="form-group">
 									<label for="txtPago">Pago $:</label> 
-										<input type="text" id="txtPago" class="form-control" name="txtPago" placeholder="$0.00"  />									
+										<input type="text" id="txtPago" disabled readonly class="form-control" name="txtPago" placeholder="$0.00"  />									
 									</div>
 								</div>
 
@@ -284,7 +284,7 @@
 							<div class="row">
 								<div class="col-xs-12 ">
 										<br><br>
-										<button type="submit" class="btn btn-primary center-block text-center"  >Guardar</button>
+										<button type="submit" class="btn btn-primary center-block text-center" id="btnGuardar" >Guardar</button>
 								</div>
 							</div>
 							
@@ -366,12 +366,12 @@
 				
 				<br><br>
 
-		      	<h4 style='width: 200px; margin:0px auto'>Exhibición de mis pagos </h4>
+		      	<h4 style='width: 200px; margin:0px auto'>Exhibición de pagos </h4>
 				
 				<br>
 			    <div class="form-group">
-			      	<label for="txtPagoTotalPoliza">Pago total:</label> 
-					<input type="text" id="txtPagoTotalPoliza"  class="form-control" name="txtPagoTotalPoliza" minlength="1" maxlength="10" placeholder="Pago total"  />	
+			      	<label for="txtPagoTotalPoliza">Pago total $:</label> 
+					<input type="text" id="txtPagoTotalPoliza"  class="form-control" name="txtPagoTotalPoliza" minlength="1" maxlength="20" placeholder="Pago total"  readonly="readonly" disabled="disabled" />		
 				</div>
 				<br>
 		        <table id='tblFormaDePago' style='width: 668px;height: 230px' >
@@ -389,6 +389,28 @@
 
   </div>
 </div>
+
+
+	<!-- Modal -->
+	<div id="modalAlertValidaDatosPagos" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	       <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title">Alerta</h4>
+	      </div>
+	      <div class="modal-body">
+	        
+	      </div>
+	      <div class="modal-footer">
+	      <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnMdlAlertValidaCliente">Aceptar</button>
+	      </div>
+	    </div>
+
+	  </div>
+	</div>
 
 
 	<script src="<?php echo base_url(); ?>public/libreriasJS/jquery.min.js"></script>

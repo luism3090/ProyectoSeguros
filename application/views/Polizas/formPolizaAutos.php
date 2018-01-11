@@ -47,7 +47,7 @@
 						                                        <p class="text-left"><strong><?php echo $this->session->userdata('nombre'); ?></strong></p>
 						                                        <p class="text-left small"><?php echo $this->session->userdata('email');?></p>
 						                                        <p class="text-left">
-						                                            <a href="#" class="btn btn-primary btn-block btn-sm" id="btnUpdateMyData">Actualizar Datos</a>
+						                                          <!--   <a href="#" class="btn btn-primary btn-block btn-sm" id="btnUpdateMyData">Actualizar Datos</a> -->
 						                                        </p>
 						                                    </div>
 						                                </div>
@@ -274,14 +274,14 @@
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtPrimaAnual">Prima neta anual $:</label> 
-										<input type="text" id="txtPrimaAnual"  class="form-control" name="txtPrimaAnual" placeholder="Prima neta anual"  minlength="1" maxlength="20" />									
+										<input type="text" id="txtPrimaAnual"  class="form-control" name="txtPrimaAnual" placeholder="Prima neta anual"  minlength="1" maxlength="30" />									
 									</div>
 								</div>
 
 								<div class="col-xs-6">
 									<div class="form-group">
 										<label for="txtDescuento">Descuento %:</label> 
-										<input type="text" id="txtDescuento"  class="form-control" name="txtDescuento" placeholder="Descuento"  minlength="1" maxlength="20" />									
+										<input type="text" id="txtDescuento"  class="form-control" name="txtDescuento" placeholder="Descuento"  minlength="1" maxlength="10" />									
 									</div>
 								</div>
 

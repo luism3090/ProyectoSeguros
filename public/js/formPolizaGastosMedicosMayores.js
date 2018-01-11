@@ -83,7 +83,7 @@ $(document).ready(function()
 
 
         $("body").on("click","#tblClientes tbody tr",function()
-          {
+        {
 
               let temp = '';
 
@@ -109,8 +109,7 @@ $(document).ready(function()
 
 
 
-
-          });
+        });
 
        $('#modalSuccessRegistroPoliza').on('hide.bs.modal', function (e) 
          {
@@ -208,16 +207,17 @@ $(document).ready(function()
        }
 
 
-       $("body").on("keyup","#txtPagoTotalPoliza",function()
+       $("body").on("blur","#tblFormaDePago input:first",function()
        { 
-              let formaPago = $("#tblFormaDePago tbody tr input").length;
+              let formaPago = parseInt($("#tblFormaDePago tbody tr input").length);
 
               let pagoTotal = $("#txtPagoTotalPoliza").val().trim();
 
-              if( !isNaN(pagoTotal) && pagoTotal != "" )
+              let primerPago = $(this).val().trim();
+
+              if( !isNaN(primerPago) && primerPago != "" )
               {
                
-
                     pagoTotal = parseInt($("#txtPagoTotalPoliza").val());
 
                    let pagos = 0;
@@ -226,25 +226,25 @@ $(document).ready(function()
                     {
                          case 12:
 
-                              pagos = pagoTotal / 12;
+                              pagos = (pagoTotal - primerPago) / 11;
 
-                              $("#tblFormaDePago tbody tr input").val(pagos);
+                              $("#tblFormaDePago tbody tr .pagoPoliza").val(Math.round(pagos * 100) / 100);
 
                          break;
 
                          case 2:
 
-                              pagos = pagoTotal / 2;
+                              pagos = (pagoTotal - primerPago) / 1;
 
-                              $("#tblFormaDePago tbody tr input").val(pagos);
+                              $("#tblFormaDePago tbody tr .pagoPoliza").val(Math.round(pagos * 100) / 100);
 
                          break;
 
                          case 4:
 
-                              pagos = pagoTotal / 4;
+                              pagos = (pagoTotal - primerPago) / 3;
 
-                              $("#tblFormaDePago tbody tr input").val(pagos);
+                              $("#tblFormaDePago tbody tr .pagoPoliza").val(Math.round(pagos * 100) / 100);
 
                          break;
 
@@ -259,10 +259,64 @@ $(document).ready(function()
                     $("#tblFormaDePago tbody tr input").val("");
               }
 
-              
+       });
 
+
+
+       $("body").on("keyup","#tblFormaDePago input:first",function()
+       { 
+              let formaPago = parseInt($("#tblFormaDePago tbody tr input").length);
+
+              let pagoTotal = $("#txtPagoTotalPoliza").val().trim();
+
+              let primerPago = $(this).val().trim();
+
+              if( !isNaN(primerPago) && primerPago != "" )
+              {
+               
+                    pagoTotal = parseInt($("#txtPagoTotalPoliza").val());
+
+                   let pagos = 0;
+
+                    switch(formaPago)
+                    {
+                         case 12:
+
+                              pagos = (pagoTotal - primerPago) / 11;
+
+                              $("#tblFormaDePago tbody tr .pagoPoliza").val(Math.round(pagos * 100) / 100);
+
+                         break;
+
+                         case 2:
+
+                              pagos = (pagoTotal - primerPago) / 1;
+
+                              $("#tblFormaDePago tbody tr .pagoPoliza").val(Math.round(pagos * 100) / 100);
+
+                         break;
+
+                         case 4:
+
+                              pagos = (pagoTotal - primerPago) / 3;
+
+                              $("#tblFormaDePago tbody tr .pagoPoliza").val(Math.round(pagos * 100) / 100);
+
+                         break;
+
+
+                    } 
+
+
+
+              }
+              else
+              {
+                    $("#tblFormaDePago tbody tr input").val("");
+              }
 
        });
+
 
 
        $("body").on("change","#dateInicia",function()
@@ -418,21 +472,21 @@ $(document).ready(function()
                            },
 
                            
-                            txtDeducible: {
-                             group: '.form-group',
-                               validators: {
-                                   notEmpty: {
-                                       message: 'Este campo es requerido.'
-                                   }
-                                   ,
-                                 regexp: {
-                                      regexp: /^[0-9]+$/,
+                           //  txtDeducible: {
+                           //   group: '.form-group',
+                           //     validators: {
+                           //         notEmpty: {
+                           //             message: 'Este campo es requerido.'
+                           //         }
+                           //         ,
+                           //       regexp: {
+                           //            regexp: /^[0-9]+$/,
 
-                                      message: 'Solo debe ingresar números',
+                           //            message: 'Solo debe ingresar números',
 
-                                  },
-                               }
-                           },
+                           //        },
+                           //     }
+                           // },
 
                            
 
@@ -539,7 +593,7 @@ $(document).ready(function()
 
                    	e.preventDefault();
 
-                    if($("#txtPagoTotalPoliza").val().trim() !="")
+                    if($(".PrimerpagoPoliza").val().trim() !="")
                     {
                               if($("#tblClientes tbody tr").hasClass("selected"))
                               {
@@ -585,7 +639,7 @@ $(document).ready(function()
                                           {
 
                                                  let pagos = {
-                                                            fecha_pago:$(this).siblings().text().split("/")[2] + "-" + $(this).siblings().text().split("/")[1] + "-" + $(this).siblings().text().split("/")[0],
+                                                            fecha_pago:$(this).siblings().eq(0).text().split("/")[2] + "-" + $(this).siblings().eq(0).text().split("/")[1] + "-" + $(this).siblings().eq(0).text().split("/")[0],
                                                             cantidad_pago : $(this).val().trim(),
                                                             pagado : ''
                                                  }
@@ -682,22 +736,22 @@ $(document).ready(function()
                              validating: 'glyphicon glyphicon-refresh'
                          },
                          fields: {
-                             txtPagoTotalPoliza: {
-                                group: '.form-group',
-                                 validators: 
-                                 {
-                                     notEmpty: {
-                                         message: 'Este campo es requerido'
-                                     },
-                                     regexp: {
-                                       regexp: /^[0-9]+$/,
+                             // txtPagoTotalPoliza: {
+                             //    group: '.form-group',
+                             //     validators: 
+                             //     {
+                             //         notEmpty: {
+                             //             message: 'Este campo es requerido'
+                             //         },
+                             //         regexp: {
+                             //           regexp: /^[0-9]+$/,
 
-                                       message: 'Solo debe ingresar números',
+                             //           message: 'Solo debe ingresar números',
 
-                                   },
+                             //       },
 
-                                 }
-                             },
+                             //     }
+                             // },
                      }
                    }).on('success.form.bv', function (e) {
 
@@ -714,11 +768,17 @@ $(document).ready(function()
 
                             $("#datosSavePago").closest(".form-group").css("margin-top:","-5px");
 
+
+                            $('#btnAceptarPagos').attr('disabled',false);
+
+                            $('#btnGuardar').attr('disabled',false);
+
                             
-                            // $('#btnAceptarPagos').attr('disabled',false);
-                             let pagoTotal = $("#txtPagoTotalPoliza").val();
-                            $("#formValidaPagoTotal").bootstrapValidator('resetForm', true);
-                            $("#txtPagoTotalPoliza").val(pagoTotal);
+
+
+                            //  let pagoTotal = $("#txtPagoTotalPoliza").val();
+                            // $("#formValidaPagoTotal").bootstrapValidator('resetForm', true);
+                            // $("#txtPagoTotalPoliza").val(pagoTotal);
                          
 
                          
@@ -731,151 +791,368 @@ $(document).ready(function()
 
           $("body").on("click","#btnInfoDatosPagos",function()
           {
+               // $("#modalFormaDePago").modal("show");
+
+                let pago = $("#txtPago").val().trim();
+               $("#txtPagoTotalPoliza").val(pago);
+               
+              
                $("#modalFormaDePago").modal("show");
+
           });
           
 
-          $("body").on("change","#slFormaPago",function()
+           $("body").on("change","#slFormaPago",function()
           {
-              
-                    let fechaInicial = "";
-                    let fechaFinaliza = "";
-                    let vector = [];
+                   let pagoTotal = parseInt($("#txtPago").val());
 
-                    vector = $("#dateInicia").val().split("-");
-                    fechaInicial = vector[2] + "/" +vector[1] + "/" +vector[0];
+                   if(pagoTotal > 0 )
+                   {
 
-                    $("#strFechaInicial").text(fechaInicial);
+                         $("#txtPagoTotalPoliza").val(pagoTotal);
 
-                    vector = $("#dateFinaliza").val().split("-");
-                    fechaFinaliza = vector[2] + "/" +vector[1] + "/" +vector[0];
+                         let fechaInicial = "";
+                         let fechaFinaliza = "";
+                         let vector = [];
 
-                    $("#strFechaFinaliza").text(fechaFinaliza);
+                         vector = $("#dateInicia").val().split("-");
+                         fechaInicial = vector[2] + "/" +vector[1] + "/" +vector[0];
+
+                         $("#strFechaInicial").text(fechaInicial);
+
+                         vector = $("#dateFinaliza").val().split("-");
+                         fechaFinaliza = vector[2] + "/" +vector[1] + "/" +vector[0];
+
+                         $("#strFechaFinaliza").text(fechaFinaliza);
 
 
-                    let IdFormaDePago = $(this).val();
-                    let formaDePago =  $("#slFormaPago option:selected").text();
+                         let IdFormaDePago = $(this).val();
+                         let formaDePago =  $("#slFormaPago option:selected").text();
 
-                    let pagos = 0;
-                    let tempPagos = "";
-                    
-                    switch(IdFormaDePago)
-                    {
-                         case '1':
+                         let pagos = 0;
+                         let tempPagos = "";
+
 
                          
-                         $("#modalFormaDePago #tblFormaDePago tbody").html("");
+                         switch(IdFormaDePago)
+                         {
+                              case '1':
 
-                                   for(let x=1 ; x<=4; x++)
-                                   {
-                                        tempPagos =    `
-                                                             <tr >
-                                                                 <td>
-                                                                      <strong class='pagos' style='margin-left:65px;' ></strong>
-                                                                      <input type='text' class="form-control" name="pagoPoliza" class='pagoPoliza' readonly="readonly"/>
-                                                                 </td>
-                                                                 <td>
-                                                                      <strong class='pagos' style='margin-left:65px;'></strong>
-                                                                      <input type='text' class="form-control" name="pagoPoliza" class='pagoPoliza' readonly="readonly"/>
-                                                                 </td>
-                                                                 <td>
-                                                                      <strong class='pagos' style='margin-left:65px;'></strong>
-                                                                      <input type='text' class="form-control" name="pagoPoliza" class='pagoPoliza' readonly="readonly"/>
-                                                                 </td>
-                                                             </tr>
-                    
-                                                       `;
-
-                                       $("#modalFormaDePago #tblFormaDePago tbody").append(tempPagos);
-                                   }
-
-                                     $("#modalFormaDePago .modal-title label").text(formaDePago);
-                                   
-
-                                     colocarFechasPagos(IdFormaDePago);
-
-                                     $("#modalFormaDePago").modal("show");
-
-                                    
-
-                         break;
-
-                         case '3':
-
-                              $("#formValidaPagoTotal").bootstrapValidator('resetForm', true);
-                              $("#modalFormaDePago #tblFormaDePago tbody").html("");
-
-
-                                   for(let x=1 ; x<=2; x++)
-                                   {
-                                        tempPagos =    `
-                                                             <tr >
-                                                                 <td>
-                                                                      <strong class='pagos' style='margin-left:110px;' ></strong>
-                                                                      <input type='text' class="form-control" name="pagoPoliza" class='pagoPoliza' readonly="readonly"/>
-                                                                 </td>
-                                                                 <td>
-                                                                      <strong class='pagos' style='margin-left:110px;'></strong>
-                                                                      <input type='text' class="form-control" name="pagoPoliza" class='pagoPoliza' readonly="readonly"/>
-                                                                 </td>
-                                                             </tr>
-                    
-                                                       `;
-
-                                       $("#modalFormaDePago #tblFormaDePago tbody").append(tempPagos);
-                                       $("#modalFormaDePago #tblFormaDePago").css("height","110px");
-                                   }
-
-                                     $("#modalFormaDePago .modal-title label").text(formaDePago);
-                                   
-
-                                     colocarFechasPagos(IdFormaDePago);
-
-                                     $("#modalFormaDePago").modal("show");
-
-
-                         break;
-
-
-                         case '2':
-
-                              $("#formValidaPagoTotal").bootstrapValidator('resetForm', true);
-                              $("#modalFormaDePago #tblFormaDePago tbody").html("");
-
-                                        tempPagos =    `
-                                                             <tr >
-                                                                 <td>
-                                                                      <strong class='pagos' style='margin-left:110px;' ></strong>
-                                                                      <input type='text' class="form-control" name="pagoPoliza" class='pagoPoliza' readonly="readonly"/>
-                                                                 </td>
-                                                                 <td>
-                                                                      <strong class='pagos' style='margin-left:110px;'></strong>
-                                                                      <input type='text' class="form-control" name="pagoPoliza" class='pagoPoliza' readonly="readonly"/>
-                                                                 </td>
-                                                             </tr>
-                    
-                                                       `;
-
-                                       $("#modalFormaDePago #tblFormaDePago tbody").append(tempPagos);
-                                       $("#modalFormaDePago #tblFormaDePago").css("height","60px");
                               
+                              $("#modalFormaDePago #tblFormaDePago tbody").html("");
 
-                                     $("#modalFormaDePago .modal-title label").text(formaDePago);
+                                         var temp = '';
+
+                                        for(let x=1 ; x<=4; x++)
+                                        {
+
+                                             if( x==1 )
+                                             {
+                                                
+
+                                                  temp =  `<div class="form-group">
+                                                           <strong class='pagos' style='margin-left:65px;' ></strong>
+                                                           <input type='text' class="form-control PrimerpagoPoliza" name='PrimerpagoPoliza' />
+                                                           </div>`;
+                                             }
+                                             else
+                                             {
+                                                  temp = `<strong class='pagos' style='margin-left:65px;'></strong>
+                                                          <input type='text' class="form-control pagoPoliza" name='pagoPoliza' readonly="readonly"/>`;
+                                             }
+
+
+                                             tempPagos =    `
+                                                                  <tr >
+                                                                      <td>
+                                                                           ${temp}
+                                                                      </td>
+                                                                      <td>
+                                                                           <strong class='pagos' style='margin-left:65px;'></strong>
+                                                                           <input type='text' class="form-control pagoPoliza" name='pagoPoliza' readonly="readonly"/>
+                                                                      </td>
+                                                                      <td>
+                                                                           <strong class='pagos' style='margin-left:65px;'></strong>
+                                                                           <input type='text' class="form-control pagoPoliza" name='pagoPoliza' readonly="readonly"/>
+                                                                      </td>
+                                                                  </tr>
+                         
+                                                            `;
+
+                                            $("#modalFormaDePago #tblFormaDePago tbody").append(tempPagos);
 
                                    
-
-                                     colocarFechasPagos(IdFormaDePago);
-
-                                     $("#modalFormaDePago").modal("show");
+                                        }
 
 
-                         break;
+                                         $('#formValidaPagoTotal').bootstrapValidator('addField','PrimerpagoPoliza',{
+                                                 group: '.form-group',
+                                                 validators: {
+                                                     notEmpty: {
+                                                         message: 'Este campo es requerido'
+                                                     },
+                                                    regexp: {
+                                                      regexp: /^[0-9]+$/,
+
+                                                      message: 'Solo debe ingresar números',
+
+                                                  },
+                                                  callback: 
+                                                  {
+                                                      message: 'El primer pago no puede ser mayor al Pago Total $'+$("#txtPagoTotalPoliza").val() ,
+                                                      callback: function(value, validator) {
+
+                                                          
+                                                                 let primerPago =  parseInt($(".PrimerpagoPoliza").val());
+
+                                                                 let pagoTotalPoliza = parseInt($("#txtPagoTotalPoliza").val());
+
+                                                                 let valida = (primerPago > pagoTotalPoliza) ? false :  true ;
+                                                                              
+                                                                 return valida;
+
+                                                            }
+                                                       },
 
 
-                    } 
+                                                 }
+                                             });
 
-              
-          
+                                         $("[data-bv-icon-for='PrimerpagoPoliza']").css('top','20px');
+
+                                            $("[data-bv-icon-for='PrimerpagoPoliza']").closest(".form-group.has-feedback").css('margin-bottom','3px');
+
+                                          $("#modalFormaDePago .modal-title label").text(formaDePago);
+
+                                          $("#modalFormaDePago #tblFormaDePago").css("height","280px");
+                                      
+                                          colocarFechasPagos(IdFormaDePago);
+
+                                          $("#modalFormaDePago").modal("show");
+                                          
+                                          $("#formValidaPagoTotal").data("bootstrapValidator").resetField("PrimerpagoPoliza",true);
+
+                                         
+
+                              break;
+
+                              case '3':
+
+                                   
+                                   $("#modalFormaDePago #tblFormaDePago tbody").html("");
+
+                                         
+                                         var temp = '';
+
+                                        for(let x=1 ; x<=2; x++)
+                                        {
+
+                                             if( x==1 )
+                                             {
+                                                  temp =  `<div class="form-group">
+                                                                <strong class='pagos' style='margin-left:110px;' ></strong>
+                                                                <input type='text' class="form-control PrimerpagoPoliza" name='PrimerpagoPoliza' />
+                                                           </div>`;
+                                             }
+                                             else
+                                             {
+                                                  temp = `<strong class='pagos' style='margin-left:110px;'></strong>
+                                                          <input type='text' class="form-control pagoPoliza" name='pagoPoliza' readonly="readonly"/>`;
+
+                                             }
+
+                                             tempPagos =    `
+                                                                  <tr >
+                                                                      <td>
+                                                                           ${temp}
+                                                                      </td>
+                                                                      <td>
+                                                                           <strong class='pagos' style='margin-left:110px;'></strong>
+                                                                           <input type='text' class="form-control pagoPoliza" name='pagoPoliza' readonly="readonly"/>
+                                                                      </td>
+                                                                  </tr>`;
+
+                                            $("#modalFormaDePago #tblFormaDePago tbody").append(tempPagos);
+
+                                        
+
+                                        }
+
+                                         $('#formValidaPagoTotal').bootstrapValidator('addField','PrimerpagoPoliza',{
+                                                 group: '.form-group',
+                                                 validators: {
+                                                     notEmpty: {
+                                                         message: 'Este campo es requerido'
+                                                     },
+                                                    regexp: {
+                                                      regexp: /^[0-9]+$/,
+
+                                                      message: 'Solo debe ingresar números',
+
+                                                  },
+                                                  callback: 
+                                                  {
+                                                      message: 'El primer pago no puede ser mayor al Pago Total $'+$("#txtPagoTotalPoliza").val() ,
+                                                      callback: function(value, validator) {
+
+                                                          
+                                                                 let primerPago =  parseInt($(".PrimerpagoPoliza").val());
+
+                                                                 let pagoTotalPoliza = parseInt($("#txtPagoTotalPoliza").val());
+
+                                                                 let valida = (primerPago > pagoTotalPoliza) ? false :  true ;
+                                                                              
+                                                                 return valida;
+
+                                                            }
+                                                       },
+
+
+                                                 }
+                                             });
+
+                                         $("[data-bv-icon-for='PrimerpagoPoliza']").css('top','20px');
+
+                                        $("[data-bv-icon-for='PrimerpagoPoliza']").closest(".form-group.has-feedback").css('margin-bottom','3px');
+
+                                          $("#modalFormaDePago .modal-title label").text(formaDePago);
+
+                                          $("#modalFormaDePago #tblFormaDePago").css("height","130px");
+
+                                          colocarFechasPagos(IdFormaDePago);
+
+                                          $("#modalFormaDePago").modal("show");
+
+                                          $("#formValidaPagoTotal").data("bootstrapValidator").resetField("PrimerpagoPoliza",true);
+
+
+                              break;
+
+
+                              case '2':
+
+                                     
+
+                                   $("#modalFormaDePago #tblFormaDePago tbody").html("");
+
+                                             tempPagos =    `
+                                                                  <tr >
+                                                                      <td>
+                                                                           <div class="form-group">
+                                                                               <strong class='pagos' style='margin-left:110px;' ></strong>
+                                                                               <input type='text' class="form-control PrimerpagoPoliza" name='PrimerpagoPoliza' />
+                                                                           </div>
+                                                                           
+                                                                      </td>
+                                                                      <td>
+                                                                           <strong class='pagos' style='margin-left:110px;'></strong>
+                                                                           <input type='text' class="form-control pagoPoliza" name='pagoPoliza' readonly="readonly"/>
+                                                                      </td>
+                                                                  </tr>`;
+
+                                            $("#modalFormaDePago #tblFormaDePago tbody").append(tempPagos);
+                                            
+                                        
+                                         $('#formValidaPagoTotal').bootstrapValidator('addField','PrimerpagoPoliza',{
+                                                 group: '.form-group',
+                                                 validators: {
+                                                     notEmpty: {
+                                                         message: 'Este campo es requerido'
+                                                     },
+                                                    regexp: {
+                                                      regexp: /^[0-9]+$/,
+
+                                                      message: 'Solo debe ingresar números',
+
+                                                  },
+                                                  callback: 
+                                                  {
+                                                      message: 'El primer pago no puede ser mayor al Pago Total $'+$("#txtPagoTotalPoliza").val() ,
+                                                      callback: function(value, validator) {
+
+                                                          
+                                                                 let primerPago =  parseInt($(".PrimerpagoPoliza").val());
+
+                                                                 let pagoTotalPoliza = parseInt($("#txtPagoTotalPoliza").val());
+
+                                                                 let valida = (primerPago > pagoTotalPoliza) ? false :  true ;
+                                                                              
+                                                                 return valida;
+
+                                                            }
+                                                       },
+
+
+                                                 }
+                                             });
+
+                                        $("[data-bv-icon-for='PrimerpagoPoliza']").css('top','20px');
+
+                                        $("[data-bv-icon-for='PrimerpagoPoliza']").closest(".form-group.has-feedback").css('margin-bottom','3px');
+
+                                          $("#modalFormaDePago .modal-title label").text(formaDePago);
+
+                                          $("#modalFormaDePago #tblFormaDePago").css("height","150px");
+                                        
+                                          colocarFechasPagos(IdFormaDePago);
+
+                                          $("#modalFormaDePago").modal("show");
+
+                                          $("#formValidaPagoTotal").data("bootstrapValidator").resetField("PrimerpagoPoliza",true);
+
+
+
+                              break;
+
+                              default :
+
+
+                                         $("#modalFormaDePago #tblFormaDePago tbody").html("");
+
+                                             tempPagos =    `
+                                                                  <tr >
+                                                                      <td>
+                                                                           <strong class='pagos' style='margin-left:280px;' >${fechaFinaliza}</strong>
+                                                                           <input type='text' class="form-control" name="pagoPoliza" class='pagoPoliza' readonly="readonly" value='${pagoTotal}'/>
+                                                                      </td>
+                                                                      <td>
+                                                                  </tr>
+                         
+                                                            `;
+
+                                            $("#modalFormaDePago #tblFormaDePago tbody").append(tempPagos);
+                                            
+                                   
+
+                                          $("#modalFormaDePago .modal-title label").text(formaDePago);
+
+                                          $("#modalFormaDePago").modal("show");
+
+                                          $("#modalFormaDePago #tblFormaDePago").css("height","130px");
+
+
+                              break;
+
+
+                         } 
+
+
+                   }
+                   else
+                   {
+                         
+
+                         $("#formRegistrarPolizaGastosMedicos").data("bootstrapValidator").resetField("slFormaPago",true);
+                         $("#slFormaPago option[value='0']").removeAttr("selected");
+                         $("#slFormaPago option[value='0']").attr("selected",true);
+                         
+
+                         $("#modalAlertValidaDatosPagos .modal-body").html("Antes de elegir la forma de pago genere el Pago Total: $")
+                         $("#modalAlertValidaDatosPagos").modal("show");
+
+
+                   }
+
 
           });
 
@@ -883,135 +1160,167 @@ $(document).ready(function()
           $("body").on("click","#btnCancelarPagos",function()
           {
 
-               $("#modalFormaDePago #tblFormaDePago tbody input").val("");
+               // $("#modalFormaDePago #tblFormaDePago tbody input").val("");
+               // $("#formValidaPagoTotal").bootstrapValidator('resetForm', true);
+               // $("#btnInfoDatosPagos").remove();
+
+               $("#modalFormaDePago #tblFormaDePago tbody .pagoPoliza").val("");
+
                $("#formValidaPagoTotal").bootstrapValidator('resetForm', true);
                $("#btnInfoDatosPagos").remove();
 
           });
 
 
-      $("body").on("keyup","#txtPrimaAnual, #txtDescuento",function()
-      {
+          $("body").on("keyup","#txtPrimaAnual, #txtDescuento",function()
+          {
 
-          if($("#txtPrimaAnual").val().trim() != '' && !isNaN($("#txtPrimaAnual").val().trim()) )
-           {
-              if($("#txtDescuento").val().trim()!= '' && !isNaN($("#txtDescuento").val().trim()) )
-             {
-                  let primaNetaAnual = parseInt($("#txtPrimaAnual").val().trim());
+                   if($("#txtPrimaAnual").val().trim() != '' && !isNaN($("#txtPrimaAnual").val().trim()) )
+                    {
+                       if($("#txtDescuento").val().trim()!= '' && !isNaN($("#txtDescuento").val().trim()) )
+                      {
+                           let primaNetaAnual = parseInt($("#txtPrimaAnual").val().trim());
 
-                  let descuento = parseInt($("#txtDescuento").val().trim());
+                           let descuento = parseInt($("#txtDescuento").val().trim());
 
-                   let pago = 0;
+                            let pago = 0;
 
-                        if(descuento > 0)
-                        {
-                            descuento =  descuento / 100;
+                                 if(descuento > 0)
+                                 {
+                                     descuento =  descuento / 100;
 
-                            let primerDescuento =  primaNetaAnual * descuento;
+                                     let primerDescuento =  primaNetaAnual * descuento;
 
-                            let iva = parseInt($("#slIva").val());
+                                     let iva = parseInt($("#slIva").val());
 
-                            iva =  iva / 100;
+                                     iva =  iva / 100;
 
-                            let segundoDescuento = primerDescuento * iva;
+                                     let segundoDescuento = primerDescuento * iva;
 
-                             pago = primerDescuento + segundoDescuento;
-                        }
-                        else
-                        {
+                                      pago = primerDescuento + segundoDescuento;
+                                 }
+                                 else
+                                 {
 
-                            let iva = parseInt($("#slIva").val());
+                                     let iva = parseInt($("#slIva").val());
 
-                            iva =  iva / 100;
+                                     iva =  iva / 100;
 
-                            let result = primaNetaAnual * iva;
+                                     let result = primaNetaAnual * iva;
 
-                            pago = primaNetaAnual + result;
-                        }
-
-
-                  $("#txtPago").val(pago);
-
-                  
-             }
-             else
-             {
-                $("#txtPago").val("0");
-             }
-
-           }
-           else
-           {
-             $("#txtPago").val("0");
-           }
-
-           
-
-      });
+                                     pago = primaNetaAnual + result;
+                                 }
 
 
-      $("body").on("blur","#txtDescuento,#txtPrimaAnual",function()
-      {
-              
-             if($("#txtPrimaAnual").val().trim() != '' && !isNaN($("#txtPrimaAnual").val().trim()) )
-              {
-                    if($("#txtDescuento").val().trim()!= '' && !isNaN($("#txtDescuento").val().trim()) )
-                   {
-                  
-                          let primaNetaAnual = parseInt($("#txtPrimaAnual").val().trim());
+                           $("#txtPago").val(pago);
+                           $(".pagoPoliza").val("");
+                           $("#modalFormaDePago").css("display","block");
+                           $("#formValidaPagoTotal").bootstrapValidator('resetForm', true);
+                           $("#modalFormaDePago").css("display","none");
 
-                          let descuento = parseInt($("#txtDescuento").val().trim());
+                           
+                      }
+                      else
+                      {
+                         $("#txtPago").val("0");
+                         $(".pagoPoliza").val("");
+                         $("#modalFormaDePago").css("display","block");
+                         $("#formValidaPagoTotal").bootstrapValidator('resetForm', true);
+                         $("#modalFormaDePago").css("display","none");
 
-                           let pago = 0;
+                         
+                      }
 
-                            if(descuento > 0)
-                            {
-                                descuento =  descuento / 100;
-
-                                let primerDescuento =  primaNetaAnual * descuento;
-
-                                let iva = parseInt($("#slIva").val());
-
-                                iva =  iva / 100;
-
-                                let segundoDescuento = primerDescuento * iva;
-
-                                 pago = primerDescuento + segundoDescuento;
-                            }
-                            else
-                            {
-
-                                let iva = parseInt($("#slIva").val());
-
-                                iva =  iva / 100;
-
-                                let result = primaNetaAnual * iva;
-
-                                pago = primaNetaAnual + result;
-                            }
-
-                        
-
-                        $("#txtPago").val(pago);
-
-                        
-                   }
-                   else
-                   {
+                    }
+                    else
+                    {
                       $("#txtPago").val("0");
-                   }
+                      $(".pagoPoliza").val("");
+                      $("#modalFormaDePago").css("display","block");
+                      $("#formValidaPagoTotal").bootstrapValidator('resetForm', true);
+                      $("#modalFormaDePago").css("display","none");
+                      
+                    }
 
-             }
-             else
-             {
-               $("#txtPago").val("0");
-             }
+               
 
-              
-          
+          });
 
-      });
 
+        $("body").on("change","#txtDescuento,#txtPrimaAnual",function()
+        {
+                
+                    if($("#txtPrimaAnual").val().trim() != '' && !isNaN($("#txtPrimaAnual").val().trim()) )
+                     {
+                           if($("#txtDescuento").val().trim()!= '' && !isNaN($("#txtDescuento").val().trim()) )
+                          {
+                         
+                                 let primaNetaAnual = parseInt($("#txtPrimaAnual").val().trim());
+
+                                 let descuento = parseInt($("#txtDescuento").val().trim());
+
+                                  let pago = 0;
+
+                                   if(descuento > 0)
+                                   {
+                                       descuento =  descuento / 100;
+
+                                       let primerDescuento =  primaNetaAnual * descuento;
+
+                                       let iva = parseInt($("#slIva").val());
+
+                                       iva =  iva / 100;
+
+                                       let segundoDescuento = primerDescuento * iva;
+
+                                        pago = primerDescuento + segundoDescuento;
+                                   }
+                                   else
+                                   {
+
+                                       let iva = parseInt($("#slIva").val());
+
+                                       iva =  iva / 100;
+
+                                       let result = primaNetaAnual * iva;
+
+                                       pago = primaNetaAnual + result;
+                                   }
+
+                               
+
+                               $("#txtPago").val(pago);
+                               $(".pagoPoliza").val("");
+                               $("#modalFormaDePago").css("display","block");
+                               $("#formValidaPagoTotal").bootstrapValidator('resetForm', true);
+                              $("#modalFormaDePago").css("display","none");
+                               
+                          }
+                          else
+                          {
+                             $("#txtPago").val("0");
+                             $(".pagoPoliza").val("");
+                             $("#modalFormaDePago").css("display","block");
+                             $("#formValidaPagoTotal").bootstrapValidator('resetForm', true);
+                             $("#modalFormaDePago").css("display","none");
+                             
+                          }
+
+                    }
+                    else
+                    {
+                      $("#txtPago").val("0");
+                      $(".pagoPoliza").val("");
+                      $("#modalFormaDePago").css("display","block");
+                      $("#formValidaPagoTotal").bootstrapValidator('resetForm', true);
+                      $("#modalFormaDePago").css("display","none");
+                      
+                    }
+
+                
+            
+
+        });
 
 
 

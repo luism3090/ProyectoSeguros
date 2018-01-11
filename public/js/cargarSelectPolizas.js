@@ -162,6 +162,7 @@ $(document).ready(function()
 
 	                if(result.length > 0)
 	                {
+
 	                   let options ="<option value='0' selected disabled >Elija una opción</option>";
 	                   result.forEach(function(elemento,index) 
 	                   {
