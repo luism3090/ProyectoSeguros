@@ -115,8 +115,10 @@
 								                      <th>Fecha vencimiento</th>
 								                      <th>Aseguradora</th>
 								                      <th>Pagos</th>
+								                      <th></th>
 							                    </tr>
 							            </thead>
+
 						        </table>
 						</div>
 				</div>

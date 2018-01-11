@@ -27,6 +27,34 @@ var base_url = $("body").attr("data-base-url");
         "serverSide": true,
         "ordering": true,
         "select": 'single',
+          // "initComplete":function( settings, json){
+             
+          //    // $("#tblDetallePolizas tbody tr").each(function(index,value)
+          //    //  {
+
+          //    //      let no_ha_pagado = parseInt(tblDetallePolizas.rows($(this).closest("tr").index()).data().pluck(1)[0]);
+          //    //      let dias_faltantes = parseInt(tblDetallePolizas.rows($(this).closest("tr").index()).data().pluck(2)[0]);
+
+          //    //      debugger;
+
+          //    //      if(no_ha_pagado >= 1)
+          //    //      {
+                    
+          //    //        $(this).closest("tr").find(".colorButton").removeClass("btn btn-dark btn-lg colorButton").addClass("btn btn-danger btn-lg colorButton");
+          //    //      }
+          //    //      else
+          //    //      {
+          //    //        if(dias_faltantes == 1)
+          //    //        {
+                      
+          //    //          $(this).closest("tr").find(".colorButton").removeClass("btn btn-dark btn-lg colorButton").addClass("btn btn-warning btn-lg colorButton");
+          //    //        }
+          //    //      }
+
+          //    //  }); 
+
+
+          // },
          "language": {
                         "url": base_url+"public/libreriasJS/Spanish.json"
                       },
@@ -41,18 +69,20 @@ var base_url = $("body").attr("data-base-url");
             $("#employee-grid_processing").css("display","none");
             
           }
-          // ,
-          // success:function(d)
-          // {
-          //  console.log(d);
-          // }
+          // dataSrc: function (json) {
+          //       //Make your callback here.
+
+          //       console.log($("#tblDetallePolizas tbody tr").length);
+          //       return json.data;
+
+          //   }
         },
         "columnDefs": [
                       {
                           "targets": [ 0 ],
                           "visible": false,
                           "searchable": false
-                      },
+                      }
                      
                   ],
          
@@ -120,17 +150,17 @@ var base_url = $("body").attr("data-base-url");
                                                             if (result.pagos[x].pagado == '1')
                                                             {
                                                                 checked = 'checked';
-                                                                color = 'green';
+                                                                //color = 'green';
                                                             }
                                                             else
                                                             {
                                                                 checked = '';   
 
-                                                                if(diferenciaDias <= 0)
+                                                                if(diferenciaDias < 0)
                                                                 {
                                                                     color = 'red';
                                                                 }
-                                                                else if(diferenciaDias > 0 && diferenciaDias <= 10)
+                                                                else if(diferenciaDias >= 0 && diferenciaDias <= 10)
                                                                 {
                                                                     color = 'orange';
                                                                 }
@@ -197,17 +227,17 @@ var base_url = $("body").attr("data-base-url");
                                                         if (result.pagos[x].pagado == '1')
                                                         {
                                                             checked = 'checked';
-                                                            color = 'green';
+                                                           // color = 'green';
                                                         }
                                                         else
                                                         {
                                                             checked = '';   
 
-                                                            if(diferenciaDias <= 0)
+                                                            if(diferenciaDias < 0)
                                                             {
                                                                 color = 'red';
                                                             }
-                                                            else if(diferenciaDias > 0 && diferenciaDias <= 10)
+                                                            else if(diferenciaDias >= 0 && diferenciaDias <= 10)
                                                             {
                                                                 color = 'orange';
                                                             }
@@ -265,17 +295,17 @@ var base_url = $("body").attr("data-base-url");
                                                         if (result.pagos[x].pagado == '1')
                                                         {
                                                             checked = 'checked';
-                                                            color = 'green';
+                                                            //color = 'green';
                                                         }
                                                         else
                                                         {
                                                             checked = '';   
 
-                                                            if(diferenciaDias <= 0)
+                                                            if(diferenciaDias < 0)
                                                             {
                                                                 color = 'red';
                                                             }
-                                                            else if(diferenciaDias > 0 && diferenciaDias <= 10)
+                                                            else if(diferenciaDias >= 0 && diferenciaDias <= 10)
                                                             {
                                                                 color = 'orange';
                                                             }
@@ -352,7 +382,7 @@ var base_url = $("body").attr("data-base-url");
         
         if(pagado == '1')
         {   
-            $(this).siblings().css("color","green");
+            $(this).siblings().css("color","");
         }
         else
         {
@@ -364,13 +394,13 @@ var base_url = $("body").attr("data-base-url");
              let diferenciaDias = fecha2.diff(fecha1, 'days');
              let color = '';
 
-             if(diferenciaDias <= 0)
+             if(diferenciaDias < 0)
              {
                  color = 'red';
              }
-             else if(diferenciaDias > 0 && diferenciaDias <= 10 )
+             else if(diferenciaDias >= 0 && diferenciaDias <= 10 )
              {
-                 color = '#ff4500';
+                 color = 'orange';
              }
              else 
              {
@@ -418,6 +448,15 @@ var base_url = $("body").attr("data-base-url");
 
 
     });
+
+
+
+     $('#modalPagosPoliza').on('hide.bs.modal', function (e) 
+       {
+             location.reload();
+       });
+
+   
 
 
 

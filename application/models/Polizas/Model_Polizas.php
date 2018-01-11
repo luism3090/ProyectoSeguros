@@ -27,7 +27,38 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										    DATE_FORMAT(po.fecha_inicia,'%d/%m/%Y') as fecha_inicia, 
     										DATE_FORMAT(po.fecha_finaliza,'%d/%m/%Y') as fecha_finaliza,
 										    ca.nombre as aseguradora,
-										    '<td><button  type=''button'' class=''btn btn-success sendPagos''> <span class=''glyphicon glyphicon-envelope''></span> Pagos</button></td>' as pagos 
+										    '<td><button  type=''button'' class=''btn btn-success sendPagos''> <span class=''glyphicon glyphicon-envelope''></span> Pagos</button></td>' as pagos,
+										    case 
+										    	when 
+										    		(
+										    			(
+										    				select count(*) as NoHaPagado from 
+										    				polizas po2  
+										    				join poliza_datos_forma_pagos pdf2 on (pdf2.id_poliza = po2.id_poliza)
+										    				where pdf2.id_poliza =  po.id_poliza and 
+										    					 (pdf2.pagado =  0 or pdf2.pagado is null ) and 
+										    					 DATE_FORMAT(now(), '%Y-%m-%d') > pdf2.fecha_pago 
+										    			) >= 1
+										            ) 
+										    	then 
+										    		'<td><button  type=''button'' class=''btn btn-danger btn-lg''></button></td>'
+										    	when 
+										    		(
+										    			(
+										    				select count(*) dias_faltantes from 
+										    				polizas po2  
+										    				join poliza_datos_forma_pagos pdf2 on (pdf2.id_poliza = po2.id_poliza)
+										    				where pdf2.id_poliza =  po.id_poliza and 
+										    					( pdf2.pagado =  0 or pdf2.pagado is null ) and 
+										    					DATEDIFF(pdf2.fecha_pago , DATE_FORMAT(now(), '%Y-%m-%d')) >= 0 and
+										    					DATEDIFF(pdf2.fecha_pago , DATE_FORMAT(now(), '%Y-%m-%d')) <= 10
+										    			) = 1
+										    	  ) 
+										    	then 
+										    		'<td><button  type=''button'' class=''btn btn-warning btn-lg''></button></td>'
+										    	else 
+										           '<td><button  type=''button'' class=''btn btn-dark btn-lg''></button></td>'
+										    end as color_pago
 											from polizas po 
 										    join poliza_datos_prima pdp on (po.id_poliza = pdp.id_poliza)
 										    join poliza_datos_forma_pagos pdf on (po.id_poliza = pdf.id_poliza) 
@@ -64,7 +95,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										fecha_inicia,
 										fecha_finaliza,
 										aseguradora,
-										pagos
+										pagos,
+										color_pago
 										FROM (
 										select distinct
 											po.id_poliza,
@@ -75,7 +107,38 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										    DATE_FORMAT(po.fecha_inicia,'%d/%m/%Y') as fecha_inicia, 
     										DATE_FORMAT(po.fecha_finaliza,'%d/%m/%Y') as fecha_finaliza,  
 										    ca.nombre as aseguradora,
-										    '<td><button  type=''button'' class=''btn btn-success sendPagos''> <span class=''glyphicon glyphicon-envelope''></span> Pagos</button></td>' as pagos 
+										    '<td><button  type=''button'' class=''btn btn-success sendPagos''> <span class=''glyphicon glyphicon-envelope''></span> Pagos</button></td>' as pagos,
+										    case 
+										    	when 
+										    		(
+										    			(
+										    				select count(*) as NoHaPagado from 
+										    				polizas po2  
+										    				join poliza_datos_forma_pagos pdf2 on (pdf2.id_poliza = po2.id_poliza)
+										    				where pdf2.id_poliza =  po.id_poliza and 
+										    					 (pdf2.pagado =  0 or pdf2.pagado is null ) and 
+										    					 DATE_FORMAT(now(), '%Y-%m-%d') > pdf2.fecha_pago 
+										    			) >= 1
+										            ) 
+										    	then 
+										    		'<td><button  type=''button'' class=''btn btn-danger btn-lg''></button></td>'
+										    	when 
+										    		(
+										    			(
+										    				select count(*) dias_faltantes from 
+										    				polizas po2  
+										    				join poliza_datos_forma_pagos pdf2 on (pdf2.id_poliza = po2.id_poliza)
+										    				where pdf2.id_poliza =  po.id_poliza and 
+										    					( pdf2.pagado =  0 or pdf2.pagado is null ) and 
+										    					DATEDIFF(pdf2.fecha_pago , DATE_FORMAT(now(), '%Y-%m-%d')) >= 0 and
+										    					DATEDIFF(pdf2.fecha_pago , DATE_FORMAT(now(), '%Y-%m-%d')) <= 10
+										    			) = 1
+										    	  ) 
+										    	then 
+										    		'<td><button  type=''button'' class=''btn btn-warning btn-lg''></button></td>'
+										    	else 
+										           '<td><button  type=''button'' class=''btn btn-dark btn-lg''></button></td>'
+										    end as color_pago
 											from polizas po 
 										    join poliza_datos_prima pdp on (po.id_poliza = pdp.id_poliza)
 										    join poliza_datos_forma_pagos pdf on (po.id_poliza = pdf.id_poliza) 
@@ -131,6 +194,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								$nestedData[] = $row["fecha_finaliza"];
 								$nestedData[] = $row["aseguradora"];
 								$nestedData[] = $row["pagos"];
+								$nestedData[] = $row["color_pago"];
 
 								$data[] = $nestedData;
 							}
