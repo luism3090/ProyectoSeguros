@@ -26,7 +26,6 @@ var base_url = $("body").attr("data-base-url");
         "processing": true,
         "serverSide": true,
         "ordering": true,
-        "select": 'single',
           // "initComplete":function( settings, json){
              
           //    // $("#tblDetallePolizas tbody tr").each(function(index,value)
@@ -59,7 +58,8 @@ var base_url = $("body").attr("data-base-url");
                         "url": base_url+"public/libreriasJS/Spanish.json"
                       },
                   "scrollY":        "500px",
-                  "scrollCollapse": true,
+                  "scrollX":        "100%",
+                    "scrollCollapse": true,
         "ajax":{
           url :base_url+"Polizas/cargarDetallePolizas", 
           type: "post",  
@@ -101,6 +101,8 @@ var base_url = $("body").attr("data-base-url");
            let formaPago =  tblDetallePolizas.rows($(this).closest("tr").index()).data().pluck(4)[0];
            let fechaInicial =  tblDetallePolizas.rows($(this).closest("tr").index()).data().pluck(5)[0];
            let fechaFinal =  tblDetallePolizas.rows($(this).closest("tr").index()).data().pluck(6)[0];
+
+            $("#modalPagosPoliza").prop('indexFila',$(this).closest("tr").index()); 
 
 
             $.ajax(
@@ -373,75 +375,76 @@ var base_url = $("body").attr("data-base-url");
     $("body").on("click",".hacerPagoPoliza",function()
     {
 
-        let pagado = $(this).is(':checked') ? '1' : '0';
-        let id_datos_forma_pago = $(this).attr("data-id_datos_forma_pago");
+             let pagado = $(this).is(':checked') ? '1' : '0';
+             let id_datos_forma_pago = $(this).attr("data-id_datos_forma_pago");
 
-        let fecha =  $(this).siblings().text().split("/")[0] + "/" + $(this).siblings().text().split("/")[1] + "/" + $(this).siblings().text().split("/")[2];
+             let fecha =  $(this).siblings().text().split("/")[0] + "/" + $(this).siblings().text().split("/")[1] + "/" + $(this).siblings().text().split("/")[2];
 
-        let fecha_ = $(this).siblings().text().trim().split("/")[2] + "/" + $(this).siblings().text().split("/")[1] + "/" + $(this).siblings().text().split("/")[0];
-        
-        if(pagado == '1')
-        {   
-            $(this).siblings().css("color","");
-        }
-        else
-        {
-
-             let fecha1 = moment(hoy);
-            
-             let fecha2 = moment(fecha_); 
-
-             let diferenciaDias = fecha2.diff(fecha1, 'days');
-             let color = '';
-
-             if(diferenciaDias < 0)
-             {
-                 color = 'red';
+             let fecha_ = $(this).siblings().text().trim().split("/")[2] + "/" + $(this).siblings().text().split("/")[1] + "/" + $(this).siblings().text().split("/")[0];
+             
+             if(pagado == '1')
+             {   
+                 $(this).siblings().css("color","");
              }
-             else if(diferenciaDias >= 0 && diferenciaDias <= 10 )
+             else
              {
-                 color = 'orange';
+
+                  let fecha1 = moment(hoy);
+                 
+                  let fecha2 = moment(fecha_); 
+
+                  let diferenciaDias = fecha2.diff(fecha1, 'days');
+                  let color = '';
+
+                  if(diferenciaDias < 0)
+                  {
+                      color = 'red';
+                  }
+                  else if(diferenciaDias >= 0 && diferenciaDias <= 10 )
+                  {
+                      color = 'orange';
+                  }
+                  else 
+                  {
+                      color = 'black';
+                  }
+
+                 $(this).siblings().css("color",color);
+
+
+
              }
-             else 
-             {
-                 color = 'black';
-             }
 
-            $(this).siblings().css("color",color);
+              $.ajax(
+                        {
+                            type: "POST",
+                            url: base_url+"Polizas/hacerPagosPoliza",
+                            dataType:"json",
+                            data: {pagado: pagado, id_datos_forma_pago :id_datos_forma_pago, fecha : fecha},
+                            async: true,
+                            success: function(result)
+                                {
 
+                                    if(result.status=='OK')
+                                    {
+                                         $("#modalSuccessPagoPoliza .modal-body").html(result.mensaje);
+                                         $("#modalSuccessPagoPoliza").modal('show');
+                                    }
+                                    else
+                                    {
+                                         $("#modalSuccessPagoPoliza .modal-body").html(result.mensaje);
+                                         $("#modalSuccessPagoPoliza").modal('show');
+                                    }
 
-        }
-
-         $.ajax(
-                   {
-                       type: "POST",
-                       url: base_url+"Polizas/hacerPagosPoliza",
-                       dataType:"json",
-                       data: {pagado: pagado, id_datos_forma_pago :id_datos_forma_pago, fecha : fecha},
-                       async: true,
-                       success: function(result)
-                           {
-
-                               if(result.status=='OK')
-                               {
-                                    $("#modalSuccessPagoPoliza .modal-body").html(result.mensaje);
-                                    $("#modalSuccessPagoPoliza").modal('show');
-                               }
-                               else
-                               {
-                                    $("#modalSuccessPagoPoliza .modal-body").html(result.mensaje);
-                                    $("#modalSuccessPagoPoliza").modal('show');
-                               }
-
-                           },
-                      error:function(result)
-                         {
-                           alert("Error");
-                          console.log(result.responseText);
-                           
-                         }
-                         
-        });   
+                                },
+                           error:function(result)
+                              {
+                                alert("Error");
+                               console.log(result.responseText);
+                                
+                              }
+                              
+             });   
 
 
 
@@ -451,9 +454,140 @@ var base_url = $("body").attr("data-base-url");
 
 
 
+    $("body").on("click",".enviarEmail",function()
+    {
+
+
+                let id_poliza =  tblDetallePolizas.rows($(this).closest("tr").index()).data().pluck(0)[0];
+                let cliente =  tblDetallePolizas.rows($(this).closest("tr").index()).data().pluck(3)[0];
+                let tipoPoliza =  tblDetallePolizas.rows($(this).closest("tr").index()).data().pluck(2)[0];
+
+                let mensajeEmail= '¿Desea enviarle un mail al cliente <strong>'+cliente+'</strong> de la poliza de <strong>'+tipoPoliza+'</strong> ?';
+
+                  $("#modalEnviarEmailCliente .modal-body").html(mensajeEmail);
+                  $("#modalEnviarEmailCliente").modal("show");
+                  $("#modalEnviarEmailCliente").prop("id_poliza",id_poliza);
+
+
+    });
+
+
+    $("body").on("click","#btnEnviarEmailCliente",function()
+     {
+
+
+          let id_poliza =  $("#modalEnviarEmailCliente").prop("id_poliza");
+     
+          $.ajax(
+          {
+                       type: "POST",
+                       url: base_url+"Polizas/enviarEmailCliente",
+                       dataType:"json",
+                       data: {id_poliza: id_poliza},
+                       async: true,
+                       success: function(result)
+                           {
+
+                              $("#modalMensajeEmailCliente .modal-body").html(result.msj);
+                              $("#modalMensajeEmailCliente").modal("show");
+
+                           },
+                      error:function(result)
+                         {
+                           alert("Error");
+                          console.log(result.responseText);
+                           
+                         }
+                         
+          });   
+          
+
+
+     });
+
      $('#modalPagosPoliza').on('hide.bs.modal', function (e) 
        {
-             location.reload();
+          
+
+          location.reload();
+          
+               // let quitarColorOrange='SI';
+               // let quitarColorRed='SI';
+
+               // let datoOrange = '';
+               // let datoRed = '';
+
+               // $("#tblFormaDePago input[type='text']").each(function()
+               // {
+               //      datoOrange = $(this).attr("style").search("orange");
+
+               //      if(datoOrange > -1)
+               //      {
+               //           quitarColorOrange = 'NO';
+
+               //      }
+
+               //      datoRed = $(this).attr("style").search("red");
+
+               //      if(datoRed > -1)
+               //      {
+               //           quitarColorRed = 'NO';
+
+               //      }
+                    
+          
+               // });
+
+
+               // let indexFila = $("#modalPagosPoliza").prop('indexFila');
+
+               // if(quitarColorOrange == 'SI')
+               // {
+
+               //      $("#tblDetallePolizas tbody tr").eq(indexFila).find(".pago").removeClass("btn-warning");
+
+               //      $("#tblDetallePolizas tbody tr").eq(indexFila).find(".pago").addClass("btn-dark");
+
+               //      $("#tblDetallePolizas tbody tr").eq(indexFila).find(".primary").attr("disabled",true);
+
+               //     // $("#tblDetallePolizas tbody tr").eq(indexFila).find("td").eq(9).html("");
+
+
+               // }
+               // else
+               // {
+                    
+
+               //     $("#tblDetallePolizas tbody tr").eq(indexFila).find(".primary").attr("disabled",false);
+
+                   
+               // }
+
+               // if(quitarColorRed == 'SI')
+               // {
+
+               //      $("#tblDetallePolizas tbody tr").eq(indexFila).find(".pago").removeClass("btn-danger");
+
+               //      $("#tblDetallePolizas tbody tr").eq(indexFila).find(".pago").addClass("btn-dark");
+
+
+
+               // }
+               // else
+               // {
+                    
+
+               //      $("#tblDetallePolizas tbody tr").eq(indexFila).find(".pago").addClass("btn-danger");
+                   
+               // }
+
+
+              
+
+
+           
+
+
        });
 
    

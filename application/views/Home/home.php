@@ -102,20 +102,21 @@
 						
 						<div class="table-responsive">
 							
-								<table class="table table-bordered table-hover" id="tblDetallePolizas" cellspacing="0"  width="100%" style="text-align: center;">
+								<table class="table table-bordered table-hover" id="tblDetallePolizas" cellspacing="0"  style="text-align: center;width:800px">
 										<caption style="text-align: center"><h4><strong>Usuarios dados de alta</strong></h4></caption>
 										<thead>
 							                    <tr>
 								                      <th>id_poliza</th>
-								                      <th>#Póliza</th>
-								                      <th>Tipo de Póliza</th>
-								                      <th>Cliente</th>
-								                      <th>Forma de Pago</th>
-								                      <th>Fecha inicio</th>
-								                      <th>Fecha vencimiento</th>
-								                      <th>Aseguradora</th>
-								                      <th>Pagos</th>
-								                      <th></th>
+								                      <th style='width:150px' >#Póliza</th>
+								                      <th style='width:200px'>Tipo de Póliza</th>
+								                      <th style='width:150px'>Cliente</th>
+								                      <th style='width:100px'>Forma de Pago</th>
+								                      <th style='width:100px'>Fecha inicio</th>
+								                      <th style='width:100px'>Fecha vencimiento</th>
+								                      <th style='width:150px'>Aseguradora</th>
+								                      <th style='width:100px'>Pagos</th>
+								                      <th style='width:50px'></th>
+								                      <th style='width:50px'>Mail</th>
 							                    </tr>
 							            </thead>
 
@@ -156,7 +157,7 @@
 				<br>
 			    <div class="form-group">
 					<label for="txtPagoTotalPoliza">Forma de pago:</label> <label id='lblFormaPago'></label> 
-			      	<label for="txtPagoTotalPoliza" style="margin-left: 55px";>Pago total:</label> <strong>$<strong><strong id='txtPagoTotalPoliza'></strong>	
+			      	<label for="txtPagoTotalPoliza" style="margin-left: 55px";>Pago total:</label> <strong>$</strong><strong id='txtPagoTotalPoliza'></strong>	
 				</div>
 				<br>
 		        <table id='tblFormaDePago' style='width: 768px;height: 285px' >
@@ -196,6 +197,49 @@
   </div>
 </div>
 
+
+<div id="modalEnviarEmailCliente" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Alerta</h4>
+      </div>
+      <div class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-primary" data-dismiss="modal" id='btnEnviarEmailCliente' >Aceptar</button>
+      <button type="button" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div id="modalMensajeEmailCliente" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Alerta</h4>
+      </div>
+      <div class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-primary" data-dismiss="modal" >Aceptar</button>
+      <button type="button" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 
 

@@ -28,6 +28,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     										DATE_FORMAT(po.fecha_finaliza,'%d/%m/%Y') as fecha_finaliza,
 										    ca.nombre as aseguradora,
 										    '<td><button  type=''button'' class=''btn btn-success sendPagos''> <span class=''glyphicon glyphicon-envelope''></span> Pagos</button></td>' as pagos,
+											case 
+												when 
+													(
+														(
+															select count(*) as NoHaPagado from 
+															polizas po2  
+															join poliza_datos_forma_pagos pdf2 on (pdf2.id_poliza = po2.id_poliza)
+															where pdf2.id_poliza =  po.id_poliza and 
+																 (pdf2.pagado =  0 or pdf2.pagado is null ) and 
+																 DATE_FORMAT(now(), '%Y-%m-%d') > pdf2.fecha_pago 
+														) >= 1
+											        ) 
+												then 
+													'<td><button style=''color: white;'' type=''button'' class=''btn btn-primary enviarEmail'' disabled >Enviar Email</button></td>'
+												when 
+													(
+														(
+															select count(*) dias_faltantes from 
+															polizas po2  
+															join poliza_datos_forma_pagos pdf2 on (pdf2.id_poliza = po2.id_poliza)
+															where pdf2.id_poliza =  po.id_poliza and 
+																( pdf2.pagado =  0 or pdf2.pagado is null ) and 
+																DATEDIFF(pdf2.fecha_pago , DATE_FORMAT(now(), '%Y-%m-%d')) >= 0 and
+																DATEDIFF(pdf2.fecha_pago , DATE_FORMAT(now(), '%Y-%m-%d')) <= 10
+														) = 1
+												  ) 
+												then 
+													'<td><button style=''color: white;'' type=''button'' class=''btn btn-primary enviarEmail''>Enviar Email</button></td>'
+												else 
+											       '<td><button style=''color: white;'' type=''button'' class=''btn btn-primary enviarEmail'' disabled >Enviar Email</button></td>'
+											end as enviar_email,
 										    case 
 										    	when 
 										    		(
@@ -41,7 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										    			) >= 1
 										            ) 
 										    	then 
-										    		'<td><button  type=''button'' class=''btn btn-danger btn-lg''></button></td>'
+										    		'<td><button  type=''button'' class=''btn btn-danger btn-lg pago''></button></td>'
 										    	when 
 										    		(
 										    			(
@@ -55,9 +86,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										    			) = 1
 										    	  ) 
 										    	then 
-										    		'<td><button  type=''button'' class=''btn btn-warning btn-lg''></button></td>'
+										    		'<td><button  type=''button'' class=''btn btn-warning btn-lg pago''></button></td>'
 										    	else 
-										           '<td><button  type=''button'' class=''btn btn-dark btn-lg''></button></td>'
+										           '<td><button  type=''button'' class=''btn btn-dark btn-lg pago''></button></td>'
 										    end as color_pago
 											from polizas po 
 										    join poliza_datos_prima pdp on (po.id_poliza = pdp.id_poliza)
@@ -96,6 +127,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										fecha_finaliza,
 										aseguradora,
 										pagos,
+										enviar_email,
 										color_pago
 										FROM (
 										select distinct
@@ -109,6 +141,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										    ca.nombre as aseguradora,
 										    '<td><button  type=''button'' class=''btn btn-success sendPagos''> <span class=''glyphicon glyphicon-envelope''></span> Pagos</button></td>' as pagos,
 										    case 
+												when 
+													(
+														(
+															select count(*) as NoHaPagado from 
+															polizas po2  
+															join poliza_datos_forma_pagos pdf2 on (pdf2.id_poliza = po2.id_poliza)
+															where pdf2.id_poliza =  po.id_poliza and 
+																 (pdf2.pagado =  0 or pdf2.pagado is null ) and 
+																 DATE_FORMAT(now(), '%Y-%m-%d') > pdf2.fecha_pago 
+														) >= 1
+											        ) 
+												then 
+													'<td><button style=''color: white;'' type=''button'' class=''btn btn-primary enviarEmail'' disabled >Enviar Email</button></td>'
+												when 
+													(
+														(
+															select count(*) dias_faltantes from 
+															polizas po2  
+															join poliza_datos_forma_pagos pdf2 on (pdf2.id_poliza = po2.id_poliza)
+															where pdf2.id_poliza =  po.id_poliza and 
+																( pdf2.pagado =  0 or pdf2.pagado is null ) and 
+																DATEDIFF(pdf2.fecha_pago , DATE_FORMAT(now(), '%Y-%m-%d')) >= 0 and
+																DATEDIFF(pdf2.fecha_pago , DATE_FORMAT(now(), '%Y-%m-%d')) <= 10
+														) = 1
+												  ) 
+												then 
+													'<td><button style=''color: white;'' type=''button'' class=''btn btn-primary enviarEmail''>Enviar Email</button></td>'
+												else 
+											       '<td><button style=''color: white;'' type=''button'' class=''btn btn-primary enviarEmail'' disabled >Enviar Email</button></td>'
+											end as enviar_email,
+										    case 
 										    	when 
 										    		(
 										    			(
@@ -121,7 +184,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										    			) >= 1
 										            ) 
 										    	then 
-										    		'<td><button  type=''button'' class=''btn btn-danger btn-lg''></button></td>'
+										    		'<td><button  type=''button'' class=''btn btn-danger btn-lg pago''></button></td>'
 										    	when 
 										    		(
 										    			(
@@ -135,9 +198,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										    			) = 1
 										    	  ) 
 										    	then 
-										    		'<td><button  type=''button'' class=''btn btn-warning btn-lg''></button></td>'
+										    		'<td><button  type=''button'' class=''btn btn-warning btn-lg pago''></button></td>'
 										    	else 
-										           '<td><button  type=''button'' class=''btn btn-dark btn-lg''></button></td>'
+										           '<td><button  type=''button'' class=''btn btn-dark btn-lg pago''></button></td>'
 										    end as color_pago
 											from polizas po 
 										    join poliza_datos_prima pdp on (po.id_poliza = pdp.id_poliza)
@@ -195,6 +258,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								$nestedData[] = $row["aseguradora"];
 								$nestedData[] = $row["pagos"];
 								$nestedData[] = $row["color_pago"];
+								$nestedData[] = $row["enviar_email"];
 
 								$data[] = $nestedData;
 							}
@@ -315,6 +379,63 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 		}
 
+
+
+		public function getDatosPagoEmailCliente($id_poliza)
+		{
+
+
+				$sql =	"select    DATE_FORMAT(fecha_pago, '%d/%m/%Y') fecha_pago,
+								   cantidad_pago, 
+							       ca.nombre as aseguradora,
+							       ctp.nombre as tipo_poliza,
+							       po2.no_poliza,
+								   CONCAT(usu.nombre , ' ', usu.apellido_paterno,' ',usu.apellido_materno) as cliente,
+								   usu.correo
+							       from 
+						polizas po2  
+						join poliza_datos_forma_pagos pdf2 on (pdf2.id_poliza = po2.id_poliza)
+						join usuarios usu on (po2.id_usuario = usu.id_usuario)
+						join cat_tipo_poliza ctp on (po2.id_tipo_poliza = ctp.id_tipo_poliza )
+						join cat_aseguradoras ca on (po2.id_aseguradora = ca.id_aseguradora )
+						where pdf2.id_poliza = ? and 
+							( pdf2.pagado =  0 or pdf2.pagado is null ) and 
+							DATEDIFF(pdf2.fecha_pago , DATE_FORMAT(now(), '%Y-%m-%d')) >= 0 and
+							DATEDIFF(pdf2.fecha_pago , DATE_FORMAT(now(), '%Y-%m-%d')) <= 10;";
+
+				$query = $this->db->query($sql,array($id_poliza));
+
+				if($query)
+				{
+					if($query->num_rows()>0)
+					{
+						$resultado_query['numRegistros'] = $query->num_rows();
+						$resultado_query['datosPagoCliente'] = $query->result(); 
+						$resultado_query['status'] = 'OK'; 
+						$resultado_query['mensaje'] = 'información obtenida';
+
+				
+					}
+					else
+					{
+						$resultado_query['numRegistros'] = $query->num_rows();
+						$resultado_query['datosPagoCliente'] = $query->result(); 
+						$resultado_query['status'] = 'Sin datos';
+						$resultado_query['mensaje'] = 'No hay registros'; 
+					}
+				}
+				else
+				{
+					$resultado_query['status'] = 'ERROR'; 
+					$resultado_query['mensaje'] = 'Ocurrió un error en la base de datos porfavor recargue la pagina e intente de nuevo'; 
+				}
+
+
+				return $resultado_query;
+					
+
+
+		}
 
 
 	}

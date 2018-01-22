@@ -248,6 +248,88 @@ class Polizas extends CI_Controller
 	}
 
 
+	public function enviarEmailCliente()
+	{
+		$id_poliza = $_REQUEST['id_poliza'];
+		
+
+		$this->load->model('Polizas/Model_Polizas');
+		$datosPagoCliente = $this->Model_Polizas->getDatosPagoEmailCliente($id_poliza);
+
+
+
+		if(is_array($datosPagoCliente))
+		{
+			$envioEmail = $this->sendMailGmail($datosPagoCliente["datosPagoCliente"][0]);
+
+
+			if($envioEmail)
+			{
+				$msjEnvioEmail['msj'] = "Email enviado con éxito";
+				
+
+				echo json_encode($msjEnvioEmail);
+			}
+			else
+			{
+				$msjEnvioEmail['msj'] = "Ocurrió un error a la hora de enviar el email, intente de nuevo";
+				
+				echo json_encode($msjEnvioEmail);
+			}
+		}
+		
+
+		
+
+	}
+
+
+
+	function sendMailGmail($datosPagoCliente)
+ 	{
+
+ 		$this->load->library("email");
+ 
+         //configuracion para gmail
+		 $configGmail = array(
+		 'protocol' => 'smtp',
+		 'smtp_host' => 'ssl://smtp.gmail.com',
+		 'smtp_port' => 465,
+		 'smtp_user' => 'luis.molina.testing@gmail.com',
+		 'smtp_pass' => 'tesTingSendEmail_1',
+		 'mailtype' => 'html',
+		 'charset' => 'utf-8',
+		 'newline' => "\r\n"
+		 );    
+		 
+		 //cargamos la configuración para enviar con gmail
+		 $this->email->initialize($configGmail);
+		 
+		 $this->email->from('luis.molina.testing@gmail.com');
+		 $this->email->to($datosPagoCliente->correo);
+		 //$this->email->to("luisame@outlook.com");
+		 $this->email->subject('Pago de póliza');
+
+		 // $host= gethostname();
+		 // $ip = gethostbyname($host);
+
+		 // $file_to_attach = "http://".$ip.":8080/PhpCodeigniterPractica/public/uploads/".$datosUsuario->foto;
+		 //$file_to_attach = "http://".$ip."/PhpCodeigniterPractica/public/uploads/".$datosUsuario->foto;
+
+		 //$this->email->attach($file_to_attach);
+
+		 $mensaje = $this->load->view('Email/view_EmailClientePagoPoliza.php',$datosPagoCliente,TRUE);
+		 // return $message;
+
+		 $this->email->message($mensaje);
+
+		 $envio = $this->email->send();
+
+		 return $envio;
+
+ 	}
+
+
 
 
 }
