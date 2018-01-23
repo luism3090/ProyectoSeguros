@@ -143,7 +143,7 @@
 <div id="modalLoadTablaPolizasCliente" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static" >
   <div class="modal-dialog">
 		    <!-- Modal content-->
-		    <div class="modal-content" style="width:200%;margin-left:-30%;">
+		    <div class="modal-content" style="width:180%;margin-left:-20%;">
 		      <div class="modal-header">
 		       <button type="button" class="close" data-dismiss="modal">&times;</button>
 		        <h4 class="modal-title">Alerta</h4>
@@ -259,7 +259,7 @@
 	<!-- <script src="<?php echo base_url(); ?>public/js/msjClientesPolizaDigital.js"></script> -->
 	<script src="<?php echo base_url(); ?>public/js/cargarMenu.js"></script>
 	<script src="<?php echo base_url(); ?>public/js/cerrarSesion.js"></script>
-	<script src="<?php echo base_url(); ?>public/js/filePolizas.js"></script>
+	<script src="<?php echo base_url(); ?>public/js/formPolizaDigital.js"></script>
 
 
 <script>

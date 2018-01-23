@@ -114,7 +114,7 @@ $(document).ready(function()
                                           $("#divClientePolizas").text(cliente);
 
                                           let noData= `<tr class='noData' >
-                                                            <td  colspan='8' class='text-center'>El cliente aun no tiene pólizas</td>
+                                                            <td  colspan='8' class='text-center'>Sin información disponible</td>
                                                       </tr>`;
 
                                           $("body #tblLoadPolizasCliente tbody").html(noData);

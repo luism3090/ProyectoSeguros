@@ -1,7 +1,7 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-	class LoadClientes extends CI_Model
+	class Model_PolizaDigitalCliente extends CI_Model
 	{
 		public function __construct()
 		{
@@ -9,7 +9,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 
 
-		public function cargarClientes($request)
+
+		public function cargarClientes($request,$id_usuario)
 		{
 
 					$requestData= $request;
@@ -35,7 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 											        join cat_municipios muni on (usu.id_municipio = muni.id_municipio)
 											        join cat_localidades loca on (usu.id_localidad = loca.id_localidad)
 											        join cat_rfc rfc on (usu.id_rfc = rfc.id_rfc)
-											  where usu.estado = 1 and rol.id_rol=3
+											  where usu.estado = 1 and rol.id_rol=3 and usu.id_usuario = ".$id_usuario."
 											order by ".$columna." ".$ordenacion." ";
 
 					
@@ -81,7 +82,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										join cat_municipios muni on (usu.id_municipio = muni.id_municipio)
 										join cat_localidades loca on (usu.id_localidad = loca.id_localidad)
 										join cat_rfc rfc on (usu.id_rfc = rfc.id_rfc)
-										where usu.estado = 1 and rol.id_rol= 3  
+										where usu.estado = 1 and rol.id_rol= 3 and usu.id_usuario = ".$id_usuario."
 										)AS myTable
 										where  
 											 ( 
@@ -131,20 +132,74 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							}
 
 
-				$json_data = array(
-					"draw"            => intval( $requestData['draw'] ),   // for every request/draw by clientside , they send a number as a parameter, when they recieve a response/data they first check the draw number, so we are sending same number in draw. 
-					"recordsTotal"    => intval( $totalData ),  // total number of records
-					"recordsFiltered" => intval( $totalFiltered ), // total number of records after searching, if there is no searching then totalFiltered = totalData
-					"data"            => $data  // total data array
-					);
+					$json_data = array(
+						"draw"            => intval( $requestData['draw'] ),   // for every request/draw by clientside , they send a number as a parameter, when they recieve a response/data they first check the draw number, so we are sending same number in draw. 
+						"recordsTotal"    => intval( $totalData ),  // total number of records
+						"recordsFiltered" => intval( $totalFiltered ), // total number of records after searching, if there is no searching then totalFiltered = totalData
+						"data"            => $data  // total data array
+						);
 
 
-				return $json_data;
+					return $json_data;
 
 
 			
 		}
 
 
+
+		public function getDatosPolizasCliente($id_usuario)
+		{
+				
+				$this->db->trans_begin();
+
+
+				$sql = "select 	distinct
+									po.id_poliza,
+									po.no_poliza,
+									cfp.nombre as formaPago,
+									ctp.nombre as tipoPoliza, 
+									DATE_FORMAT(po.fecha_inicia,'%d/%m/%Y') as fecha_inicia, 
+									DATE_FORMAT(po.fecha_finaliza,'%d/%m/%Y') as fecha_finaliza,
+									ca.nombre as aseguradora,
+							        rpdc.pdf_poliza,
+							        '<button  type=''button'' class=''btn btn-primary btnSubirPolizas''> <span class=''glyphicon glyphicon-upload''></span> </button>' as SubirPolizas,
+							        CONCAT(usu.nombre, ' ', usu.apellido_paterno , ' ', usu.apellido_materno) as cliente
+							from polizas po 
+							join poliza_datos_prima pdp on (po.id_poliza = pdp.id_poliza)
+							join poliza_datos_forma_pagos pdf on (po.id_poliza = pdf.id_poliza) 
+							join cat_forma_pago cfp on (pdp.id_forma_pago = cfp.id_forma_pago)
+							join usuarios usu on (po.id_usuario = usu.id_usuario)
+							join cat_tipo_poliza ctp on (po.id_tipo_poliza = ctp.id_tipo_poliza)
+							join cat_aseguradoras ca on (po.id_aseguradora = ca.id_aseguradora)
+							left join rel_polizas_pdf_clientes rpdc on (rpdc.id_usuario = usu.id_usuario and po.id_poliza = rpdc.id_poliza)
+							where usu.id_usuario = ? ";
+
+
+				$query = $this->db->query($sql,array($id_usuario));
+
+				if ($this->db->trans_status() === FALSE)
+				{
+
+						$datos["status"] = "ERROR";
+						$datos["msjConsulta"] = "Falló al actualizar los datos del usuario intente de nuevo";
+
+				        $this->db->trans_rollback();
+				}
+				else
+				{
+					$datos["polizasCliente"] = $query->result();
+					$datos["status"] = "OK";
+					$datos["msjConsulta"] = "Mostrando informacion de las polizas";
+
+
+				    $this->db->trans_commit();
+				}
+
+			    return $datos;
+
+		}
+
+	
 	}
 ?>

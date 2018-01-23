@@ -80,90 +80,32 @@
 			  </ul>
 		</div>
 		
+		<br><br>
         <div style="margin-left:22%;width:75%" class="container-fluid" >
 					
+						<h3 style="margin-left: 21%;">Polizas del cliente <strong id='divClientePolizas'></strong> </h3>
+					<br><br><br><br>
 					<div class="row">
-						<div class="col-xs-12 text-center">
-							
-							<h3>Póliza Digital</h3>	
-						
+						<div class="col-xs-9">
+							<table id='tblLoadPolizasCliente' border='1px' style="width:134.3%;height:100px;border:1px solid black;margin: 0px auto">
+								<thead>
+									<tr>
+										<th class='text-center'>Número de póliza</th>
+										<th class='text-center'>Tipo de póliza</th>
+										<th class='text-center'>Forma de pago</th>
+										<th class='text-center'>Fecha de inicio</th>
+										<th class='text-center'>Fecha vencimiento</th>
+										<th class='text-center'>Aseguradora</th>
+										<th class='text-center'>Pdf póliza</th>
+									</tr>
+								</thead>
+								<tbody>
+									
+								</tbody>
+							</table >
 						</div>
-					</div>
-					<br>
-					
-					<div class="row">
-				<div class="col-xs-12">
-						
-						<div class="table-responsive">
-								<table class="table table-bordered table-hover" id="tblDetallePolizasClientes" cellspacing="0"  width="100%" style="text-align: center;">
-										<caption style="text-align: center"><h4><strong>Usuarios dados de alta</strong></h4></caption>
-										<thead>
-							                    <tr>
-								                      <th>Código</th>
-								                      <th>#Póliza</th>
-								                      <th>Tipo de Póliza</th>
-								                      <th>Cliente</th>
-								                      <th>Vencimiento</th>
-								                      <th>Aseguradora</th>
-								                      <th>Enviar Email</th>
-							                    </tr>
-							            </thead>
-					                    <tbody>
-					                    	<tr>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td><button  type="button" class="btn btn-success DownloadPoliza"> <span class="glyphicon glyphicon-download-alt"></span> Descargar póliza</button></td>
-					                    	</tr>
-					                    	<tr>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td><button  type="button" class="btn btn-success DownloadPoliza"> <span class="glyphicon glyphicon-download-alt"></span> Descargar póliza</button></td>
-					                    	</tr>
-					                    	<tr>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td><button  type="button" class="btn btn-success DownloadPoliza"> <span class="glyphicon glyphicon-download-alt"></span> Descargar póliza</button></td>
-					                    	</tr>
-					                    	<tr>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td><button  type="button" class="btn btn-success DownloadPoliza"> <span class="glyphicon glyphicon-download-alt"></span> Descargar póliza</button></td>
-					                    	</tr>
-					                    	<tr>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td>Datos</td>
-					                    		<td><button  type="button" class="btn btn-success DownloadPoliza"> <span class="glyphicon glyphicon-download-alt"></span> Descargar póliza</button></td>
-					                    	</tr>
-					                    </tbody>
-						                
-						        </table>
-						</div>
-				</div>
-			</div>
-
 
 	<br><br><br><br><br>
-
 
 
 
@@ -176,9 +118,9 @@
 	<script src="<?php echo base_url(); ?>public/libreriasJS/dataTables.select.min.js"></script>
 
 	
-	<script src="<?php echo base_url(); ?>public/js/cargarTablaPolizasClientes.js"></script>
 	<script src="<?php echo base_url(); ?>public/js/cargarMenu.js"></script>
 	<script src="<?php echo base_url(); ?>public/js/cerrarSesion.js"></script>
+	<script src="<?php echo base_url(); ?>public/js/formPolizaDigitalClientes.js"></script>
 
 
 

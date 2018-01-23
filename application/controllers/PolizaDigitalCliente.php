@@ -141,14 +141,14 @@ class PolizaDigitalCliente extends CI_Controller
 							<a href="'.base_url().'PolizaDigitalCliente" class="selecionado">
 								<i class="fa fa-list-alt"></i>Póliza digital
 							</a>
-						</li>
-						<li>
-							<a href="'.base_url().'Descargas"><i class="fa fa-download"></i>Descargas</a>
-						</li>
-						<li>
-							<a href="'.base_url().'Descargas"><i class="fa fa-download"></i>Hola mundo</a>
-						</li>
-					</ul> ';
+						</li></ul>';
+						// <li>
+						// 	<a href="'.base_url().'Descargas"><i class="fa fa-download"></i>Descargas</a>
+						// </li>
+						// <li>
+						// 	<a href="'.base_url().'Descargas"><i class="fa fa-download"></i>Hola mundo</a>
+						// </li>
+					//'</ul> ';
 
 		}
 
@@ -165,78 +165,112 @@ class PolizaDigitalCliente extends CI_Controller
 
 	}
 
-	function buildMenu($datosMenu1,$is_sub,$descripcion)
+
+	public function cargarClientes()
 	{
 
-		$menu = "";
-		$attr = "";
+		//$this->session->userdata('id_usuario');
 
-		if($is_sub)
-		{
-			$attr = "class='sub-menu collapse' id='".$descripcion."'";
-			$menu = "<ul $attr >";
-		}
-		else
-		{
-			 $attr = 'id="menu"';
-		}
+		$id_usuario = $this->session->userdata('id_usuario');
 
 
-		  foreach($datosMenu1 as $id => $properties) 
-		  {
+		$this->load->model('PolizaDigitalCliente/Model_PolizaDigitalCliente');
+		$datosClientes = $this->Model_PolizaDigitalCliente->cargarClientes($_REQUEST,$id_usuario);
+
+		echo json_encode($datosClientes);
+
+	}
 
 
-			  	$datosMenu2 = $this->Menu->getHijosElmentosMenu($properties->id_elemento_menu,$this->session->userdata('id_rol'));
+	public function getDatosPolizasCliente()
+	{
+
+		$id_usuario = $this->session->userdata('id_usuario');
+
+		$this->load->model('PolizaDigitalCliente/Model_PolizaDigitalCliente'); 
+          $resultado_query = $this->Model_PolizaDigitalCliente->getDatosPolizasCliente($id_usuario);
+
+		//$datosUsuario["aa"] = $datosUsuario;
+
+		 echo json_encode($resultado_query);
+		//var_dump($datosUsuario); 
+	}
+
+
+
+
+	// function buildMenu($datosMenu1,$is_sub,$descripcion)
+	// {
+
+	// 	$menu = "";
+	// 	$attr = "";
+
+	// 	if($is_sub)
+	// 	{
+	// 		$attr = "class='sub-menu collapse' id='".$descripcion."'";
+	// 		$menu = "<ul $attr >";
+	// 	}
+	// 	else
+	// 	{
+	// 		 $attr = 'id="menu"';
+	// 	}
+
+
+	// 	  foreach($datosMenu1 as $id => $properties) 
+	// 	  {
+
+
+	// 		  	$datosMenu2 = $this->Menu->getHijosElmentosMenu($properties->id_elemento_menu,$this->session->userdata('id_rol'));
 			  	
-			  	if(!empty($datosMenu2)) 
-			  	{
+	// 		  	if(!empty($datosMenu2)) 
+	// 		  	{
 
-                	$sub = $this->buildMenu($datosMenu2, TRUE,$properties->descripcion);
+ //                	$sub = $this->buildMenu($datosMenu2, TRUE,$properties->descripcion);
 
-	            }		           
-	            else {
+	//             }		           
+	//             else {
 
-	                $sub = NULL;                
+	//                 $sub = NULL;                
 
-	            }	
+	//             }	
 
-	            if ($sub != NULL)
-	            {
+	//             if ($sub != NULL)
+	//             {
 	            	
 	            	
-	            	 $menu .= "<li class='active' >
-					            	 <a href='#' data-toggle='collapse' data-target='#".$properties->descripcion."' class='collapse active'>
-						            	 <i class='$properties->icono'></i>
-						            	 <span class='nav-label'>$properties->descripcion</span>
-						            	 <i class='fa fa-chevron-left pull-right'></i>
-					            	 </a>
-					            	 $sub
-	            	 		   </li>";
+	//             	 $menu .= "<li class='active' >
+	// 				            	 <a href='#' data-toggle='collapse' data-target='#".$properties->descripcion."' class='collapse active'>
+	// 					            	 <i class='$properties->icono'></i>
+	// 					            	 <span class='nav-label'>$properties->descripcion</span>
+	// 					            	 <i class='fa fa-chevron-left pull-right'></i>
+	// 				            	 </a>
+	// 				            	 $sub
+	//             	 		   </li>";
 	            	
-	            }
-	            else
-	            {
+	//             }
+	//             else
+	//             {
 
-	            	if($properties->controlador != "" )
-	            	{
-	            		$url = base_url().$properties->controlador;
-	            	}
-	            	else
-	            	{
-	            		$url = "#";
-	            	}
+	//             	if($properties->controlador != "" )
+	//             	{
+	//             		$url = base_url().$properties->controlador;
+	//             	}
+	//             	else
+	//             	{
+	//             		$url = "#";
+	//             	}
 
-	            	$menu .= "<li><a href='".$url."'><i class='".$properties->icono."'></i>$properties->descripcion</a></li>";
-	            }
+	//             	$menu .= "<li><a href='".$url."'><i class='".$properties->icono."'></i>$properties->descripcion</a></li>";
+	//             }
             		
             		     			                          
 
-		  }
+	// 	  }
 		
 
-		return $menu . "</ul>";
+	// 	return $menu . "</ul>";
 
-	}
+	// }
 
 
 
