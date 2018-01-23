@@ -41,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 														) >= 1
 											        ) 
 												then 
-													'<td><button style=''color: white;'' type=''button'' class=''btn btn-primary enviarEmail'' disabled >Enviar Email</button></td>'
+													'<td></td>'
 												when 
 													(
 														(
@@ -57,7 +57,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 												then 
 													'<td><button style=''color: white;'' type=''button'' class=''btn btn-primary enviarEmail''>Enviar Email</button></td>'
 												else 
-											       '<td><button style=''color: white;'' type=''button'' class=''btn btn-primary enviarEmail'' disabled >Enviar Email</button></td>'
+											       '<td></td>'
 											end as enviar_email,
 										    case 
 										    	when 
@@ -153,7 +153,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 														) >= 1
 											        ) 
 												then 
-													'<td><button style=''color: white;'' type=''button'' class=''btn btn-primary enviarEmail'' disabled >Enviar Email</button></td>'
+													'<td></td>'
 												when 
 													(
 														(
@@ -169,7 +169,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 												then 
 													'<td><button style=''color: white;'' type=''button'' class=''btn btn-primary enviarEmail''>Enviar Email</button></td>'
 												else 
-											       '<td><button style=''color: white;'' type=''button'' class=''btn btn-primary enviarEmail'' disabled >Enviar Email</button></td>'
+											       '<td></td>'
 											end as enviar_email,
 										    case 
 										    	when 

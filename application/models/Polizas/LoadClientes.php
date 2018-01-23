@@ -18,6 +18,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					$ordenacion = $requestData['order'][0]["dir"];
 
 					
+					// $sqlClientes =	"select 
+					// 					  usu.id_usuario,
+					// 					  CONCAT(usu.nombre , ' ', usu.apellido_paterno,' ',usu.apellido_materno) as nombreCompleto,
+					// 					  usu.correo,
+					// 					  usu.telefono,
+					// 					  rfc.nombre rfc,
+					// 					  est.nombre as estado,
+					// 					  muni.nombre as municipio,
+					// 					  loca.nombre as localidad,
+					// 					  '<button  type=''button'' class=''btn btn-primary btnSubirPolizas''> <span class=''glyphicon glyphicon-upload''></span> </button>' as SubirPolizas
+					// 					  from usuarios usu
+					// 							  join rel_usuarios_roles usu_ro on (usu.id_usuario = usu_ro.id_usuario)
+					// 							  join cat_roles rol on (usu_ro.id_rol = rol.id_rol) 
+					// 						        join cat_estados est on (usu.id_estado = est.id_estado)
+					// 						        join cat_municipios muni on (usu.id_municipio = muni.id_municipio)
+					// 						        join cat_localidades loca on (usu.id_localidad = loca.id_localidad)
+					// 						        join cat_rfc rfc on (usu.id_rfc = rfc.id_rfc)
+					// 						  where usu.estado = 1 and rol.id_rol=3
+					// 						order by ".$columna." ".$ordenacion." ";
+
+
 					$sqlClientes =	"select 
 										  usu.id_usuario,
 										  CONCAT(usu.nombre , ' ', usu.apellido_paterno,' ',usu.apellido_materno) as nombreCompleto,
@@ -27,7 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										  est.nombre as estado,
 										  muni.nombre as municipio,
 										  loca.nombre as localidad,
-										  '<button  type=''button'' class=''btn btn-primary btnSubirPolizas''> <span class=''glyphicon glyphicon-upload''></span> </button>' as SubirPolizas
+										  '<button  type=''button'' class=''btn btn-primary btnVerPolizas''> <span class=''glyphicon glyphicon-eye-open''></span> </button>' as VerPolizas
 										  from usuarios usu
 												  join rel_usuarios_roles usu_ro on (usu.id_usuario = usu_ro.id_usuario)
 												  join cat_roles rol on (usu_ro.id_rol = rol.id_rol) 
@@ -62,18 +83,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										estado,
 										municipio,
 										localidad,
-										SubirPolizas
+										VerPolizas
 										FROM (
 										select 
 										usu.id_usuario,
-										CONCAT(usu.nombre , ' ', apellido_paterno,' ',apellido_materno) as nombreCompleto,
-										usu.correo,
-										usu.telefono,
-										rfc.nombre rfc,
-										est.nombre as estado,
-										muni.nombre as municipio,
-										loca.nombre as localidad,
-										'<button  type=''button'' class=''btn btn-primary btnSubirPolizas''> <span class=''glyphicon glyphicon-pencil''></span> </button>' as SubirPolizas
+										CONCAT(usu.nombre , ' ', usu.apellido_paterno,' ',usu.apellido_materno) as nombreCompleto,
+										  usu.correo,
+										  usu.telefono,
+										  rfc.nombre rfc,
+										  est.nombre as estado,
+										  muni.nombre as municipio,
+										  loca.nombre as localidad,
+										  '<button  type=''button'' class=''btn btn-primary btnVerPolizas''> <span class=''glyphicon glyphicon-eye-open''></span> </button>' as VerPolizas
 										from usuarios usu
 										join rel_usuarios_roles usu_ro on (usu.id_usuario = usu_ro.id_usuario)
 										join cat_roles rol on (usu_ro.id_rol = rol.id_rol) 
@@ -125,7 +146,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								$nestedData[] = $row["estado"];
 								$nestedData[] = $row["municipio"];
 								$nestedData[] = $row["localidad"];
-								$nestedData[] = $row["SubirPolizas"];
+								$nestedData[] = $row["VerPolizas"];
 
 								$data[] = $nestedData;
 							}

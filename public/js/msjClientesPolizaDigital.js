@@ -1,9 +1,6 @@
 $(document).ready(function()
 {
 
-	var base_url = $("body").attr("data-base-url");
-
-
 	// $("body").on("click","#tblClientes tr",function()
 	// {
 	// 	$("#contMsCliente").css("display","block");
@@ -13,10 +10,7 @@ $(document).ready(function()
 	// })
 
 
-	$("body").on("click",".btnSubirPolizas",function()
-	{
-		$("#modalCargarFilesPolizasUsuario").modal("show");
-	});
+
 
 
 });

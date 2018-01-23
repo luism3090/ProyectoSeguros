@@ -415,6 +415,8 @@ var base_url = $("body").attr("data-base-url");
 
              }
 
+             $("#modalSuccessPagoPoliza").prop('cambio',true);
+
               $.ajax(
                         {
                             type: "POST",
@@ -508,8 +510,16 @@ var base_url = $("body").attr("data-base-url");
      $('#modalPagosPoliza').on('hide.bs.modal', function (e) 
        {
           
+          if( $("#modalSuccessPagoPoliza").prop('cambio') )
+          {
+              location.reload();
+          }
+          else
+          {
+             $("#modalSuccessPagoPoliza").prop('cambio',false);
+          }
 
-          location.reload();
+        
           
                // let quitarColorOrange='SI';
                // let quitarColorRed='SI';

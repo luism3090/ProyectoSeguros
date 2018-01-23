@@ -32,7 +32,7 @@ class Home extends CI_Controller
 
 			$dataMenu = '
 								<li>
-									<a href="'.base_url().'Home"><i class="fa fa-money"></i>Pólizas</a>
+									<a href="'.base_url().'Home"><i class="fa fa-file-text"></i>Pólizas</a>
 
 								</li>
 						
@@ -82,33 +82,32 @@ class Home extends CI_Controller
 														
 													</ul>
 
-												</li>
+												</li>'.
 
-												<li><a href="'.base_url().'PolizaDigital"><i class=""></i>Póliza digital</a></li>
+												
 
-													<li class="active">
-												    	 <a href="#" data-toggle="collapse" data-target="#Pagos" class="collapse active">
-												        	 <i class="fa fa-money"></i>
-												        	 <span class="nav-label">Pagos</span>
-												        	 <i class="fa fa-chevron-left pull-right"></i>
-												    	 </a>
-												    	 <ul class="sub-menu collapse" id="Pagos">
-												    	 	<li>
-												    	 		<a href="'.base_url().'PagosVencer"><i class=""></i>Próximos a vencer</a>
-												    	 	</li>
-												    	 	<li>
-												    	 		<a href="'.base_url().'TodoPolizas"><i class=""></i>Todas las Pólizas</a>
-												    	 	</li>
-												    	 </ul>
-													 </li>
-											</ul>
+													// <li class="active">
+												 //    	 <a href="#" data-toggle="collapse" data-target="#Pagos" class="collapse active">
+												 //        	 <i class="fa fa-money"></i>
+												 //        	 <span class="nav-label">Pagos</span>
+												 //        	 <i class="fa fa-chevron-left pull-right"></i>
+												 //    	 </a>
+												 //    	 <ul class="sub-menu collapse" id="Pagos">
+												 //    	 	<li>
+												 //    	 		<a href="'.base_url().'PagosVencer"><i class=""></i>Próximos a vencer</a>
+												 //    	 	</li>
+												 //    	 	<li>
+												 //    	 		<a href="'.base_url().'TodoPolizas"><i class=""></i>Todas las Pólizas</a>
+												 //    	 	</li>
+												 //    	 </ul>
+													 // </li>
+											'</ul>
 											   
 										</li>
 
-										<li>
-											<a href="'.base_url().'PolizasCotizacion"><i class="fa fa-money"></i>Cotización</a>
-
-										</li>
+										<li><a href="'.base_url().'PolizaDigital"><i class="fa fa-upload"></i>Póliza digital</a></li>
+						
+										
 
 										';
 

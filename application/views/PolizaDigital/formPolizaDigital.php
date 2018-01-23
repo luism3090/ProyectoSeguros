@@ -95,10 +95,7 @@
 					</div>
 					<br>
 					
-					<form action="" id="formPolizaDigital">
-					
-						<fieldset>
-							<legend>Seleccionar cliente:</legend>
+				
 							<div class="row">
 								<div class="col-xs-12 ">
 									<div class="table-responsive">
@@ -114,44 +111,19 @@
 										                      <th>Estado</th>
 										                      <th>Municipio</th>
 										                      <th>Localidad</th>
-										                      <th>Subir Polizas</th>
+										                      <th>Ver Polizas</th>
 									                    </tr>
 								                </thead>
 								        </table>
 									</div>
 								</div>
 							</div>
-						</fieldset>
+					
 						<br><br><br><br><br><br><br>
 							
-							<fieldset id="contMsCliente" style ="display:none">
-								<legend>Datos del cliente:</legend>
-								
-								<div class="row">
-									<div class="col-xs-12 " >
-										<h4 id="nombreClienteSelecionado" class="center-block text-center">
-											
-										</h4>
-									</div>
-								</div>
-								<br><br>
-								<div class="row">
-									<div class="col-xs-12 ">
-										<h4 id="msjClienteSelecionado" class="center-block text-center">
-											¿Desea avisar al cliente seleccionado con 10 dias de anticipación su próxima fecha a vencer?
-										</h4>
-									</div>
+					
 
-								</div>
-<br><br>
-								<div class="row">
-									<div class="col-xs-12 ">
-											<button type="submit" class="btn btn-primary center-block text-center" id="btnEnviar" >Enviar</button>
-									</div>
-								</div>
-							</fieldset>
-
-					</form>
+					
 
 	    </div>
 
@@ -160,40 +132,116 @@
 	<br><br><br><br><br>
 
 
+
+
+
+
+
+
+
 	<!-- Modal -->
-<div id="modalCargarFilesPolizasUsuario" class="modal fade" role="dialog">
+<div id="modalLoadTablaPolizasCliente" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static" >
+  <div class="modal-dialog">
+		    <!-- Modal content-->
+		    <div class="modal-content" style="width:200%;margin-left:-30%;">
+		      <div class="modal-header">
+		       <button type="button" class="close" data-dismiss="modal">&times;</button>
+		        <h4 class="modal-title">Alerta</h4>
+		      </div>
+		      <div class="modal-body">
+						
+						<h3>Polizas del cliente <strong id='divClientePolizas'></strong> </h3>
+					<br><br>
+					<div class="row">
+						<div class="col-xs-9">
+							<table id='tblLoadPolizasCliente' border='1px' style="width:134.3%;height:100px;border:1px solid black;margin: 0px auto">
+								<thead>
+									<tr>
+										<th class='text-center'>Número de póliza</th>
+										<th class='text-center'>Tipo de póliza</th>
+										<th class='text-center'>Forma de pago</th>
+										<th class='text-center'>Fecha de inicio</th>
+										<th class='text-center'>Fecha vencimiento</th>
+										<th class='text-center'>Aseguradora</th>
+										<th class='text-center'>Pdf póliza</th>
+										<th class='text-center'>Subir póliza</th>
+									</tr>
+								</thead>
+								<tbody>
+									
+								</tbody>
+							</table >
+						</div>
+					</div>
+		
+		      </div>	
+		      <div class="modal-footer">
+		      <button type="button" class="btn btn-primary" data-dismiss="modal" >Aceptar</button>
+		     
+		      </div>
+		    </div>
+  </div>
+</div>
+
+
+	<!-- Modal -->
+<div id="modalCargarFilesPolizasUsuario" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static" >
   <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-       <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Alerta</h4>
-      </div>
-      <div class="modal-body">
-        	
-        <div class="row">
-			<div class="col-xs-12 ">
-	        	 <div class="form-group">
-				 	<label for="elegir" class="center-block text-center" >Subir Poliza:</label> 
-					<input id="filePoliza" name="input2[]" type="file" class="file file-loading" data-show-upload="false" data-show-caption="true">
+	<form id='formValidaUploadPoliza'>
+		    <!-- Modal content-->
+		    <div class="modal-content">
+		      <div class="modal-header">
+		       <button type="button" class="close" data-dismiss="modal">&times;</button>
+		        <h4 class="modal-title">Alerta</h4>
+		      </div>
+		      <div class="modal-body">
+		        	
+		        <div class="row">
+					<div class="col-xs-12 ">
+			        	 <div class="form-group">
+						 	<label for="elegir" class="center-block text-center" >Subir Poliza:</label> 
+							<input id="filePoliza" name="filePoliza" type="file" class="file file-loading" data-show-upload="false" data-show-caption="true">
 
-		          </div>
+				          </div>
 
-	         </div>
+			         </div>
 
-	     </div>
+			     </div>
 
-      </div>
-      <div class="modal-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal" id="btnGuardarFilesPolizasUsuarios" >Guardar</button>
-      <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnCancelarFilesPolizasUsuarios">Cancelar</button>
-      <input type="hidden" id="base_url" >
-      </div>
-    </div>
+		      </div>
+		      <div class="modal-footer">
+		      <button type="submit" class="btn btn-primary" id="btnGuardarFilesPolizasUsuarios" >Guardar</button>
+		      <button type="button" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
+		      <input type="hidden" id="base_url" >
+		      </div>
+		    </div>
+	</form>
+
 
   </div>
 </div>
+
+
+	<!-- Modal -->
+<div id="modalMensajeUploadPoliza" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static" >
+  <div class="modal-dialog">
+		    <!-- Modal content-->
+		    <div class="modal-content">
+		      <div class="modal-header">
+		       <button type="button" class="close" data-dismiss="modal">&times;</button>
+		        <h4 class="modal-title">Alerta</h4>
+		      </div>
+		      <div class="modal-body">
+		      </div>
+		      <div class="modal-footer">
+		      <button type="button" class="btn btn-primary" data-dismiss="modal" >Aceptar</button>
+		     
+		      </div>
+		    </div>
+  </div>
+</div>
+
 
 
 
@@ -207,8 +255,8 @@
 	<script src="<?php echo base_url(); ?>public/libreriasJS/dataTables.bootstrap.min.js"></script>
 	<script src="<?php echo base_url(); ?>public/libreriasJS/dataTables.select.min.js"></script>
 
-	<script src="<?php echo base_url(); ?>public/js/cargarTablaClientes.js"></script>
-	<script src="<?php echo base_url(); ?>public/js/msjClientesPolizaDigital.js"></script>
+	<!-- <script src="<?php echo base_url(); ?>public/js/cargarTablaClientes.js"></script> -->
+	<!-- <script src="<?php echo base_url(); ?>public/js/msjClientesPolizaDigital.js"></script> -->
 	<script src="<?php echo base_url(); ?>public/js/cargarMenu.js"></script>
 	<script src="<?php echo base_url(); ?>public/js/cerrarSesion.js"></script>
 	<script src="<?php echo base_url(); ?>public/js/filePolizas.js"></script>
