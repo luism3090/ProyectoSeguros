@@ -80,23 +80,30 @@ var base_url = $("body").attr("data-base-url");
 	          success: function(result)
 		          {
 		          	
-		          	
 
-		          	console.log(result);
-
-		          	if(result.msjCantidadRegistros > 0)
+		          	if(typeof(result.baja) == "undefined") 
 		          	{
-		          		//location.href = result.base_url;
 
-		          		
-		          		
-		          		location.href = result.base_url;
+				          	if(result.msjCantidadRegistros > 0)
+				          	{
+				          		//location.href = result.base_url;
+
+				          		
+				          		
+				          		location.href = result.base_url;
+				          	}
+				          	else
+				          	{
+				          		$('#modalAlerta .modal-body > p').text(result.msjNoHayRegistros);
+				          		$('#modalAlerta').modal('show');
+				          	}
+
 		          	}
 		          	else
 		          	{
-		          		$('#modalAlerta .modal-body > p').text(result.msjNoHayRegistros);
-		          		$('#modalAlerta').modal('show');
+		          	  window.location = result.url;
 		          	}
+		          	
 
 		          },
 			   error:function(result)

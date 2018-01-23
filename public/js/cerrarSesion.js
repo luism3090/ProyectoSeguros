@@ -28,10 +28,19 @@ $(document).ready(function()
               success: function(result)
                   {
                     
-                    if(!result.sesion)
+                    if(typeof(result.baja) == "undefined") 
                     {
-                      location.href = result.base_url;
+                        if(!result.sesion)
+                        {
+                          location.href = result.base_url;
+                        }
+
                     }
+                    else
+                    {
+                      window.location = result.url;
+                    }
+
                   
 
                   },

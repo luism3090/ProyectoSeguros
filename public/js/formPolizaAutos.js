@@ -107,64 +107,70 @@ $(document).ready(function()
                                 success: function(result)
                                     {
                                       
-                                      
+                                        if(typeof(result.baja) == "undefined") 
+                                        {
 
-                                      if(result.status=="OK")
-                                      {
+                                            if(result.status=="OK")
+                                            {
 
-                                             if(IdFormaDePago == '1')
-                                             {
+                                                   if(IdFormaDePago == '1')
+                                                   {
+                                                        
+                                                        var fechaPago0 = result.fechaPagos[0].fechaPago0;
+
+
+                                                        $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(0).text(result.fechaPagos[0].fechaPago0);
+                                                        $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(1).text(result.fechaPagos[0].fechaPago1);
+                                                        $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(2).text(result.fechaPagos[0].fechaPago2);
+                                                        $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(3).text(result.fechaPagos[0].fechaPago3);
+                                                        $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(4).text(result.fechaPagos[0].fechaPago4);
+                                                        $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(5).text(result.fechaPagos[0].fechaPago5);
+                                                        $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(6).text(result.fechaPagos[0].fechaPago6);
+                                                        $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(7).text(result.fechaPagos[0].fechaPago7);
+                                                        $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(8).text(result.fechaPagos[0].fechaPago8);
+                                                        $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(9).text(result.fechaPagos[0].fechaPago9);
+                                                        $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(10).text(result.fechaPagos[0].fechaPago10);
+                                                        $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(11).text(result.fechaPagos[0].fechaPago11);
+                                                        
+                                                   }
+
+
+                                                   if(IdFormaDePago == '2')
+                                                   {
+                                                        
+                                                        var fechaPago0 = result.fechaPagos[0].fechaPago0;
+
+
+                                                        $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(0).text(result.fechaPagos[0].fechaPago0);
+                                                        $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(1).text(result.fechaPagos[0].fechaPago1);
+                                                        
+                                                        
+                                                   }
+
+
+                                                    if(IdFormaDePago == '3')
+                                                   {
+                                                        
+                                                        var fechaPago0 = result.fechaPagos[0].fechaPago0;
+
+
+                                                        $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(0).text(result.fechaPagos[0].fechaPago0);
+                                                        $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(1).text(result.fechaPagos[0].fechaPago1);
+                                                        $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(2).text(result.fechaPagos[0].fechaPago2);
+                                                        $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(3).text(result.fechaPagos[0].fechaPago3);
+                                                        
+                                                        
+                                                   }
+
+
                                                   
-                                                  var fechaPago0 = result.fechaPagos[0].fechaPago0;
+                                            }
+                                        }
+                                        else
+                                        {
+                                          window.location = result.url;
+                                        }
 
-
-                                                  $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(0).text(result.fechaPagos[0].fechaPago0);
-                                                  $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(1).text(result.fechaPagos[0].fechaPago1);
-                                                  $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(2).text(result.fechaPagos[0].fechaPago2);
-                                                  $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(3).text(result.fechaPagos[0].fechaPago3);
-                                                  $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(4).text(result.fechaPagos[0].fechaPago4);
-                                                  $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(5).text(result.fechaPagos[0].fechaPago5);
-                                                  $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(6).text(result.fechaPagos[0].fechaPago6);
-                                                  $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(7).text(result.fechaPagos[0].fechaPago7);
-                                                  $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(8).text(result.fechaPagos[0].fechaPago8);
-                                                  $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(9).text(result.fechaPagos[0].fechaPago9);
-                                                  $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(10).text(result.fechaPagos[0].fechaPago10);
-                                                  $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(11).text(result.fechaPagos[0].fechaPago11);
-                                                  
-                                             }
-
-
-                                             if(IdFormaDePago == '2')
-                                             {
-                                                  
-                                                  var fechaPago0 = result.fechaPagos[0].fechaPago0;
-
-
-                                                  $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(0).text(result.fechaPagos[0].fechaPago0);
-                                                  $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(1).text(result.fechaPagos[0].fechaPago1);
-                                                  
-                                                  
-                                             }
-
-
-                                              if(IdFormaDePago == '3')
-                                             {
-                                                  
-                                                  var fechaPago0 = result.fechaPagos[0].fechaPago0;
-
-
-                                                  $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(0).text(result.fechaPagos[0].fechaPago0);
-                                                  $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(1).text(result.fechaPagos[0].fechaPago1);
-                                                  $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(2).text(result.fechaPagos[0].fechaPago2);
-                                                  $("#modalFormaDePago #tblFormaDePago tbody tr .pagos").eq(3).text(result.fechaPagos[0].fechaPago3);
-                                                  
-                                                  
-                                             }
-
-
-                                            
-                                      }
-                                      
 
                                     },
                                error:function(result)
@@ -536,7 +542,7 @@ $(document).ready(function()
 
                              	e.preventDefault();
 
-                              if($(".PrimerpagoPoliza").val().trim() !="")
+                              if($(".PrimerpagoPoliza").val() !="")
                               {
                                         if($("#tblClientes tbody tr").hasClass("selected"))
                                         {
@@ -618,17 +624,25 @@ $(document).ready(function()
                                                                     async: true,
                                                                     success: function(result)
                                                                         {
-                                                                          
-                                                                          if(result.msjConsulta=="OK")
-                                                                          {
-                                                                                $("#modalSuccessRegistroPoliza .modal-body").html("<h4>La poliza de autos fue registra correctamente.<h4>");
-                                                                                $("#modalSuccessRegistroPoliza").modal("show");
-                                                                          }
-                                                                          else
-                                                                          {
-                                                                                 $("#modalSuccessRegistroPoliza .modal-body").html("<h4>Ocurrio un error al registrar la poliza de autos.<h4>");
-                                                                                  $("#modalSuccessRegistroPoliza").modal("show");
-                                                                          }
+                                                                              if(typeof(result.baja) == "undefined") 
+                                                                              {
+                                                                                  if(result.msjConsulta=="OK")
+                                                                                  {
+                                                                                        $("#modalSuccessRegistroPoliza .modal-body").html("<h4>La poliza de autos fue registra correctamente.<h4>");
+                                                                                        $("#modalSuccessRegistroPoliza").modal("show");
+                                                                                  }
+                                                                                  else
+                                                                                  {
+                                                                                         $("#modalSuccessRegistroPoliza .modal-body").html("<h4>Ocurrio un error al registrar la poliza de autos.<h4>");
+                                                                                          $("#modalSuccessRegistroPoliza").modal("show");
+                                                                                  }
+                                                                              }
+                                                                              else
+                                                                              {
+                                                                                window.location = result.url;
+                                                                              }
+
+
 
                                                                         },
                                                                    error:function(result)

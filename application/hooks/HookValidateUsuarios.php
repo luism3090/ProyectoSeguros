@@ -36,18 +36,52 @@ class HookValidarDatosUsuario
 
 				//echo "logueado ".$this->ci->session->userdata('id_rol');
 
-				if($this->ci->session->userdata('id_rol') !="3")
+				if( $this->ci->input->is_ajax_request())
 				{
-					
-					//exit();
-					redirect('Home');
-					exit();
+
+					if($this->ci->session->userdata('id_rol') !="3")
+					{
+						
+						
+						$datos["baja"]=true;
+						$datos["url"]= base_url()."Home";
+
+						echo json_encode($datos);
+						
+						exit();
+
+
+					}
+					else
+					{
+						$datos["baja"]=true;
+						$datos["url"]= base_url()."PolizaDigitalCliente";
+
+						echo json_encode($datos);
+						
+						exit();
+
+						
+					}
+
 				}
 				else
 				{
-					redirect('PolizaDigitalCliente');
-					exit();
+					if($this->ci->session->userdata('id_rol') !="3")
+					{
+						
+						//exit();
+						redirect('Home');
+						exit();
+					}
+					else
+					{
+						redirect('PolizaDigitalCliente');
+						exit();
+					}
 				}
+
+				
 				
 			
 			}

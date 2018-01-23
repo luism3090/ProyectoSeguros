@@ -90,249 +90,259 @@ var base_url = $("body").attr("data-base-url");
                           data: {id_poliza: id_poliza},
                           async: true,
                           success: function(result)
-                              {
+                              {  
 
-                                if(result.status=="OK")
-                                {
+                                  if(typeof(result.baja) == "undefined") 
+                                  {
 
-                                    let tempPagos = '<tr>';
+                                        if(result.status=="OK")
+                                        {
 
-                                    $("#strFechaInicial").text(fechaInicial);
-                                    $("#strFechaFinaliza").text(fechaFinal);
+                                            let tempPagos = '<tr>';
 
-                                    $("#txtPagoTotalPoliza").text(result.pagos[0].pago_total);
+                                            $("#strFechaInicial").text(fechaInicial);
+                                            $("#strFechaFinaliza").text(fechaFinal);
 
-                                    $("#lblFormaPago").text(formaPago);
+                                            $("#txtPagoTotalPoliza").text(result.pagos[0].pago_total);
 
-                                     $("#modalPagosPoliza #tblFormaDePago tbody").html("");
+                                            $("#lblFormaPago").text(formaPago);
 
-                                     let checked = '';
+                                             $("#modalPagosPoliza #tblFormaDePago tbody").html("");
 
-
-
-                                    switch(result.numRegistros)
-                                    {
-                                        case 12:
-
-                                                    for(let x = 0; x < result.pagos.length ; x++)
-                                                    {
-
-                                                         // var fecha1 = moment('2018-02-10');
-                                                         var fecha1 = moment(hoy);
-                                                         var fecha2 = result.pagos[x].fecha_pago.split("/")[2] + "/" + result.pagos[x].fecha_pago .split("/")[1] + "/" + result.pagos[x].fecha_pago .split("/")[0];
-                                                          fecha2 = moment(fecha2); 
-
-                                                         var diferenciaDias = fecha2.diff(fecha1, 'days');
-                                                         var color = '';
+                                             let checked = '';
 
 
-                                                            if (result.pagos[x].pagado == '1')
+
+                                            switch(result.numRegistros)
+                                            {
+                                                case 12:
+
+                                                            for(let x = 0; x < result.pagos.length ; x++)
                                                             {
-                                                                checked = 'checked';
-                                                                //color = 'green';
+
+                                                                 // var fecha1 = moment('2018-02-10');
+                                                                 var fecha1 = moment(hoy);
+                                                                 var fecha2 = result.pagos[x].fecha_pago.split("/")[2] + "/" + result.pagos[x].fecha_pago .split("/")[1] + "/" + result.pagos[x].fecha_pago .split("/")[0];
+                                                                  fecha2 = moment(fecha2); 
+
+                                                                 var diferenciaDias = fecha2.diff(fecha1, 'days');
+                                                                 var color = '';
+
+
+                                                                    if (result.pagos[x].pagado == '1')
+                                                                    {
+                                                                        checked = 'checked';
+                                                                        //color = 'green';
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        checked = '';   
+
+                                                                        if(diferenciaDias < 0)
+                                                                        {
+                                                                            color = 'red';
+                                                                        }
+                                                                        else if(diferenciaDias >= 0 && diferenciaDias <= 10)
+                                                                        {
+                                                                            color = 'orange';
+                                                                        }
+                                                                        else 
+                                                                        {
+                                                                            color = 'black';
+                                                                        }
+
+                                                                    }
+
+
+
+
+                                                                    tempPagos +=    `     <td>
+                                                                                              <strong class='pagos' style='margin-left:65px;color:${color}' >${result.pagos[x].fecha_pago } </strong>
+                                                                                              <input type='checkbox' ${checked} style='height: 25px;'class="form-control hacerPagoPoliza" data-id_datos_forma_pago='${result.pagos[x].id_datos_forma_pago}' >
+                                                                                              <input type='text' style='color:${color}' class="form-control" name="pagoPoliza" class='pagoPoliza' readonly="readonly" value='${result.pagos[x].cantidad_pago }' />
+                                                                                         </td> `;
+
+                                                                    
+                                                                         if(x== 3)
+                                                                        {
+                                                                             tempPagos += `</tr><tr>`;
+                                                                        }
+
+                                                                         if(x== 7)
+                                                                        {
+                                                                             tempPagos += `</tr><tr>`;
+                                                                        }
+
+                                                                        if(x== 11)
+                                                                        {
+                                                                             tempPagos += `</tr>`;
+                                                                        }
+                                                                
+                                                               
+
+
+
                                                             }
-                                                            else
-                                                            {
-                                                                checked = '';   
 
-                                                                if(diferenciaDias < 0)
+                                                        $("#modalPagosPoliza #tblFormaDePago tbody").append(tempPagos);
+                                                        $("#modalPagosPoliza #tblFormaDePago").css("height","285px");
+                                                        $("#modalPagosPoliza #tblFormaDePago").css("width","768px");
+                                                        $("#modalPagosPoliza .modal-content").css("width","800px");
+
+
+                                                break;
+
+                                                case 4:
+
+
+                                                        for(let x = 0; x < result.pagos.length ; x++)
+                                                        {
+
+                                                             var fecha1 = moment(hoy);
+                                                             var fecha2 = result.pagos[x].fecha_pago.split("/")[2] + "/" + result.pagos[x].fecha_pago .split("/")[1] + "/" + result.pagos[x].fecha_pago .split("/")[0];
+                                                             fecha2 = moment(fecha2); 
+
+                                                             var diferenciaDias = fecha2.diff(fecha1, 'days');
+                                                             var color = '';
+
+
+                                                                if (result.pagos[x].pagado == '1')
                                                                 {
-                                                                    color = 'red';
+                                                                    checked = 'checked';
+                                                                   // color = 'green';
                                                                 }
-                                                                else if(diferenciaDias >= 0 && diferenciaDias <= 10)
+                                                                else
                                                                 {
-                                                                    color = 'orange';
+                                                                    checked = '';   
+
+                                                                    if(diferenciaDias < 0)
+                                                                    {
+                                                                        color = 'red';
+                                                                    }
+                                                                    else if(diferenciaDias >= 0 && diferenciaDias <= 10)
+                                                                    {
+                                                                        color = 'orange';
+                                                                    }
+                                                                    else 
+                                                                    {
+                                                                        color = 'black';
+                                                                    }
+
                                                                 }
-                                                                else 
-                                                                {
-                                                                    color = 'black';
-                                                                }
-
-                                                            }
 
 
+                                                                tempPagos +=    `     <td>
+                                                                                          <strong class='pagos' style='margin-left:115px;color:${color}' >${result.pagos[x].fecha_pago } </strong>
+                                                                                          <input type='checkbox' ${checked} style='height: 25px;'class="form-control hacerPagoPoliza" data-id_datos_forma_pago='${result.pagos[x].id_datos_forma_pago}' >
+                                                                                          <input type='text' style='color:${color}' class="form-control" name="pagoPoliza" class='pagoPoliza' readonly="readonly" value='${result.pagos[x].cantidad_pago }' />
+                                                                                     </td> `;
 
+                                                                
+                                                                     if(x== 1)
+                                                                    {
+                                                                         tempPagos += `</tr><tr>`;
+                                                                    }
 
-                                                            tempPagos +=    `     <td>
-                                                                                      <strong class='pagos' style='margin-left:65px;color:${color}' >${result.pagos[x].fecha_pago } </strong>
-                                                                                      <input type='checkbox' ${checked} style='height: 25px;'class="form-control hacerPagoPoliza" data-id_datos_forma_pago='${result.pagos[x].id_datos_forma_pago}' >
-                                                                                      <input type='text' style='color:${color}' class="form-control" name="pagoPoliza" class='pagoPoliza' readonly="readonly" value='${result.pagos[x].cantidad_pago }' />
-                                                                                 </td> `;
-
+                                                                     if(x== 3)
+                                                                    {
+                                                                         tempPagos += `</tr>`;
+                                                                    }
                                                             
-                                                                 if(x== 3)
-                                                                {
-                                                                     tempPagos += `</tr><tr>`;
-                                                                }
-
-                                                                 if(x== 7)
-                                                                {
-                                                                     tempPagos += `</tr><tr>`;
-                                                                }
-
-                                                                if(x== 11)
-                                                                {
-                                                                     tempPagos += `</tr>`;
-                                                                }
-                                                        
-                                                       
-
-
-
-                                                    }
-
-                                                $("#modalPagosPoliza #tblFormaDePago tbody").append(tempPagos);
-                                                $("#modalPagosPoliza #tblFormaDePago").css("height","285px");
-                                                $("#modalPagosPoliza #tblFormaDePago").css("width","768px");
-                                                $("#modalPagosPoliza .modal-content").css("width","800px");
-
-
-                                        break;
-
-                                        case 4:
-
-
-                                                for(let x = 0; x < result.pagos.length ; x++)
-                                                {
-
-                                                     var fecha1 = moment(hoy);
-                                                     var fecha2 = result.pagos[x].fecha_pago.split("/")[2] + "/" + result.pagos[x].fecha_pago .split("/")[1] + "/" + result.pagos[x].fecha_pago .split("/")[0];
-                                                     fecha2 = moment(fecha2); 
-
-                                                     var diferenciaDias = fecha2.diff(fecha1, 'days');
-                                                     var color = '';
-
-
-                                                        if (result.pagos[x].pagado == '1')
-                                                        {
-                                                            checked = 'checked';
-                                                           // color = 'green';
-                                                        }
-                                                        else
-                                                        {
-                                                            checked = '';   
-
-                                                            if(diferenciaDias < 0)
-                                                            {
-                                                                color = 'red';
-                                                            }
-                                                            else if(diferenciaDias >= 0 && diferenciaDias <= 10)
-                                                            {
-                                                                color = 'orange';
-                                                            }
-                                                            else 
-                                                            {
-                                                                color = 'black';
-                                                            }
 
                                                         }
 
-
-                                                        tempPagos +=    `     <td>
-                                                                                  <strong class='pagos' style='margin-left:115px;color:${color}' >${result.pagos[x].fecha_pago } </strong>
-                                                                                  <input type='checkbox' ${checked} style='height: 25px;'class="form-control hacerPagoPoliza" data-id_datos_forma_pago='${result.pagos[x].id_datos_forma_pago}' >
-                                                                                  <input type='text' style='color:${color}' class="form-control" name="pagoPoliza" class='pagoPoliza' readonly="readonly" value='${result.pagos[x].cantidad_pago }' />
-                                                                             </td> `;
+                                                        $("#modalPagosPoliza #tblFormaDePago tbody").append(tempPagos);
+                                                        $("#modalPagosPoliza #tblFormaDePago").css("height","220px");
+                                                        $("#modalPagosPoliza #tblFormaDePago").css("width","600px");
+                                                        $("#modalPagosPoliza .modal-content").css("width","638px");
 
                                                         
-                                                             if(x== 1)
-                                                            {
-                                                                 tempPagos += `</tr><tr>`;
-                                                            }
 
-                                                             if(x== 3)
-                                                            {
-                                                                 tempPagos += `</tr>`;
-                                                            }
-                                                    
 
-                                                }
+                                                break;
 
-                                                $("#modalPagosPoliza #tblFormaDePago tbody").append(tempPagos);
-                                                $("#modalPagosPoliza #tblFormaDePago").css("height","220px");
-                                                $("#modalPagosPoliza #tblFormaDePago").css("width","600px");
-                                                $("#modalPagosPoliza .modal-content").css("width","638px");
+                                                default:
+
+                                                         for(let x = 0; x < result.pagos.length ; x++)
+                                                        {
+
+                                                             var fecha1 = moment(hoy);
+                                                             var fecha2 = result.pagos[x].fecha_pago.split("/")[2] + "/" + result.pagos[x].fecha_pago .split("/")[1] + "/" + result.pagos[x].fecha_pago .split("/")[0];
+                                                              fecha2 = moment(fecha2); 
+
+                                                             var diferenciaDias = fecha2.diff(fecha1, 'days');
+                                                             var color = '';
+
+
+                                                                if (result.pagos[x].pagado == '1')
+                                                                {
+                                                                    checked = 'checked';
+                                                                    //color = 'green';
+                                                                }
+                                                                else
+                                                                {
+                                                                    checked = '';   
+
+                                                                    if(diferenciaDias < 0)
+                                                                    {
+                                                                        color = 'red';
+                                                                    }
+                                                                    else if(diferenciaDias >= 0 && diferenciaDias <= 10)
+                                                                    {
+                                                                        color = 'orange';
+                                                                    }
+                                                                    else 
+                                                                    {
+                                                                        color = 'black';
+                                                                    }
+
+                                                                }
+
+
+
+
+                                                                tempPagos +=    `     <td>
+                                                                                          <strong class='pagos' style='margin-left:65px;color:${color}' >${result.pagos[x].fecha_pago } </strong>
+                                                                                          <input type='checkbox' ${checked} style='height: 25px;'class="form-control hacerPagoPoliza" data-id_datos_forma_pago='${result.pagos[x].id_datos_forma_pago}' >
+                                                                                          <input type='text' style='color:${color}' class="form-control" name="pagoPoliza" class='pagoPoliza' readonly="readonly" value='${result.pagos[x].cantidad_pago }' />
+                                                                                     </td> `;
+
+                                                                
+                                                                     if(x== 1)
+                                                                    {
+                                                                         tempPagos += `</tr>`;
+                                                                    }
+
+                                                                    
+
+                                                        }
+
+                                                        $("#modalPagosPoliza #tblFormaDePago tbody").append(tempPagos);
+                                                        $("#modalPagosPoliza #tblFormaDePago").css("height","120px");
+                                                        $("#modalPagosPoliza #tblFormaDePago").css("width","600px");
+                                                        $("#modalPagosPoliza .modal-content").css("width","638px");
+
+                                                break;
+
+
+                                            }
 
                                                 
 
-
-                                        break;
-
-                                        default:
-
-                                                 for(let x = 0; x < result.pagos.length ; x++)
-                                                {
-
-                                                     var fecha1 = moment(hoy);
-                                                     var fecha2 = result.pagos[x].fecha_pago.split("/")[2] + "/" + result.pagos[x].fecha_pago .split("/")[1] + "/" + result.pagos[x].fecha_pago .split("/")[0];
-                                                      fecha2 = moment(fecha2); 
-
-                                                     var diferenciaDias = fecha2.diff(fecha1, 'days');
-                                                     var color = '';
+                                              $("#modalPagosPoliza").modal("show");
+                                        }
+                                        else
+                                        {
+                                               $("#modalSuccessRegistroPoliza .modal-body").html("<h4>Ocurrio un error al registrar la poliza de autos.<h4>");
+                                                $("#modalSuccessRegistroPoliza").modal("show");
+                                        }
+                                  }
+                                  else
+                                  {
+                                    window.location = result.url;
+                                  }
 
 
-                                                        if (result.pagos[x].pagado == '1')
-                                                        {
-                                                            checked = 'checked';
-                                                            //color = 'green';
-                                                        }
-                                                        else
-                                                        {
-                                                            checked = '';   
-
-                                                            if(diferenciaDias < 0)
-                                                            {
-                                                                color = 'red';
-                                                            }
-                                                            else if(diferenciaDias >= 0 && diferenciaDias <= 10)
-                                                            {
-                                                                color = 'orange';
-                                                            }
-                                                            else 
-                                                            {
-                                                                color = 'black';
-                                                            }
-
-                                                        }
-
-
-
-
-                                                        tempPagos +=    `     <td>
-                                                                                  <strong class='pagos' style='margin-left:65px;color:${color}' >${result.pagos[x].fecha_pago } </strong>
-                                                                                  <input type='checkbox' ${checked} style='height: 25px;'class="form-control hacerPagoPoliza" data-id_datos_forma_pago='${result.pagos[x].id_datos_forma_pago}' >
-                                                                                  <input type='text' style='color:${color}' class="form-control" name="pagoPoliza" class='pagoPoliza' readonly="readonly" value='${result.pagos[x].cantidad_pago }' />
-                                                                             </td> `;
-
-                                                        
-                                                             if(x== 1)
-                                                            {
-                                                                 tempPagos += `</tr>`;
-                                                            }
-
-                                                            
-
-                                                }
-
-                                                $("#modalPagosPoliza #tblFormaDePago tbody").append(tempPagos);
-                                                $("#modalPagosPoliza #tblFormaDePago").css("height","120px");
-                                                $("#modalPagosPoliza #tblFormaDePago").css("width","600px");
-                                                $("#modalPagosPoliza .modal-content").css("width","638px");
-
-                                        break;
-
-
-                                    }
-
-                                        
-
-                                      $("#modalPagosPoliza").modal("show");
-                                }
-                                else
-                                {
-                                       $("#modalSuccessRegistroPoliza .modal-body").html("<h4>Ocurrio un error al registrar la poliza de autos.<h4>");
-                                        $("#modalSuccessRegistroPoliza").modal("show");
-                                }
 
                               },
                          error:function(result)
@@ -404,16 +414,26 @@ var base_url = $("body").attr("data-base-url");
                             success: function(result)
                                 {
 
-                                    if(result.status=='OK')
+                                    if(typeof(result.baja) == "undefined") 
                                     {
-                                         $("#modalSuccessPagoPoliza .modal-body").html(result.mensaje);
-                                         $("#modalSuccessPagoPoliza").modal('show');
+
+                                        if(result.status=='OK')
+                                        {
+                                             $("#modalSuccessPagoPoliza .modal-body").html(result.mensaje);
+                                             $("#modalSuccessPagoPoliza").modal('show');
+                                        }
+                                        else
+                                        {
+                                             $("#modalSuccessPagoPoliza .modal-body").html(result.mensaje);
+                                             $("#modalSuccessPagoPoliza").modal('show');
+                                        }
+
                                     }
                                     else
                                     {
-                                         $("#modalSuccessPagoPoliza .modal-body").html(result.mensaje);
-                                         $("#modalSuccessPagoPoliza").modal('show');
+                                      window.location = result.url;
                                     }
+
 
                                 },
                            error:function(result)
@@ -467,8 +487,17 @@ var base_url = $("body").attr("data-base-url");
                        success: function(result)
                            {
 
-                              $("#modalMensajeEmailCliente .modal-body").html(result.msj);
-                              $("#modalMensajeEmailCliente").modal("show");
+                              if(typeof(result.baja) == "undefined") 
+                              {
+
+                                  $("#modalMensajeEmailCliente .modal-body").html(result.msj);
+                                  $("#modalMensajeEmailCliente").modal("show");
+
+                              }
+                              else
+                              {
+                                window.location = result.url;
+                              }
 
                            },
                       error:function(result)

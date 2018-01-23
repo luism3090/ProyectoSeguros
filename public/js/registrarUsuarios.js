@@ -429,14 +429,25 @@ cargarSelectUsuarios();
                                                       success: function(result)
                                                           {
 
-                                                              if(result.msjCantidadRegistros > 0)
+                                                              if(typeof(result.baja) == "undefined") 
                                                               {
-                                                                 valida = false;
+
+
+                                                                    if(result.msjCantidadRegistros > 0)
+                                                                    {
+                                                                       valida = false;
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                      valida = true;
+                                                                    }
+
                                                               }
                                                               else
                                                               {
-                                                                valida = true;
+                                                                window.location = result.url;
                                                               }
+
                                                            
                                                           },
                                                      error:function(result)
@@ -514,8 +525,18 @@ cargarSelectUsuarios();
                                     success: function(result)
                                         {
                                           
-                                          // $("#modalUsuarioRegistrado #base_url").val(result.base_url);
-                                          $("#modalUsuarioRegistrado").modal("show");
+                                                if(typeof(result.baja) == "undefined") 
+                                                {
+
+                                                    $("#modalUsuarioRegistrado").modal("show");
+
+                                                }
+                                                else
+                                                {
+                                                  window.location = result.url;
+                                                }
+
+
 
                                         },
                                    error:function(result)

@@ -90,98 +90,105 @@ $(document).ready(function()
                        success: function(result)
                            {
 
-                            //console.log(result);
+                                if(typeof(result.baja) == "undefined") 
+                                {
 
-                             if(result.status=="OK")
-                             {
+                                       if(result.status=="OK")
+                                       {
 
-                                let tempPolizasCliente = '';
+                                          let tempPolizasCliente = '';
 
-                                let rowPdfPoliza = '';
+                                          let rowPdfPoliza = '';
 
-                                    
-                                    $("body #tblLoadPolizasCliente tbody").html("");
+                                              
+                                              $("body #tblLoadPolizasCliente tbody").html("");
 
-                                    if(result.polizasCliente.length > 0)
-                                    {
+                                              if(result.polizasCliente.length > 0)
+                                              {
 
-                                        $("#divClientePolizas").text(result.polizasCliente[0].cliente);
-                                    }
-                                    else
-                                    {
-                                         let cliente = $("#modalCargarFilesPolizasUsuario").prop("cliente");
+                                                  $("#divClientePolizas").text(result.polizasCliente[0].cliente);
+                                              }
+                                              else
+                                              {
+                                                   let cliente = $("#modalCargarFilesPolizasUsuario").prop("cliente");
 
-                                          $("#divClientePolizas").text(cliente);
+                                                    $("#divClientePolizas").text(cliente);
 
-                                          let noData= `<tr class='noData' >
-                                                            <td  colspan='8' class='text-center'>Sin información disponible</td>
-                                                      </tr>`;
+                                                    let noData= `<tr class='noData' >
+                                                                      <td  colspan='8' class='text-center'>Sin información disponible</td>
+                                                                </tr>`;
 
-                                          $("body #tblLoadPolizasCliente tbody").html(noData);
+                                                    $("body #tblLoadPolizasCliente tbody").html(noData);
 
-                                    }
+                                              }
 
-                                     
+                                               
 
-                                    result.polizasCliente.forEach(function(poliza) 
-                                    {
-                                            
-                                            if(poliza.pdf_poliza != undefined)
-                                            {
-                                                rowPdfPoliza = `<a href='${base_url}/public/uploads/${poliza.pdf_poliza}' style ='text-decoration: underline;' download >Descargar póliza</a>`;    
-                                            }
-                                            else
-                                            {
-                                                rowPdfPoliza = `No hay póliza`;
-                                            }
-                                            
-                                           
+                                              result.polizasCliente.forEach(function(poliza) 
+                                              {
+                                                      
+                                                      if(poliza.pdf_poliza != undefined)
+                                                      {
+                                                          rowPdfPoliza = `<a href='${base_url}/public/uploads/${poliza.pdf_poliza}' style ='text-decoration: underline;' download >Descargar póliza</a>`;    
+                                                      }
+                                                      else
+                                                      {
+                                                          rowPdfPoliza = `No hay póliza`;
+                                                      }
+                                                      
+                                                     
 
-                                            //<td><input type='checkbox' class="form-control" style='height: 25px;' checked='checked' /></td>
+                                                      //<td><input type='checkbox' class="form-control" style='height: 25px;' checked='checked' /></td>
 
-                                                tempPolizasCliente = `    <tr data-id_poliza='${poliza.id_poliza}' style='height:50px;'>
-                                                                                <td class='text-center'>
-                                                                                    ${poliza.no_poliza}
-                                                                                </td>
-                                                                                <td class='text-center'>
-                                                                                    ${poliza.tipoPoliza}
-                                                                                </td>
-                                                                                <td class='text-center'>
-                                                                                    ${poliza.formaPago}
-                                                                                </td>
-                                                                                <td class='text-center'>
-                                                                                    ${poliza.fecha_inicia}
-                                                                                </td>
-                                                                                <td class='text-center'>
-                                                                                    ${poliza.fecha_finaliza}
-                                                                                </td>
-                                                                                <td class='text-center'>
-                                                                                    ${poliza.aseguradora}
-                                                                                </td>
-                                                                                <td class='text-center'>
-                                                                                    ${rowPdfPoliza}
-                                                                                </td>
-                                                                                <td class='text-center'>
-                                                                                    ${poliza.SubirPolizas}
-                                                                                </td>
-                                                                         </tr>`;
-
-
-                                                $("body #tblLoadPolizasCliente tbody").append(tempPolizasCliente);
-
-                                                
-
-                                    });
-
-                                    $("#modalLoadTablaPolizasCliente").modal("show");
+                                                          tempPolizasCliente = `    <tr data-id_poliza='${poliza.id_poliza}' style='height:50px;'>
+                                                                                          <td class='text-center'>
+                                                                                              ${poliza.no_poliza}
+                                                                                          </td>
+                                                                                          <td class='text-center'>
+                                                                                              ${poliza.tipoPoliza}
+                                                                                          </td>
+                                                                                          <td class='text-center'>
+                                                                                              ${poliza.formaPago}
+                                                                                          </td>
+                                                                                          <td class='text-center'>
+                                                                                              ${poliza.fecha_inicia}
+                                                                                          </td>
+                                                                                          <td class='text-center'>
+                                                                                              ${poliza.fecha_finaliza}
+                                                                                          </td>
+                                                                                          <td class='text-center'>
+                                                                                              ${poliza.aseguradora}
+                                                                                          </td>
+                                                                                          <td class='text-center'>
+                                                                                              ${rowPdfPoliza}
+                                                                                          </td>
+                                                                                          <td class='text-center'>
+                                                                                              ${poliza.SubirPolizas}
+                                                                                          </td>
+                                                                                   </tr>`;
 
 
-                             }
-                             else
-                             {
-                                    // $("#modalSuccessRegistroPoliza .modal-body").html(result.msjConsulta);
-                                    //  $("#modalSuccessRegistroPoliza").modal("show");
-                             }
+                                                          $("body #tblLoadPolizasCliente tbody").append(tempPolizasCliente);
+
+                                                          
+
+                                              });
+
+                                              $("#modalLoadTablaPolizasCliente").modal("show");
+
+
+                                       }
+                                       else
+                                       {
+                                              // $("#modalSuccessRegistroPoliza .modal-body").html(result.msjConsulta);
+                                              //  $("#modalSuccessRegistroPoliza").modal("show");
+                                       }
+                                }
+                                else
+                                {
+                                  window.location = result.url;
+                                }
+
 
                            },
                       error:function(result)
