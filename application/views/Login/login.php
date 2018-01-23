@@ -28,7 +28,7 @@
           <br>
           <div class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-            <input type="text"  id="password" name="password" class="form-control" placeholder="Contraseña" minlength="5" maxlength="20" >
+            <input type="password"  id="password" name="password" class="form-control" placeholder="Contraseña" minlength="5" maxlength="20" >
           </div>
           <br>
           <br>

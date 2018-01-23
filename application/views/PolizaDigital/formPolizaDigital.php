@@ -33,7 +33,12 @@
 						            
 						            <ul class="nav navbar-nav navbar-right">
 						                <li class="dropdown">
-						                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
+						                	
+	                							<img src="<?php echo base_url();?>public/images/actise2.png" alt="actise"  class="img-responsive" width='130px' height='130px' style='display: inline-block;' >
+	                    
+	                    						<a href="#" class="dropdown-toggle" data-toggle="dropdown" style='display: inline-block;'>
+
 						                        <span class="glyphicon glyphicon-user"></span> 
 						                        <strong><?php echo $this->session->userdata('nombre'); ?></strong>
 						                        <span class="glyphicon glyphicon-chevron-down"></span>

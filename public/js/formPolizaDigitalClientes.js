@@ -15,8 +15,6 @@ $(document).ready(function()
                        success: function(result)
                            {
 
-                            //console.log(result);
-
                              if(result.status=="OK")
                              {
 
@@ -34,9 +32,8 @@ $(document).ready(function()
                                     }
                                     else
                                     {
-                                         let cliente = $("#modalCargarFilesPolizasUsuario").prop("cliente");
 
-                                          $("#divClientePolizas").text(cliente);
+                                          $("#divClientePolizas").text(result.nombre);
 
                                           let noData= `<tr class='noData' >
                                                             <td  colspan='8' class='text-center'>Sin información disponible</td>

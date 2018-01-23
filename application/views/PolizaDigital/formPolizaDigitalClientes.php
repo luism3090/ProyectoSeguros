@@ -87,7 +87,7 @@
 					<br><br><br><br>
 					<div class="row">
 						<div class="col-xs-9">
-							<table id='tblLoadPolizasCliente' border='1px' style="width:134.3%;height:100px;border:1px solid black;margin: 0px auto">
+							<table id='tblLoadPolizasCliente' border='1px' style="width:134.3%;height:100px;border:1px solid black;margin: 0px -5%">
 								<thead>
 									<tr>
 										<th class='text-center'>Número de póliza</th>

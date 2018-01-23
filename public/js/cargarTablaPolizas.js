@@ -26,34 +26,11 @@ var base_url = $("body").attr("data-base-url");
         "processing": true,
         "serverSide": true,
         "ordering": true,
-          // "initComplete":function( settings, json){
+          "initComplete":function( settings, json){
              
-          //    // $("#tblDetallePolizas tbody tr").each(function(index,value)
-          //    //  {
+             $("table.table-bordered.table-hover.dataTable.no-footer").eq(2).remove();
 
-          //    //      let no_ha_pagado = parseInt(tblDetallePolizas.rows($(this).closest("tr").index()).data().pluck(1)[0]);
-          //    //      let dias_faltantes = parseInt(tblDetallePolizas.rows($(this).closest("tr").index()).data().pluck(2)[0]);
-
-          //    //      debugger;
-
-          //    //      if(no_ha_pagado >= 1)
-          //    //      {
-                    
-          //    //        $(this).closest("tr").find(".colorButton").removeClass("btn btn-dark btn-lg colorButton").addClass("btn btn-danger btn-lg colorButton");
-          //    //      }
-          //    //      else
-          //    //      {
-          //    //        if(dias_faltantes == 1)
-          //    //        {
-                      
-          //    //          $(this).closest("tr").find(".colorButton").removeClass("btn btn-dark btn-lg colorButton").addClass("btn btn-warning btn-lg colorButton");
-          //    //        }
-          //    //      }
-
-          //    //  }); 
-
-
-          // },
+          },
          "language": {
                         "url": base_url+"public/libreriasJS/Spanish.json"
                       },
@@ -601,6 +578,8 @@ var base_url = $("body").attr("data-base-url");
        });
 
    
+
+
 
 
 

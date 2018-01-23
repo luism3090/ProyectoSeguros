@@ -188,7 +188,9 @@ class PolizaDigitalCliente extends CI_Controller
 		$id_usuario = $this->session->userdata('id_usuario');
 
 		$this->load->model('PolizaDigitalCliente/Model_PolizaDigitalCliente'); 
-          $resultado_query = $this->Model_PolizaDigitalCliente->getDatosPolizasCliente($id_usuario);
+        $resultado_query = $this->Model_PolizaDigitalCliente->getDatosPolizasCliente($id_usuario);
+
+        $resultado_query["nombre"] = $id_usuario = $this->session->userdata('nombre');
 
 		//$datosUsuario["aa"] = $datosUsuario;
 

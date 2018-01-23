@@ -218,7 +218,7 @@ $(document).ready(function()
               if( !isNaN(primerPago) && primerPago != "" )
               {
                
-                    pagoTotal = parseInt($("#txtPagoTotalPoliza").val());
+                    pagoTotal = parseFloat($("#txtPagoTotalPoliza").val());
 
                    let pagos = 0;
 
@@ -274,7 +274,7 @@ $(document).ready(function()
               if( !isNaN(primerPago) && primerPago != "" )
               {
                
-                    pagoTotal = parseInt($("#txtPagoTotalPoliza").val());
+                    pagoTotal = parseFloat($("#txtPagoTotalPoliza").val());
 
                    let pagos = 0;
 
@@ -345,7 +345,7 @@ $(document).ready(function()
 
                 let deducible = cantidad_asegurada * (coaseguro / 100);
 
-                $("#txtDeducible").val(deducible);
+                $("#txtDeducible").val(Math.round(deducible * 100) / 100);
 
 
        });
@@ -361,7 +361,7 @@ $(document).ready(function()
 
                 let deducible = cantidad_asegurada * (coaseguro / 100);
 
-                $("#txtDeducible").val(deducible);
+                $("#txtDeducible").val(Math.round(deducible * 100) / 100);
 
 
        });
@@ -376,7 +376,7 @@ $(document).ready(function()
 
                 let deducible = cantidad_asegurada * (coaseguro / 100);
 
-                $("#txtDeducible").val(deducible);
+                $("#txtDeducible").val(Math.round(deducible * 100) / 100);
 
 
        });
@@ -446,7 +446,7 @@ $(document).ready(function()
                                    }
                                    ,
                                  regexp: {
-                                      regexp: /^[0-9]+$/,
+                                      regexp: /^[0-9.]+$/,
 
                                       message: 'Solo debe ingresar números',
 
@@ -463,7 +463,7 @@ $(document).ready(function()
                                    }
                                    ,
                                  regexp: {
-                                      regexp: /^[0-9]+$/,
+                                      regexp: /^[0-9.]+$/,
 
                                       message: 'Solo debe ingresar números',
 
@@ -551,7 +551,7 @@ $(document).ready(function()
                                        message: 'Este campo es requerido.'
                                    },
                                    regexp: {
-                                       regexp: /^[0-9]+$/,
+                                       regexp: /^[0-9.]+$/,
 
                                        message: 'Solo debe ingresar números',
 
@@ -794,7 +794,7 @@ $(document).ready(function()
                // $("#modalFormaDePago").modal("show");
 
                 let pago = $("#txtPago").val().trim();
-               $("#txtPagoTotalPoliza").val(pago);
+               $("#txtPagoTotalPoliza").val(Math.round(pago * 100) / 100);
                
               
                $("#modalFormaDePago").modal("show");
@@ -804,12 +804,12 @@ $(document).ready(function()
 
            $("body").on("change","#slFormaPago",function()
           {
-                   let pagoTotal = parseInt($("#txtPago").val());
+                   let pagoTotal = parseFloat($("#txtPago").val());
 
                    if(pagoTotal > 0 )
                    {
 
-                         $("#txtPagoTotalPoliza").val(pagoTotal);
+                         $("#txtPagoTotalPoliza").val(Math.round(pagoTotal * 100) / 100);
 
                          let fechaInicial = "";
                          let fechaFinaliza = "";
@@ -892,7 +892,7 @@ $(document).ready(function()
                                                          message: 'Este campo es requerido'
                                                      },
                                                     regexp: {
-                                                      regexp: /^[0-9]+$/,
+                                                      regexp: /^[0-9.]+$/,
 
                                                       message: 'Solo debe ingresar números',
 
@@ -903,9 +903,9 @@ $(document).ready(function()
                                                       callback: function(value, validator) {
 
                                                           
-                                                                 let primerPago =  parseInt($(".PrimerpagoPoliza").val());
+                                                                 let primerPago =  parseFloat($(".PrimerpagoPoliza").val());
 
-                                                                 let pagoTotalPoliza = parseInt($("#txtPagoTotalPoliza").val());
+                                                                 let pagoTotalPoliza = parseFloat($("#txtPagoTotalPoliza").val());
 
                                                                  let valida = (primerPago > pagoTotalPoliza) ? false :  true ;
                                                                               
@@ -985,7 +985,7 @@ $(document).ready(function()
                                                          message: 'Este campo es requerido'
                                                      },
                                                     regexp: {
-                                                      regexp: /^[0-9]+$/,
+                                                      regexp: /^[0-9.]+$/,
 
                                                       message: 'Solo debe ingresar números',
 
@@ -996,9 +996,9 @@ $(document).ready(function()
                                                       callback: function(value, validator) {
 
                                                           
-                                                                 let primerPago =  parseInt($(".PrimerpagoPoliza").val());
+                                                                 let primerPago =  parseFloat($(".PrimerpagoPoliza").val());
 
-                                                                 let pagoTotalPoliza = parseInt($("#txtPagoTotalPoliza").val());
+                                                                 let pagoTotalPoliza = parseFloat($("#txtPagoTotalPoliza").val());
 
                                                                  let valida = (primerPago > pagoTotalPoliza) ? false :  true ;
                                                                               
@@ -1060,7 +1060,7 @@ $(document).ready(function()
                                                          message: 'Este campo es requerido'
                                                      },
                                                     regexp: {
-                                                      regexp: /^[0-9]+$/,
+                                                      regexp: /^[0-9.]+$/,
 
                                                       message: 'Solo debe ingresar números',
 
@@ -1071,9 +1071,9 @@ $(document).ready(function()
                                                       callback: function(value, validator) {
 
                                                           
-                                                                 let primerPago =  parseInt($(".PrimerpagoPoliza").val());
+                                                                 let primerPago =  parseFloat($(".PrimerpagoPoliza").val());
 
-                                                                 let pagoTotalPoliza = parseInt($("#txtPagoTotalPoliza").val());
+                                                                 let pagoTotalPoliza = parseFloat($("#txtPagoTotalPoliza").val());
 
                                                                  let valida = (primerPago > pagoTotalPoliza) ? false :  true ;
                                                                               
@@ -1179,9 +1179,9 @@ $(document).ready(function()
                     {
                        if($("#txtDescuento").val().trim()!= '' && !isNaN($("#txtDescuento").val().trim()) )
                       {
-                           let primaNetaAnual = parseInt($("#txtPrimaAnual").val().trim());
+                           let primaNetaAnual = parseFloat($("#txtPrimaAnual").val().trim());
 
-                           let descuento = parseInt($("#txtDescuento").val().trim());
+                           let descuento = parseFloat($("#txtDescuento").val().trim());
 
                             let pago = 0;
 
@@ -1212,7 +1212,7 @@ $(document).ready(function()
                                  }
 
 
-                           $("#txtPago").val(pago);
+                           $("#txtPago").val(Math.round(pago * 100) / 100);
                            $(".pagoPoliza").val("");
                            $("#modalFormaDePago").css("display","block");
                            $("#formValidaPagoTotal").bootstrapValidator('resetForm', true);
@@ -1255,9 +1255,9 @@ $(document).ready(function()
                            if($("#txtDescuento").val().trim()!= '' && !isNaN($("#txtDescuento").val().trim()) )
                           {
                          
-                                 let primaNetaAnual = parseInt($("#txtPrimaAnual").val().trim());
+                                 let primaNetaAnual = parseFloat($("#txtPrimaAnual").val().trim());
 
-                                 let descuento = parseInt($("#txtDescuento").val().trim());
+                                 let descuento = parseFloat($("#txtDescuento").val().trim());
 
                                   let pago = 0;
 
@@ -1289,7 +1289,7 @@ $(document).ready(function()
 
                                
 
-                               $("#txtPago").val(pago);
+                               $("#txtPago").val(Math.round(pago * 100) / 100);
                                $(".pagoPoliza").val("");
                                $("#modalFormaDePago").css("display","block");
                                $("#formValidaPagoTotal").bootstrapValidator('resetForm', true);
