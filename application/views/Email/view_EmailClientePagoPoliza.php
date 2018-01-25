@@ -1,5 +1,8 @@
 
-	<div>Hola <strong><?php echo $cliente;?></strong> su fecha límite de pago <strong>$<?php echo $cantidad_pago;?></strong> de la póliza de <strong><?php echo $tipo_poliza;?></strong> con número de póliza 
-		<strong><?php echo $no_poliza;?></strong> de la aseguradora <strong><?php echo $aseguradora;?></strong> esta próximo a vencerse, favor de pagar antes del día <strong><?php echo $fecha_pago;?></strong>
+	<div>
+
+		Hola <strong><?php echo $cliente;?></strong> su fecha límite de pago esta próxima a vencerse, favor de realizar el pago de la póliza
+		<strong><?php echo $no_poliza;?></strong> por la cantidad de <strong>$<?php echo $cantidad_pago;?></strong> el día 
+		<strong><?php echo $fecha_pago;?></strong> para que su póliza siga en proceso.
 	
     </div>

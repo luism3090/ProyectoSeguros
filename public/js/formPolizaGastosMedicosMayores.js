@@ -501,10 +501,7 @@ $(document).ready(function()
                             txtCantidadCoaseguros: {
                              group: '.form-group',
                                validators: {
-                                   notEmpty: {
-                                       message: 'Este campo es requerido.'
-                                   }
-                                   ,
+                                   
                                  regexp: {
                                       regexp: /^[0-9]+$/,
 
@@ -515,6 +512,7 @@ $(document).ready(function()
                            }
                            
                            ,
+
                             txtDescripcion: {
                              group: '.form-group',
                                validators: {
